@@ -49,6 +49,8 @@ class MemberController {
 class MemberValidator : Validator {
     override fun validate(p0: Any?, p1: Errors?) {
         ValidationUtils.rejectIfEmpty(p1, "firstName", "required")
+        ValidationUtils.rejectIfEmpty(p1, "lastName", "required")
+        ValidationUtils.rejectIfEmpty(p1, "mobile", "required")
 
     }
 
