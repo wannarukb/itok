@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorator="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>สร้างเครือข่ายใหม่</title>
+</head>
+<body>
+<div data-layout-fragment="main">
+    <ol class="breadcrumb">
+        <li data-th-text="#{home}">Home</li>
+        <li class="active" data-th-text="#{newMember}">Form Elements</li>
+    </ol>
+    <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
+                                                                              data-th-text="#{member}">Inputs &amp; Controls</span>
+    </h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <section class="widget">
+                <header>
+                    <h6>
+                        Inputs
+                    </h6>
+                    <div class="widget-controls">
+                        <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#"><i class="fa fa-refresh"></i></a>
+                        <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </header>
+                <div class="widget-body">
+                    <form class="form-horizontal" role="form">
+                        <fieldset>
+                            <legend><strong>Horizontal</strong> form</legend>
+                            <div class="form-group row">
+                                <label for="normal-field" class="col-md-4 form-control-label text-md-right">Normal
+                                    field</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="normal-field" class="form-control"
+                                           placeholder="May have placeholder">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="hint-field" class="col-md-4 control-label text-md-right">
+                                    Label hint
+                                    <span class="help-block">Some help text</span>
+                                </label>
+                                <div class="col-md-7">
+                                    <input type="text" id="hint-field" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="tooltip-enabled">Tooltip
+                                    enabled</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="tooltip-enabled" class="form-control" data-placement="top"
+                                           data-original-title="Some explanation text here"
+                                           placeholder="Hover over me..">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="disabled-input">Disabled
+                                    input</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="disabled-input" class="form-control" disabled="disabled"
+                                           value="Default value">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="max-length">Max length</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="max-length" maxlength="3" class="form-control"
+                                           placeholder="Max length 3 characters" data-placement="top"
+                                           data-original-title="You cannot write more than 3 characters.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="prepended-input">Prepended
+                                    input</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        <input id="prepended-input" class="form-control" size="16" type="text"
+                                               placeholder="Username">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right"
+                                       for="password-field">Password</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="password-field"
+                                               placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="appended-input">Appended
+                                    input</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <input id="appended-input" class="form-control" size="16" type="text">
+                                        <span class="input-group-addon">.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right"
+                                       for="combined-input">Combined</label>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">$</span>
+                                        <input id="combined-input" class="form-control" size="16" type="text">
+                                        <span class="input-group-addon">.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-4 control-label text-md-right" for="transparent-input">
+                                    Append Transparent
+                                </label>
+                                <div class="col-md-7">
+                                    <div class="input-group input-group-transparent">
+                                        <input id="transparent-input" class="form-control" type="text">
+                                        <span class="input-group-addon">
+                                                <i class="fa fa-camera"></i>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-4 col-md-7">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="widget">
+                <header>
+                    <h6>
+                        Prepended and appended inputs
+                    </h6>
+                    <div class="widget-controls">
+                        <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#"><i class="fa fa-refresh"></i></a>
+                        <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </header>
+                <div class="widget-body">
+                    <form role="form">
+                        <fieldset>
+                            <legend><strong>Default</strong> Form</legend>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="search-input">Search type input</label>
+                                        <div class="input-group">
+                                            <input type="search" class="form-control" id="search-input">
+                                            <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-secondary">Search</button>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bar">Whole bar appended</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="bar">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-warning"><i class="fa fa-plus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-success"><i
+                                                        class="fa fa-refresh"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dropdown-appended">Actions dropdown</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="dropdown-appended">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-success" data-toggle="dropdown">
+                                                    Action
+                                                    <i class="fa fa-caret-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    <li class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type-dropdown-appended">Types dropdown</label>
+
+                                        <div class="input-group z-index-10">
+                                            <input type="text" class="form-control" id="type-dropdown-appended">
+                                            <div class="input-group-btn">
+                                                <select id="phone-type" class="selectpicker" data-style="btn-primary"
+                                                        data-width="auto" style="display: none;">
+                                                    <option class="dropdown-item">Another type</option>
+                                                    <option class="dropdown-item">Type one</option>
+                                                    <option class="dropdown-item">Next type</option>
+                                                </select>
+                                                <div class="btn-group bootstrap-select" style="width: 126px;">
+                                                    <button type="button" class="btn dropdown-toggle btn-primary"
+                                                            data-toggle="dropdown" data-id="phone-type"
+                                                            title="Another type"><span class="filter-option pull-left">Another type</span>&nbsp;<span
+                                                            class="caret"></span></button>
+                                                    <div class="dropdown-menu open" style="min-width: 0px;">
+                                                        <ul class="dropdown-menu inner" role="menu">
+                                                            <li data-original-index="0" class="selected"><a tabindex="0"
+                                                                                                            class="dropdown-item"
+                                                                                                            data-normalized-text="<span class=&quot;text&quot;>Another type</span>"
+                                                                                                            data-tokens="null"><span
+                                                                    class="text">Another type</span><span
+                                                                    class="glyphicon glyphicon-ok check-mark"></span></a>
+                                                            </li>
+                                                            <li data-original-index="1"><a tabindex="0"
+                                                                                           class="dropdown-item"
+                                                                                           data-normalized-text="<span class=&quot;text&quot;>Type one</span>"
+                                                                                           data-tokens="null"><span
+                                                                    class="text">Type one</span><span
+                                                                    class="glyphicon glyphicon-ok check-mark"></span></a>
+                                                            </li>
+                                                            <li data-original-index="2"><a tabindex="0"
+                                                                                           class="dropdown-item"
+                                                                                           data-normalized-text="<span class=&quot;text&quot;>Next type</span>"
+                                                                                           data-tokens="null"><span
+                                                                    class="text">Next type</span><span
+                                                                    class="glyphicon glyphicon-ok check-mark"></span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="help-block">You can select some type of a field just right in the
+                                            place.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="segmented-dropdown">Segmented dropdown</label>
+                                        <div class="input-group">
+                                            <input id="segmented-dropdown" class="form-control" type="text">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-warning" tabindex="-1">Action</button>
+                                                <button class="btn btn-warning" data-toggle="dropdown">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    <li class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <span class="help-block">Anything can be appended to the right</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="no-borders-input">Transparent input</label>
+                                        <input id="no-borders-input"
+                                               class="form-control input-no-border bg-gray-lighter" type="text"
+                                               placeholder="Search Dashboard">
+                                        <p class="help-block">With <code>.bg-gray-lighter</code>. White by default.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-inverse">Save Changes</button>
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>

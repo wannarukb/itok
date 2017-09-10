@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<data-th-block data-th-fragment="input (label, name)">
+    <div data-th-with="valid=${!#fields.hasErrors(name)}"
+         data-th-class="${'form-group' + (valid ? '' : ' has-error')}"
+         class="form-group">
+        <label class="col-sm-2 control-label" data-th-text="${label}">Label</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text"
+                   data-th-field="*{__${name}__}" />
+            <span data-th-if="${valid}"
+                  class="glyphicon glyphicon-ok form-control-feedback"
+                  aria-hidden="true"></span>
+            <data-th-block data-th-if="${!valid}">
+            <span
+                    class="glyphicon glyphicon-remove form-control-feedback"
+                    aria-hidden="true"></span>
+                <span class="help-inline" data-th-errors="*{__${name}__}">Error</span>
+            </data-th-block>
+        </div>
+    </div>
+</data-th-block>
+</body>
+</html>
