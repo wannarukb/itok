@@ -1,0 +1,5 @@
+gcs_url: https://storage.googleapis.com/itok-project.appspot.com/
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
