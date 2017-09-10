@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block data-th-fragment="input (label, name, required)">
+    <div data-th-with="valid=${!#fields.hasErrors(name)}"
+         data-th-class="${'form-group row' + (valid ? '' : ' has-error')}"
+         class="form-group">
+
+        <label data-th-for="${name}" class="col-md-4 form-control-label text-md-right"><span data-th-text="${label}">Normal</span>
+            &nbsp;<span class="red" data-th-if="${required}">*</span></label>
+        <div class="col-md-7">
+            <div class="input-group input-group-transparent">
+                <input class="form-control" type="text"
+                       data-th-field="*{__${name}__}"/>
+
+                <span data-th-if="${valid}"
+                      class="input-group-addon"
+                      aria-hidden="true"><i class="glyphicon glyphicon-ok"></i> </span>
+                <th:block data-th-if="${!valid}">
+            <span
+                    class="input-group-addon"
+                    aria-hidden="true"><i class="glyphicon glyphicon-remove "></i> </span>
+                </th:block>
+            </div>
+            <span data-th-if="${!valid}" class="help-inline" data-th-errors="*{__${name}__}">Error</span>
+
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

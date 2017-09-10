@@ -1,10 +1,10 @@
 // See https://github.com/JetBrains/kotlin-examples/blob/master/LICENSE
-package org.jetbrains.kotlin.demo
+package com.orbit.itok
 
 import com.googlecode.objectify.ObjectifyFilter
-import org.jetbrains.kotlin.demo.util.dialect.GcsHrefProcessor
-import org.jetbrains.kotlin.demo.util.dialect.GcsResourceDialect
-import org.jetbrains.kotlin.demo.util.dialect.GcsSrcProcessor
+import com.orbit.itok.util.dialect.GcsHrefProcessor
+import com.orbit.itok.util.dialect.GcsResourceDialect
+import com.orbit.itok.util.dialect.GcsSrcProcessor
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.web.servlet.FilterRegistrationBean
@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.web.servlet.LocaleResolver
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
 import org.springframework.web.servlet.i18n.SessionLocaleResolver

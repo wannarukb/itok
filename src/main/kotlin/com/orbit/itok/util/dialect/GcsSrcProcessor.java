@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.demo.util.dialect;
+package com.orbit.itok.util.dialect;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.thymeleaf.Arguments;
@@ -8,13 +8,13 @@ import org.thymeleaf.processor.attr.AbstractSingleAttributeModifierAttrProcessor
 /**
  * Created by thitiwat on 2/10/16.
  */
-public class GcsHrefProcessor extends AbstractSingleAttributeModifierAttrProcessor {
+public class GcsSrcProcessor extends AbstractSingleAttributeModifierAttrProcessor {
 
     @Value("${gcs_url}")
     String GCS_URL;
 
-    public GcsHrefProcessor() {
-        super("href");
+    public GcsSrcProcessor() {
+        super("src");
     }
 
 
@@ -27,12 +27,12 @@ public class GcsHrefProcessor extends AbstractSingleAttributeModifierAttrProcess
 
     @Override
     protected String getTargetAttributeName(Arguments arguments, Element element, String s) {
-        return "href";
+        return "src";
     }
 
     @Override
     protected String getTargetAttributeValue(Arguments arguments, Element element, String s) {
-        return GCS_URL + element.getAttributeValue("href");
+        return GCS_URL + element.getAttributeValue("src");
 
     }
 

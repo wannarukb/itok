@@ -1,13 +1,17 @@
-package org.jetbrains.kotlin.demo.service
+package com.orbit.itok.service
 
 import com.googlecode.objectify.ObjectifyService
+import com.googlecode.objectify.ObjectifyService.*
+import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
 import org.springframework.boot.CommandLineRunner
+import org.springframework.stereotype.Service
 import java.util.*
 
 /**
  * Created For RIDMIS Web service
  */
+@Entity
 data class Member(@Id var id: Long? = null,
         // รหัสสมาชิก
                   var memberId: String = "",
@@ -52,13 +56,17 @@ data class UploadedImage(var key: String, var imageUrl:String) {
 }
 
 interface MemberService {
+    fun createMember(member: Member)
 
 }
-
+@Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun createMember(member: Member) {
+        ofy().save().entity(member)
+    }
 
     override fun run(vararg p0: String?) {
-        ObjectifyService.register(Member::class.java)
+        register(Member::class.java)
     }
 
 }

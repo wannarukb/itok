@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.demo.util.dialect;
+package com.orbit.itok.util.dialect;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.thymeleaf.dialect.AbstractDialect;

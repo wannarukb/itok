@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.demo.service
+package com.orbit.itok.service
 
 import org.springframework.stereotype.Service
 
