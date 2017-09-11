@@ -19,11 +19,21 @@ class DataController {
         val output = DataTablesOutput<Member>()
         val count = memberServiceImpl.count()
 
-        output.draw = input.draw
-        val findAll = memberServiceImpl.findAll(input.start, input.length)
-        output.data = findAll
+        val query = input.search.value
+        val start = input.start
+        val length = input.length
+
+        if (query == null || query.isEmpty()) {
+            val findAll = memberServiceImpl.findAll(start, length)
+            output.recordsFiltered = count
+            output.data = findAll
+        } else {
+            val findAll = memberServiceImpl.search(query, start, length)
+            output.recordsFiltered = memberServiceImpl.countSearch(query)
+            output.data = findAll
+        }
         output.recordsTotal = count
-        output.recordsFiltered = count
+        output.draw = input.draw
         return output
 
     }
