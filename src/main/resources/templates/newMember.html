@@ -17,7 +17,7 @@
         <div class="col-lg-6">
             <section class="widget">
                 <header>
-                    <h6 data-th-text="#{detail}">
+                    <h6 data-th-text="#{personalDetail}">
                         รายละเอียด
                     </h6>
                     <div class="widget-controls">
@@ -30,12 +30,12 @@
                     <form class="form-horizontal" role="form" data-th-object="${member}" method="post">
                         <fieldset>
                             <legend><strong data-th-text="#{member}">Horizontal</strong> <span
-                                    data-th-text="#{detail}"></span></legend>
+                                    data-th-text="#{personalDetail}"></span></legend>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>
 
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{title}, 'title', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
                             <input
@@ -77,6 +77,15 @@
         </div>
 
     </div>
+</div>
+<div data-layout-fragment="script">
+    <script>
+        $(function () {
+            $(".select2").each(function(){
+                $(this).select2($(this).data());
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

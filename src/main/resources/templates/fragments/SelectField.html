@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block data-th-fragment="select (label, name, list, required)">
+    <div class="form-group row">
+        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="${label}">Default
+            select</label>
+        <div class="col-md-8">
+            <select data-placeholder="Which galaxy is closest to Milky Way?"
+                    data-th-placeholder="#{choose} + ' - ' + ${label}"
+                    data-width="auto"
+                    data-minimum-results-for-search="10"
+                    tabindex="-1"
+                    class="select2 form-control" id="default-select">
+                <option value="Magellanic" data-th-each="l : ${list}" data-th-text="${l.name}" data-th-value="${l.id}"
+                        data-th-selected="${l.name} == *{__${name}__}">
+                    Large Magellanic Cloud
+                </option>
+            </select>
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>
