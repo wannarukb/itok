@@ -26,7 +26,7 @@ data class Member(@Id var id: Long? = null,
         // ชื่อเล่น
                   var nickname: String = "",
         // วัน เดือน ปีเกิด
-                  var birthday: Date? = null,
+                  var birthday: Date? = Date(),
         // หมายเลขบัตรประชาชน
                   var citizenId: String = "",
         // เพศ

@@ -25,6 +25,25 @@ class MemberController {
                 , SelectField("นางสาว", "นางสาว"))
     }
 
+    @ModelAttribute("maritalStatus")
+    fun maritalStatus(): List<SelectField> {
+        val status = listOf("โสด", "หย่า", "สมรส", "หม้าย")
+        return status.map { SelectField(it, it) }
+    }
+
+    @ModelAttribute("status")
+    fun status(): List<SelectField> {
+        val status = listOf("สมาชิกเครือข่าย", "ยังไม่เป็นสมาชิกเครือข่าย")
+        return status.map { SelectField(it, it) }
+    }
+
+    @ModelAttribute("educationDegree")
+    fun educationDegree(): List<SelectField> {
+        val status = listOf("ปริญญาเอก", "ปริญญาโท", "ปริญญาตรี", "ปวส./อนุปริญญา", "ปวช.",
+                "มัธยมปลาย", "มัธยมต้น", "ประถมศึกษา", "ไม่ได้ศึกษา")
+        return status.map { SelectField(it, it) }
+    }
+
     @InitBinder
     fun initBinder(webDataBinder: WebDataBinder) {
         return webDataBinder.addValidators(MemberValidator())

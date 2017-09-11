@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block data-th-fragment="dateSelect (label, name, required)">
+    <div class="form-group row">
+
+        <label class="col-md-4 text-md-right" data-th-for="${name}"><span data-th-text="${label}">In place</span>&nbsp;<span
+                data-th-if="${required}"
+                style="color: red;">*</span></label>
+        <div class="col-md-7">
+
+            <input data-th-field="*{__${name}__}" type="text" class="form-control datepicker"/>
+        </div>
+    </div>
+
+
+</th:block>
+</body>
+</html>

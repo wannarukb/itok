@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>สร้างเครือข่ายใหม่</title>
+    <link rel="stylesheet" href="/js/bootstrap-datepicker-thai-thai/css/datepicker.css">
 </head>
 <body>
 <div data-layout-fragment="main">
@@ -41,14 +42,14 @@
                             <input
                                     data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{birthday}, 'birthday', false)"/>
+                                    data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
 
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{maritalStatus}, 'maritalStatus', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{educationDegree}, 'educationDegree', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{educationDegree}, 'educationDegree', ${educationDegree}, false)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{address}, 'address', false)"/>
                             <input
@@ -60,7 +61,7 @@
                             <input
                                     data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{status}, 'status', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
 
                         </fieldset>
                         <div class="form-actions">
@@ -78,12 +79,20 @@
 
     </div>
 </div>
+
 <div data-layout-fragment="script">
+    <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker.js"></script>
+    <!-- thai extension -->
+    <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker-thai.js"></script>
+    <script type="text/javascript"
+            src="/js/bootstrap-datepicker-thai-thai/js/locales/bootstrap-datepicker.th.js"></script>
     <script>
         $(function () {
-            $(".select2").each(function(){
+            $(".select2").each(function () {
                 $(this).select2($(this).data());
             });
+            $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
+
         });
     </script>
 </div>
