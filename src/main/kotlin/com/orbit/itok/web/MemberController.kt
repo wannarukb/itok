@@ -5,6 +5,7 @@ import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.validation.Errors
 import org.springframework.validation.ValidationUtils
@@ -60,6 +61,21 @@ class MemberController {
             return "newMember"
         }
         memberServiceImpl.createMember(member)
+        return "redirect:/"
+    }
+
+    @GetMapping("{id}")
+    fun updateMember(@PathVariable id: Long, model: Model): String {
+        model.addAttribute("member", memberServiceImpl.findOne(id))
+        return "newMember"
+    }
+
+    @PostMapping("{id}")
+    fun postMember(@PathVariable id: Long, @Valid member: Member, bindingResult: BindingResult): String {
+        if (bindingResult.hasErrors()) {
+            return "newMember"
+        }
+        memberServiceImpl.update(id, member)
         return "redirect:/"
     }
 

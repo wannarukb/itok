@@ -71,11 +71,33 @@ data class UploadedImage(var key: String, var imageUrl: String) {
 
 interface MemberService {
     fun createMember(member: Member)
+    fun count(): Long
+    fun findAll(start: Int? = 0, length: Int? = 50): MutableList<Member>
+    fun findOne(id: Long): Member?
+    fun update(id: Long, member: Member)
 
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun findOne(id: Long): Member? {
+        return ofy().load().type(Member::class.java).id(id).now()
+    }
+
+    override fun update(id: Long, member: Member) {
+        member.id = id
+        ofy().save().entity(member)
+    }
+
+    override fun count(): Long {
+        return ofy().load().type(Member::class.java).count().toLong()
+    }
+
+    override fun findAll(start: Int?, length: Int?): MutableList<Member> {
+        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
+        return list
+    }
+
     override fun createMember(member: Member) {
         ofy().save().entity(member)
     }
