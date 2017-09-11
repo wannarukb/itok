@@ -36,7 +36,7 @@ data class Member(@Id var id: Long? = null,
         // ระดับการศึกษา
                   var educationDegree: String = "",
         //ที่อยู่ที่ติดต่อได้
-                  var address: String = "",
+                  var addressString: String = "",
         //เบอร์โทรศัพท์มือถือ*
                   var mobile: String = "",
         //                  Email Address
@@ -46,12 +46,26 @@ data class Member(@Id var id: Long? = null,
         //                  Line ID
                   var line: String = "",
         //                  สถานะการเป็นสมาชิก
-                  var status: String = ""
+                  var status: String = "",
+                  var address: Address = Address()
 
 
 )
+//เลขที่
+//หมู่ที่
+//ชื่อหมู่บ้าน/อาคาร/ชุมชน
+//ตรอก/ซอย
+//ถนน
+//ตำบล/แขวง
+//อำเภอ/เขต
+//จังหวัด*
+//รหัสไปรษณีย์
 
-data class UploadedImage(var key: String, var imageUrl:String) {
+data class Address(var number: String = "", var moo: String = "", var village: String = "", var alley: String = "",
+                   var road: String = "", var subdistrict: String = "", var district: String = "",
+                   var province: String = "", var postalCode: String = "")
+
+data class UploadedImage(var key: String, var imageUrl: String) {
 
 }
 
@@ -59,6 +73,7 @@ interface MemberService {
     fun createMember(member: Member)
 
 }
+
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun createMember(member: Member) {
