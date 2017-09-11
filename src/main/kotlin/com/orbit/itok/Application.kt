@@ -12,6 +12,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ReloadableResourceBundleMessageSource
+import org.springframework.format.FormatterRegistry
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
@@ -24,6 +25,8 @@ open class WebConfig : WebMvcConfigurerAdapter() {
     @Bean open fun gscHrefProcessor() = GcsHrefProcessor()
     @Bean open fun gscSrcProcessor() = GcsSrcProcessor()
     @Bean open fun gscDialectProcessor() = GcsResourceDialect()
+
+
 
     @Bean open fun filterRegistrationBean(): FilterRegistrationBean {
         val filterRegistrationBean = FilterRegistrationBean()
