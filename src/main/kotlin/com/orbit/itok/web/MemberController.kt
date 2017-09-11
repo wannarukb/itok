@@ -74,7 +74,7 @@ class MemberValidator : Validator {
         ValidationUtils.rejectIfEmpty(p1, "firstName", "required")
         ValidationUtils.rejectIfEmpty(p1, "lastName", "required")
         ValidationUtils.rejectIfEmpty(p1, "mobile", "required")
-
+        ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
     }
 
     override fun supports(p0: Class<*>?): Boolean {
