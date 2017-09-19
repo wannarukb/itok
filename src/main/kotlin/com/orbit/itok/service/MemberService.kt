@@ -49,7 +49,8 @@ data class Member(@Id var id: Long? = null,
                   var line: String = "",
         //                  สถานะการเป็นสมาชิก
                   var status: String = "",
-                  var address: Address = Address()
+                  var address: Address = Address(),
+                  var date: Date = Date()
 
 
 )
