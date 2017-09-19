@@ -7,11 +7,14 @@ import com.orbit.itok.util.dialect.GcsResourceDialect
 import com.orbit.itok.util.dialect.GcsSrcProcessor
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.boot.web.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ReloadableResourceBundleMessageSource
+import org.springframework.format.FormatterRegistry
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
@@ -24,6 +27,8 @@ open class WebConfig : WebMvcConfigurerAdapter() {
     @Bean open fun gscHrefProcessor() = GcsHrefProcessor()
     @Bean open fun gscSrcProcessor() = GcsSrcProcessor()
     @Bean open fun gscDialectProcessor() = GcsResourceDialect()
+
+
 
     @Bean open fun filterRegistrationBean(): FilterRegistrationBean {
         val filterRegistrationBean = FilterRegistrationBean()
@@ -50,7 +55,7 @@ open class WebConfig : WebMvcConfigurerAdapter() {
 
 }
 
-@SpringBootApplication
+@SpringBootApplication(exclude = arrayOf(HibernateJpaAutoConfiguration::class))
 class Application : SpringBootServletInitializer() {
 
     @Bean

@@ -3,18 +3,15 @@ package com.orbit.itok.web
 
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
-import com.orbit.itok.service.MemberServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.validation.Errors
 import org.springframework.validation.ValidationUtils
 import org.springframework.validation.Validator
 import org.springframework.web.bind.WebDataBinder
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.InitBinder
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 /**
@@ -23,6 +20,31 @@ import javax.validation.Valid
 @Controller
 @RequestMapping("member")
 class MemberController {
+    @ModelAttribute("titles")
+    fun titles(): List<SelectField> {
+        return listOf(SelectField("นาย", "นาย"), SelectField("นาง", "นาง")
+                , SelectField("นางสาว", "นางสาว"))
+    }
+
+    @ModelAttribute("maritalStatus")
+    fun maritalStatus(): List<SelectField> {
+        val status = listOf("โสด", "หย่า", "สมรส", "หม้าย")
+        return status.map { SelectField(it, it) }
+    }
+
+    @ModelAttribute("status")
+    fun status(): List<SelectField> {
+        val status = listOf("สมาชิกเครือข่าย", "ยังไม่เป็นสมาชิกเครือข่าย")
+        return status.map { SelectField(it, it) }
+    }
+
+    @ModelAttribute("educationDegree")
+    fun educationDegree(): List<SelectField> {
+        val status = listOf("ปริญญาเอก", "ปริญญาโท", "ปริญญาตรี", "ปวส./อนุปริญญา", "ปวช.",
+                "มัธยมปลาย", "มัธยมต้น", "ประถมศึกษา", "ไม่ได้ศึกษา")
+        return status.map { SelectField(it, it) }
+    }
+
     @InitBinder
     fun initBinder(webDataBinder: WebDataBinder) {
         return webDataBinder.addValidators(MemberValidator())
@@ -42,8 +64,25 @@ class MemberController {
         return "redirect:/"
     }
 
+    @GetMapping("{id}")
+    fun updateMember(@PathVariable id: Long, model: Model): String {
+        model.addAttribute("member", memberServiceImpl.findOne(id))
+        return "newMember"
+    }
+
+    @PostMapping("{id}")
+    fun postMember(@PathVariable id: Long, @Valid member: Member, bindingResult: BindingResult): String {
+        if (bindingResult.hasErrors()) {
+            return "newMember"
+        }
+        memberServiceImpl.update(id, member)
+        return "redirect:/"
+    }
+
     @Autowired lateinit var memberServiceImpl: MemberService
 }
+
+data class SelectField(var id: String = "", var name: String = "")
 
 
 class MemberValidator : Validator {
@@ -51,7 +90,7 @@ class MemberValidator : Validator {
         ValidationUtils.rejectIfEmpty(p1, "firstName", "required")
         ValidationUtils.rejectIfEmpty(p1, "lastName", "required")
         ValidationUtils.rejectIfEmpty(p1, "mobile", "required")
-
+        ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
     }
 
     override fun supports(p0: Class<*>?): Boolean {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>สร้างเครือข่ายใหม่</title>
+    <link rel="stylesheet" href="/js/bootstrap-datepicker-thai-thai/css/datepicker.css">
 </head>
 <body>
 <div data-layout-fragment="main">
@@ -14,10 +15,10 @@
                                                                            data-th-text="#{member}">Inputs &amp; Controls</span>
     </h1>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <section class="widget">
                 <header>
-                    <h6 data-th-text="#{detail}">
+                    <h6 data-th-text="#{personalDetail}">
                         รายละเอียด
                     </h6>
                     <div class="widget-controls">
@@ -30,27 +31,27 @@
                     <form class="form-horizontal" role="form" data-th-object="${member}" method="post">
                         <fieldset>
                             <legend><strong data-th-text="#{member}">Horizontal</strong> <span
-                                    data-th-text="#{detail}"></span></legend>
+                                    data-th-text="#{personalDetail}"></span></legend>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>
 
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{title}, 'title', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{birthday}, 'birthday', false)"/>
+                                    data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
 
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{maritalStatus}, 'maritalStatus', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{educationDegree}, 'educationDegree', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{educationDegree}, 'educationDegree', ${educationDegree}, false)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{address}, 'address', false)"/>
+                                    data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
                             <input
                                     data-th-replace="fragments/TextField :: input (#{mobile}, 'mobile', true)"/>
                             <input
@@ -60,7 +61,7 @@
                             <input
                                     data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
                             <input
-                                    data-th-replace="fragments/TextField :: input (#{status}, 'status', false)"/>
+                                    data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
 
                         </fieldset>
                         <div class="form-actions">
@@ -77,6 +78,23 @@
         </div>
 
     </div>
+</div>
+
+<div data-layout-fragment="script">
+    <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker.js"></script>
+    <!-- thai extension -->
+    <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker-thai.js"></script>
+    <script type="text/javascript"
+            src="/js/bootstrap-datepicker-thai-thai/js/locales/bootstrap-datepicker.th.js"></script>
+    <script>
+        $(function () {
+            $(".select2").each(function () {
+                $(this).select2($(this).data());
+            });
+            $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
+
+        });
+    </script>
 </div>
 </body>
 </html>
