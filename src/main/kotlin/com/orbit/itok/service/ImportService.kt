@@ -35,9 +35,13 @@ class ImportServiceImpl : ImportService {
             "membershipTemp.yearJoin", "membershipTemp.villageDelegate", "membershipTemp.type", "membershipTemp.previousJob",
             "membershipTemp.mainJob", "membershipTemp.secondJob", "membershipTemp.typeOrganization[0]", "membershipTemp.typeOrganization[1]",
             "membershipTemp.typeOrganization[2]", "membershipTemp.typeOrganization[3]", "membershipTemp.typeOrganization[4]",
-            "membershipTemp.typeOrganization[5]", "membershipTemp.agricultureInterest[0]", "membershipTemp.agricultureInterest[1]",
+            "membershipTemp.agricultureSpecialty[0]", "membershipTemp.agricultureSpecialty[1]",
+            "membershipTemp.agricultureSpecialty[2]", "membershipTemp.agricultureSpecialty[3]", "membershipTemp.agricultureSpecialty[4]",
+            "membershipTemp.agricultureSpecialty[5]", "membershipTemp.agricultureSpecialty[6]",
+            "membershipTemp.agricultureInterest[0]", "membershipTemp.agricultureInterest[1]",
             "membershipTemp.agricultureInterest[2]", "membershipTemp.agricultureInterest[3]", "membershipTemp.agricultureInterest[4]",
-            "membershipTemp.agricultureInterest[5]", "membershipTemp.agricultureInterest[6]", "membershipTemp.associate")
+            "membershipTemp.agricultureInterest[5]", "membershipTemp.agricultureInterest[6]",
+            "membershipTemp.associate")
 
     private val PROCESSORS: Array<CellProcessor> = arrayOf(ParseDate("M/d/yyyy HH:mm:ss"),
             Optional(), Optional(), Optional(), Optional(), Optional(BirthdayProcessor()),
@@ -48,10 +52,14 @@ class ImportServiceImpl : ImportService {
             Optional(), Optional(VillageDelegateProcessor()), Optional(), Optional(), // end previous job
             Optional(), Optional(), Optional(), Optional(), // type orgationzation 1
             Optional(), Optional(), Optional(), // type orgationzation 4
-            Optional(), Optional(), Optional(), // agricultureSpecialty 1
+            Optional(), Optional(), // agricultureSpecialty 1
             Optional(), Optional(), Optional(), // agricultureSpecialty 4
-            Optional(), Optional(), Optional(), // associate
-            Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
+            Optional(), Optional(), // agricultureSpecialty 6
+            Optional(), Optional(), // agricultureInterest 1
+            Optional(), Optional(), Optional(), // agricultureInterest 4
+            Optional(), Optional(), // agricultureInterest 6
+            Optional(), // associate
+            Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
