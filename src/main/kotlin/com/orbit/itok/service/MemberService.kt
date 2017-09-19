@@ -6,6 +6,7 @@ import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
+import com.googlecode.objectify.annotation.Ignore
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
 import java.util.*
@@ -51,7 +52,8 @@ data class Member(@Id var id: Long? = null,
                   var status: String = "",
                   var address: Address = Address(),
                   var date: Date = Date(),
-                  var membership: Ref<Membership>? = null
+                  var membership: Ref<Membership>? = null,
+                  @Ignore var membershipTemp: Membership? = null
 )
 //เลขที่
 //หมู่ที่
