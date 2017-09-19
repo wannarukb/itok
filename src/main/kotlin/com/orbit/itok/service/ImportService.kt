@@ -28,11 +28,14 @@ interface ImportService {
 }
 
 class ImportServiceImpl : ImportService {
-    private val FIELD_MAPPING: Array<String> = arrayOf("date", "title", "firstName", "lastName", "nickname", "birthday")
+    private val FIELD_MAPPING: Array<String> = arrayOf("date", "title", "firstName", "lastName", "nickname", "birthday", "male",
+            "maritalStatus", "educationDegree", "address.number", "address.moo", "address.village", "address.alley",
+            "address.road", "address.subdistrict", "address.district", "address.province", "address.postalCode",
+            "mobile", "email", "facebook", "line")
 
     private val PROCESSORS: Array<CellProcessor> = arrayOf(ParseDate("M/d/yyyy HH:mm:ss"),
             Optional(), Optional(), Optional(), Optional(), Optional(BirthdayProcessor()),
-            Optional(), Optional(), Optional(),
+            Optional(GenderProcessor()), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
@@ -50,7 +53,8 @@ class ImportServiceImpl : ImportService {
         val csvDozerBeanReader = CsvDozerBeanReader(file.reader(), CsvPreference.STANDARD_PREFERENCE)
         csvDozerBeanReader.getHeader(true)
         csvDozerBeanReader.configureBeanMapping(Member::class.java, FIELD_MAPPING)
-
+//        val member = Member()
+//        member.isMale
         var x = csvDozerBeanReader.read<Member>(Member::class.java, *PROCESSORS)
         while (x != null) {
             output.add(x)
@@ -60,6 +64,13 @@ class ImportServiceImpl : ImportService {
     }
 
     lateinit var file: File
+
+}
+
+class GenderProcessor : CellProcessorAdaptor() {
+    override fun <T : Any?> execute(p0: Any?, p1: CsvContext?): T {
+        return next.execute(p0.toString() == "ชาย", p1)
+    }
 
 }
 

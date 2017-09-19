@@ -34,19 +34,19 @@ data class Member(@Id var id: Long? = null,
         // เพศ
                   var isMale: Boolean = true,
         // สถานภาพการสมรส
-                  var maritalStatus: String = "",
+                  var maritalStatus: String? = "",
         // ระดับการศึกษา
-                  var educationDegree: String = "",
+                  var educationDegree: String? = "",
         //ที่อยู่ที่ติดต่อได้
                   var addressString: String = "",
         //เบอร์โทรศัพท์มือถือ*
                   var mobile: String = "",
         //                  Email Address
-                  var email: String = "",
+                  var email: String? = "",
         //                  Facebook
-                  var facebook: String = "",
+                  var facebook: String? = "",
         //                  Line ID
-                  var line: String = "",
+                  var line: String? = "",
         //                  สถานะการเป็นสมาชิก
                   var status: String = "",
                   var address: Address = Address(),
@@ -64,9 +64,9 @@ data class Member(@Id var id: Long? = null,
 //จังหวัด*
 //รหัสไปรษณีย์
 
-data class Address(var number: String = "", var moo: String = "", var village: String = "", var alley: String = "",
-                   var road: String = "", var subdistrict: String = "", var district: String = "",
-                   var province: String = "", var postalCode: String = "")
+data class Address(var number: String? = "", var moo: String? = "", var village: String? = "", var alley: String? = "",
+                   var road: String? = "", var subdistrict: String? = "", var district: String? = "",
+                   var province: String? = "", var postalCode: String? = "")
 
 data class UploadedImage(var key: String, var imageUrl: String) {
 
