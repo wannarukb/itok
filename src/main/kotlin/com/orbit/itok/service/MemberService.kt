@@ -1,11 +1,11 @@
 package com.orbit.itok.service
 
 import com.google.appengine.api.search.*
-import com.googlecode.objectify.ObjectifyService
-import com.googlecode.objectify.ObjectifyService.*
+import com.googlecode.objectify.ObjectifyService.ofy
+import com.googlecode.objectify.ObjectifyService.register
+import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
-import org.hibernate.cfg.IndexOrUniqueKeySecondPass
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
 import java.util.*
@@ -50,9 +50,8 @@ data class Member(@Id var id: Long? = null,
         //                  สถานะการเป็นสมาชิก
                   var status: String = "",
                   var address: Address = Address(),
-                  var date: Date = Date()
-
-
+                  var date: Date = Date(),
+                  var membership: Ref<Membership>? = null
 )
 //เลขที่
 //หมู่ที่
