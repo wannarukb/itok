@@ -5,6 +5,7 @@ import javafx.scene.control.DateCell
 import org.joda.time.DateTime
 import org.joda.time.chrono.BuddhistChronology
 import org.joda.time.format.DateTimeFormat
+import org.springframework.stereotype.Service
 import org.supercsv.cellprocessor.CellProcessorAdaptor
 import org.supercsv.cellprocessor.Optional
 import org.supercsv.cellprocessor.ParseDate
@@ -27,6 +28,7 @@ interface ImportService {
 
 }
 
+@Service
 class ImportServiceImpl : ImportService {
     private val FIELD_MAPPING: Array<String> = arrayOf("date", "title", "firstName", "lastName", "nickname", "birthday", "male",
             "maritalStatus", "educationDegree", "address.number", "address.moo", "address.village", "address.alley",
@@ -42,9 +44,9 @@ class ImportServiceImpl : ImportService {
             "membershipTemp.agricultureInterest[2]", "membershipTemp.agricultureInterest[3]", "membershipTemp.agricultureInterest[4]",
             "membershipTemp.agricultureInterest[5]", "membershipTemp.agricultureInterest[6]",
             "membershipTemp.associate",
-            "memberLandsTemp[0].basin", "memberLandsTemp[0].address.moo","memberLandsTemp[0].address.village","memberLandsTemp[0].address.subdistrict",
-            "memberLandsTemp[0].address.district","memberLandsTemp[0].address.province","memberLandsTemp[0].lat","memberLandsTemp[0].lng",
-            "memberLandsTemp[0].rai", "memberLandsTemp[0].gnan","memberLandsTemp[0].wah")
+            "memberLandsTemp[0].basin", "memberLandsTemp[0].address.moo", "memberLandsTemp[0].address.village", "memberLandsTemp[0].address.subdistrict",
+            "memberLandsTemp[0].address.district", "memberLandsTemp[0].address.province", "memberLandsTemp[0].lat", "memberLandsTemp[0].lng",
+            "memberLandsTemp[0].rai", "memberLandsTemp[0].gnan", "memberLandsTemp[0].wah")
 
 
     private val PROCESSORS: Array<CellProcessor> = arrayOf(ParseDate("M/d/yyyy HH:mm:ss"),

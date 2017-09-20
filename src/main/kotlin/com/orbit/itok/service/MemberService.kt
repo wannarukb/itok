@@ -55,7 +55,7 @@ data class Member(@Id var id: Long? = null,
                   var membership: Ref<Membership>? = null,
                   var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
                   @Ignore var membershipTemp: Membership? = null,
-                  @Ignore var memberLandsTemp:MutableList<MemberLand> = mutableListOf()
+                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
 )
 //เลขที่
 //หมู่ที่
@@ -83,11 +83,20 @@ interface MemberService {
     fun update(id: Long, member: Member)
     fun search(query: String, start: Int?, length: Int?): MutableList<Member>
     fun countSearch(query: String): Long
+    fun clear()
 
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun clear() {
+        val list = ofy().load().type(Member::class.java).list()
+        for (member in list) {
+            index.delete(member.id.toString())
+        }
+        ofy().delete().entities(list)
+    }
+
     override fun countSearch(query: String): Long {
         return index.search(query).numberFound
     }
