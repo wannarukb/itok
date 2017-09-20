@@ -53,7 +53,9 @@ data class Member(@Id var id: Long? = null,
                   var address: Address = Address(),
                   var date: Date = Date(),
                   var membership: Ref<Membership>? = null,
-                  @Ignore var membershipTemp: Membership? = null
+                  var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+                  @Ignore var membershipTemp: Membership? = null,
+                  @Ignore var memberLandsTemp:MutableList<MemberLand> = mutableListOf()
 )
 //เลขที่
 //หมู่ที่
