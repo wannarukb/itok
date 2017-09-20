@@ -81,6 +81,7 @@ class ImportServiceImpl : ImportService {
         var x = csvDozerBeanReader.read<Member>(Member::class.java, *PROCESSORS)
         while (x != null) {
             output.add(x)
+
             x = csvDozerBeanReader.read<Member>(Member::class.java, *PROCESSORS)
         }
         return output
