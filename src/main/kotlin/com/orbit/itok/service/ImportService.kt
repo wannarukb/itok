@@ -41,7 +41,11 @@ class ImportServiceImpl : ImportService {
             "membershipTemp.agricultureInterest[0]", "membershipTemp.agricultureInterest[1]",
             "membershipTemp.agricultureInterest[2]", "membershipTemp.agricultureInterest[3]", "membershipTemp.agricultureInterest[4]",
             "membershipTemp.agricultureInterest[5]", "membershipTemp.agricultureInterest[6]",
-            "membershipTemp.associate")
+            "membershipTemp.associate",
+            "memberLandsTemp[0].basin", "memberLandsTemp[0].address.moo","memberLandsTemp[0].address.village","memberLandsTemp[0].address.subdistrict",
+            "memberLandsTemp[0].address.district","memberLandsTemp[0].address.province","memberLandsTemp[0].lat","memberLandsTemp[0].lng",
+            "memberLandsTemp[0].rai", "memberLandsTemp[0].gnan","memberLandsTemp[0].wah")
+
 
     private val PROCESSORS: Array<CellProcessor> = arrayOf(ParseDate("M/d/yyyy HH:mm:ss"),
             Optional(), Optional(), Optional(), Optional(), Optional(BirthdayProcessor()),
