@@ -110,7 +110,9 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
             }
             it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
         }
-        ofy().save().entities(list)
+        ofy().save().entities(list).now().forEach {
+            index.put(getDocument(it.value))
+        }
     }
 
     override fun clear() {
