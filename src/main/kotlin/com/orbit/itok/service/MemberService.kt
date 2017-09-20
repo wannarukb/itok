@@ -1,5 +1,6 @@
 package com.orbit.itok.service
 
+import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
@@ -7,25 +8,28 @@ import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
 import com.googlecode.objectify.annotation.Ignore
+import com.orbit.itok.web.View
 import org.springframework.boot.CommandLineRunner
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
 import java.util.*
 
 /**
  * Created For RIDMIS Web service
  */
+
 @Entity
-data class Member(@Id var id: Long? = null,
+data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = null,
         // รหัสสมาชิก
-                  var memberId: String = "",
+                  @JsonView(DataTablesOutput.View::class) var memberId: String = "",
         //ภาพถ่ายสมาชิกเครือข่าย
                   var image: UploadedImage? = null,
         //คานาหน้าชื่อ
                   var title: String = "",
         // ชื่อ *
-                  var firstName: String = "",
+                  @JsonView(DataTablesOutput.View::class) var firstName: String = "",
         // นามสกุล *
-                  var lastName: String = "",
+                  @JsonView(DataTablesOutput.View::class) var lastName: String = "",
         // ชื่อเล่น
                   var nickname: String? = "",
         // วัน เดือน ปีเกิด
@@ -41,9 +45,9 @@ data class Member(@Id var id: Long? = null,
         //ที่อยู่ที่ติดต่อได้
                   var addressString: String = "",
         //เบอร์โทรศัพท์มือถือ*
-                  var mobile: String = "",
+                  @JsonView(DataTablesOutput.View::class) var mobile: String = "",
         //                  Email Address
-                  var email: String? = "",
+                  @JsonView(DataTablesOutput.View::class) var email: String? = "",
         //                  Facebook
                   var facebook: String? = "",
         //                  Line ID
@@ -84,11 +88,31 @@ interface MemberService {
     fun search(query: String, start: Int?, length: Int?): MutableList<Member>
     fun countSearch(query: String): Long
     fun clear()
+    fun import(list: MutableList<Member>)
 
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun import(list: MutableList<Member>) {
+        list.forEach {
+            //            val memberShipKey = ofy().save().entity(it.membershipTemp)
+//            val memberLands = ofy().save().entity(it.memberLands)
+
+            val membershipTemp = it.membershipTemp
+            if (membershipTemp != null) {
+                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
+                it.membership = Ref.create(membershipTemp)
+            }
+            val memberLandsTemp = it.memberLandsTemp
+            memberLandsTemp.forEach {
+                it.id = ofy().save().entity(it).now().id
+            }
+            it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
+        }
+        ofy().save().entities(list)
+    }
+
     override fun clear() {
         val list = ofy().load().type(Member::class.java).list()
         for (member in list) {

@@ -1,6 +1,7 @@
 // See https://github.com/JetBrains/kotlin-examples/blob/master/LICENSE
 package com.orbit.itok
 
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.googlecode.objectify.ObjectifyFilter
 import com.orbit.itok.util.dialect.GcsHrefProcessor
 import com.orbit.itok.util.dialect.GcsResourceDialect
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.format.FormatterRegistry
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor
@@ -28,7 +30,9 @@ open class WebConfig : WebMvcConfigurerAdapter() {
     @Bean open fun gscSrcProcessor() = GcsSrcProcessor()
     @Bean open fun gscDialectProcessor() = GcsResourceDialect()
 
-
+    @Bean
+    open fun objectMapperBuilder(): Jackson2ObjectMapperBuilder
+            = Jackson2ObjectMapperBuilder().modulesToInstall(KotlinModule())
 
     @Bean open fun filterRegistrationBean(): FilterRegistrationBean {
         val filterRegistrationBean = FilterRegistrationBean()

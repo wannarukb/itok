@@ -1,5 +1,6 @@
 package com.orbit.itok.web
 
+import com.fasterxml.jackson.annotation.JsonView
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +15,8 @@ import javax.validation.Valid
 @RequestMapping("data")
 class DataController {
     @RequestMapping("members")
+    @JsonView(DataTablesOutput.View::class)
+
     fun member(@Valid input: DataTablesInput): DataTablesOutput<Member> {
 
         val output = DataTablesOutput<Member>()
@@ -39,4 +42,8 @@ class DataController {
     }
 
     @Autowired lateinit var memberServiceImpl: MemberServiceImpl
+}
+
+class View {
+    class Member
 }

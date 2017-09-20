@@ -1,7 +1,9 @@
 package com.orbit.itok.service
 
+import com.googlecode.objectify.ObjectifyService
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
+import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
 
 /**
@@ -17,6 +19,9 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
 interface MemberLandService
 
 @Service
-class MemberLandServiceImpl : MemberLandService {
+class MemberLandServiceImpl : MemberLandService,CommandLineRunner {
+    override fun run(vararg p0: String?) {
+        ObjectifyService.register(MemberLand::class.java)
+    }
 
 }

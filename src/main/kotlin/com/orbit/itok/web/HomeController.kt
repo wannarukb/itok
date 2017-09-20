@@ -35,6 +35,7 @@ class HomeController : ResourceLoaderAware {
     fun importDb(): String {
         val file = loader.getResource("classpath:data.csv").file
         var list = importServiceImpl.import(file)
+        memberServiceImpl.import(list)
 
         return "redirect:/"
     }
