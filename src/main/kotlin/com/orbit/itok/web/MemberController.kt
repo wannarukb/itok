@@ -79,8 +79,6 @@ class MemberController {
     fun updateMember(@PathVariable id: Long, model: Model): String {
         val findOne = memberServiceImpl.findOne(id)
         model.addAttribute("member", findOne)
-
-//        model.addAttribute("membership", findOne?.membership?.get())
         return "newMember"
     }
 
