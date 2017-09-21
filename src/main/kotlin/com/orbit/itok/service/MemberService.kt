@@ -144,15 +144,9 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun update(id: Long, member: Member) {
         member.id = id
         val membershipTemp = member.membershipTemp
-        val id = membershipTemp?.id
-        if (id == null) {
-            if (membershipTemp != null) {
-                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
-            }
-        }
-        val memberLandsTemp = member.memberLandsTemp
-        memberLandsTemp.forEach {
-            it.id = ofy().save().entity(it).now().id
+        if (membershipTemp != null) {
+            val now = ofy().save().entity(membershipTemp).now()
+            member.membership = Ref.create(now)
         }
         ofy().save().entity(member)
         index.delete(id.toString())
@@ -178,6 +172,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun createMember(member: Member): Long? {
+        member.membership = Ref.create(ofy().save().entity(Membership()).now())
         val id = ofy().save().entity(member).now().id
         member.id = id
         index.put(getDocument(member))
