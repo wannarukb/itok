@@ -97,9 +97,6 @@ interface MemberService {
 class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun import(list: MutableList<Member>) {
         list.forEach {
-            //            val memberShipKey = ofy().save().entity(it.membershipTemp)
-//            val memberLands = ofy().save().entity(it.memberLands)
-
             val membershipTemp = it.membershipTemp
             val id = membershipTemp?.id
             if (id == null) {
@@ -107,15 +104,10 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
                     membershipTemp.id = ofy().save().entity(membershipTemp).now().id
                 }
             }
-//            if (membershipTemp != null) {
-//                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
-//                it.membership = Ref.create(membershipTemp)
-//            }
             val memberLandsTemp = it.memberLandsTemp
             memberLandsTemp.forEach {
                 it.id = ofy().save().entity(it).now().id
             }
-//            it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
         }
         ofy().save().entities(list).now().forEach {
             index.put(getDocument(it.value))
@@ -143,11 +135,25 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun findOne(id: Long): Member? {
-        return ofy().load().type(Member::class.java).id(id).now()
+        val now = ofy().load().type(Member::class.java).id(id).now()
+        now.membershipTemp = now.membership?.get()
+        now.memberLandsTemp = now.memberLands.map { it.get() }.toMutableList()
+        return now
     }
 
     override fun update(id: Long, member: Member) {
         member.id = id
+        val membershipTemp = member.membershipTemp
+        val id = membershipTemp?.id
+        if (id == null) {
+            if (membershipTemp != null) {
+                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
+            }
+        }
+        val memberLandsTemp = member.memberLandsTemp
+        memberLandsTemp.forEach {
+            it.id = ofy().save().entity(it).now().id
+        }
         ofy().save().entity(member)
         index.delete(id.toString())
         index.put(getDocument(member))
