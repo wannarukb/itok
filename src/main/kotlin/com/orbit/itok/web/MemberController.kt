@@ -3,6 +3,10 @@ package com.orbit.itok.web
 
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
+import com.orbit.itok.service.Membership
+import org.joda.time.DateTime
+import org.joda.time.DateTimeFieldType
+import org.joda.time.chrono.BuddhistChronology
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -45,6 +49,13 @@ class MemberController {
         return status.map { SelectField(it, it) }
     }
 
+    @ModelAttribute("yearJoin")
+    fun yearJoin(): List<SelectField> {
+        val get = DateTime.now().withChronology(BuddhistChronology.getInstance()).get(DateTimeFieldType.year())
+        val toList = (get downTo 2500).toList().map { SelectField(it.toString(), it.toString()) }
+        return toList
+    }
+
     @InitBinder
     fun initBinder(webDataBinder: WebDataBinder) {
         return webDataBinder.addValidators(MemberValidator())
@@ -60,13 +71,17 @@ class MemberController {
         if (bindingResult.hasErrors()) {
             return "newMember"
         }
-        memberServiceImpl.createMember(member)
-        return "redirect:/"
+        val id = memberServiceImpl.createMember(member)
+        return "redirect:/member/$id"
     }
 
     @GetMapping("{id}")
     fun updateMember(@PathVariable id: Long, model: Model): String {
-        model.addAttribute("member", memberServiceImpl.findOne(id))
+        val findOne = memberServiceImpl.findOne(id)
+
+        model.addAttribute("member", findOne)
+
+//        model.addAttribute("membership", findOne?.membership?.get())
         return "newMember"
     }
 
@@ -94,7 +109,7 @@ class MemberValidator : Validator {
     }
 
     override fun supports(p0: Class<*>?): Boolean {
-        return Member::class.java.isAssignableFrom(p0)
+        return Member::class.java.isAssignableFrom(p0) || Membership::class.javaObjectType.isAssignableFrom(p0)
     }
 
 }

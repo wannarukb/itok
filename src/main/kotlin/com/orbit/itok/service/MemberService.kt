@@ -7,8 +7,6 @@ import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
-import com.googlecode.objectify.annotation.Ignore
-import com.orbit.itok.web.View
 import org.springframework.boot.CommandLineRunner
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
@@ -57,10 +55,29 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var address: Address = Address(),
                   var date: Date = Date(),
                   var membership: Ref<Membership>? = null,
-                  var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
-                  @Ignore var membershipTemp: Membership? = null,
-                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
-)
+                  var memberLands: MutableList<Ref<MemberLand>> = mutableListOf()
+//                  @Ignore var membershipTemp: Membership? = null,
+//                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
+) {
+
+
+    var membershipTemp: Membership?
+        get() = membership?.get()
+        set(value) {
+            if (value != null) {
+                if (value.id == null) value.id = ofy().save().entity(value).now().id
+            }
+            membership = Ref.create(value)
+        }
+    var memberLandsTemp: List<MemberLand>
+        get() = memberLands.map { it.get() }
+        set(value) {
+            memberLands = value.map {
+                if (it.id == null) it.id = ofy().save().entity(it).now().id
+                Ref.create(it)
+            }.toMutableList()
+        }
+}
 //เลขที่
 //หมู่ที่
 //ชื่อหมู่บ้าน/อาคาร/ชุมชน
@@ -75,12 +92,10 @@ data class Address(var number: String? = "", var moo: String? = "", var village:
                    var road: String? = "", var subdistrict: String? = "", var district: String? = "",
                    var province: String? = "", var postalCode: String? = "")
 
-data class UploadedImage(var key: String, var imageUrl: String) {
-
-}
+data class UploadedImage(var key: String, var imageUrl: String)
 
 interface MemberService {
-    fun createMember(member: Member)
+    fun createMember(member: Member): Long?
     fun count(): Long
     fun findAll(start: Int? = 0, length: Int? = 50): MutableList<Member>
     fun findOne(id: Long): Member?
@@ -99,16 +114,16 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
             //            val memberShipKey = ofy().save().entity(it.membershipTemp)
 //            val memberLands = ofy().save().entity(it.memberLands)
 
-            val membershipTemp = it.membershipTemp
-            if (membershipTemp != null) {
-                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
-                it.membership = Ref.create(membershipTemp)
-            }
-            val memberLandsTemp = it.memberLandsTemp
-            memberLandsTemp.forEach {
-                it.id = ofy().save().entity(it).now().id
-            }
-            it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
+//            val membershipTemp = it.membershipTemp
+//            if (membershipTemp != null) {
+//                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
+//                it.membership = Ref.create(membershipTemp)
+//            }
+//            val memberLandsTemp = it.memberLandsTemp
+//            memberLandsTemp.forEach {
+//                it.id = ofy().save().entity(it).now().id
+//            }
+//            it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
         }
         ofy().save().entities(list).now().forEach {
             index.put(getDocument(it.value))
@@ -118,6 +133,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun clear() {
         val list = ofy().load().type(Member::class.java).list()
         for (member in list) {
+            ofy().delete().entity(member.membershipTemp)
+            ofy().delete().entities(member.memberLandsTemp)
             index.delete(member.id.toString())
         }
         ofy().delete().entities(list)
@@ -159,14 +176,14 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun findAll(start: Int?, length: Int?): MutableList<Member> {
-        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
-        return list
+        return ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
     }
 
-    override fun createMember(member: Member) {
+    override fun createMember(member: Member): Long? {
         val id = ofy().save().entity(member).now().id
         member.id = id
         index.put(getDocument(member))
+        return member.id
     }
 
     lateinit var index: Index
