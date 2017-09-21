@@ -7,6 +7,7 @@ import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
+import com.googlecode.objectify.annotation.Load
 import org.springframework.boot.CommandLineRunner
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
@@ -54,7 +55,7 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var status: String = "",
                   var address: Address = Address(),
                   var date: Date = Date(),
-                  var membership: Ref<Membership>? = null,
+                  @Load var membership: Ref<Membership>? = null,
                   var memberLands: MutableList<Ref<MemberLand>> = mutableListOf()
 //                  @Ignore var membershipTemp: Membership? = null,
 //                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
@@ -62,20 +63,20 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
 
 
     var membershipTemp: Membership?
-        get() = membership?.get()
+        get() = membership?.get() ?: Membership()
         set(value) {
             if (value != null) {
-                if (value.id == null) value.id = ofy().save().entity(value).now().id
+                if (value.id != null)
+                    membership = Ref.create(value)
             }
-            membership = Ref.create(value)
         }
+
     var memberLandsTemp: List<MemberLand>
         get() = memberLands.map { it.get() }
         set(value) {
-            memberLands = value.map {
-                if (it.id == null) it.id = ofy().save().entity(it).now().id
-                Ref.create(it)
-            }.toMutableList()
+             value.forEach {
+                if (it.id == null) Ref.create(it)
+            }
         }
 }
 //เลขที่
@@ -114,15 +115,21 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
             //            val memberShipKey = ofy().save().entity(it.membershipTemp)
 //            val memberLands = ofy().save().entity(it.memberLands)
 
-//            val membershipTemp = it.membershipTemp
+            val membershipTemp = it.membershipTemp
+            val id = membershipTemp?.id
+            if (id == null) {
+                if (membershipTemp != null) {
+                    membershipTemp.id = ofy().save().entity(membershipTemp).now().id
+                }
+            }
 //            if (membershipTemp != null) {
 //                membershipTemp.id = ofy().save().entity(membershipTemp).now().id
 //                it.membership = Ref.create(membershipTemp)
 //            }
-//            val memberLandsTemp = it.memberLandsTemp
-//            memberLandsTemp.forEach {
-//                it.id = ofy().save().entity(it).now().id
-//            }
+            val memberLandsTemp = it.memberLandsTemp
+            memberLandsTemp.forEach {
+                it.id = ofy().save().entity(it).now().id
+            }
 //            it.memberLands = memberLandsTemp.map { it2 -> Ref.create(it2) }.toMutableList()
         }
         ofy().save().entities(list).now().forEach {

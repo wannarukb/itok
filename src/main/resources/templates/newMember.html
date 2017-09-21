@@ -14,110 +14,115 @@
     <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
                                                                            data-th-text="#{member}">Inputs &amp; Controls</span>
     </h1>
-    <div class="row">
-        <div class="col-lg-12">
-            <section class="widget">
-                <header>
-                    <h6 data-th-text="#{personalDetail}">
-                        รายละเอียด
-                    </h6>
-                    <div class="widget-controls">
-                        <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                        <a href="#"><i class="fa fa-refresh"></i></a>
-                        <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
-                    </div>
-                </header>
-                <div class="widget-body">
-                    <form class="form-horizontal" role="form" data-th-object="${member}" method="post">
-                        <fieldset>
-                            <legend><strong data-th-text="#{member}">Horizontal</strong> <span
-                                    data-th-text="#{personalDetail}"></span></legend>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>
+    <form method="post">
 
-                            <input
-                                    data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
-                            <input
-                                    data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="widget">
+                    <header>
+                        <h6 data-th-text="#{personalDetail}">
+                            รายละเอียด
+                        </h6>
+                        <div class="widget-controls">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                            <a href="#"><i class="fa fa-refresh"></i></a>
+                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </header>
+                    <div class="widget-body">
+                        <div class="form-horizontal" role="form" data-th-object="${member}" method="post">
+                            <fieldset>
+                                <legend><strong data-th-text="#{member}">Horizontal</strong> <span
+                                        data-th-text="#{personalDetail}"></span></legend>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>
 
-                            <input
-                                    data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
-                            <input
-                                    data-th-replace="fragments/SelectField :: select (#{educationDegree}, 'educationDegree', ${educationDegree}, false)"/>
-                            <input
-                                    data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{mobile}, 'mobile', true)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{email}, 'email', false)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{facebook}, 'facebook', false)"/>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
-                            <input
-                                    data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
+                                <input
+                                        data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
 
-                        </fieldset>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{educationDegree}, 'educationDegree', ${educationDegree}, false)"/>
+                                <input
+                                        data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{mobile}, 'mobile', true)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{email}, 'email', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{facebook}, 'facebook', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
 
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-4 col-md-7">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                            </fieldset>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-4 col-md-7">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </section>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <section class="widget">
-                <header>
-                    <h6 data-th-text="#{memberDetail}">
-                        รายละเอียด
-                    </h6>
-                    <div class="widget-controls">
-                        <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                        <a href="#"><i class="fa fa-refresh"></i></a>
-                        <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
                     </div>
-                </header>
-                <div class="widget-body" data-th-if="${member.id} != null">
-                    <form class="form-horizontal" role="form" data-th-object="${member}" method="post">
-                        <fieldset>
-                            <legend><strong data-th-text="#{member}">Horizontal</strong> <span
-                                    data-th-text="#{memberDetail}"></span></legend>
-                            <input
-                                    data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
-                            <input
-                                    data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                </section>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="widget">
+                    <header>
+                        <h6 data-th-text="#{memberDetail}">
+                            รายละเอียด
+                        </h6>
+                        <div class="widget-controls">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                            <a href="#"><i class="fa fa-refresh"></i></a>
+                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>
+                    </header>
+                    <div class="widget-body" data-th-if="${member.id} != null">
+                        <div class="form-horizontal" role="form" data-th-object="${member}" method="post">
+                            <fieldset>
+                                <legend><strong data-th-text="#{member}">Horizontal</strong> <span
+                                        data-th-text="#{memberDetail}"></span></legend>
+                                <input type="hidden" data-th-field="*{membership.id}">
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{membershipId}, 'membership.membershipId', false)"/>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membership.yearJoin', ${yearJoin}, false)"/>
 
 
-                        </fieldset>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-4 col-md-7">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                            </fieldset>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-4 col-md-7">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </section>
-        </div>
+                    </div>
+                </section>
+            </div>
 
-    </div>
+        </div>
+    </form>
+
 </div>
 
 <div data-layout-fragment="script">
