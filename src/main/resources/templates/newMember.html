@@ -30,7 +30,7 @@
                         </div>
                     </header>
                     <div class="widget-body">
-                        <div class="form-horizontal" role="form"  method="post">
+                        <div class="form-horizontal" role="form" method="post">
                             <fieldset>
                                 <legend><strong data-th-text="#{member}">Horizontal</strong> <span
                                         data-th-text="#{personalDetail}"></span></legend>
@@ -94,8 +94,8 @@
                             <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
                         </div>
                     </header>
-                    <div class="widget-body" data-th-if="${member.id} != null" >
-                        <div class="form-horizontal" role="form"  method="post">
+                    <div class="widget-body" data-th-if="${member.id} != null">
+                        <div class="form-horizontal" role="form" method="post">
                             <fieldset>
                                 <legend><strong data-th-text="#{member}">Horizontal</strong> <span
                                         data-th-text="#{memberDetail}"></span></legend>
@@ -105,7 +105,23 @@
                                 <input
                                         data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
 
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{membershipType}, 'membershipTemp.type', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{previousJob}, 'membershipTemp.previousJob', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{secondJob}, 'membershipTemp.secondJob', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{typeOrganization}, 'membershipTemp.typeOrganization', false)"/>
 
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{agricultureInterest}, 'membershipTemp.agricultureInterest', false)"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
                             </fieldset>
                             <div class="form-actions">
                                 <div class="row">

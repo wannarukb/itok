@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
  */
 @Entity
 data class Membership(@Id var id: Long? = null, var membershipId: String? = "",
-                      var yearJoin: Int? = 2017, var isVillageDelegate: Boolean? = false,
+                      var yearJoin: Int? = 2017, var villageDelegate: Boolean? = false,
                       var type: String? = "", var previousJob: String? = "", var mainJob: String? = "",
                       var secondJob: String? = "",
                       var typeOrganization: MutableList<String> = mutableListOf(),
