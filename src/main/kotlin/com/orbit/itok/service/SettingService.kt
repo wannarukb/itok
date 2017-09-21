@@ -1,5 +1,7 @@
 package com.orbit.itok.service
 
+import org.springframework.context.ResourceLoaderAware
+import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Service
 
 /**
@@ -9,7 +11,33 @@ interface SettingService {
 }
 
 @Service
-class SettingServiceImpl : SettingService {
+class SettingServiceImpl : SettingService, ResourceLoaderAware {
+    lateinit var loader: ResourceLoader
+    var memberTypes: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:memberType.txt").file
+                field = file.readLines()
+            }
+            return field
+
+        }
+    var jobTypes: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:jobType.txt").file
+                field = file.readLines()
+            }
+            return field
+
+        }
+
+
+    override fun setResourceLoader(p0: ResourceLoader) {
+        this.loader = p0
+    }
+
     fun getAppName(): String = "ITOK"
+
 
 }

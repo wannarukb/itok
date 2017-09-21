@@ -4,6 +4,7 @@ package com.orbit.itok.web
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
 import com.orbit.itok.service.Membership
+import com.orbit.itok.service.SettingServiceImpl
 import org.joda.time.DateTime
 import org.joda.time.DateTimeFieldType
 import org.joda.time.chrono.BuddhistChronology
@@ -24,6 +25,16 @@ import javax.validation.Valid
 @Controller
 @RequestMapping("member")
 class MemberController {
+    @ModelAttribute("memberTypes")
+    fun memberTypes(): List<SelectField> {
+        return settingServiceImpl.memberTypes.map { SelectField(it, it) }
+    }
+
+    @ModelAttribute("jobTypes")
+    fun jobTypes(): List<SelectField> {
+        return settingServiceImpl.jobTypes.map { SelectField(it, it) }
+    }
+
     @ModelAttribute("titles")
     fun titles(): List<SelectField> {
         return listOf(SelectField("นาย", "นาย"), SelectField("นาง", "นาง")
@@ -92,6 +103,7 @@ class MemberController {
     }
 
     @Autowired lateinit var memberServiceImpl: MemberService
+    @Autowired lateinit var settingServiceImpl: SettingServiceImpl
 }
 
 data class SelectField(var id: String = "", var name: String = "")
@@ -102,7 +114,7 @@ class MemberValidator : Validator {
         ValidationUtils.rejectIfEmpty(p1, "firstName", "required")
         ValidationUtils.rejectIfEmpty(p1, "lastName", "required")
         ValidationUtils.rejectIfEmpty(p1, "mobile", "required")
-    ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
+        ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
     }
 
     override fun supports(p0: Class<*>?): Boolean {

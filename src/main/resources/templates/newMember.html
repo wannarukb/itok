@@ -108,11 +108,14 @@
                                 <input
                                         data-th-replace="fragments/TextField :: input (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
                                 <input
-                                        data-th-replace="fragments/TextField :: input (#{membershipType}, 'membershipTemp.type', false)"/>
+                                        data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
                                 <input
-                                        data-th-replace="fragments/TextField :: input (#{previousJob}, 'membershipTemp.previousJob', false)"/>
+                                        data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
                                 <input
-                                        data-th-replace="fragments/TextField :: input (#{secondJob}, 'membershipTemp.secondJob', false)"/>
+                                        data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
+                                <input
+                                        data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+
                                 <input
                                         data-th-replace="fragments/TextField :: input (#{typeOrganization}, 'membershipTemp.typeOrganization', false)"/>
 
