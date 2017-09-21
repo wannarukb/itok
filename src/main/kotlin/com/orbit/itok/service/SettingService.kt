@@ -31,6 +31,16 @@ class SettingServiceImpl : SettingService, ResourceLoaderAware {
             return field
 
         }
+    var organizationTypes: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:organizationType.txt").file
+                field = file.readLines()
+            }
+            return field
+
+        }
+
 
 
     override fun setResourceLoader(p0: ResourceLoader) {

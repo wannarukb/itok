@@ -35,6 +35,11 @@ class MemberController {
         return settingServiceImpl.jobTypes.map { SelectField(it, it) }
     }
 
+    @ModelAttribute("organizationTypes")
+    fun organizationTypes(): List<SelectField> {
+        return settingServiceImpl.organizationTypes.map { SelectField(it, it) }
+    }
+
     @ModelAttribute("titles")
     fun titles(): List<SelectField> {
         return listOf(SelectField("นาย", "นาย"), SelectField("นาง", "นาง")
