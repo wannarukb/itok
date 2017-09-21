@@ -55,8 +55,8 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var status: String = "",
                   var address: Address = Address(),
                   var date: Date = Date(),
-                  @Load var membership: Ref<Membership>? = null,
-                  var memberLands: MutableList<Ref<MemberLand>> = mutableListOf()
+                  @Load private var membership: Ref<Membership>? = null,
+                  private var memberLands: MutableList<Ref<MemberLand>> = mutableListOf()
 //                  @Ignore var membershipTemp: Membership? = null,
 //                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
 ) {
@@ -66,17 +66,19 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
         get() = membership?.get() ?: Membership()
         set(value) {
             if (value != null) {
-                if (value.id != null)
-                    membership = Ref.create(value)
+                if (value.id == null) value.id = ofy().save().entity(value).now().id
+
+                membership = Ref.create(value)
             }
         }
 
     var memberLandsTemp: List<MemberLand>
         get() = memberLands.map { it.get() }
         set(value) {
-             value.forEach {
-                if (it.id == null) Ref.create(it)
-            }
+            memberLands = value.map {
+                if (it.id == null) it.id = ofy().save().entity(it).now().id
+                Ref.create(it)
+            }.toMutableList()
         }
 }
 //เลขที่

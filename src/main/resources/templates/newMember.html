@@ -14,7 +14,7 @@
     <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
                                                                            data-th-text="#{member}">Inputs &amp; Controls</span>
     </h1>
-    <form method="post">
+    <form method="post" data-th-object="${member}">
 
         <div class="row">
             <div class="col-lg-12">
@@ -30,7 +30,7 @@
                         </div>
                     </header>
                     <div class="widget-body">
-                        <div class="form-horizontal" role="form" data-th-object="${member}" method="post">
+                        <div class="form-horizontal" role="form"  method="post">
                             <fieldset>
                                 <legend><strong data-th-text="#{member}">Horizontal</strong> <span
                                         data-th-text="#{personalDetail}"></span></legend>

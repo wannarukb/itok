@@ -78,7 +78,6 @@ class MemberController {
     @GetMapping("{id}")
     fun updateMember(@PathVariable id: Long, model: Model): String {
         val findOne = memberServiceImpl.findOne(id)
-
         model.addAttribute("member", findOne)
 
 //        model.addAttribute("membership", findOne?.membership?.get())
@@ -105,7 +104,7 @@ class MemberValidator : Validator {
         ValidationUtils.rejectIfEmpty(p1, "firstName", "required")
         ValidationUtils.rejectIfEmpty(p1, "lastName", "required")
         ValidationUtils.rejectIfEmpty(p1, "mobile", "required")
-        ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
+    ValidationUtils.rejectIfEmpty(p1, "address.province", "required")
     }
 
     override fun supports(p0: Class<*>?): Boolean {
