@@ -78,7 +78,7 @@ data class Address(var number: String? = "", var moo: String? = "", var village:
                    var road: String? = "", var subdistrict: String? = "", var district: String? = "",
                    var province: String? = "", var postalCode: String? = "")
 
-data class UploadedImage(var key: String, var imageUrl: String)
+data class UploadedImage(var key: String = "", var imageUrl: String="", var isImage: Boolean = false)
 
 interface MemberService {
     fun createMember(member: Member): Long?
