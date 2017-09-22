@@ -1,6 +1,7 @@
 package com.orbit.itok.web
 
 
+import com.lpa.abtc.util.UploadUtil
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
 import com.orbit.itok.service.Membership
@@ -91,6 +92,12 @@ class MemberController {
         return "redirect:/member/$id"
     }
 
+    @GetMapping("{id}/action")
+    @ResponseBody
+    fun action(@PathVariable id: Long, model: Model): String {
+        return uploadUtil.getUrl("file[]", "memberFiles")
+    }
+
     @GetMapping("{id}")
     fun updateMember(@PathVariable id: Long, model: Model): String {
         val findOne = memberServiceImpl.findOne(id)
@@ -109,6 +116,7 @@ class MemberController {
 
     @Autowired lateinit var memberServiceImpl: MemberService
     @Autowired lateinit var settingServiceImpl: SettingServiceImpl
+    @Autowired lateinit var uploadUtil: UploadUtil
 }
 
 data class SelectField(var id: String = "", var name: String = "")

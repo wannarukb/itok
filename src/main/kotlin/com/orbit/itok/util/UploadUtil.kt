@@ -6,12 +6,14 @@ import com.google.appengine.api.blobstore.*
 import com.google.appengine.api.images.ImagesServiceFactory
 import com.google.appengine.api.images.ServingUrlOptions
 import com.orbit.itok.service.UploadedImage
+import org.springframework.stereotype.Service
 import javax.mail.internet.MimeUtility
 import javax.servlet.http.HttpServletRequest
 
 /**
  * Created by cmmad_000 on 6/3/2016.
  */
+@Service
 class UploadUtil {
     val PORTRAIT_WIDTH = 300
     val PORTRAIT_HEIGHT = 400
