@@ -3,3 +3,5 @@ spring:
   thymeleaf:
     mode: LEGACYHTML5
     cache: false
+  jmx:
+    enabled: false
