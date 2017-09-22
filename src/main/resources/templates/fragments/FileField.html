@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block data-th-fragment="file (label, name, required)">
+    <div
+         class="row form-group">
+        <label data-th-for="${name}" class="col-md-4 form-control-label text-md-right"><span data-th-text="${label}">Normal</span>
+            &nbsp;<span class="red" data-th-if="${required}">*</span></label>
+        <div class="col-md-7">
+            <input type="file" data-th-name="${name}">
+
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
