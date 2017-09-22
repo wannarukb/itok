@@ -1,7 +1,7 @@
 package com.orbit.itok.web
 
 
-import com.lpa.abtc.util.UploadUtil
+import com.orbit.itok.util.UploadUtil
 import com.orbit.itok.service.Member
 import com.orbit.itok.service.MemberService
 import com.orbit.itok.service.Membership
@@ -18,6 +18,7 @@ import org.springframework.validation.ValidationUtils
 import org.springframework.validation.Validator
 import org.springframework.web.bind.WebDataBinder
 import org.springframework.web.bind.annotation.*
+import javax.servlet.http.HttpServletRequest
 import javax.validation.Valid
 
 /**
@@ -95,7 +96,7 @@ class MemberController {
     @GetMapping("{id}/action")
     @ResponseBody
     fun action(@PathVariable id: Long, model: Model): String {
-        return uploadUtil.getUrl("file[]", "memberFiles")
+        return uploadUtil.getUrl("/member/$id", "memberFiles")
     }
 
     @GetMapping("{id}")
@@ -106,10 +107,22 @@ class MemberController {
     }
 
     @PostMapping("{id}")
-    fun postMember(@PathVariable id: Long, @Valid member: Member, bindingResult: BindingResult): String {
+    fun postMember(@PathVariable id: Long, @Valid member: Member, bindingResult: BindingResult, request: HttpServletRequest): String {
+        val image = uploadUtil.processImageFile(request = request)
         if (bindingResult.hasErrors()) {
+            if (image.isNotEmpty()) uploadUtil.deleteImage(image.first())
             return "newMember"
         }
+
+        if (image.isNotEmpty()) {
+            uploadUtil.fillImageUrl(image.first())
+            val findOne = memberServiceImpl.findOne(id)
+            if (findOne != null) {
+                if (findOne.image != null) uploadUtil.deleteImage(findOne.image)
+            }
+            member.image = image.first()
+        }
+
         memberServiceImpl.update(id, member)
         return "redirect:/"
     }
