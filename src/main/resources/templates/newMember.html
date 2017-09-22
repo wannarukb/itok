@@ -63,8 +63,8 @@
                                         data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
                                 <input
                                         data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
-                                <input
-                                        data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>
+                                <input data-th-if="*{id} != null"
+                                       data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>
                                 <div data-th-if="*{image} != null">
                                     <img data-th-src="*{image.imageUrl}" class="img-responsive">
                                 </div>
