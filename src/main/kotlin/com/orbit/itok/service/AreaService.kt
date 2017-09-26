@@ -1,8 +1,11 @@
 package com.orbit.itok.service
 
 import com.googlecode.objectify.ObjectifyService
+import com.googlecode.objectify.ObjectifyService.ofy
+import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
 
@@ -16,12 +19,33 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
                       var rai: Float? = null, var gnan: Float? = null, var wah: Float? = null, var intendedPurpose: String? = null,
                       var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null)
 
-interface MemberLandService
+interface MemberLandService {
+    fun findOne(id: Long): MemberLand?
+    fun newLandForMember(id: Long): Long?
+}
 
 @Service
-class MemberLandServiceImpl : MemberLandService,CommandLineRunner {
+class MemberLandServiceImpl : MemberLandService, CommandLineRunner {
+    override fun newLandForMember(id: Long): Long? {
+        val findOne = memberServiceImpl.findOne(id)
+        if (findOne != null) {
+            val memberLand = MemberLand()
+            val now = ofy().save().entity(memberLand).now()
+            findOne.memberLands.add(Ref.create(now))
+            memberServiceImpl.update(id, findOne)
+            return now.id
+        }
+        return null
+    }
+
+    override fun findOne(id: Long): MemberLand? {
+        return ofy().load().type(MemberLand::class.java).id(id).now()
+    }
+
     override fun run(vararg p0: String?) {
         ObjectifyService.register(MemberLand::class.java)
     }
+
+    @Autowired lateinit var memberServiceImpl: MemberService
 
 }

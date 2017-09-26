@@ -1,11 +1,8 @@
 package com.orbit.itok.web
 
 
+import com.orbit.itok.service.*
 import com.orbit.itok.util.UploadUtil
-import com.orbit.itok.service.Member
-import com.orbit.itok.service.MemberService
-import com.orbit.itok.service.Membership
-import com.orbit.itok.service.SettingServiceImpl
 import org.joda.time.DateTime
 import org.joda.time.DateTimeFieldType
 import org.joda.time.chrono.BuddhistChronology
@@ -89,7 +86,7 @@ class MemberController {
 
     @PostMapping("new")
     fun postMember(@Valid member: Member, bindingResult: BindingResult, request: HttpServletRequest): String {
-        var image = uploadUtil.processImageFile(request)
+        val image = uploadUtil.processImageFile(request)
         if (bindingResult.hasErrors()) {
             return "newMember"
         }
@@ -114,6 +111,12 @@ class MemberController {
         val findOne = memberServiceImpl.findOne(id)
         model.addAttribute("member", findOne)
         return "newMember"
+    }
+
+    @GetMapping("{id}/newLand")
+    fun newLand(@PathVariable id: Long): String {
+        val id = memberLandServiceImpl.newLandForMember(id)
+        return "redirect:/land/$id"
     }
 
     @PostMapping("{id}")
@@ -141,6 +144,7 @@ class MemberController {
     @Autowired lateinit var memberServiceImpl: MemberService
     @Autowired lateinit var settingServiceImpl: SettingServiceImpl
     @Autowired lateinit var uploadUtil: UploadUtil
+    @Autowired lateinit var memberLandServiceImpl: MemberLandService
 }
 
 data class SelectField(var id: String = "", var name: String = "")
