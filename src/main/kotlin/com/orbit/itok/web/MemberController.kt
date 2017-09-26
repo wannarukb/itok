@@ -27,6 +27,9 @@ import javax.validation.Valid
 @Controller
 @RequestMapping("member")
 class MemberController {
+    @ModelAttribute("pageName")
+    fun pageName(): String = "member"
+
     @ModelAttribute("memberTypes")
     fun memberTypes(): List<SelectField> {
         return settingServiceImpl.memberTypes.map { SelectField(it, it) }
