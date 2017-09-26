@@ -1,5 +1,6 @@
 package com.orbit.itok.service
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
 import com.googlecode.objectify.Key
@@ -62,9 +63,7 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore
                   var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
-) {
-
-}
+)
 //เลขที่
 //หมู่ที่
 //ชื่อหมู่บ้าน/อาคาร/ชุมชน

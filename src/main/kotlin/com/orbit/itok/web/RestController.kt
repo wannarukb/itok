@@ -12,8 +12,16 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("mapRest")
 class RestController {
     @RequestMapping("member")
-    fun members(@RequestParam(required = false, defaultValue = "0") page: Int): MutableList<Member> {
-        return memberServiceImpl.findAll(page * 50, 50)
+    fun members(@RequestParam(required = false, defaultValue = "0") page: Int,
+                @RequestParam(required = false, defaultValue = "50") limit: Int): MutableList<Member> {
+        val findAll = memberServiceImpl.findAll(page * limit, limit)
+        findAll.forEach {
+            it.membershipTemp = it.membership?.get()
+            it.memberLandsTemp = it.memberLands.map { it.get() }.toMutableList()
+            it.membership = null
+            it.memberLands = mutableListOf()
+        }
+        return findAll
     }
 
     @Autowired lateinit var memberServiceImpl: MemberService
