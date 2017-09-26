@@ -37,9 +37,9 @@ class LandController {
     fun fieldSetup2(@PathVariable id: Long, model: Model): String {
 
         val member = memberServiceImpl.findByLandId(id)
-        model.addAttribute("landid", id)
+        model.addAttribute("landId", id)
         if (member != null) {
-            model.addAttribute("userid", member.id)
+            model.addAttribute("userId", member.id)
         }
         model.addAttribute("mapUrl", "http://35.198.237.232/itok_map/addlandplot.php")
         model.addAttribute("lat", 15.8700)

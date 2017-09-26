@@ -17,7 +17,12 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
                       var address: Address = Address(), var lat: Float? = null, var lng: Float? = null,
                       var basin: String? = null, var posessionType: String? = null, var posessionDocument: String? = null,
                       var rai: Float? = null, var gnan: Float? = null, var wah: Float? = null, var intendedPurpose: String? = null,
-                      var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null)
+                      var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null){
+    fun getSize(): String {
+        return "$rai ไร่ $gnan งาน $wah ตารางวา"
+
+    }
+}
 
 interface MemberLandService {
     fun findOne(id: Long): MemberLand?
