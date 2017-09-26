@@ -19,8 +19,8 @@ limitations under the License.
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <groupId>com.google.appengine.demos</groupId>
-    <artifactId>kotlin-springboot-appengine-standard</artifactId>
+    <groupId>com.orgit</groupId>
+    <artifactId>itok</artifactId>
 
     <parent>                              <!-- Get parameters and allow bulk testing -->
         <groupId>org.springframework.boot</groupId>
@@ -30,7 +30,7 @@ limitations under the License.
 
     <properties>
         <java.version>1.6</java.version>
-        <kotlin.version>1.1.4-3</kotlin.version>
+        <kotlin.version>1.1.50</kotlin.version>
     </properties>
 
     <dependencies>
