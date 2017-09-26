@@ -155,23 +155,28 @@
             src="/js/bootstrap-datepicker-thai-thai/js/locales/bootstrap-datepicker.th.js"></script>
     <script data-th-inline="javascript">
         /*<![CDATA[*/
-        var id = /*[[${member.id}]]*/null;
         $(function () {
-            $(".select2").each(function () {
-                $(this).select2($(this).data());
-            });
-            $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
-            var getAction = function () {
-                $.ajax({
-                    url: '/member/' + id + '/action',
-                    success: function (data) {
-                        $('#theform').attr('action', data)
-                    }
-                })
-            };
-            getAction();
-            setInterval(getAction, 5 * 60 * 1000);
+            function pageLoad() {
+                var id = /*[[${member.id}]]*/null;
+                $(".select2").each(function () {
+                    $(this).select2($(this).data());
+                });
+                $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
+                var getAction = function () {
+                    $.ajax({
+                        url: '/member/' + id + '/action',
+                        success: function (data) {
+                            $('#theform').attr('action', data)
+                        }
+                    })
+                };
+                getAction();
+                setInterval(getAction, 5 * 60 * 1000);
 
+            }
+
+            pageLoad();
+            SingApp.onPageLoad(pageLoad);
         });
         /*]]>*/
     </script>
