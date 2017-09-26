@@ -28,7 +28,6 @@ class UploadUtil {
     }
 
     fun processImageFile(paramName: String, request: HttpServletRequest, remove: Boolean = false): MutableList<UploadedImage> {
-        val imagesService = ImagesServiceFactory.getImagesService()
         val blobStoreService = BlobstoreServiceFactory.getBlobstoreService()
         val output = mutableListOf<UploadedImage>()
 
@@ -39,7 +38,7 @@ class UploadUtil {
         var counter = 0
         if (info != null) {
             for (item in info) {
-                var key = keys!!.get(counter++)
+                val key = keys!!.get(counter++)
                 if (item.size.equals(0.toLong()) || item.size > TWO_MEGABYTE) {
                     blobStoreService.delete(key)
                 } else {
@@ -57,7 +56,6 @@ class UploadUtil {
 
 
     fun processPdfOrImageFile(paramName: String, request: HttpServletRequest, remove: Boolean = false): MutableList<UploadedImage> {
-        val imagesService = ImagesServiceFactory.getImagesService()
         val blobStoreService = BlobstoreServiceFactory.getBlobstoreService()
         val output = mutableListOf<UploadedImage>()
 
@@ -68,7 +66,7 @@ class UploadUtil {
         var counter = 0
         if (info != null) {
             for (item in info) {
-                var key = keys!!.get(counter++)
+                val key = keys!!.get(counter++)
                 if (item.size.equals(0.toLong())) {
                     blobStoreService.delete(key)
                 } else {
@@ -127,7 +125,7 @@ class UploadUtil {
         var counter = 0
         if (info != null) {
             for (item in info) {
-                var key = keys!!.get(counter++)
+                val key = keys!!.get(counter++)
                 if (item.size.equals(0.toLong())) {
                     blobstoreService.delete(key)
                 } else {
@@ -143,7 +141,7 @@ class UploadUtil {
 
     fun getUrl(url: String, folder: String): String {
         val blobstoreService = BlobstoreServiceFactory.getBlobstoreService()
-        var option = UploadOptions.Builder.withGoogleStorageBucketName("${AppIdentityServiceFactory.getAppIdentityService().defaultGcsBucketName}/$folder")
+        val option = UploadOptions.Builder.withGoogleStorageBucketName("${AppIdentityServiceFactory.getAppIdentityService().defaultGcsBucketName}/$folder")
         return blobstoreService.createUploadUrl(url, option)
     }
 
