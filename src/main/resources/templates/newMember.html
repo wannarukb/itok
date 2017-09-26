@@ -14,7 +14,9 @@
     <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
                                                                            data-th-text="#{member}">Inputs &amp; Controls</span>
     </h1>
-    <a href="#" data-th-href="@{/member/{id}/newLand}" class="btn btn-primary" data-th-text="#{newLand}"></a>
+    <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}" data-th-if="${member.id} != null"
+       class="btn btn-primary"
+       data-th-text="#{newLand}"></a>
     <form method="post" data-th-object="${member}" enctype="multipart/form-data" id="theform">
         <div class="row">
             <div class="col-lg-12">
