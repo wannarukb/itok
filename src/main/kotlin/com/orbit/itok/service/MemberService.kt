@@ -1,9 +1,7 @@
 package com.orbit.itok.service
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
-import com.googlecode.objectify.Key
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
@@ -59,7 +57,7 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var address: Address = Address(),
                   var date: Date = Date(),
                   @Load var membership: Ref<Membership>? = null,
-                  var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+                  @com.googlecode.objectify.annotation.Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore
                   var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
@@ -90,11 +88,15 @@ interface MemberService {
     fun countSearch(query: String): Long
     fun clear()
     fun import(list: MutableList<Member>)
-
+    fun findByLandId(id: Long): Member?
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun findByLandId(id: Long): Member? {
+        return ofy().load().type(Member::class.java).filter("memberLands", MemberLand(id)).first().now()
+    }
+
     override fun import(list: MutableList<Member>) {
         list.forEach {
             val membershipTemp = it.membershipTemp
