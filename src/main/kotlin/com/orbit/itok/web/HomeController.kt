@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ResourceLoaderAware
 import org.springframework.core.io.ResourceLoader
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 
 /**
@@ -25,6 +26,12 @@ class HomeController : ResourceLoaderAware {
         return "index"
     }
 
+    @RequestMapping("member")
+    fun member(model: Model): String {
+        model.addAttribute("pageName", "member")
+        return "member"
+    }
+
     @RequestMapping("clearDB")
     fun clearDb(): String {
         memberServiceImpl.clear()
@@ -34,7 +41,7 @@ class HomeController : ResourceLoaderAware {
     @RequestMapping("importDB")
     fun importDb(): String {
         val file = loader.getResource("classpath:data.csv").file
-        var list = importServiceImpl.import(file)
+        val list = importServiceImpl.import(file)
         memberServiceImpl.import(list)
 
         return "redirect:/"
