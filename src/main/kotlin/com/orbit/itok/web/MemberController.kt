@@ -85,9 +85,14 @@ class MemberController {
     }
 
     @PostMapping("new")
-    fun postMember(@Valid member: Member, bindingResult: BindingResult): String {
+    fun postMember(@Valid member: Member, bindingResult: BindingResult, request: HttpServletRequest): String {
+        var image = uploadUtil.processImageFile(request)
         if (bindingResult.hasErrors()) {
             return "newMember"
+        }
+        if (image.isNotEmpty()) {
+            uploadUtil.fillImageUrl(image.first())
+            member.image = image.first()
         }
         val id = memberServiceImpl.createMember(member)
         return "redirect:/member/$id"
@@ -95,8 +100,10 @@ class MemberController {
 
     @GetMapping("{id}/action")
     @ResponseBody
-    fun action(@PathVariable id: Long, model: Model): String {
-        return uploadUtil.getUrl("/member/$id", "memberFiles")
+    fun action(@PathVariable id: String?, model: Model): String {
+        if (id != "null")
+            return uploadUtil.getUrl("/member/$id", "memberFiles")
+        return uploadUtil.getUrl("/member/new", "memberFiles")
     }
 
     @GetMapping("{id}")
@@ -108,6 +115,7 @@ class MemberController {
 
     @PostMapping("{id}")
     fun postMember(@PathVariable id: Long, @Valid member: Member, bindingResult: BindingResult, request: HttpServletRequest): String {
+        val findOne = memberServiceImpl.findOne(id)
         val image = uploadUtil.processImageFile(request = request)
         if (bindingResult.hasErrors()) {
             if (image.isNotEmpty()) uploadUtil.deleteImage(image.first())
@@ -116,12 +124,12 @@ class MemberController {
 
         if (image.isNotEmpty()) {
             uploadUtil.fillImageUrl(image.first())
-            val findOne = memberServiceImpl.findOne(id)
             if (findOne != null) {
                 if (findOne.image != null) uploadUtil.deleteImage(findOne.image)
             }
             member.image = image.first()
         }
+        member.image = findOne!!.image
 
         memberServiceImpl.update(id, member)
         return "redirect:/"

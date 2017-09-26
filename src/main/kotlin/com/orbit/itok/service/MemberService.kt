@@ -2,6 +2,7 @@ package com.orbit.itok.service
 
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
+import com.googlecode.objectify.Key
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
@@ -172,7 +173,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun createMember(member: Member): Long? {
-        member.membership = Ref.create(ofy().save().entity(Membership()).now())
+        val now = ofy().save().entity(member.membershipTemp ?: Membership()).now()
+        member.membership = Ref.create(now)
         val id = ofy().save().entity(member).now().id
         member.id = id
         index.put(getDocument(member))
