@@ -22,10 +22,16 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
 interface MemberLandService {
     fun findOne(id: Long): MemberLand?
     fun newLandForMember(id: Long): Long?
+    fun update(id: Long, memberLand: MemberLand)
 }
 
 @Service
 class MemberLandServiceImpl : MemberLandService, CommandLineRunner {
+    override fun update(id: Long, memberLand: MemberLand) {
+        memberLand.id = id
+        ofy().save().entity(memberLand)
+    }
+
     override fun newLandForMember(id: Long): Long? {
         val findOne = memberServiceImpl.findOne(id)
         if (findOne != null) {
