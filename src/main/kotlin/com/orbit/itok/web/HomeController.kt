@@ -26,6 +26,8 @@ class HomeController : ResourceLoaderAware {
         return "index"
     }
 
+
+
     @RequestMapping("member")
     fun member(model: Model): String {
         model.addAttribute("pageName", "member")
