@@ -78,8 +78,8 @@
                     <span data-th-text="#{reports}">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="inbox.html" data-th-href="@{/fieldSetup}">
+            <li data-th-class="${pageName} == 'land' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="@{/land}">
                     <span class="icon">
                         <i class="fa fa-file-text-o"></i>
                     </span>
