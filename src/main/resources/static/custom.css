@@ -4,3 +4,55 @@
     height: calc(100vh - 30px);
     width: 100%;
 }
+
+.font-small{
+    font-size: 0.7em;
+}
+
+.color-green{
+    color: #8CA93A !important;
+}
+.color-grey{
+    color: #ABABAB;
+}
+.panel-heading-white{
+    background: #FFF !important;
+}
+.panel-heading-drak{
+    background: #7A7E87 !important;
+    color: #FFF !important;
+}
+
+#farmPanel .panel-group .panel-heading .collapsed, #farmPanel .panel-group .panel-heading .collapsed i {
+    opacity: 1;
+}
+#farmPanel .panel-group .panel-heading .icon-farm {
+    color: #37455C !important;
+}
+
+#farmPanel .panel-group .panel-heading .collapsed .icon-farm {
+    color: #8CA93A !important;
+}
+
+#farmPanel .fieldbox{
+    height: 15px; 
+    width: 35%; 
+    background: #DCC13E;
+    margin-top: 3px;
+}
+
+.padding-left-right-20{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.label-image {
+     background-color:#8CA93A !important; 
+    color: #FFF !important;
+    text-transform: uppercase;
+    font-weight: normal !important;
+}
+.label-nobackground{
+    background: none !important;
+    color: #ABABAB !important;
+    font-weight: normal !important;
+}
