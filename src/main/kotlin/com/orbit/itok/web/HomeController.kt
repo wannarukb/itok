@@ -26,12 +26,10 @@ class HomeController : ResourceLoaderAware {
         return "index"
     }
 
-
-
     @RequestMapping("member")
     fun member(model: Model): String {
         model.addAttribute("pageName", "member")
-        return "member"
+        return "layout-Lek"
     }
 
     @RequestMapping("clearDB")
