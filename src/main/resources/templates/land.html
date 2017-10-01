@@ -89,6 +89,25 @@
                                 actually uploaded.)</p>
                         </div>
                     </form>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Files</th>
+                            <th>Size</th>
+                            <th>Action</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr data-th-each="l : ${files}">
+                            <td data-th-text="${l.fileName}"></td>
+                            <td data-th-text="${l.readableFileSize()}"></td>
+                            <td><a class="btn btn-link"
+                                   data-th-href="@{/land/download/{key}(key=${l.key})}">Download</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
             <section class="widget">

@@ -1,5 +1,8 @@
 package com.orbit.itok.web
 
+import com.google.appengine.api.blobstore.BlobKey
+import com.google.appengine.api.blobstore.BlobstoreService
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory
 import com.orbit.itok.service.MemberLand
 import com.orbit.itok.service.MemberLandService
 import com.orbit.itok.service.MemberService
@@ -10,6 +13,7 @@ import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 import javax.validation.Valid
 
 @Controller
@@ -22,6 +26,9 @@ class LandController {
     fun fieldSetup(model: Model, @PathVariable id: Long): String {
         val memberLand = memberLandServiceImpl.findOne(id)
         model.addAttribute("memberLand", memberLand)
+        if (memberLand != null) {
+            model.addAttribute("files", memberLand.files)
+        }
         return "land"
     }
 
@@ -31,11 +38,22 @@ class LandController {
         return uploadUtil.getUrl("/land/$id/files", "landFiles")
     }
 
+    @GetMapping("download/{key}")
+    fun download(@PathVariable key: String, httpServletResponse: HttpServletResponse) {
+        BlobstoreServiceFactory.getBlobstoreService().serve(BlobKey(key), httpServletResponse)
+
+    }
 
     @PostMapping("{id}/files")
     @ResponseBody
     fun uploadFiles(@PathVariable id: Long, httpServletRequest: HttpServletRequest): String {
         val files = uploadUtil.processFile(request = httpServletRequest, paramName = "file")
+        val findOne = memberLandServiceImpl.findOne(id)
+        if (findOne != null) {
+            findOne.files.addAll(files)
+            memberLandServiceImpl.update(id, findOne)
+        }
+
         return "success"
 
     }
