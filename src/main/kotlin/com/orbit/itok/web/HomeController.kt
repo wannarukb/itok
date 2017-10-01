@@ -34,6 +34,8 @@ class HomeController : ResourceLoaderAware {
     fun member(model: Model, @RequestParam(required = false, defaultValue = "1") page: Int): String {
         model.addAttribute("pageName", "member")
         model.addAttribute("list", memberServiceImpl.findAll(page - 1, PAGE_LIMIT))
+        model.addAttribute("page", page)
+        model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
         return "layout-Lek"
     }
 
