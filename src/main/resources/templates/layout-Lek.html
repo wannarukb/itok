@@ -13,10 +13,11 @@
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     <!--FooTable [ OPTIONAL ]-->
-    
+    <!--FooTable [ OPTIONAL ]-->
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>
         /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
          chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
@@ -731,14 +732,15 @@
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
         <div class="row" id="farmPanel">
             <div class="col-md-12">
-                <div class="panel-group mb-lg" id="accordion" data-toggle="collapse">
-                    <div class="panel panel-default">
+                <div class="panel-group mb-lg" id="accordion" data-toggle="collapse" data-th-remove="all-but-first">
+                    <div class="panel panel-default" data-th-each="l : ${list}">
                         <div class="panel-heading panel-heading-white collapsed">
                             <h5 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse"  href="#collapseOne">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseOne">
                                     <div class="row">
                                         <div class="col-sm-1 text-center">
-                                            <i class="fa fa-user-circle color-green icon-farm"icon-farm aria-hidden="true" style="font-size:2.5em;"></i>
+                                            <i class="fa fa-user-circle color-green icon-farm" icon-farm
+                                               aria-hidden="true" style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-5">
                                             <span class="color-green"><strong>กนก</strong></span><br/>
@@ -748,19 +750,20 @@
                                             <div class="fieldbox"></div>
                                             <span class="font-small color-grey">2 Fields - 39.2 ac</span>
                                         </div>
-                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v"
+                                                                            aria-hidden="true"></i></div>
                                     </div>
                                 </a>
                             </h5>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div class="panel-group mb-lg" >
+                                <div class="panel-group mb-lg">
                                     <div class="panel panel-default">
                                         <div class="panel-heading panel-heading-drak">
                                             <h5 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"  href="#collapseOne-One">
-                                                   <div class="row">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapseOne-One">
+                                                    <div class="row">
                                                         <div class="col-sm-4">
                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                             <span style="padding-left: 10px;"><strong>สวนกวาง</strong></span><br/>
@@ -784,7 +787,8 @@
                                                     <div class="col-md-1 text-center" style="width:12% !important;">
                                                         <img src="/image/exampleField.png" width="70"/>
                                                     </div>
-                                                    <div class="col-md-3 padding-left-right-20" style="width:21% !important;">
+                                                    <div class="col-md-3 padding-left-right-20"
+                                                         style="width:21% !important;">
                                                         <span class="color-green"><strong>เขาสวนกวาง</strong></span><br/>
                                                         <span class="font-small color-grey">21.8 ac - Potato</span>
                                                     </div>
@@ -801,12 +805,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                     <div class="panel panel-default">
+
+                                    <div class="panel panel-default">
                                         <div class="panel-heading panel-heading-drak">
                                             <h5 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse"  href="#collapseOne-Two">
-                                                   <div class="row">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapseOne-Two">
+                                                    <div class="row">
                                                         <div class="col-sm-4">
                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                             <span style="padding-left: 10px;"><strong>สวนเก้ง</strong></span><br/>
@@ -830,7 +834,8 @@
                                                     <div class="col-md-1 text-center" style="width:12% !important;">
                                                         <img src="/image/exampleField.png" width="70"/>
                                                     </div>
-                                                    <div class="col-md-3 padding-left-right-20" style="width:21% !important;">
+                                                    <div class="col-md-3 padding-left-right-20"
+                                                         style="width:21% !important;">
                                                         <span class="color-green"><strong>เขาสวนเก้ง</strong></span><br/>
                                                         <span class="font-small color-grey">18.8 ac - Potato</span>
                                                     </div>
@@ -857,7 +862,8 @@
                                 <a class="collapsed" data-toggle="collapse" href="#collapseTwo">
                                     <div class="row">
                                         <div class="col-sm-1 text-center">
-                                            <i class="fa fa-user-circle color-green icon-farm " aria-hidden="true" style="font-size:2.5em;"></i>
+                                            <i class="fa fa-user-circle color-green icon-farm " aria-hidden="true"
+                                               style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-5">
                                             <span class="color-green"><strong>ความหวัง</strong></span><br/>
@@ -867,7 +873,8 @@
                                             <div class="fieldbox"></div>
                                             <span class="font-small color-grey">1 Field - 11.3 ac</span>
                                         </div>
-                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v"
+                                                                            aria-hidden="true"></i></div>
                                     </div>
                                 </a>
                             </h5>
@@ -877,8 +884,8 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading panel-heading-drak">
                                         <h5 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse"  href="#collapseOne-Two">
-                                               <div class="row">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseOne-Two">
+                                                <div class="row">
                                                     <div class="col-sm-4">
                                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                         <span style="padding-left: 10px;"><strong>ความหวังดี</strong></span><br/>
@@ -902,7 +909,8 @@
                                                 <div class="col-md-1 text-center" style="width:12% !important;">
                                                     <img src="/image/exampleField.png" width="70"/>
                                                 </div>
-                                                <div class="col-md-3 padding-left-right-20" style="width:21% !important;">
+                                                <div class="col-md-3 padding-left-right-20"
+                                                     style="width:21% !important;">
                                                     <span class="color-green"><strong>ความหวังดี 1</strong></span><br/>
                                                     <span class="font-small color-grey">11.3 ac - Green Beans</span>
                                                 </div>
@@ -928,7 +936,8 @@
                                 <a class="collapsed" data-toggle="collapse" href="#collapseTwo">
                                     <div class="row">
                                         <div class="col-sm-1 text-center">
-                                            <i class="fa fa-user-circle color-green icon-farm" aria-hidden="true" style="font-size:2.5em;"></i>
+                                            <i class="fa fa-user-circle color-green icon-farm" aria-hidden="true"
+                                               style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-5">
                                             <span class="color-green"><strong>ความหวังแสนสุข</strong></span><br/>
@@ -938,7 +947,8 @@
                                             <div class="fieldbox"></div>
                                             <span class="font-small color-grey">1 Field - 10.3 ac</span>
                                         </div>
-                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v" aria-hidden="true"></i></div>
+                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v"
+                                                                            aria-hidden="true"></i></div>
                                     </div>
                                 </a>
                             </h5>
@@ -948,8 +958,8 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading panel-heading-drak">
                                         <h5 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse"  href="#collapseOne-Two">
-                                               <div class="row">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseOne-Two">
+                                                <div class="row">
                                                     <div class="col-sm-4">
                                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                         <span style="padding-left: 10px;"><strong>ความหวังแสนสุข</strong></span><br/>
@@ -973,7 +983,8 @@
                                                 <div class="col-md-1 text-center" style="width:12% !important;">
                                                     <img src="/image/exampleField.png" width="70"/>
                                                 </div>
-                                                <div class="col-md-3 padding-left-right-20" style="width:21% !important;">
+                                                <div class="col-md-3 padding-left-right-20"
+                                                     style="width:21% !important;">
                                                     <span class="color-green"><strong>ความหวังแสนสุข 1</strong></span><br/>
                                                     <span class="font-small color-grey">10.3 ac - Green Beans</span>
                                                 </div>
@@ -1042,7 +1053,7 @@
 <script data-gcs-src="" src="vendor/markdown/lib/markdown.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script data-gcs-src="" src="vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
- 
+
 <!-- page specific js -->
 <div data-layout-fragment="script">
 
