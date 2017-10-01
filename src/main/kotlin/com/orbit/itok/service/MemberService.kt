@@ -170,7 +170,12 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun findAll(start: Int?, length: Int?): MutableList<Member> {
-        return ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
+        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
+        list.forEach {
+            it.membershipTemp = it.membership?.get()
+            it.memberLandsTemp = it.memberLands.map { it.get() }.toMutableList()
+        }
+        return list
     }
 
     override fun createMember(member: Member): Long? {

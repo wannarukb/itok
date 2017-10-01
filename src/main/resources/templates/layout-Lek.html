@@ -733,22 +733,26 @@
         <div class="row" id="farmPanel">
             <div class="col-md-12">
                 <div class="panel-group mb-lg" id="accordion" data-toggle="collapse" data-th-remove="all-but-first">
-                    <div class="panel panel-default" data-th-each="l : ${list}">
+                    <div class="panel panel-default" data-th-each="l : ${list}" data-th-object="${l}">
                         <div class="panel-heading panel-heading-white collapsed">
                             <h5 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseOne">
+                                <a class="collapsed" data-toggle="collapse" href="#collapseOne"
+                                   data-th-href="'#collapse' + ${lStat.index}">
                                     <div class="row">
                                         <div class="col-sm-1 text-center">
                                             <i class="fa fa-user-circle color-green icon-farm" icon-farm
                                                aria-hidden="true" style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-5">
-                                            <span class="color-green"><strong>กนก</strong></span><br/>
-                                            <span class="font-small color-grey">2 Farms</span>
+                                            <span class="color-green"><strong
+                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></span><br/>
+                                            <span class="font-small color-grey"
+                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</span>
                                         </div>
                                         <div class="col-sm-5">
                                             <div class="fieldbox"></div>
-                                            <span class="font-small color-grey">2 Fields - 39.2 ac</span>
+                                            <span class="font-small color-grey"
+                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
                                         </div>
                                         <div class="col-sm-1 text-right"><i class="fa fa-arrows-v"
                                                                             aria-hidden="true"></i></div>
@@ -756,17 +760,19 @@
                                 </a>
                             </h5>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse">
+                        <div id="collapseOne" class="panel-collapse collapse" data-th-id="'collapse' + ${lStat.index}">
                             <div class="panel-body">
-                                <div class="panel-group mb-lg">
-                                    <div class="panel panel-default">
+                                <div class="panel-group mb-lg" data-th-remove="all-but-first">
+                                    <div class="panel panel-default" data-th-each="k : *{memberLandsTemp}">
                                         <div class="panel-heading panel-heading-drak">
                                             <h5 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" href="#collapseOne-One">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapseOne-One"
+                                                   data-th-href="'#collapse' + ${lStat.index} + '-' + ${kStat.index}">
                                                     <div class="row">
                                                         <div class="col-sm-4">
                                                             <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                                            <span style="padding-left: 10px;"><strong>สวนกวาง</strong></span><br/>
+                                                            <span style="padding-left: 10px;"><strong
+                                                                    data-th-text="${k.address.province}">สวนกวาง</strong></span><br/>
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <span class="font-small">ประเภท</span>
@@ -781,7 +787,8 @@
                                                 </a>
                                             </h5>
                                         </div>
-                                        <div id="collapseOne-One" class="panel-collapse collapse in">
+                                        <div id="collapseOne-One" class="panel-collapse collapse in"
+                                             data-th-id="'collapse' + ${lStat.index} + '-' + ${kStat.index}">
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-md-1 text-center" style="width:12% !important;">
@@ -789,17 +796,24 @@
                                                     </div>
                                                     <div class="col-md-3 padding-left-right-20"
                                                          style="width:21% !important;">
-                                                        <span class="color-green"><strong>เขาสวนกวาง</strong></span><br/>
-                                                        <span class="font-small color-grey">21.8 ac - Potato</span>
+                                                        <a class="stop-propagate"
+                                                           data-th-href="@{/land/{id}(id=${k.id})}" target="_blank">
+                                                        <span class="color-green"><strong
+                                                                data-th-text="${k.address.province}">เขาสวนกวาง</strong></span>
+                                                        </a>
+                                                        <br/>
+                                                        <span class="font-small color-grey"
+                                                              data-th-text="${k.getSize()}">21.8 ac - Potato</span>
                                                     </div>
                                                     <div class="col-md-3 padding-left-right-20">
-                                                        <span>ไร่มันสัมปะหลัง</span>
+                                                        <span data-th-text="${k.intendedPurpose}">ไร่มันสัมปะหลัง</span>
                                                     </div>
                                                     <div class="col-md-3 padding-left-right-20">
                                                         <span class="label label-image">Order Images</span>
                                                     </div>
                                                     <div class="col-md-2 padding-left-right-20">
-                                                        <span class="label label-nobackground">No Activity</span>
+                                                        <span class="label label-nobackground"
+                                                              data-th-text="${k.problem}">No Activity</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1058,6 +1072,7 @@
 <div data-layout-fragment="script">
 
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
+    <script src="/js/layout-Lek.js"></script>
 </div>
 </body>
 </html>
