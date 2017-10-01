@@ -15,9 +15,9 @@
     <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
                                                                            data-th-text="#{land}">Inputs &amp; Controls</span>
     </h1>
-    <form method="post" id="theform" data-th-object="${memberLand}">
-        <div class="row">
-            <div class="col-lg-12">
+    <div class="row">
+        <form method="post" id="theform" data-th-object="${memberLand}">
+            <div class="col-lg-8">
                 <section class="widget">
                     <header>
                         <h6 data-th-text="#{personalDetail}">
@@ -75,13 +75,59 @@
                     </div>
                 </section>
             </div>
-
+        </form>
+        <div class="col-lg-4">
+            <section class="widget">
+                <header>
+                    <h3>เอกสารประกอบที่ดิน</h3>
+                </header>
+                <div class="widget-body">
+                    <form class="dropzone" action="#" id="my-awesome-dropzone">
+                        <div class="dz-message">
+                            <p class="mb-xs fw-normal">Drop files here or click to upload.</p>
+                            <p class="text-muted">(This is just a demo dropzone. Selected files are <strong>not</strong>
+                                actually uploaded.)</p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="widget">
+                <header>
+                    <h3>ผลการตรวจสอบคุณภาพดิน</h3>
+                </header>
+                <div class="widget-body">
+                    Body
+                </div>
+            </section>
+            <section class="widget">
+                <header>
+                    <h3>ผลการตรวจสอบคุณภาพน้ำ</h3>
+                </header>
+                <div class="widget-body">
+                    Body
+                </div>
+            </section>
+            <section class="widget">
+                <header>
+                    <h3>ผลการตรวจสอบคุณภาพอากาศ</h3>
+                </header>
+                <div class="widget-body">
+                    Body
+                </div>
+            </section>
         </div>
 
-    </form>
+    </div>
+
 </div>
 <div data-layout-fragment="script">
 
+    <script data-th-inline="javascript">
+        /*<![CDATA[*/
+        var id = /*[[${memberLand.id}]]*/ 0;
+        /*]]>*/
+    </script>
+    <script src="/js/land.js"></script>
 </div>
 </body>
 </html>
