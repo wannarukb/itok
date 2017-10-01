@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 /**
  * Created For RIDMIS Web service
@@ -31,7 +32,11 @@ class HomeController : ResourceLoaderAware {
     private val PAGE_LIMIT: Int = 10
 
     @RequestMapping("member")
-    fun member(model: Model, @RequestParam(required = false, defaultValue = "1") page: Int): String {
+    fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes): String {
+        if (page == null) {
+            redirectAttributes.addAttribute("page", 1)
+            return "redirect:/member"
+        }
         model.addAttribute("pageName", "member")
         model.addAttribute("list", memberServiceImpl.findAll(page - 1, PAGE_LIMIT))
         model.addAttribute("page", page)
