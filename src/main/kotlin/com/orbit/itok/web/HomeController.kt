@@ -32,15 +32,22 @@ class HomeController : ResourceLoaderAware {
     private val PAGE_LIMIT: Int = 10
 
     @RequestMapping("member")
-    fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes): String {
+    fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes,
+               @RequestParam(required = false) query: String?): String {
         if (page == null) {
+            if (query != null) redirectAttributes.addAttribute("query", query)
             redirectAttributes.addAttribute("page", 1)
             return "redirect:/member"
         }
         model.addAttribute("pageName", "member")
-        model.addAttribute("list", memberServiceImpl.findAll(page - 1, PAGE_LIMIT))
+        if (query == null) {
+            model.addAttribute("list", memberServiceImpl.findAll((page - 1) * PAGE_LIMIT, PAGE_LIMIT))
+            model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
+        } else {
+            model.addAttribute("list", memberServiceImpl.search(query, (page - 1) * PAGE_LIMIT, PAGE_LIMIT))
+            model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
+        }
         model.addAttribute("page", page)
-        model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
         return "layout-Lek"
     }
 
