@@ -96,15 +96,15 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Province</th>
-                                <th>Size</th>
+                                <th data-th-text="#{name}">Province</th>
+                                <th data-th-text="#{size}">Size</th>
                                 <th>Action</th>
                             </tr>
 
                             </thead>
                             <tbody>
                             <tr data-th-each="l : *{memberLandsTemp}">
-                                <td data-th-text="${l.address.province}">1</td>
+                                <td data-th-text="${l.name}">1</td>
                                 <td data-th-text="${l.size}">2</td>
                                 <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}" class="btn btn-link">View</td>
                             </tr>

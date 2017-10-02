@@ -74,7 +74,11 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
 
 data class Address(var number: String? = "", var moo: String? = "", var village: String? = "", var alley: String? = "",
                    var road: String? = "", var subdistrict: String? = "", var district: String? = "",
-                   var province: String? = "", var postalCode: String? = "")
+                   var province: String? = "", var postalCode: String? = "") {
+    override fun toString(): String {
+        return "$number $moo $village $alley $road $subdistrict $district $province $postalCode"
+    }
+}
 
 data class UploadedImage(var key: String = "", var imageUrl: String? = "", var isImage: Boolean = false)
 

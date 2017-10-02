@@ -750,29 +750,37 @@
                                                  data-th-if="${l.image} != null"
                                                  class=" img-circle">
                                         </div>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-3">
                                             <span class="color-green"><strong
                                                     data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></span>
                                             <span class="font-small color-grey"
+                                                  data-th-text="*{nickname}">2 Farms</span>
+                                            <span class="font-small color-grey"
                                                   data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</span>
                                         </div>
-                                        <div class="col-sm-5">
-                                            <div class="fieldbox"></div>
+                                        <div class="col-sm-4">
+                                            <p data-th-text="*{mobile}"></p>
+                                            <p data-th-text="*{address}"></p>
                                             <span class="font-small color-grey"
                                                   data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
                                         </div>
-                                        <div class="col-sm-1 text-right"><i class="fa fa-arrows-v"
-                                                                            aria-hidden="true"></i></div>
+                                        <div class="col-sm-2">
+                                            <p data-th-text="*{membershipTemp.type}"></p>
+                                            <p data-th-text="*{membershipTemp.typeOrganization}"></p>
+                                        </div>
+                                        <div class="col-sm-2 text-right">
+                                            <button class="stop-propagate btn btn-primary btn-sm"
+                                                    data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
+                                                ดูข้อมูลสมาชิก
+                                            </button>
+                                            <button class="btn btn-primary btn-sm">ดูข้อมูลแปลงที่ดิน</button>
+                                        </div>
                                     </div>
                                 </a>
                             </h5>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" data-th-id="'collapse' + ${lStat.index}">
                             <div class="panel-body">
-                                <p>
-                                    <a class="stop-propagate btn btn-primary btn-sm"
-                                       data-th-href="@{/member/{id}(id=${l.id})}">ดูข้อมูลสมาชิก</a>
-                                </p>
                                 <div class="panel-group mb-lg" data-th-remove="all-but-first">
                                     <div class="panel panel-default" data-th-each="k : *{memberLandsTemp}">
                                         <div class="panel-heading panel-heading-drak">
@@ -810,7 +818,7 @@
                                                         <a class="stop-propagate"
                                                            data-th-href="@{/land/{id}(id=${k.id})}" target="_blank">
                                                         <span class="color-green"><strong
-                                                                data-th-text="${k.address.province}">เขาสวนกวาง</strong></span>
+                                                                data-th-text="${k.name}">เขาสวนกวาง</strong></span>
                                                         </a>
                                                         <br/>
                                                         <span class="font-small color-grey"
