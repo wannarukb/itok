@@ -732,6 +732,9 @@
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
         <div class="row" id="farmPanel">
             <div class="col-md-12">
+                <p>
+                    <a data-th-href="@{/member/new}" class="btn btn-primary" data-th-text="#{newMember}"></a>
+                </p>
                 <div class="panel-group mb-lg" id="accordion" data-toggle="collapse" data-th-remove="all-but-first">
                     <div class="panel panel-default" data-th-each="l : ${list}" data-th-object="${l}">
                         <div class="panel-heading panel-heading-white collapsed">
@@ -744,7 +747,6 @@
                                                aria-hidden="true" style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-5">
-
                                             <span class="color-green"><strong
                                                     data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></span>
                                             <span class="font-small color-grey"
