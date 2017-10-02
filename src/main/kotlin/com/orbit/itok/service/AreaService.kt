@@ -5,6 +5,7 @@ import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.Entity
 import com.googlecode.objectify.annotation.Id
+import com.orbit.itok.util.UploadedFile
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
@@ -18,8 +19,7 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
                       var basin: String? = null, var posessionType: String? = null, var posessionDocument: String? = null,
                       var rai: Float? = null, var gnan: Float? = null, var wah: Float? = null, var intendedPurpose: String? = null,
                       var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null,
-                      var files: MutableList<UploadedFile> = mutableListOf()) {
-                      var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null,
+                      var files: MutableList<UploadedFile> = mutableListOf(),
                       var name: String? = ""
 ) {
     fun getSize(): String {
