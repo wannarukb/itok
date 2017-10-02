@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-decorator="layout">
 <head>
+<head>
     <meta charset="UTF-8">
     <title>Title</title>
 
@@ -34,6 +35,8 @@
                             <fieldset>
                                 <input
                                         data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
+                                <input
+                                        data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
                                 <input
                                         data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
                                 <input
