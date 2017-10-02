@@ -62,32 +62,41 @@
                     <span data-th-text="#{dashboard}">Dashboard</span>
                 </a>
             </li>
-            <li data-th-remove="all">
-                <a href="inbox.html" data-th-href="@{/map}">
+            <li data-th-class="${pageName} == 'member' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="@{/member}">
                     <span class="icon">
-                        <i class="fa fa-map"></i>
+                        <i class="fa fa-user"></i>
                     </span>
-                    <span data-th-text="#{mapLayers}">Map</span>
+                    <span data-th-text="#{member}">Dashboard</span>
                 </a>
             </li>
-            <li data-th-remove="all">
-                <a href="inbox.html" data-th-href="@{/report}">
-                    <span class="icon">
-                        <i class="fa fa-envelope"></i>
-                    </span>
-                    <span data-th-text="#{reports}">Dashboard</span>
-                </a>
-            </li>
-            <li data-th-class="${pageName} == 'land' ? 'active' : ''" data-th-remove="all">
-                <a href="inbox.html" data-th-href="@{/land}">
+            <li data-th-class="${pageName} == 'land' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="'#'">
                     <span class="icon">
                         <i class="fa fa-file-text-o"></i>
                     </span>
                     <span data-th-text="#{fieldSetup}">Dashboard</span>
                 </a>
             </li>
-            <li data-th-class="${pageName} == 'member' ? 'active' : ''">
-                <a href="inbox.html" data-th-href="@{/member}">
+
+            <li data-th-class="${pageName} == 'training' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="'#'">
+                    <span class="icon">
+                        <i class="fa fa-book"></i>
+                    </span>
+                    <span data-th-text="#{training}">Dashboard</span>
+                </a>
+            </li>
+            <li data-th-class="${pageName} == 'activity' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="'#'">
+                    <span class="icon">
+                        <i class="fa fa-star"></i>
+                    </span>
+                    <span data-th-text="#{activity}">Dashboard</span>
+                </a>
+            </li>
+            <li data-th-class="${pageName} == 'account' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="'#'">
                     <span class="icon">
                         <i class="fa fa-user"></i>
                     </span>
