@@ -9,6 +9,9 @@ import com.orbit.itok.service.UploadedImage
 import org.springframework.stereotype.Service
 import javax.mail.internet.MimeUtility
 import javax.servlet.http.HttpServletRequest
+import java.text.DecimalFormat
+
+
 
 /**
  * Created by cmmad_000 on 6/3/2016.
@@ -129,8 +132,7 @@ class UploadUtil {
                 if (item.size.equals(0.toLong())) {
                     blobstoreService.delete(key)
                 } else {
-                    if (!isImage(item))
-                        output.add(UploadedFile(key = key.keyString, fileName = item.filename))
+                    output.add(UploadedFile(key = key.keyString, size = item.size, fileName = item.filename))
                 }
             }
         }
@@ -218,6 +220,12 @@ class UploadUtil {
 
 }
 
-data class UploadedFile(var key: String? = "", var fileName: String? = "") {
+data class UploadedFile(var key: String? = "", var fileName: String? = "", var size: Long = 0) {
+    fun readableFileSize(): String {
+        if (size <= 0) return "0"
+        val units = arrayOf("B", "kB", "MB", "GB", "TB")
+        val digitGroups = (Math.log10(size.toDouble()) / Math.log10(1024.0)).toInt()
+        return DecimalFormat("#,##0.#").format(size / Math.pow(1024.0, digitGroups.toDouble())) + " " + units[digitGroups]
+    }
 
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div data-th-fragment="paging(currentPage, pages)">
+    <div id="pagination-demo"></div>
+    <script data-th-inline="javascript">
+        /*<![CDATA[*/
+        var currentPage = /*[[__${currentPage}__]]*/1;
+        var pages = /*[[__${(pages == 0) ? 1 : pages}__]]*/1;
+        /*]]>*/
+    </script>
+</div>
+</body>
+</html>

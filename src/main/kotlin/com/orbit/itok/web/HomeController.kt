@@ -5,9 +5,12 @@ import com.orbit.itok.service.MemberServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ResourceLoaderAware
 import org.springframework.core.io.ResourceLoader
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 /**
  * Created For RIDMIS Web service
@@ -26,12 +29,19 @@ class HomeController : ResourceLoaderAware {
         return "index"
     }
 
-
+    private val PAGE_LIMIT: Int = 10
 
     @RequestMapping("member")
-    fun member(model: Model): String {
+    fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes): String {
+        if (page == null) {
+            redirectAttributes.addAttribute("page", 1)
+            return "redirect:/member"
+        }
         model.addAttribute("pageName", "member")
-        return "member"
+        model.addAttribute("list", memberServiceImpl.findAll(page - 1, PAGE_LIMIT))
+        model.addAttribute("page", page)
+        model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
+        return "layout-Lek"
     }
 
     @RequestMapping("clearDB")

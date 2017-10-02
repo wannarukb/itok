@@ -18,6 +18,8 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
                       var basin: String? = null, var posessionType: String? = null, var posessionDocument: String? = null,
                       var rai: Float? = null, var gnan: Float? = null, var wah: Float? = null, var intendedPurpose: String? = null,
                       var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null,
+                      var files: MutableList<UploadedFile> = mutableListOf()) {
+                      var usage: String? = null, var characteristic: String? = null, var soilType: String? = null, var problem: String? = null,
                       var name: String? = ""
 ) {
     fun getSize(): String {
@@ -30,10 +32,22 @@ interface MemberLandService {
     fun findOne(id: Long): MemberLand?
     fun newLandForMember(id: Long): Long?
     fun update(id: Long, memberLand: MemberLand)
+    fun getTotalSize(list: MutableList<MemberLand>): String
 }
 
 @Service
 class MemberLandServiceImpl : MemberLandService, CommandLineRunner {
+    override fun getTotalSize(list: MutableList<MemberLand>): String {
+        var count = 0
+        count += list.sumBy { (it.rai?.toInt() ?: 0) * 4 * 100 }
+        count += list.sumBy { (it.gnan?.toInt() ?: 0) * 100 }
+        count += list.sumBy { it.wah?.toInt() ?: 0 }
+        val rai = (count / 400)
+        val gnan = count % 400 / 100
+        val wah = (count % 100)
+        return "$rai ไร่ $gnan งาน $wah ตารางวา"
+    }
+
     override fun update(id: Long, memberLand: MemberLand) {
         memberLand.id = id
         ofy().save().entity(memberLand)
