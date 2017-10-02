@@ -95,6 +95,14 @@
                     <span data-th-text="#{activity}">Dashboard</span>
                 </a>
             </li>
+            <li data-th-class="${pageName} == 'equipment' ? 'active' : ''">
+                <a href="inbox.html" data-th-href="'#'">
+                    <span class="icon">
+                        <i class="fa fa-wrench"></i>
+                    </span>
+                    <span data-th-text="#{equipment}">Dashboard</span>
+                </a>
+            </li>
             <li data-th-class="${pageName} == 'account' ? 'active' : ''">
                 <a href="inbox.html" data-th-href="'#'">
                     <span class="icon">
