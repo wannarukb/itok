@@ -115,8 +115,8 @@ class MemberController {
 
     @GetMapping("{id}/newLand")
     fun newLand(@PathVariable id: Long): String {
-        val id = memberLandServiceImpl.newLandForMember(id)
-        return "redirect:/land/$id"
+        val id2 = memberLandServiceImpl.newLandForMember(id)
+        return "redirect:/land/$id2"
     }
 
     @PostMapping("{id}")
@@ -134,11 +134,12 @@ class MemberController {
                 if (findOne.image != null) uploadUtil.deleteImage(findOne.image)
             }
             member.image = image.first()
-        }
-        member.image = findOne!!.image
+        } else member.image = findOne?.image
 
-        memberServiceImpl.update(id, member)
-        return "redirect:/"
+        if (findOne != null) {
+            memberServiceImpl.update(id, member.copy(memberLands = findOne.memberLands, membership = findOne.membership))
+        }
+        return "redirect:/member"
     }
 
     @Autowired lateinit var memberServiceImpl: MemberService
