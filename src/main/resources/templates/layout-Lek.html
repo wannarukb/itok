@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html data-layout-decorator="layout">
 <head>
-    <title>Sing - Form Elements</title>
     <link data-gcs-href="" href="css/application.min.css" rel="stylesheet">
     <link href="/custom.css" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
@@ -730,6 +729,7 @@
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
+
         <div class="row" id="farmPanel">
             <div class="col-md-12">
                 <p>
@@ -751,29 +751,28 @@
                                                  class=" img-circle">
                                         </div>
                                         <div class="col-sm-3">
-                                            <span class="color-green"><strong
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></span>
-                                            <span class="font-small color-grey"
-                                                  data-th-text="*{nickname}">2 Farms</span>
-                                            <span class="font-small color-grey"
-                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</span>
+                                            <p class="color-green"><strong
+                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p><br/>
+                                            <p class="font-small color-dark"
+                                                  data-th-text="*{nickname}">2 Farms</p><br/>
+                                            <p class="font-xs-small color-grey"
+                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <p data-th-text="*{mobile}"></p>
-                                            <p data-th-text="*{address}"></p>
-                                            <span class="font-small color-grey"
+                                            <p data-th-text="*{mobile}" class="font-medium color-dark"></p>
+                                            <p data-th-text="*{address}" class="font-medium color-dark"></p>
+                                            <span class="font-xs-small color-grey"
                                                   data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
                                         </div>
                                         <div class="col-sm-2">
-                                            <p data-th-text="*{membershipTemp.type}"></p>
-                                            <p data-th-text="*{membershipTemp.typeOrganization}"></p>
+                                            <p data-th-text="*{membershipTemp.type}" class="font-medium"></p>
+                                            <p data-th-text="*{membershipTemp.typeOrganization}" class="font-medium"></p>
                                         </div>
                                         <div class="col-sm-2 text-right">
                                             <button class="stop-propagate btn btn-primary btn-sm"
                                                     data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
                                                 ดูข้อมูลสมาชิก
                                             </button>
-                                            <button class="btn btn-primary btn-sm">ดูข้อมูลแปลงที่ดิน</button>
                                         </div>
                                     </div>
                                 </a>
@@ -833,6 +832,7 @@
                                                     <div class="col-md-2 padding-left-right-20">
                                                         <span class="label label-nobackground"
                                                               data-th-text="${k.problem}">No Activity</span>
+                                                        <button class="btn btn-danger btn-sm">ดูข้อมูลแปลงที่ดิน</button>
                                                     </div>
                                                 </div>
                                             </div>

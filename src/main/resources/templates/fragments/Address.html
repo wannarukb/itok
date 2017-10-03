@@ -8,40 +8,40 @@
 
 <th:block data-th-fragment="address (label, name)">
     <div class="form-group row">
-        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="${label}">Default
+        <label class="col-md-2 control-label text-md-right" for="default-select" data-th-text="${label}">Default
             select</label>
-        <div class="col-md-7">
+        <div class="col-md-10">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 form-address">
                     <input data-th-replace="fragments/TextField2 :: input (#{number}, 'address.number', false)">
                 </div>
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{moo}, 'address.moo', false)">
                 </div>
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{village}, 'address.village', false)">
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{alley}, 'address.alley', false)">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 form-address">
                     <input data-th-replace="fragments/TextField2 :: input (#{road}, 'address.road', false)">
                 </div>
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{province}, 'address.province', true)">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 form-address">
                     <input data-th-replace="fragments/TextField2 :: input (#{district}, 'address.district', false)">
                 </div>
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{subdistrict}, 'address.subdistrict', false)">
                 </div>
-                <div class="col-md-4"><input
+                <div class="col-md-4 form-address"><input
                         data-th-replace="fragments/TextField2 :: input (#{postalCode}, 'address.postalCode', false)">
                 </div>
             </div>
