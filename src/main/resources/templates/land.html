@@ -34,36 +34,74 @@
 
                         <div class="form-horizontal" role="form" method="post">
                             <fieldset>
-                                <input
-                                        data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{basin}, 'basin', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{posessionDocument}, 'posessionDocument', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{characteristic}, 'characteristic', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{soilType}, 'soilType', false)"/>
-                                <input
-                                        data-th-replace="fragments/TextField :: input (#{problem}, 'problem', false)"/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <input data-th-replace="fragments/Address2 :: address (#{address}, 'address')"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input  data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input  data-th-replace="fragments/TextField :: input (#{basin}, 'basin', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{posessionDocument}, 'posessionDocument', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input data-th-replace="fragments/TextField :: input (#{characteristic}, 'characteristic', false)"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input  data-th-replace="fragments/TextField :: input (#{soilType}, 'soilType', false)"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input  data-th-replace="fragments/TextField :: input (#{problem}, 'problem', false)"/>
+                                    </div>
+                                </div>
+
+
+
 
                             </fieldset>
 

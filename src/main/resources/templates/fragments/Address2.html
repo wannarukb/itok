@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block data-th-fragment="address (label, name)">
+    <div class="form-group row">
+        <label class="col-md-12 control-label" for="default-select" data-th-text="${label}">Default
+            select</label>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <input data-th-replace="fragments/TextField :: input (#{number}, 'address.number', false)">
+                </div>
+                <div class="col-md-6 "><input
+                        data-th-replace="fragments/TextField :: input (#{moo}, 'address.moo', false)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 "><input
+                        data-th-replace="fragments/TextField :: input (#{village}, 'address.village', false)">
+                </div>
+                <div class="col-md-6 "><input
+                        data-th-replace="fragments/TextField :: input (#{alley}, 'address.alley', false)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ">
+                    <input data-th-replace="fragments/TextField :: input (#{road}, 'address.road', false)">
+                </div>
+                <div class="col-md-6 "><input
+                        data-th-replace="fragments/TextField :: input (#{province}, 'address.province', true)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ">
+                    <input data-th-replace="fragments/TextField :: input (#{district}, 'address.district', false)">
+                </div>
+                <div class="col-md-6 "><input
+                        data-th-replace="fragments/TextField :: input (#{subdistrict}, 'address.subdistrict', false)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><input
+                        data-th-replace="fragments/TextField :: input (#{postalCode}, 'address.postalCode', false)">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</th:block>
+</body>
+</html>
