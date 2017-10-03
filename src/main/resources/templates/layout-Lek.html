@@ -752,11 +752,12 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <p class="color-green"><strong
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p><br/>
+                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p>
+                                            <br/>
                                             <p class="font-small color-dark"
-                                                  data-th-text="*{nickname}">2 Farms</p><br/>
+                                               data-th-text="*{nickname}">2 Farms</p><br/>
                                             <p class="font-xs-small color-grey"
-                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>
+                                               data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>
                                         </div>
                                         <div class="col-sm-4">
                                             <p data-th-text="*{mobile}" class="font-medium color-dark"></p>
@@ -766,7 +767,8 @@
                                         </div>
                                         <div class="col-sm-2">
                                             <p data-th-text="*{membershipTemp.type}" class="font-medium"></p>
-                                            <p data-th-text="*{membershipTemp.typeOrganization}" class="font-medium"></p>
+                                            <p data-th-text="*{membershipTemp.typeOrganization}"
+                                               class="font-medium"></p>
                                         </div>
                                         <div class="col-sm-2 text-right">
                                             <button class="stop-propagate btn btn-primary btn-sm"
@@ -832,7 +834,11 @@
                                                     <div class="col-md-2 padding-left-right-20">
                                                         <span class="label label-nobackground"
                                                               data-th-text="${k.problem}">No Activity</span>
-                                                        <button class="btn btn-danger btn-sm">ดูข้อมูลแปลงที่ดิน</button>
+                                                        <a class="stop-propagate btn btn-danger btn-sm"
+                                                           data-th-href="@{/land/{id}(id=${k.id})}" target="_blank">
+                                                            ดูข้อมูลแปลงที่ดิน
+
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
