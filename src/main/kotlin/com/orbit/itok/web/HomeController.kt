@@ -35,7 +35,6 @@ class HomeController : ResourceLoaderAware {
     fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes,
                @RequestParam(required = false) query: String?): String {
         if (page == null) {
-            if (query != null) redirectAttributes.addAttribute("query", query)
             redirectAttributes.addAttribute("page", 1)
             return "redirect:/member"
         }

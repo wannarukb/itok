@@ -1,9 +1,8 @@
 package com.orbit.itok.web
 
-import com.orbit.itok.service.Member
-import com.orbit.itok.service.MemberService
-import com.orbit.itok.service.MemberServiceImpl
+import com.orbit.itok.service.*
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -24,5 +23,20 @@ class RestController {
         return findAll
     }
 
+    @RequestMapping("member/{id}")
+    fun member(@PathVariable id: Long): Member? {
+        val findOne = memberServiceImpl.findOne(id)
+        findOne?.membership = null
+        findOne?.memberLands = mutableListOf()
+
+        return findOne
+    }
+
+    @RequestMapping("memberLand/{id}")
+    fun memberLand(@PathVariable id: Long): MemberLand? {
+        return memberLandServiceImpl.findOne(id)
+    }
+
     @Autowired lateinit var memberServiceImpl: MemberService
+    @Autowired lateinit var memberLandServiceImpl: MemberLandServiceImpl
 }
