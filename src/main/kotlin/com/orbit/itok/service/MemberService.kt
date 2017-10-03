@@ -137,7 +137,12 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun search(query: String, start: Int?, length: Int?): MutableList<Member> {
         val search = index.search(Query.newBuilder().setOptions(QueryOptions.newBuilder().setReturningIdsOnly(true)).build(query))
         val map = search.results.map { it.id.toLong() }
-        return ofy().load().type(Member::class.java).ids(map).values.toMutableList()
+        val values = ofy().load().type(Member::class.java).ids(map).values
+        values.forEach {
+            it.membershipTemp = it.membership?.get()
+            it.memberLandsTemp = it.memberLands.map { it.get() }.toMutableList()
+        }
+        return values.toMutableList()
     }
 
     override fun findOne(id: Long): Member? {
