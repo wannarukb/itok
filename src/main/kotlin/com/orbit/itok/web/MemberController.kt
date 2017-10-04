@@ -62,8 +62,7 @@ class MemberController {
 
     @ModelAttribute("educationDegree")
     fun educationDegree(): List<SelectField> {
-        val status = listOf("ปริญญาเอก", "ปริญญาโท", "ปริญญาตรี", "ปวส./อนุปริญญา", "ปวช.",
-                "มัธยมปลาย", "มัธยมต้น", "ประถมศึกษา", "ไม่ได้ศึกษา")
+        val status = settingServiceImpl.educationDegree
         return status.map { SelectField(it, it) }
     }
 
