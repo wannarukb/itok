@@ -23,7 +23,7 @@ class LandController {
     @ModelAttribute("basins")
     fun basins() = settingServiceImpl.basins.map { SelectField(it, it) }
 
-    @ModelAttribute("posDocuments")
+    @ModelAttribute("posessionDocument")
     fun posessionDocuments() = settingServiceImpl.posessionDocuments.map { SelectField(it, it) }
 
     @GetMapping("{id}")
