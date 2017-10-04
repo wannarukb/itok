@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>สร้างเครือข่ายใหม่</title>
-    <link rel="stylesheet" href="/js/bootstrap-datepicker-thai-thai/css/datepicker.css" />
+    <link rel="stylesheet" href="/js/bootstrap-datepicker-thai-thai/css/datepicker.css"/>
 </head>
 <body>
 <div data-layout-fragment="main">
@@ -22,7 +22,8 @@
                         <li class="active">
                             <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลส่วนบุคคล</a>
                         </li>
-                        <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">รายละเอียดการเป็นสมาชิก</a></li>
+                        <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">รายละเอียดการเป็นสมาชิก</a>
+                        </li>
                         <li class=""><a data-target="#tab3" data-toggle="tab" aria-expanded="false">ที่ดิน</a></li>
                     </ul>
                 </div>
@@ -31,14 +32,14 @@
                         <div class="col-lg-12">
                             <section class="widget widget-custom-padding">
                                 <!--<header>-->
-                                    <!--<h6 data-th-text="#{personalDetail}">-->
-                                        <!--รายละเอียด-->
-                                    <!--</h6>-->
-                                    <!--<div class="widget-controls">-->
-                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                    <!--</div>-->
+                                <!--<h6 data-th-text="#{personalDetail}">-->
+                                <!--รายละเอียด-->
+                                <!--</h6>-->
+                                <!--<div class="widget-controls">-->
+                                <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
+                                <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
+                                <!--</div>-->
                                 <!--</header>-->
                                 <div class="widget-body">
                                     <div class="form-horizontal" role="form" method="post">
@@ -109,107 +110,108 @@
                     <div class="tab-pane" id="tab2">
                         <div class="col-lg-12">
                             <section class="widget widget-custom-padding">
-                            <!--<header>-->
+                                <!--<header>-->
                                 <!--<h6 data-th-text="#{memberDetail}">-->
-                                    <!--รายละเอียด-->
+                                <!--รายละเอียด-->
                                 <!--</h6>-->
                                 <!--<div class="widget-controls">-->
-                                    <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                    <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                    <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
+                                <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
+                                <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
                                 <!--</div>-->
-                            <!--</header>-->
-                            <div class="widget-body">
-                                <div class="form-horizontal" role="form" method="post">
-                                    <fieldset>
-                                        <legend><strong data-th-text="#{member}">Horizontal</strong> <span
-                                                data-th-text="#{memberDetail}"></span></legend>
-                                        <input type="hidden" data-th-field="*{membershipTemp.id}">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
+                                <!--</header>-->
+                                <div class="widget-body">
+                                    <div class="form-horizontal" role="form" method="post">
+                                        <fieldset>
+                                            <legend><strong data-th-text="#{member}">Horizontal</strong> <span
+                                                    data-th-text="#{memberDetail}"></span></legend>
+                                            <input type="hidden" data-th-field="*{membershipTemp.id}">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/CheckboxField :: checkbox (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/CheckboxField :: checkbox (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
+                                                    <input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
-                                                <input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/TextField :: input (#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', false)"/>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/TextField :: input (#{agricultureInterest}, 'membershipTemp.agricultureInterest', false)"/>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
-                                            </div>
-                                        </div>
 
 
                                         </fieldset>
-                                    <div class="form-actions">
-                                        <div class="row">
-                                            <div class="col-md-offset-4 col-md-7">
-                                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                                <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-offset-4 col-md-7">
+                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab3">
                         <div class="col-lg-12">
                             <section class="widget widget-custom-padding">
-                            <header>
-                                <h3>ที่ดิน</h3>
-                            </header>
-                            <div class="widget-body">
-                                <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}"
-                                   data-th-if="${member.id} != null"
-                                   class="btn btn-info"
-                                   data-th-text="#{newLand}"></a>
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th data-th-text="#{name}">Province</th>
-                                        <th data-th-text="#{size}">Size</th>
-                                        <th>Action</th>
-                                    </tr>
+                                <header>
+                                    <h3>ที่ดิน</h3>
+                                </header>
+                                <div class="widget-body">
+                                    <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}"
+                                       data-th-if="${member.id} != null"
+                                       class="btn btn-info"
+                                       data-th-text="#{newLand}"></a>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th data-th-text="#{name}">Province</th>
+                                            <th data-th-text="#{size}">Size</th>
+                                            <th>Action</th>
+                                        </tr>
 
-                                    </thead>
-                                    <tbody>
-                                    <tr data-th-each="l : *{memberLandsTemp}">
-                                        <td data-th-text="${l.name}">1</td>
-                                        <td data-th-text="${l.size}">2</td>
-                                        <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}" class="btn btn-link">View</a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
+                                        </thead>
+                                        <tbody>
+                                        <tr data-th-each="l : *{memberLandsTemp}">
+                                            <td data-th-text="${l.name}">1</td>
+                                            <td data-th-text="${l.size}">2</td>
+                                            <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
+                                                   class="btn btn-link">View</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
@@ -220,7 +222,7 @@
 </div>
 
 <div data-layout-fragment="script">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker.js"></script>
     <!-- thai extension -->
     <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker-thai.js"></script>

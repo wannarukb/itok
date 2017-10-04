@@ -66,6 +66,9 @@ class MemberController {
         return status.map { SelectField(it, it) }
     }
 
+    @ModelAttribute("specialties")
+    fun specialties() = settingServiceImpl.specialties.map { SelectField(it, it) }
+
     @ModelAttribute("yearJoin")
     fun yearJoin(): List<SelectField> {
         val get = DateTime.now().withChronology(BuddhistChronology.getInstance()).get(DateTimeFieldType.year())

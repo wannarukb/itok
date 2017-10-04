@@ -95,6 +95,14 @@ class SettingServiceImpl : SettingService, ResourceLoaderAware {
     }
 
     fun getAppName(): String = "ITOK"
+    val specialties: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:specialties.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
 
 
 }
