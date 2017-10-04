@@ -60,9 +60,9 @@ class MemberController {
         return status.map { SelectField(it, it) }
     }
 
-    @ModelAttribute("educationDegree")
+    @ModelAttribute("educationDegrees")
     fun educationDegree(): List<SelectField> {
-        val status = settingServiceImpl.educationDegree
+        val status = settingServiceImpl.educationDegrees
         return status.map { SelectField(it, it) }
     }
 

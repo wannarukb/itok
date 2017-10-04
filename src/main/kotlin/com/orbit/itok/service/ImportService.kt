@@ -30,7 +30,7 @@ interface ImportService {
 @Service
 class ImportServiceImpl : ImportService {
     private val FIELD_MAPPING: Array<String> = arrayOf("date", "title", "firstName", "lastName", "nickname", "birthday", "male",
-            "maritalStatus", "educationDegree", "address.number", "address.moo", "address.village", "address.alley",
+            "maritalStatus", "educationDegrees", "address.number", "address.moo", "address.village", "address.alley",
             "address.road", "address.subdistrict", "address.district", "address.province", "address.postalCode",
             "mobile", "email", "facebook", "line",
             "membershipTemp.yearJoin", "membershipTemp.villageDelegate", "membershipTemp.type", "membershipTemp.previousJob",
