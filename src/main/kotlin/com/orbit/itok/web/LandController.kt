@@ -23,6 +23,9 @@ class LandController {
     @ModelAttribute("basins")
     fun basins() = settingServiceImpl.basins.map { SelectField(it, it) }
 
+    @ModelAttribute("posDocuments")
+    fun posessionDocuments() = settingServiceImpl.posessionDocuments.map { SelectField(it, it) }
+
     @GetMapping("{id}")
     fun fieldSetup(model: Model, @PathVariable id: Long): String {
         val memberLand = memberLandServiceImpl.findOne(id)

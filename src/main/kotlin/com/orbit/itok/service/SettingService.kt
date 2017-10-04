@@ -13,6 +13,14 @@ interface SettingService {
 @Service
 class SettingServiceImpl : SettingService, ResourceLoaderAware {
     lateinit var loader: ResourceLoader
+    var posessionDocuments: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:posessionDocument.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
     var basins: List<String> = listOf()
         get() {
             if (field.isEmpty()) {
