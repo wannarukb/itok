@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-decorator="layout">
 <head>
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
 
-</head>
+    </head>
 <body>
 <div data-layout-fragment="main">
 
@@ -41,12 +41,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <input data-th-replace="fragments/Address2 :: address (#{address}, 'address')"/>
+                                        <p>
+                                            <a href="#" data-th-href="@{/land/{id}/copyAddress(id=*{id})}"
+                                               data-th-text="#{copyAddress}" class="btn btn-primary"></a>
+                                        </p>
+                                        <input data-th-replace="fragments/Address2 :: address (#{landAddress}, 'address')"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input  data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
+                                        <input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
                                     </div>
                                     <div class="col-sm-6">
                                         <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
@@ -54,7 +58,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input  data-th-replace="fragments/TextField :: input (#{basin}, 'basin', false)"/>
+                                        <input data-th-replace="fragments/TextField :: input (#{basin}, 'basin', false)"/>
                                     </div>
                                     <div class="col-sm-6">
                                         <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
@@ -93,14 +97,12 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input  data-th-replace="fragments/TextField :: input (#{soilType}, 'soilType', false)"/>
+                                        <input data-th-replace="fragments/TextField :: input (#{soilType}, 'soilType', false)"/>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input  data-th-replace="fragments/TextField :: input (#{problem}, 'problem', false)"/>
+                                        <input data-th-replace="fragments/TextField :: input (#{problem}, 'problem', false)"/>
                                     </div>
                                 </div>
-
-
 
 
                             </fieldset>

@@ -32,6 +32,19 @@ class LandController {
         return "land"
     }
 
+    @GetMapping("{id}/copyAddress")
+    fun copyAddresss(@PathVariable id: Long): String {
+        val findByLandId = memberServiceImpl.findByLandId(id)
+        val findOne = memberLandServiceImpl.findOne(id)
+        if (findOne != null && findByLandId != null) {
+            findOne.address = findByLandId.address
+            memberLandServiceImpl.update(id, findOne)
+        }
+        return "redirect:/land/$id"
+
+
+    }
+
     @GetMapping("{id}/action")
     @ResponseBody
     fun getAction(@PathVariable id: Long): String {
