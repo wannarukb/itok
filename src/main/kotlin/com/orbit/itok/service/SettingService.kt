@@ -13,6 +13,14 @@ interface SettingService {
 @Service
 class SettingServiceImpl : SettingService, ResourceLoaderAware {
     lateinit var loader: ResourceLoader
+    var basins: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val ifle = loader.getResource("classpath:basin.txt").file
+                field = ifle.readLines()
+            }
+            return field
+        }
     var memberTypes: List<String> = listOf()
         get() {
             if (field.isEmpty()) {
@@ -40,7 +48,6 @@ class SettingServiceImpl : SettingService, ResourceLoaderAware {
             return field
 
         }
-
 
 
     override fun setResourceLoader(p0: ResourceLoader) {

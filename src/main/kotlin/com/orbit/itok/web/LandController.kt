@@ -3,9 +3,7 @@ package com.orbit.itok.web
 import com.google.appengine.api.blobstore.BlobKey
 import com.google.appengine.api.blobstore.BlobstoreService
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory
-import com.orbit.itok.service.MemberLand
-import com.orbit.itok.service.MemberLandService
-import com.orbit.itok.service.MemberService
+import com.orbit.itok.service.*
 import com.orbit.itok.util.UploadUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -21,6 +19,9 @@ import javax.validation.Valid
 class LandController {
     @ModelAttribute
     fun pageName(): String = "land"
+
+    @ModelAttribute("basins")
+    fun basins() = settingServiceImpl.basins.map { SelectField(it, it) }
 
     @GetMapping("{id}")
     fun fieldSetup(model: Model, @PathVariable id: Long): String {
@@ -100,4 +101,5 @@ class LandController {
     @Autowired lateinit var memberLandServiceImpl: MemberLandService
     @Autowired lateinit var memberServiceImpl: MemberService
     @Autowired lateinit var uploadUtil: UploadUtil
+    @Autowired lateinit var settingServiceImpl: SettingServiceImpl
 }
