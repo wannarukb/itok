@@ -97,10 +97,10 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes} false)"/>
+                                        <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{problem}, 'problem', false)"/>
+                                        <input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>
                                     </div>
                                 </div>
 
