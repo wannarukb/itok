@@ -9,182 +9,203 @@
 <body>
 <div data-layout-fragment="main">
 
-    <ol class="breadcrumb">
+    <ol class="breadcrumb font-supermarket">
         <li data-th-text="#{home}">Home</li>
         <li class="active" data-th-text="#{newLand}">Form Elements</li>
     </ol>
-    <h1 class="page-title"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
+    <h1 class="page-title font-supermarket"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
                                                                            data-th-text="#{land}">Inputs &amp; Controls</span>
     </h1>
     <div class="row">
-        <form method="post" id="theform" data-th-object="${memberLand}">
-            <div class="col-lg-8">
-                <section class="widget">
-                    <header>
-                        <h6 data-th-text="#{personalDetail}">
-                            รายละเอียด
-                        </h6>
-                        <div class="widget-controls">
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a href="#"><i class="fa fa-refresh"></i></a>
-                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
-                    </header>
-                    <div class="widget-body">
-
-                        <div class="form-horizontal" role="form" method="post">
-                            <fieldset>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <p>
-                                            <a href="#" data-th-href="@{/land/{id}/copyAddress(id=*{id})}"
-                                               data-th-text="#{copyAddress}" class="btn btn-primary"></a>
-                                        </p>
-                                        <input data-th-replace="fragments/Address2 :: address (#{landAddress}, 'address')"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{posessionDocument}, 'posessionDocument', ${posessionDocument}, false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{characteristic}, 'characteristic', ${landTypes}, false)"/>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>
-                                    </div>
-                                </div>
-
-
-                            </fieldset>
-
-                            <div class="form-actions">
-                                <div class="row">
-                                    <div class="col-md-offset-4 col-md-7">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <div class="col-md-12">
+            <div class="clearfix">
+                <ul id="tabs1" class="nav nav-tabs pull-left">
+                    <li class="active">
+                        <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลแปลงที่ดิน</a>
+                    </li>
+                    <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">เอกสารประกอบที่ดิน</a>
+                    </li>
+                </ul>
             </div>
-        </form>
-        <div class="col-lg-4">
-            <section class="widget">
-                <header>
-                    <h3>เอกสารประกอบที่ดิน</h3>
-                </header>
-                <div class="widget-body">
-                    <form class="dropzone" action="#" id="my-awesome-dropzone">
-                        <div class="dz-message">
-                            <p class="mb-xs fw-normal">Drop files here or click to upload.</p>
-                            <p class="text-muted">(This is just a demo dropzone. Selected files are <strong>not</strong>
-                                actually uploaded.)</p>
+            <div id="tabs1c" class="tab-content mb-lg">
+                <div class="tab-pane clearfix active" id="tab1">
+                    <form method="post" id="theform" data-th-object="${memberLand}">
+                        <div class="col-lg-12">
+                            <section class="widget  widget-custom-padding">
+                                <fieldset>
+                                    <legend class="section-title"><strong data-th-text="#{personalDetail}">เอกสารประกอบที่ดิน</strong> </legend>
+                                </fieldset>
+                                <!--<header>-->
+                                    <!--&lt;!&ndash;<h6 data-th-text="#{personalDetail}">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;รายละเอียด&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</h6>&ndash;&gt;-->
+                                    <!--<div class="widget-controls">-->
+                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
+                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
+                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
+                                    <!--</div>-->
+                                <!--</header>-->
+                                <div class="widget-body">
+
+                                    <div class="form-horizontal" role="form" method="post">
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
+                                                </div>
+
+                                            </div>
+                                            <fieldset>
+                                                <legend class="section-title"><strong >ที่ตั้งแปลงที่ดิน</strong> </legend>
+                                            </fieldset>
+                                            <div class="row">
+                                                <div class="col-sm-12 text-center">
+                                                    <p>
+                                                        <a href="#" data-th-href="@{/land/{id}/copyAddress(id=*{id})}"
+                                                           data-th-text="#{copyAddress}" class="btn btn-primary"></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+
+                                                    <input data-th-replace="fragments/Address2 :: address (#{landAddress}, 'address')"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
+                                                </div>
+                                            </div>
+
+                                            <fieldset>
+                                                <legend class="section-title"><strong >ข้อมูลการถือครองที่ดิน</strong> </legend>
+                                            </fieldset>
+
+                                            <div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{posessionDocument}, 'posessionDocument', ${posessionDocument}, false)"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
+                                                </div>
+                                            </div>
+                                            <fieldset>
+                                                <legend class="section-title"><strong >การใช้ประโยชน์จากที่ดิน</strong> </legend>
+                                            </fieldset>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{characteristic}, 'characteristic', ${landTypes}, false)"/>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                        </fieldset>
+
+                                        <div class="form-actions">
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    <button type="button" class="btn btn-inverse">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </form>
+                </div>
+                <div class="tab-pane" id="tab2">
 
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Files</th>
-                            <th>Size</th>
-                            <th>Action</th>
-                        </tr>
+                    <div class="col-lg-12">
+                        <section class="widget  widget-custom-padding">
+                            <fieldset>
+                                <legend class="section-title"><strong>เอกสารประกอบที่ดิน</strong> </legend>
+                            </fieldset>
+                            <div class="widget-body">
+                                <form class="dropzone" action="#" id="my-awesome-dropzone">
+                                    <div class="dz-message">
+                                        <p class="mb-xs fw-normal">Drop files here or click to upload.</p>
+                                        <p class="text-muted">(This is just a demo dropzone. Selected files are <strong>not</strong>
+                                            actually uploaded.)</p>
+                                    </div>
+                                </form>
+                                <br/>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Files</th>
+                                        <th>Size</th>
+                                        <th>Action</th>
+                                    </tr>
 
-                        </thead>
-                        <tbody>
-                        <tr data-th-each="l : ${files}">
-                            <td data-th-text="${l.fileName}"></td>
-                            <td data-th-text="${l.readableFileSize()}"></td>
-                            <td><a class="btn btn-link"
-                                   data-th-href="@{/land/download/{key}(key=${l.key})}">Download</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                    </thead>
+                                    <tbody>
+                                    <tr data-th-each="l : ${files}">
+                                        <td data-th-text="${l.fileName}"></td>
+                                        <td data-th-text="${l.readableFileSize()}"></td>
+                                        <td><a class="btn btn-link"
+                                               data-th-href="@{/land/download/{key}(key=${l.key})}">Download</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </section>
-            <section class="widget">
-                <header>
-                    <h3>ผลการตรวจสอบคุณภาพดิน</h3>
-                </header>
-                <div class="widget-body">
-                    Body
-                </div>
-            </section>
-            <section class="widget">
-                <header>
-                    <h3>ผลการตรวจสอบคุณภาพน้ำ</h3>
-                </header>
-                <div class="widget-body">
-                    Body
-                </div>
-            </section>
-            <section class="widget">
-                <header>
-                    <h3>ผลการตรวจสอบคุณภาพอากาศ</h3>
-                </header>
-                <div class="widget-body">
-                    Body
-                </div>
-            </section>
+            </div>
         </div>
-
     </div>
+
 
 </div>
 <div data-layout-fragment="script">
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script data-th-inline="javascript">
         /*<![CDATA[*/
         var id = /*[[${memberLand.id}]]*/ 0;
