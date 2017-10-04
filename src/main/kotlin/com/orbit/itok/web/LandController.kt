@@ -20,8 +20,12 @@ class LandController {
     @ModelAttribute
     fun pageName(): String = "land"
 
+    @ModelAttribute("problems")
+    fun problems() = settingServiceImpl.problems.map { SelectField(it, it) }
+
     @ModelAttribute("soilTypes")
     fun soilTypes() = settingServiceImpl.soilTypes.map { SelectField(it, it) }
+
     @ModelAttribute("landTypes")
     fun landTypes() = settingServiceImpl.landTypes.map { SelectField(it, it) }
 

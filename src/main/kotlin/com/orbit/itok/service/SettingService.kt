@@ -13,6 +13,14 @@ interface SettingService {
 @Service
 class SettingServiceImpl : SettingService, ResourceLoaderAware {
     lateinit var loader: ResourceLoader
+    var problems: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:problems.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
     var soilTypes: List<String> = listOf()
         get() {
             if (field.isEmpty()) {
