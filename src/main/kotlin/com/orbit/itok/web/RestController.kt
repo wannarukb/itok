@@ -23,6 +23,17 @@ class RestController {
         return findAll
     }
 
+    @RequestMapping("memberSearch")
+    fun memberSearch(@RequestParam query: String, @RequestParam(required = false, defaultValue = "0") page: Int,
+                     @RequestParam(required = false, defaultValue = "50") limit: Int): MutableList<Member> {
+        val search = memberServiceImpl.search(query, page * limit, limit)
+        search.forEach {
+            it.memberLands = mutableListOf()
+            it.membership = null
+        }
+        return search
+    }
+
     @RequestMapping("member/{id}")
     fun member(@PathVariable id: Long): Member? {
         val findOne = memberServiceImpl.findOne(id)
