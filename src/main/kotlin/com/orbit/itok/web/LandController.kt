@@ -3,9 +3,7 @@ package com.orbit.itok.web
 import com.google.appengine.api.blobstore.BlobKey
 import com.google.appengine.api.blobstore.BlobstoreService
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory
-import com.orbit.itok.service.MemberLand
-import com.orbit.itok.service.MemberLandService
-import com.orbit.itok.service.MemberService
+import com.orbit.itok.service.*
 import com.orbit.itok.util.UploadUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -22,6 +20,21 @@ class LandController {
     @ModelAttribute
     fun pageName(): String = "land"
 
+    @ModelAttribute("problems")
+    fun problems() = settingServiceImpl.problems.map { SelectField(it, it) }
+
+    @ModelAttribute("soilTypes")
+    fun soilTypes() = settingServiceImpl.soilTypes.map { SelectField(it, it) }
+
+    @ModelAttribute("landTypes")
+    fun landTypes() = settingServiceImpl.landTypes.map { SelectField(it, it) }
+
+    @ModelAttribute("basins")
+    fun basins() = settingServiceImpl.basins.map { SelectField(it, it) }
+
+    @ModelAttribute("posessionDocument")
+    fun posessionDocuments() = settingServiceImpl.posessionDocuments.map { SelectField(it, it) }
+
     @GetMapping("{id}")
     fun fieldSetup(model: Model, @PathVariable id: Long): String {
         val memberLand = memberLandServiceImpl.findOne(id)
@@ -30,6 +43,19 @@ class LandController {
             model.addAttribute("files", memberLand.files)
         }
         return "land"
+    }
+
+    @GetMapping("{id}/copyAddress")
+    fun copyAddresss(@PathVariable id: Long): String {
+        val findByLandId = memberServiceImpl.findByLandId(id)
+        val findOne = memberLandServiceImpl.findOne(id)
+        if (findOne != null && findByLandId != null) {
+            findOne.address = findByLandId.address
+            memberLandServiceImpl.update(id, findOne)
+        }
+        return "redirect:/land/$id"
+
+
     }
 
     @GetMapping("{id}/action")
@@ -87,4 +113,5 @@ class LandController {
     @Autowired lateinit var memberLandServiceImpl: MemberLandService
     @Autowired lateinit var memberServiceImpl: MemberService
     @Autowired lateinit var uploadUtil: UploadUtil
+    @Autowired lateinit var settingServiceImpl: SettingServiceImpl
 }

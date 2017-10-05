@@ -13,6 +13,54 @@ interface SettingService {
 @Service
 class SettingServiceImpl : SettingService, ResourceLoaderAware {
     lateinit var loader: ResourceLoader
+    var problems: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:problems.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
+    var soilTypes: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:soilType.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
+    var landTypes: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:landType.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
+    var educationDegrees: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:educationDegree.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
+    var posessionDocuments: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:posessionDocument.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
+    var basins: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val ifle = loader.getResource("classpath:basin.txt").file
+                field = ifle.readLines()
+            }
+            return field
+        }
     var memberTypes: List<String> = listOf()
         get() {
             if (field.isEmpty()) {
@@ -42,12 +90,19 @@ class SettingServiceImpl : SettingService, ResourceLoaderAware {
         }
 
 
-
     override fun setResourceLoader(p0: ResourceLoader) {
         this.loader = p0
     }
 
     fun getAppName(): String = "ITOK"
+    val specialties: List<String> = listOf()
+        get() {
+            if (field.isEmpty()) {
+                val file = loader.getResource("classpath:specialties.txt").file
+                field = file.readLines()
+            }
+            return field
+        }
 
 
 }

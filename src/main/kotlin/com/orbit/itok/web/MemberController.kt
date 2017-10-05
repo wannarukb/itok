@@ -60,12 +60,14 @@ class MemberController {
         return status.map { SelectField(it, it) }
     }
 
-    @ModelAttribute("educationDegree")
+    @ModelAttribute("educationDegrees")
     fun educationDegree(): List<SelectField> {
-        val status = listOf("ปริญญาเอก", "ปริญญาโท", "ปริญญาตรี", "ปวส./อนุปริญญา", "ปวช.",
-                "มัธยมปลาย", "มัธยมต้น", "ประถมศึกษา", "ไม่ได้ศึกษา")
+        val status = settingServiceImpl.educationDegrees
         return status.map { SelectField(it, it) }
     }
+
+    @ModelAttribute("specialties")
+    fun specialties() = settingServiceImpl.specialties.map { SelectField(it, it) }
 
     @ModelAttribute("yearJoin")
     fun yearJoin(): List<SelectField> {
