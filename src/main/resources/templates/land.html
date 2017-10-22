@@ -5,204 +5,1105 @@
         <meta charset="UTF-8">
         <title>Title</title>
 
+
+        <link href="/font-style.css" rel="stylesheet">
     </head>
 <body>
 <div data-layout-fragment="main">
 
-    <ol class="breadcrumb font-supermarket">
-        <li data-th-text="#{home}">Home</li>
-        <li class="active" data-th-text="#{newLand}">Form Elements</li>
-    </ol>
-    <h1 class="page-title font-supermarket"><span data-th-text="#{new}">Form</span> - <span class="fw-semi-bold"
-                                                                           data-th-text="#{land}">Inputs &amp; Controls</span>
-    </h1>
+    <!--<ol class="breadcrumb font-supermarket">-->
+        <!--<li data-th-text="#{home}">Home</li>-->
+        <!--<li class="active" data-th-text="#{newLand}">Form Elements</li>-->
+    <!--</ol>-->
+    <form method="post" id="theform" data-th-object="${memberLand}">
+    <section class="widget" style="background: none; margin-bottom: 0.5rem; padding: 0px;">
+        <div class="widget-body clearfix">
+            <div class="form-horizontal" role="form" method="post">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1 class="page-title font-supermarket">
+                                <span data-th-text="#{new}">Form</span> -
+                                <span class="fw-semi-bold" data-th-text="#{land}">Inputs &amp; Controls</span>
+                            </h1>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="button" class="btn btn-inverse">Cancel</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="padding-all-10-5">
+                <span class="font-big font-supermarket">
+                    <strong>รายงานสรุปผล</strong>
+                </span>
+            </div>
+            <section class="widget widget-custom-margin-bottom">
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center widget-icon-percent">
+                            <img src="/image/icon/water-icon.png" width="100%"/>
+                        </div>
+                        <div class="col-md-9">
+                            <span>คุณภาพน้ำ</span>
+
+                            <div class="percent-quality">
+                                <div class="percent-quality-inside" style="width: 80%; background: #4BCA81;">
+                                </div>
+                            </div>
+                            <span class="percent-quality-desc">ดีมาก (80%)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="widget widget-custom-margin-bottom">
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center widget-icon-percent">
+                            <img src="/image/icon/soil-icon.png" width="100%"/>
+                        </div>
+                        <div class="col-md-9">
+                            <span>คุณภาพดิน</span>
+
+                            <div class="percent-quality">
+                                <div class="percent-quality-inside" style="width: 20%; background: #EC3D37;">
+                                </div>
+                            </div>
+                            <span class="percent-quality-desc">ควรปรับปรุง (20%)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="widget widget-custom-margin-bottom">
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center widget-icon-percent">
+                            <img src="/image/icon/air-icon.png" width="100%"/>
+                        </div>
+                        <div class="col-md-9">
+                            <span>คุณภาพอากาศ</span>
+
+                            <div class="percent-quality">
+                                <div class="percent-quality-inside" style="width: 50%; background: #FFDE79;">
+                                </div>
+                            </div>
+                            <span class="percent-quality-desc">ปานกลาง (50%)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="padding-all-10-5">
+                <span class="font-big font-supermarket">
+                    <strong>เอกสารประกอบที่ดิน</strong>
+                </span>
+            </div>
+            <section class="widget widget-custom-margin-bottom">
+                <div class="widget-body">
+                    <div class="form-group">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new">Select file</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input id="fileupload1" type="file">
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="datetimepicker1">วันที่จัดเก็บข้อมูล</label>
+                        <div id="datetimepicker1" class="input-group">
+                            <input id="datepicker2i" type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="catagory">ประเภทข้อมูลที่จัดเก็บ</label>
+                        <select data-width="auto"
+                                data-minimum-results-for-search="10"
+                                tabindex="-1"
+                                class="select2 form-control" id="catagory">
+                            <option value="value01">สำเนาเอกสารสิทธิ์</option>
+                            <option value="value02">ภาพถ่ายแปลงที่ดิน</option>
+                            <option value="value03">ภาพถ่ายทางอากา แปลงที่ดิน</option>
+                            <option value="value04">ภาพร่างการออกแบบการจัดการพืนที่</option>
+                            <option value="value05">ภาพถ่ายการออกแบบการจัดการพืนที่</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="camera">จุดที่ตั้งกล้อง</label>
+                        <select data-width="auto"
+                                data-minimum-results-for-search="10"
+                                tabindex="-1"
+                                class="select2 form-control" id="camera">
+                            <option value="value01">1</option>
+                            <option value="value02">2</option>
+                            <option value="value03">3</option>
+                            <option value="value04">4</option>
+                            <option value="value05">5</option>
+                            <option value="value06">6</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="default-textarea">คำอธิบาย</label>
+                        <textarea rows="4" class="form-control" id="default-textarea"></textarea>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Files</th>
+                            <th>Size</th>
+                            <th>Action</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr data-th-each="l : ${files}">
+                            <td data-th-text="${l.fileName}"></td>
+                            <td data-th-text="${l.readableFileSize()}"></td>
+                            <td class="text-center">
+                                <a class="btn-action" data-th-href="@{/land/download/{key}(key=${l.key})}">
+                                    <i class="fa fa-download" aria-hidden="true"></i>
+                                </a>
+                                <a class="btn-action" >
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-9">
             <div class="clearfix">
                 <ul id="tabs1" class="nav nav-tabs pull-left">
                     <li class="active">
                         <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลแปลงที่ดิน</a>
                     </li>
-                    <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">เอกสารประกอบที่ดิน</a>
+                    <li class="">
+                        <a data-target="#tab2" data-toggle="tab" aria-expanded="false">การจัดการพื้นที่โคกหนองนา</a>
+                    </li>
+                    <li class="">
+                        <a data-target="#tab3" data-toggle="tab" aria-expanded="false">รายการการปลูกพืช/เลี้ยงสัตว์</a>
                     </li>
                 </ul>
             </div>
             <div id="tabs1c" class="tab-content mb-lg">
                 <div class="tab-pane clearfix active" id="tab1">
-                    <form method="post" id="theform" data-th-object="${memberLand}">
-                        <div class="col-lg-12">
-                            <section class="widget  widget-custom-padding">
-                                <fieldset>
-                                    <legend class="section-title"><strong data-th-text="#{personalDetail}">เอกสารประกอบที่ดิน</strong> </legend>
-                                </fieldset>
-                                <!--<header>-->
-                                    <!--&lt;!&ndash;<h6 data-th-text="#{personalDetail}">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;รายละเอียด&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</h6>&ndash;&gt;-->
-                                    <!--<div class="widget-controls">-->
-                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                    <!--</div>-->
-                                <!--</header>-->
-                                <div class="widget-body">
-
-                                    <div class="form-horizontal" role="form" method="post">
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
-                                                </div>
-
-                                            </div>
-                                            <fieldset>
-                                                <legend class="section-title"><strong >ที่ตั้งแปลงที่ดิน</strong> </legend>
-                                            </fieldset>
-                                            <div class="row">
-                                                <div class="col-sm-12 text-center">
-                                                    <p>
-                                                        <a href="#" data-th-href="@{/land/{id}/copyAddress(id=*{id})}"
-                                                           data-th-text="#{copyAddress}" class="btn btn-primary"></a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-
-                                                    <input data-th-replace="fragments/Address2 :: address (#{landAddress}, 'address')"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
-                                                </div>
-                                            </div>
-
-                                            <fieldset>
-                                                <legend class="section-title"><strong >ข้อมูลการถือครองที่ดิน</strong> </legend>
-                                            </fieldset>
-
-                                            <div class="row">
-
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/SelectField :: select (#{posessionDocument}, 'posessionDocument', ${posessionDocument}, false)"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
-                                                </div>
-                                            </div>
-                                            <fieldset>
-                                                <legend class="section-title"><strong >การใช้ประโยชน์จากที่ดิน</strong> </legend>
-                                            </fieldset>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/SelectField :: select (#{characteristic}, 'characteristic', ${landTypes}, false)"/>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
-                                                </div>
-
-                                            </div>
-
-
-
-
-                                        </fieldset>
-
-                                        <div class="form-actions">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                                    <button type="button" class="btn btn-inverse">Cancel</button>
-                                                </div>
-                                            </div>
+                    <div class="col-lg-12">
+                        <section class="widget  widget-custom-padding">
+                            <div class="widget-body">
+                                <div class="form-horizontal" role="form" method="post">
+                                    <fieldset>
+                                        <legend class="section-title"><strong >ข้อมูลเอกสารสิทธิ์ที่ดิน</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{name}, 'name', true)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/SelectField :: select (#{posessionDocument}, 'posessionDocument', ${posessionDocument}, false)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>
+                                        </div>
+                                    </div>
+                                    <fieldset>
+                                        <legend class="section-title"><strong >ที่ตั้งแปลงที่ดิน</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <p>
+                                                <a href="#" data-th-href="@{/land/{id}/copyAddress(id=*{id})}"
+                                                       data-th-text="#{copyAddress}" class="btn btn-primary"></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <input data-th-replace="fragments/Address2 :: address (#{landAddress}, 'address')"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>
+                                        </div>
+                                    </div>
+                                    <fieldset>
+                                        <legend class="section-title"><strong >การใช้ประโยชน์จากที่ดิน</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/SelectField :: select (#{characteristic}, 'characteristic', ${landTypes}, false)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane" id="tab2">
-
-                    <div class="col-lg-12">
-                        <section class="widget  widget-custom-padding">
-                            <fieldset>
-                                <legend class="section-title"><strong>เอกสารประกอบที่ดิน</strong> </legend>
-                            </fieldset>
-                            <div class="widget-body">
-                                <form class="dropzone" action="#" id="my-awesome-dropzone">
-                                    <div class="dz-message">
-                                        <p class="mb-xs fw-normal">Drop files here or click to upload.</p>
-                                        <p class="text-muted">(This is just a demo dropzone. Selected files are <strong>not</strong>
-                                            actually uploaded.)</p>
-                                    </div>
-                                </form>
-                                <br/>
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Files</th>
-                                        <th>Size</th>
-                                        <th>Action</th>
-                                    </tr>
-
-                                    </thead>
-                                    <tbody>
-                                    <tr data-th-each="l : ${files}">
-                                        <td data-th-text="${l.fileName}"></td>
-                                        <td data-th-text="${l.readableFileSize()}"></td>
-                                        <td><a class="btn btn-link"
-                                               data-th-href="@{/land/download/{key}(key=${l.key})}">Download</a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </section>
                     </div>
                 </div>
+                <div class="tab-pane" id="tab2">
+                    <div class="col-lg-12">
+                        <section class="widget  widget-custom-padding">
+                            <div class="widget-body">
+                                <div class="form-horizontal" role="form" method="post">
+                                    <fieldset>
+                                        <legend class="section-title"><strong >ข้อมูลทั่วไป</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="col-md-4 form-control-label text-md-right">
+                                                <span>ประเภทข้อมูล</span> <span class="red">*</span></label>
+                                            <div class="col-md-7">
+                                                <select data-width="auto"
+                                                        data-minimum-results-for-search="10"
+                                                        tabindex="-1"
+                                                        class="select2 form-control">
+                                                    <option value="value01">การออกแบบพืนที่</option>
+                                                    <option value="value02">การจัดการในปัจจุบัน</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="col-md-4 form-control-label text-md-right">
+                                                ขนาดพื้นที่โคกหนองนา</label>
+                                            <div class="col-md-7">
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>การคำนวณปริมาณน้ำฝนที่ตกในพื้นที่ต่อปี</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="box-icon">
+                                                <div class="col-xs-2 font-icon-box">
+                                                    <span class=" icon-fields"></span>
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <span class="font-medium">ขนาดพื้นท่ีโคกหนองนา (ตร.ม.)</span><br/>
+                                                    <span class="font-bold float-right font-big-xs">1000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="box-icon">
+                                                <div class="col-xs-2 font-icon-box">
+                                                    <span class="icon-rain"></span>
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <span class="font-medium">ปริมาณน้ำฝนเฉลี่ยต่อปี (ลบ.ม.)</span><br/>
+                                                    <span class="font-bold float-right font-big-xs">1000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="box-icon">
+                                                <div class="col-xs-2 font-icon-box">
+                                                    <span class="icon-rain"></span>
+                                                </div>
+                                                <div class="col-xs-10">
+                                                    <span class="font-medium">ปริมาณน้ำฝนท่ีตกในพื้นท่ีต่อปี (ลบ.ม.)</span><br/>
+                                                    <span class="font-bold float-right font-big-xs">1000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>ขนาดพื้นที่และปริมาณการใช้น้ำ/การระเหยของน้ำในพื้นที่ต่อปี</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-12 text-right">
+                                            <p>
+                                                <a href="#"  class="btn btn-info"> <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มพื้นที่หนอง</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ขนาดพื้นท่ีหนอง (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">กว้าง (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ยาว (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ลึก (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ขนาดพื้นท่ีนา (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">กว้าง (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ยาว (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">สูง (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ขนาดพื้นท่ีคลองไส้ไก่ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">กว้าง (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ยาว (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ลึก (ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ขนาดพื้นท่ีโคก (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number"  />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณการเก็บนาในพื้นท่ีรวมต่อปี (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ขนาดพื้นที่รวม (ตร.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number"  disabled/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำระเหยในพี้นท่ีรวม (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>การคำนวณปริมาณการใช้น้ำในพื้นที่ต่อปี </strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนสมาชิกในครอบครัว</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">จำนวนผู้เข้าอบรมต่อครั้ง(คน)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">จำนวนวัน</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">จำนวนครั้ง</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนวัวที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนควายที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนแพะที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนแกะที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนไก่ที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนเป็ดที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">จำนวนสัตว์อื่นๆ ที่เลี้ยง (ตัว)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ปริมาณน้ำที่ใช้ (ลบ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">รวมปริมาณการใช้น้ำในพื้นท่ีต่อปี</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>การคำนวณผลผลิตพืชในพื้นที่ต่อปี</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ผลผลิตข้าวในพื้นที่ (ก.ก./ปี)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ไร่</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">งาน</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">วา</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ผลผลิตพื้นไร่ในพื้นที่ (ก.ก./ปี)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">ไร่</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">งาน</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="form-control-label">วา</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">พื้นที่ปลูกผักต่อปี (ตร.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number"  />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-control-label">ผลผลิตในพื้นที่ต่อปี</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ผลผลิตไม้ผลในพื้นที่ (ก.ก./ปี)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">จำนวนไม้ผลท่ีปลูกในพื้นที่ (ต้น)</label>
+                                            <div>
+                                                <input class="form-control" type="number"  />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ผลผลิตเฉลี่ยต่อต้น (ก.ก./ปี)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ผลผลิตไม้ยืนต้นในพื้นที่ (ก.ก./ปี)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">จำนวนไม้ยืนต้นท่ีปลูกในพื้นที่ (ต้น)</label>
+                                            <div>
+                                                <input class="form-control" type="number"  />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ขนาดเส้นรอบวง (ซ.ม.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>การคำนวณความพอเพียงของการผลิตข้าวของครอบครัว</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">จำนวนสมาชิกในครอบครัว (คน)</label>
+                                            <div>
+                                                <input class="form-control" type="number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ความต้องการข้าวสาร (ก.ก.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">ความเพียงพอของการผลิตข้าว (ก.ก.)</label>
+                                            <div>
+                                                <input class="form-control" type="number" disabled/>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>การเชื่อมโยงกับแหล่งน้ำ</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">พื้นที่อยู่ในบริเวณ</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox1" type="checkbox">
+                                                <label for="checkbox1">
+                                                    แม่น้ำ/ลำคลอง/ห้วย
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox2" type="checkbox" checked>
+                                                <label for="checkbox2">
+                                                    อ่างเก็บน้ำ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox3" type="checkbox" >
+                                                <label for="checkbox3">
+                                                    ฝาย
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox4" type="checkbox" >
+                                                <label for="checkbox4">
+                                                    คลองชลประทาน
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox5" type="checkbox">
+                                                <label for="checkbox5">
+                                                    หนอง/บึง
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox6" type="checkbox" checked>
+                                                <label for="checkbox6">
+                                                    บ่อบาดาล
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox7" type="checkbox" >
+                                                <label for="checkbox7">
+                                                    บ่อน้ำผิวดิน
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox8" type="checkbox" >
+                                                <label for="checkbox8">
+                                                    เขื่อน
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <fieldset>
+                                        <legend class="section-title"><strong>ทิศ</strong> </legend>
+                                    </fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">
+                                                การขึ้นของดวงอาทิตย์
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox01" type="checkbox" >
+                                                <label for="checkbox01">
+                                                    เหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox02" type="checkbox" >
+                                                <label for="checkbox02">ตะวันออก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox03" type="checkbox" >
+                                                <label for="checkbox03">
+                                                        ตะวันออกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox04" type="checkbox" >
+                                                <label for="checkbox04">ตะวันออกเฉียงใต้
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox05" type="checkbox" >
+                                                <label for="checkbox05">
+                                                    ใต้
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox06" type="checkbox" >
+                                                <label for="checkbox06">
+                                                    ตะวันตก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox07" type="checkbox" >
+                                                <label for="checkbox07">
+                                                    ตะวันตกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox08" type="checkbox" >
+                                                <label for="checkbox08">
+                                                    ตะวันตกเฉียงใต้
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">
+                                               การพัดของลม
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox01" type="checkbox" >
+                                                <label for="checkbox01">
+                                                    เหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox02" type="checkbox" >
+                                                <label for="checkbox02">ตะวันออก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox03" type="checkbox" >
+                                                <label for="checkbox03">
+                                                    ตะวันออกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox04" type="checkbox" >
+                                                <label for="checkbox04">ตะวันออกเฉียงใต้
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox05" type="checkbox" >
+                                                <label for="checkbox05">
+                                                    ใต้
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox06" type="checkbox" >
+                                                <label for="checkbox06">
+                                                    ตะวันตก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox07" type="checkbox" >
+                                                <label for="checkbox07">
+                                                    ตะวันตกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox08" type="checkbox" >
+                                                <label for="checkbox08">
+                                                    ตะวันตกเฉียงใต้
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-control-label">
+                                                การไหลของน้ำ
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox01" type="checkbox" >
+                                                <label for="checkbox01">
+                                                    เหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox02" type="checkbox" >
+                                                <label for="checkbox02">ตะวันออก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox03" type="checkbox" >
+                                                <label for="checkbox03">
+                                                    ตะวันออกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox04" type="checkbox" >
+                                                <label for="checkbox04">ตะวันออกเฉียงใต้
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox05" type="checkbox" >
+                                                <label for="checkbox05">
+                                                    ใต้
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox06" type="checkbox" >
+                                                <label for="checkbox06">
+                                                    ตะวันตก
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox07" type="checkbox" >
+                                                <label for="checkbox07">
+                                                    ตะวันตกเฉียงเหนือ
+                                                </label>
+                                            </div>
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="checkbox08" type="checkbox" >
+                                                <label for="checkbox08">
+                                                    ตะวันตกเฉียงใต้
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <section class="widget  widget-custom-padding">
+                        <div class="widget-body">
+                            <div class="form-horizontal" role="form" method="post">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="productCatagory" class="form-control-label">ประเภท
+                                            <span class="red">*</span></label>
+                                        <div>
+                                            <select data-width="auto"
+                                                    data-minimum-results-for-search="10"
+                                                    tabindex="-1"
+                                                    class="select2 form-control" id="productCatagory">
+                                                <option value="value01">การปลูกพืช</option>
+                                                <option value="value02">การเลี้ยงสัตว์</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="productName" class="form-control-label ">ชื่อ <span class="red">*</span></label>
+                                        <div id="productName">
+                                            <input class="form-control" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="Description" class="form-control-label">คำอธิบาย <span class="red">*</span></label>
+                                        <div id="Description">
+                                            <input class="form-control" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions" style="background: none;">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-inverse">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <fieldset>
+                                    <legend class="section-title"><strong >ข้อมูลการปลูกพืช/สัตว์เลี้ยง</strong> </legend>
+                                </fieldset>
+                            </div>
+                            <div class="row">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5%"></th>
+                                            <th style="width: 15%">ประเภท</th>
+                                            <th style="width: 30%">ชื่อ</th>
+                                            <th>คำอธิบาย</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <a class="btn-action" >
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span>การปลูกพืช</span>
+                                            </td>
+                                            <td>
+                                                <span>กะเพรา</span>
+                                            </td>
+                                            <td>
+                                                <span>3 แปลง</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <a class="btn-action" >
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span>การเลี้ยงสัตว์</span>
+                                            </td>
+                                            <td>
+                                                <span>ปลาทับทิม</span>
+                                            </td>
+                                            <td>
+                                                <span>เพาะพันธุ์ 30 ตัว</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
             </div>
         </div>
     </div>
 
-
+    </form>
 </div>
 <div data-layout-fragment="script">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -212,6 +1113,7 @@
         /*]]>*/
     </script>
     <script src="/js/land.js"></script>
+
 </div>
 </body>
 </html>
