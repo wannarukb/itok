@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/font/icomoon.eot?bdji8d');
+  src:  url('/font/icomoon.eot?bdji8d#iefix') format('embedded-opentype'),
+    url('/font/icomoon.ttf?bdji8d') format('truetype'),
+    url('/font/icomoon.woff?bdji8d') format('woff'),
+    url('/font/icomoon.svg?bdji8d#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-corn-1:before {
+  content: "\e90d";
+}
+.icon-tomato:before {
+  content: "\e90e";
+}
+.icon-tree:before {
+  content: "\e90f";
+}
+.icon-ecology:before {
+  content: "\e910";
+}
+.icon-leaf-2:before {
+  content: "\e911";
+}
+.icon-plug-1:before {
+  content: "\e912";
+}
+.icon-recycle:before {
+  content: "\e913";
+}
+.icon-water:before {
+  content: "\e914";
+}
+.icon-cloud-and-rain:before {
+  content: "\e915";
+}
+.icon-rain:before {
+  content: "\e916";
+}
+.icon-shovel:before {
+  content: "\e917";
+}
+.icon-scarecrow:before {
+  content: "\e918";
+}
+.icon-sunflower:before {
+  content: "\e919";
+}
+.icon-fields:before {
+  content: "\e900";
+}
+.icon-watering-can:before {
+  content: "\e901";
+}
+.icon-tractor:before {
+  content: "\e902";
+}
+.icon-barn2:before {
+  content: "\e903";
+}
+.icon-rake:before {
+  content: "\e904";
+}
+.icon-apples:before {
+  content: "\e905";
+}
+.icon-wheat-1:before {
+  content: "\e906";
+}
+.icon-corn3:before {
+  content: "\e907";
+}
+.icon-chicken:before {
+  content: "\e908";
+}
+.icon-germination:before {
+  content: "\e909";
+}
+.icon-carrot2:before {
+  content: "\e90a";
+}
+.icon-windmill:before {
+  content: "\e90b";
+}
+.icon-wheat:before {
+  content: "\e90c";
+}
+.icon-drop-silhouette:before {
+  content: "\e9ee";
+}
+.icon-bio:before {
+  content: "\e9ef";
+}
+.icon-co2-1:before {
+  content: "\e9f0";
+}
+.icon-co2:before {
+  content: "\e9f1";
+}
+.icon-eco:before {
+  content: "\e9f2";
+}
+.icon-flower:before {
+  content: "\e9f3";
+}
+.icon-global-warming:before {
+  content: "\e9f4";
+}
+.icon-leaves-1:before {
+  content: "\e9f5";
+}
+.icon-light-bulb:before {
+  content: "\e9f6";
+}
+.icon-magnifying-glass:before {
+  content: "\e9f7";
+}
+.icon-water-1:before {
+  content: "\e9f8";
+}
+.icon-windmill3:before {
+  content: "\e9f9";
+}
