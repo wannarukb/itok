@@ -9,8 +9,8 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-    <link href="../static/custom.css" rel="stylesheet">
-    <link href="../static/font-style.css" rel="stylesheet"/>
+    <link href="../static/custom.css" rel="stylesheet" data-th-href="@{/custom.css}">
+    <link href="../static/font-style.css" rel="stylesheet" data-th-href="@{/font-style.css}"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
 
 
@@ -778,7 +778,8 @@
                     <div class="widget-body">
                         <div class="row">
                             <div class="col-md-1 text-center widget-icon-percent">
-                                <img src="../static/image/exampleField.png" width="70"/>
+                                <img data-th-src="@{/image/exampleField.png}" src="../static/image/exampleField.png"
+                                     width="70"/>
                             </div>
                             <div class="col-md-11">
                                 <div class="row">
@@ -1215,11 +1216,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h6>รูปภาพที่ตั้งที่ดิน</h6>
-                                <img src="../static/image/sampleImage.png" class="img-responsive"/>
+                                <img data-th-src="@{/image/sampleImage.png}" src="../static/image/sampleImage.png"
+                                     class="img-responsive"/>
                             </div>
                             <div class="col-md-6">
                                 <h6>รูปภาพแสดงเส้นขอบเขตที่ดิน</h6>
-                                <img src="../static/image/sampleImage.png" class="img-responsive"/>
+                                <img data-th-src="@{/image/sampleImage.png}" src="../static/image/sampleImage.png"
+                                     class="img-responsive"/>
                             </div>
                         </div>
                     </div>
@@ -1763,101 +1766,101 @@
     <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
     <!-- page specific js -->
 
-        <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
-        <script>
-            $(function () {
-                /* Inspired by Lee Byron's test data generator. */
-                function _stream_layers(n, m, o) {
-                    if (arguments.length < 3) o = 0;
+    <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
+    <script>
+        $(function () {
+            /* Inspired by Lee Byron's test data generator. */
+            function _stream_layers(n, m, o) {
+                if (arguments.length < 3) o = 0;
 
-                    function bump(a) {
-                        var x = 1 / (.1 + Math.random()),
-                            y = 2 * Math.random() - .5,
-                            z = 10 / (.1 + Math.random());
-                        for (var i = 0; i < m; i++) {
-                            var w = (i / m - y) * z;
-                            a[i] += x * Math.exp(-w * w);
-                        }
+                function bump(a) {
+                    var x = 1 / (.1 + Math.random()),
+                        y = 2 * Math.random() - .5,
+                        z = 10 / (.1 + Math.random());
+                    for (var i = 0; i < m; i++) {
+                        var w = (i / m - y) * z;
+                        a[i] += x * Math.exp(-w * w);
                     }
+                }
 
-                    return d3.range(n).map(function () {
-                        var a = [], i;
-                        for (i = 0; i < m; i++) a[i] = o + o * Math.random();
-                        for (i = 0; i < 5; i++) bump(a);
-                        return a.map(function (d, i) {
-                            return {x: i, y: Math.max(0, d)};
+                return d3.range(n).map(function () {
+                    var a = [], i;
+                    for (i = 0; i < m; i++) a[i] = o + o * Math.random();
+                    for (i = 0; i < 5; i++) bump(a);
+                    return a.map(function (d, i) {
+                        return {x: i, y: Math.max(0, d)};
+                    });
+                });
+            }
+
+            function testData(stream_names, pointsCount) {
+                var now = new Date().getTime(),
+                    day = 1000 * 60 * 60 * 24, //milliseconds
+                    daysAgoCount = 60,
+                    daysAgo = daysAgoCount * day,
+                    daysAgoDate = now - daysAgo,
+                    pointsCount = pointsCount || 45, //less for better performance
+                    daysPerPoint = daysAgoCount / pointsCount;
+                return _stream_layers(stream_names.length, pointsCount, .1).map(function (data, i) {
+                    return {
+                        key: stream_names[i],
+                        values: data.map(function (d, j) {
+                            return {
+                                x: daysAgoDate + d.x * day * daysPerPoint,
+                                y: Math.floor(d.y * 100) //just a coefficient,
+                            }
+                        })
+                    };
+                });
+            }
+
+            function initNvd32() {
+
+                nv.addGraph(function () {
+                    var chart = nv.models.multiBarChart()
+                        .margin({left: 28, bottom: 30, right: 0})
+                        .color(['#1589ee', '#ddd']);
+
+                    chart.xAxis
+                        .showMaxMin(false)
+                        .tickFormat(function (d) {
+                            return d3.time.format('%b %d')(new Date(d))
                         });
-                    });
-                }
 
-                function testData(stream_names, pointsCount) {
-                    var now = new Date().getTime(),
-                        day = 1000 * 60 * 60 * 24, //milliseconds
-                        daysAgoCount = 60,
-                        daysAgo = daysAgoCount * day,
-                        daysAgoDate = now - daysAgo,
-                        pointsCount = pointsCount || 45, //less for better performance
-                        daysPerPoint = daysAgoCount / pointsCount;
-                    return _stream_layers(stream_names.length, pointsCount, .1).map(function (data, i) {
-                        return {
-                            key: stream_names[i],
-                            values: data.map(function (d, j) {
-                                return {
-                                    x: daysAgoDate + d.x * day * daysPerPoint,
-                                    y: Math.floor(d.y * 100) //just a coefficient,
-                                }
-                            })
-                        };
-                    });
-                }
+                    chart.yAxis
+                        .showMaxMin(false)
+                        .tickFormat(d3.format(',f'));
 
-                function initNvd32() {
-
-                    nv.addGraph(function () {
-                        var chart = nv.models.multiBarChart()
-                            .margin({left: 28, bottom: 30, right: 0})
-                            .color(['#1589ee', '#ddd']);
-
-                        chart.xAxis
-                            .showMaxMin(false)
-                            .tickFormat(function (d) {
-                                return d3.time.format('%b %d')(new Date(d))
-                            });
-
-                        chart.yAxis
-                            .showMaxMin(false)
-                            .tickFormat(d3.format(',f'));
-
-                        d3.select('#nvd32 svg')
-                            .style('height', '300px')
-                            .datum(testData(['2559', '2560'], 10).map(function (el, i) {
-                                el.area = true;
-                                return el;
-                            }))
-                            .transition().duration(500)
-                            .call(chart)
-                        ;
+                    d3.select('#nvd32 svg')
+                        .style('height', '300px')
+                        .datum(testData(['2559', '2560'], 10).map(function (el, i) {
+                            el.area = true;
+                            return el;
+                        }))
+                        .transition().duration(500)
+                        .call(chart)
+                    ;
 
 
-                        SingApp.onResize(chart.update);
+                    SingApp.onResize(chart.update);
 
-                        return chart;
-                    });
-                }
+                    return chart;
+                });
+            }
 
-                function pageLoad() {
-                    $('.widget').widgster();
-                    $('.sparkline').each(function () {
-                        $(this).sparkline('html', $(this).data());
-                    });
+            function pageLoad() {
+                $('.widget').widgster();
+                $('.sparkline').each(function () {
+                    $(this).sparkline('html', $(this).data());
+                });
 
-                    initNvd32();
-                }
+                initNvd32();
+            }
 
-                pageLoad();
-                SingApp.onPageLoad(pageLoad);
-            });
-        </script>
+            pageLoad();
+            SingApp.onPageLoad(pageLoad);
+        });
+    </script>
 </div>
 </body>
 </html>
