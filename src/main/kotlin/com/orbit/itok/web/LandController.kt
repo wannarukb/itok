@@ -42,7 +42,7 @@ class LandController {
         if (memberLand != null) {
             model.addAttribute("files", memberLand.files)
         }
-        return "land"
+        return "layout-land"
     }
 
     @GetMapping("{id}/copyAddress")
@@ -87,7 +87,7 @@ class LandController {
     @PostMapping("{id}")
     fun fieldSetupPost(@PathVariable id: Long, @Valid memberLand: MemberLand, bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
-            return "land"
+            return "layout-land"
         }
         memberLandServiceImpl.update(id, memberLand)
         return "redirect:/land/$id/2"
