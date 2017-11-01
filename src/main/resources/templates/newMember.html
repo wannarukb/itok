@@ -8,8 +8,8 @@
 <body>
 <div data-layout-fragment="main">
     <!--<ol class="breadcrumb font-supermarket">-->
-        <!--<li data-th-text="#{home}">Home</li>-->
-        <!--<li class="active" data-th-text="#{newMember}">Form Elements</li>-->
+    <!--<li data-th-text="#{home}">Home</li>-->
+    <!--<li class="active" data-th-text="#{newMember}">Form Elements</li>-->
     <!--</ol>-->
 
     <form method="post" data-th-object="${member}" enctype="multipart/form-data" id="theform">
@@ -56,208 +56,208 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                 <div class="col-md-12">
-                    <div class="clearfix">
-                        <ul id="tabs1" class="nav nav-tabs pull-left">
-                            <li class="active">
-                                <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลส่วนบุคคล</a>
-                            </li>
-                            <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">รายละเอียดการเป็นสมาชิก</a>
-                            </li>
-                            <li class=""><a data-target="#tab3" data-toggle="tab" aria-expanded="false">ที่ดิน</a></li>
-                        </ul>
-                    </div>
-                    <div id="tabs1c" class="tab-content mb-lg">
-                        <div class="tab-pane clearfix active" id="tab1">
-                            <div class="col-lg-12">
-                                <section class="widget widget-custom-padding">
-                                    <!--<header>-->
-                                    <!--<h6 data-th-text="#{personalDetail}">-->
-                                    <!--รายละเอียด-->
-                                    <!--</h6>-->
-                                    <!--<div class="widget-controls">-->
-                                    <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                    <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                    <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                    <!--</div>-->
-                                    <!--</header>-->
-                                    <div class="widget-body">
-                                        <div class="form-horizontal" role="form" method="post">
-                                            <fieldset>
-                                                <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
-                                                    <span data-th-text="#{personalDetail}"></span>
-                                                </legend><br/>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <!--<input data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>-->
-                                                        <input data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
-                                                        <input data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
-                                                        <input data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <!--<input data-th-if="*{id} != null"-->
-                                                               <!--data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>-->
-                                                        <input data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
-                                                        <input data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
-                                                        <input data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{educationDegrees}, 'educationDegree', ${educationDegrees}, false)"/>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
-                                                    <span >ข้อมูลการติดต่อ</span>
-                                                </legend>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/TextField :: input (#{mobile}, 'mobile', true)"/>
-                                                        <input data-th-replace="fragments/TextField :: input (#{email}, 'email', false)"/>
-
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/TextField :: input (#{facebook}, 'facebook', false)"/>
-                                                        <input data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
-                                                    <span>ข้อมูลที่อยู่อาศัย</span>
-                                                </legend>
-                                                <br/>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <input data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
-                                                    </div>
-                                                </div>
-
-
-                                                <div data-th-if="*{image} != null">
-                                                    <img data-th-src="*{image.imageUrl}" class="img-responsive">
-                                                </div>
-
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                    <div class="col-md-12">
+                        <div class="clearfix">
+                            <ul id="tabs1" class="nav nav-tabs pull-left">
+                                <li class="active">
+                                    <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลส่วนบุคคล</a>
+                                </li>
+                                <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">รายละเอียดการเป็นสมาชิก</a>
+                                </li>
+                                <li class=""><a data-target="#tab3" data-toggle="tab" aria-expanded="false">ที่ดิน</a></li>
+                            </ul>
                         </div>
-                        <div class="tab-pane" id="tab2">
-                            <div class="col-lg-12">
-                                <section class="widget widget-custom-padding">
-                                    <!--<header>-->
-                                    <!--<h6 data-th-text="#{memberDetail}">-->
-                                    <!--รายละเอียด-->
-                                    <!--</h6>-->
-                                    <!--<div class="widget-controls">-->
-                                    <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                    <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                    <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                    <!--</div>-->
-                                    <!--</header>-->
-                                    <div class="widget-body">
-                                        <div class="form-horizontal" role="form" method="post">
-                                            <fieldset>
-                                                <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
-                                                        data-th-text="#{memberDetail}"></span></legend>
-                                                <input type="hidden" data-th-field="*{membershipTemp.id}">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
+                        <div id="tabs1c" class="tab-content mb-lg">
+                            <div class="tab-pane clearfix active" id="tab1">
+                                <div class="col-lg-12">
+                                    <section class="widget widget-custom-padding">
+                                        <!--<header>-->
+                                        <!--<h6 data-th-text="#{personalDetail}">-->
+                                        <!--รายละเอียด-->
+                                        <!--</h6>-->
+                                        <!--<div class="widget-controls">-->
+                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
+                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
+                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
+                                        <!--</div>-->
+                                        <!--</header>-->
+                                        <div class="widget-body">
+                                            <div class="form-horizontal" role="form" method="post">
+                                                <fieldset>
+                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
+                                                        <span data-th-text="#{personalDetail}"></span>
+                                                    </legend><br/>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <!--<input data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>-->
+                                                            <input data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>
+                                                            <input data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>
+                                                            <input data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <!--<input data-th-if="*{id} != null"-->
+                                                            <!--data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>-->
+                                                            <input data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
+                                                            <input data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
+                                                            <input data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{educationDegrees}, 'educationDegree', ${educationDegrees}, false)"/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/CheckboxField :: checkbox (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                                    <br/>
+                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
+                                                        <span >ข้อมูลการติดต่อ</span>
+                                                    </legend>
+                                                    <br/>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/TextField :: input (#{mobile}, 'mobile', true)"/>
+                                                            <input data-th-replace="fragments/TextField :: input (#{email}, 'email', false)"/>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/TextField :: input (#{facebook}, 'facebook', false)"/>
+                                                            <input data-th-replace="fragments/TextField :: input (#{line}, 'line', false)"/>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
+                                                    <br/>
+                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
+                                                        <span>ข้อมูลที่อยู่อาศัย</span>
+                                                    </legend>
+                                                    <br/>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <input data-th-replace="fragments/Address :: address (#{address}, 'address')"/>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
-                                                        <input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
-                                                    </div>
-                                                </div>
 
 
-                                            </fieldset>
+                                                    <div data-th-if="*{image} != null">
+                                                        <img data-th-src="*{image.imageUrl}" class="img-responsive">
+                                                    </div>
 
+                                                </fieldset>
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
+                                    </section>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="tab3">
-                            <div class="col-lg-12">
-                                <section class="widget widget-custom-padding">
-                                    <!--<header class="section-title">-->
+                            <div class="tab-pane" id="tab2">
+                                <div class="col-lg-12">
+                                    <section class="widget widget-custom-padding">
+                                        <!--<header>-->
+                                        <!--<h6 data-th-text="#{memberDetail}">-->
+                                        <!--รายละเอียด-->
+                                        <!--</h6>-->
+                                        <!--<div class="widget-controls">-->
+                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
+                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
+                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
+                                        <!--</div>-->
+                                        <!--</header>-->
+                                        <div class="widget-body">
+                                            <div class="form-horizontal" role="form" method="post">
+                                                <fieldset>
+                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
+                                                            data-th-text="#{memberDetail}"></span></legend>
+                                                    <input type="hidden" data-th-field="*{membershipTemp.id}">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/CheckboxField :: checkbox (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
+                                                            <input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
+                                                        </div>
+                                                    </div>
+
+
+                                                </fieldset>
+
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <div class="col-lg-12">
+                                    <section class="widget widget-custom-padding">
+                                        <!--<header class="section-title">-->
                                         <!--<span>ที่ดิน</span>-->
-                                    <!--</header>-->
-                                    <fieldset>
-                                        <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
-                                                > ที่ดิน</span></legend>
-                                        <div class="col-md-12 text-right">
-                                            <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}"
-                                               data-th-if="${member.id} != null"
-                                               class="btn btn-info"
-                                               data-th-text="#{newLand}"></a>
+                                        <!--</header>-->
+                                        <fieldset>
+                                            <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
+                                            > ที่ดิน</span></legend>
+                                            <div class="col-md-12 text-right">
+                                                <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}"
+                                                   data-th-if="${member.id} != null"
+                                                   class="btn btn-info"
+                                                   data-th-text="#{newLand}"></a>
+                                            </div>
+                                        </fieldset>
+                                        <br/>
+                                        <div class="widget-body">
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th data-th-text="#{name}">Province</th>
+                                                    <th data-th-text="#{size}">Size</th>
+                                                    <th>Action</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <tr data-th-each="l : *{memberLandsTemp}">
+                                                    <td data-th-text="${l.name}">1</td>
+                                                    <td data-th-text="${l.size}">2</td>
+                                                    <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
+                                                           class="btn btn-link">View</a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </fieldset>
-                                    <br/>
-                                    <div class="widget-body">
-
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th data-th-text="#{name}">Province</th>
-                                                <th data-th-text="#{size}">Size</th>
-                                                <th>Action</th>
-                                            </tr>
-
-                                            </thead>
-                                            <tbody>
-                                            <tr data-th-each="l : *{memberLandsTemp}">
-                                                <td data-th-text="${l.name}">1</td>
-                                                <td data-th-text="${l.size}">2</td>
-                                                <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
-                                                       class="btn btn-link">View</a></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
