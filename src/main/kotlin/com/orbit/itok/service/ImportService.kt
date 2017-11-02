@@ -8,15 +8,12 @@ import org.springframework.stereotype.Service
 import org.supercsv.cellprocessor.CellProcessorAdaptor
 import org.supercsv.cellprocessor.Optional
 import org.supercsv.cellprocessor.ParseDate
-import org.supercsv.cellprocessor.constraint.NotNull
 import org.supercsv.cellprocessor.ift.CellProcessor
-import org.supercsv.cellprocessor.ift.DateCellProcessor
+import org.supercsv.exception.SuperCsvCellProcessorException
 import org.supercsv.io.dozer.CsvDozerBeanReader
 import org.supercsv.prefs.CsvPreference
 import org.supercsv.util.CsvContext
 import java.io.File
-import java.util.*
-import org.supercsv.exception.SuperCsvCellProcessorException
 
 
 /**
@@ -30,7 +27,7 @@ interface ImportService {
 @Service
 class ImportServiceImpl : ImportService {
     private val FIELD_MAPPING: Array<String> = arrayOf("date", "title", "firstName", "lastName", "nickname", "birthday", "male",
-            "maritalStatus", "educationDegrees", "address.number", "address.moo", "address.village", "address.alley",
+            "maritalStatus", "educationDegree", "address.number", "address.moo", "address.village", "address.alley",
             "address.road", "address.subdistrict", "address.district", "address.province", "address.postalCode",
             "mobile", "email", "facebook", "line",
             "membershipTemp.yearJoin", "membershipTemp.villageDelegate", "membershipTemp.type", "membershipTemp.previousJob",
@@ -84,6 +81,13 @@ class ImportServiceImpl : ImportService {
             output.add(x)
 
             x = csvDozerBeanReader.read<Member>(Member::class.java, *PROCESSORS)
+            val membershipTemp = x?.membershipTemp
+            if (membershipTemp != null) {
+                membershipTemp.typeOrganization = membershipTemp.typeOrganization.filter { !it.isNullOrBlank() }.toMutableList()
+                membershipTemp.agricultureSpecialty = membershipTemp.agricultureSpecialty.filter { !it.isNullOrBlank() }.toMutableList()
+                membershipTemp.agricultureInterest = membershipTemp.agricultureInterest.filter { !it.isNullOrBlank() }.toMutableList()
+            }
+
         }
         return output
     }

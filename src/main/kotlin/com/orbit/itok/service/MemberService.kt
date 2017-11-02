@@ -114,6 +114,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
             memberLandsTemp.forEach {
                 it.id = ofy().save().entity(it).now().id
             }
+            it.membership = Ref.create(it.membershipTemp)
+            it.memberLands = it.memberLandsTemp.map { Ref.create(it) }.toMutableList()
         }
         ofy().save().entities(list).now().forEach {
             index.put(getDocument(it.value))
@@ -123,7 +125,9 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun clear() {
         val list = ofy().load().type(Member::class.java).list()
         for (member in list) {
-            ofy().delete().entity(member.membershipTemp)
+            member.membershipTemp = member.membership?.get()
+            member.memberLandsTemp = member.memberLands.map { it.get() }.filter { it != null }.toMutableList()
+            if (member.membershipTemp != null) ofy().delete().entity(member.membershipTemp)
             ofy().delete().entities(member.memberLandsTemp)
             index.delete(member.id.toString())
         }

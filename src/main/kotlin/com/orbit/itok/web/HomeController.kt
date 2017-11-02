@@ -58,7 +58,7 @@ class HomeController : ResourceLoaderAware {
 
     @RequestMapping("importDB")
     fun importDb(): String {
-        val file = loader.getResource("classpath:data.csv").file
+        val file = loader.getResource("classpath:data2.csv").file
         val list = importServiceImpl.import(file)
         memberServiceImpl.import(list)
 
