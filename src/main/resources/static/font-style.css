@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?ioi990');
-  src:  url('fonts/icomoon.eot?ioi990#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?ioi990') format('truetype'),
-    url('fonts/icomoon.woff?ioi990') format('woff'),
-    url('fonts/icomoon.svg?ioi990#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?xs2pdp');
+  src:  url('fonts/icomoon.eot?xs2pdp#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?xs2pdp') format('truetype'),
+    url('fonts/icomoon.woff?xs2pdp') format('woff'),
+    url('fonts/icomoon.svg?xs2pdp#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,33 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-line-logo:before {
+  content: "\e930";
+}
+.icon-presentation:before {
+  content: "\e924";
+}
+.icon-map:before {
+  content: "\e925";
+}
+.icon-wallet:before {
+  content: "\e926";
+}
+.icon-atm:before {
+  content: "\e927";
+}
+.icon-clipboard:before {
+  content: "\e92c";
+}
+.icon-payment-method:before {
+  content: "\e92d";
+}
+.icon-money:before {
+  content: "\e92e";
+}
+.icon-piggy-bank:before {
+  content: "\e92f";
+}
 .icon-soilPH:before {
   content: "\e91b";
 }
