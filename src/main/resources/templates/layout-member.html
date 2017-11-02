@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" data-layout-decorator="layout">
 <head>
     <title>Sing - Form Elements</title>
 
-    <link data-gcs-href="" href="https://storage.googleapis.com/itok-project.appspot.com/css/application.min.css" rel="stylesheet">
+    <link data-gcs-href="" href="css/application.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-    <link href="../static/custom.css" rel="stylesheet">
-    <link href="../static/font-style.css" rel="stylesheet" />
+    <link href="/custom.css" rel="stylesheet">
+    <link href="/font-style.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
 
 
@@ -734,7 +734,7 @@
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 0px !important;">
-        <div class="cover" style="background: url('../static/image/bg-image.jpeg');"></div>
+        <div class="cover" style="background: url('/image/bg-image.jpeg');"></div>
         <div class="cover-footer"></div>
         <div style="margin-top: -140px; padding: 0px 20px 42px;">
             <div class="row" >
@@ -1237,13 +1237,13 @@
                                                     <th class="text-center">ลุ่มน้ำ</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody data-th-remove="all-but-first">
                                                 <tr>
-                                                    <td style="width: 10%;">
+                                                    <td style="width: 10%;" data-th-each="l : ${member.memberLandsTemp}">
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1254,7 +1254,7 @@
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1265,7 +1265,7 @@
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1783,25 +1783,26 @@
 <script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 <script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/d3/d3.min.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery.sparkline/index.js"></script>
-
-<!-- page specific libs -->
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/core.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/widget.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/mouse.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/draggable.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/fullcalendar/fullcalendar.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-<!-- page specific js -->
 
 <!-- page specific js -->
 <div data-layout-fragment="script">
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/d3/d3.min.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery.sparkline/index.js"></script>
+
+    <!-- page specific libs -->
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/core.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/widget.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/mouse.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/draggable.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/fullcalendar/fullcalendar.js"></script>
+    <!--<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>-->
+
+    <!-- page specific js -->
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
     <script>
         $(function(){
