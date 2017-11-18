@@ -148,8 +148,8 @@
 }
 
 #farmPanel .fieldbox{
-    height: 15px; 
-    width: 35%; 
+    height: 15px;
+    width: 35%;
     background: #DCC13E;
     margin-top: 3px;
 }
@@ -162,7 +162,7 @@
     padding: 10px 5px;
 }
 .label-image {
-     background-color:#8CA93A !important; 
+     background-color:#8CA93A !important;
     color: #FFF !important;
     text-transform: uppercase;
     font-weight: normal !important;
@@ -568,6 +568,9 @@ fieldset[disabled]
     font-size: 3em;
 }
 
+.box-icon-member .box-icon-widget .font-icon-box{
+    font-size: 2.5em;
+}
 .font-size-big{
     font-size: 1.5em;
 }
@@ -618,7 +621,7 @@ fieldset[disabled]
 .badge {
     text-shadow: none;
     font-weight: normal !important;
-    background-color: #e0e5ee !important; 
+    background-color: #e0e5ee !important;
     text-transform: uppercase;
     border-radius: 0.5rem;
     color: #16325c!important;
@@ -627,7 +630,7 @@ fieldset[disabled]
 }
 
 .badge-success {
-    background-color:#41c8a0 !important; 
+    background-color:#41c8a0 !important;
     color: #06662F !important;
 }
 
