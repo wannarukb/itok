@@ -32,7 +32,7 @@
 }
 .content {
     min-height: 100%;
-    padding: 92px 20px 42px !important;
+    padding: 20px 20px 42px !important;
     /*background-color: #eee;*/
     background: #ebecef;
 }
@@ -466,7 +466,9 @@ fieldset[disabled]
 .checkbox-primary input[type="checkbox"]:checked + label::after,
 .checkbox-primary input[type="radio"]:checked + label::after {
     color: #fff; }
-
+.nav-tabs{
+    cursor: pointer;
+}
 .tab-style-custom .nav-tabs>li>a {
     padding: 8px 18px;
 }
@@ -540,11 +542,11 @@ fieldset[disabled]
 }
 
 .box-icon-widget .item-col-icon {
-    width: 20%;
+    width: 15%;
 }
 
 .box-icon-widget .item-col-block{
-    width: 78%;
+    width: 83%;
 }
 
 .text-element{
@@ -563,7 +565,7 @@ fieldset[disabled]
 }
 
 .box-icon-widget .font-icon-box{
-    font-size: 3.5em;
+    font-size: 3em;
 }
 
 .font-size-big{
@@ -589,13 +591,27 @@ fieldset[disabled]
 .cover{
     background-size: 100% !important;
     background-position: center !important;
-    height: 180px !important;
+    height: 240px !important;
 }
 
 .cover-footer{
     background: #ffffff;
     width: 100%;
     height: 40px;
+}
+
+.cover-small{
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.cover-small a{
+    color: #FFF !important;
 }
 
 /*----------- status ----------*/
@@ -620,3 +636,42 @@ fieldset[disabled]
     color: #B42D2D !important;
 }
 
+.navbar {
+    margin-bottom: 0px !important;
+}
+
+.navbar-form {
+    padding: 0px !important;
+}
+
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0px;
+    }
+}
+.nav-static .mainnav-profile {
+    width: 100% !important;
+}
+.nav-static .mainnav-profile .mnp{
+    display: block !important;
+}
+
+.nav-collapsed .mainnav-profile {
+    width: 50px;
+    text-overflow: ellipsis;
+}
+.nav-collapsed .mainnav-profile .mnp{
+    display: none;
+}
+/*---------- Button -----------*/
+.btn-primary:hover {
+    color: #fff;
+    background-color: #025aa5 !important;
+    border-color: #01549b !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0275d8 !important;
+    border-color: #0275d8 !important;
+}
