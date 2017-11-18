@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" data-layout-decorator="layout">
 <head>
-    <title>Sing - Form Elements</title>
+    <title>ข้อมูลสมาชิก</title>
 
-    <link data-gcs-href="" href="https://storage.googleapis.com/itok-project.appspot.com/css/application.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-    <link href="../static/custom.css" rel="stylesheet">
-    <link href="../static/font-style.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <link data-gcs-href="" href="css/application.min.css" rel="stylesheet">
 
 
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
@@ -315,7 +309,7 @@
         <!-- this part is hidden for xs screens -->
         <div class="collapse navbar-collapse">
             <!-- search form! link it to your search server -->
-            <form class="navbar-form pull-xs-left" role="search">
+            <form class="navbar-form pull-xs-left" role="search" style="padding: 0px !important;">
                 <div class="form-group">
                     <div class="input-group input-group-no-border">
                     <span class="input-group-addon">
@@ -734,14 +728,15 @@
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 0px !important;">
-        <div class="cover" style="background: url('../static/image/bg-image.jpeg');"></div>
+        <div class="cover" style="background: url('/image/bg-image.jpeg');"></div>
         <div class="cover-footer"></div>
         <div style="margin-top: -140px; padding: 0px 20px 42px;">
             <div class="row" >
                 <div class="col-md-2">
                     <!--<h2 class="page-title font-supermarket">ข้อมูลสมาชิก <span class="fw-semi-bold">สมชาย ใจดี</span></h2>-->
-                    <div class="fileinput-new thumbnail" style="width: 100%; height: 160px; margin-bottom: 10px;">
-                        <img data-src="holder.js/100%x100%" alt="..." src="">
+                    <div class="fileinput-new thumbnail" style="width: 100%; margin-bottom: 10px;">
+                        <!--<img data-src="holder.js/100%x100%" alt="..." src="">-->
+                        <img src="/image/profile.png"  />
                     </div>
                 </div>
                 <div class="col-md-10 " style="padding-top: 50px;">
@@ -755,7 +750,7 @@
                     </div>
                     <div class="tab-style-custom tab-profile" style="margin-top: 10px;">
                         <div class="clearfix tab-header">
-                            <ul id="tabs1" class="nav nav-tabs pull-left">
+                            <ul id="tabs-bar" class="nav nav-tabs pull-left">
                                 <li class="active">
                                     <a data-target="#tab1" data-toggle="tab" aria-expanded="true">รายงานสรุป</a>
                                 </li>
@@ -763,10 +758,10 @@
                                     <a data-target="#tab2" data-toggle="tab" aria-expanded="true">ข้อมูลสมาชิก</a>
                                 </li>
                                 <li class="">
-                                    <a data-target="#tab3" data-toggle="tab" aria-expanded="false">ที่ดิน</a>
+                                    <a data-target="#tab3" data-toggle="tab" aria-expanded="false">แปลงที่ดิน</a>
                                 </li>
                                 <li class="">
-                                    <a data-target="#tab4" data-toggle="tab" aria-expanded="false">รายรับ/จ่ายครอบครัว</a>
+                                    <a data-target="#tab4" data-toggle="tab" aria-expanded="false">รายรับ/จ่ายภาคเกษตร</a>
                                 </li>
                                 <li class="">
                                     <a data-target="#tab5" data-toggle="tab" aria-expanded="false">การฝึกอบรม</a>
@@ -796,7 +791,7 @@
                                                         <span class="icon-fields"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
-                                                        <h6 class="name">จำนวนที่ดิน</h6>
+                                                        <h6 class="name">จำนวนแปลงที่ดิน</h6>
                                                         <p class="value font-bold text-right font-big">3</p>
                                                     </div>
                                                 </div>
@@ -811,7 +806,7 @@
                                                         <span class="icon-presentation"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
-                                                        <h6 class="name">การอบรมทั้งหมด</h6>
+                                                        <h6 class="name">จำนวนหลักสูตรที่อบรม</h6>
                                                         <p class="value font-bold text-right font-big">7</p>
                                                     </div>
                                                 </div>
@@ -826,7 +821,7 @@
                                                         <span class="icon-scarecrow"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
-                                                        <h6 class="name">กิจกรรมที่เข้าร่วม</h6>
+                                                        <h6 class="name">จำนวนกิจกรรมที่เข้าร่วม</h6>
                                                         <p class="value font-bold text-right font-big">4</p>
                                                     </div>
                                                 </div>
@@ -841,7 +836,7 @@
                                                         <span class="icon-shovel"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
-                                                        <h6 class="name">อุปกรณ์ที่ยืมใช้งาน</h6>
+                                                        <h6 class="name">จำนวนอุปกรณ์ที่ยืมใช้งาน</h6>
                                                         <p class="value font-bold text-right font-big">1</p>
                                                     </div>
                                                 </div>
@@ -951,7 +946,7 @@
                                                 <section class="widget box-icon-widget">
                                                     <header>
                                                         <h4>
-                                                            <span class="fw-semi-bold">สรุปรายรับรายจ่าย</span>
+                                                            <span class="fw-semi-bold">สรุปรายรับรายจ่ายภาคเกษตร</span>
                                                         </h4>
                                                     </header><br/>
                                                     <div class="widget-body">
@@ -959,10 +954,10 @@
                                                         <br/><br/>
                                                         <div class="row font-small">
                                                             <div class="col-sm-12">
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FFD566"></i> รายรับภาคการเกษตร</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FF886A"></i> รายรับภาคนอกการเกษตร</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #84DE83"></i> รายจ่ายภาคการเกษตร</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #7AC1FF"></i> รายจ่ายภาคนอกการเกษตร</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FFD566"></i> ค่าแรง</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FF886A"></i> ค่าวัสดุการเกษตร</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #84DE83"></i> ค่าอุปกรณ์การเกษตร</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #7AC1FF"></i> อื่นๆ</span><br/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1067,7 +1062,7 @@
                                                 </div>
                                             </div><br/>
                                             <div class="section-title font-bold no-margin margin-bottom-20" >
-                                                <span >ข้อมูลสมาชิก</span>
+                                                <span >ข้อมูลการเป็นสมาชิก</span>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -1237,13 +1232,13 @@
                                                     <th class="text-center">ลุ่มน้ำ</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody data-th-remove="all-but-first">
                                                 <tr>
-                                                    <td style="width: 10%;">
+                                                    <td style="width: 10%;" data-th-each="l : ${member.memberLandsTemp}">
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1254,7 +1249,7 @@
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1265,7 +1260,7 @@
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>
-                                                    <td style="width: 10%;">  <img src="../static/image/exampleField.png" width="70"/></td>
+                                                    <td style="width: 10%;">  <img src="/image/exampleField.png" width="70"/></td>
                                                     <td><span>บ้านดินดี</span></td>
                                                     <td><span>320.3</span></td>
                                                     <td><span>นครราชสีมา</span></td>
@@ -1744,64 +1739,65 @@
 
 
 <!-- common libraries. required for every page-->
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery/dist/jquery.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-pjax/jquery.pjax.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/tether/dist/js/tether.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/util.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/collapse.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/dropdown.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/button.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/tooltip.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/alert.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/widgster/widgster.js"></script>
-<!--<script data-gcs-src="" src="vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>-->
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/bootstrap-fix/button.js"></script>
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery/dist/jquery.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-pjax/jquery.pjax.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/tether/dist/js/tether.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/util.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/collapse.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/dropdown.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/button.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/tooltip.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/alert.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/slimScroll/jquery.slimscroll.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/widgster/widgster.js"></script>-->
+<!--&lt;!&ndash;<script data-gcs-src="" src="vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>&ndash;&gt;-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/bootstrap-fix/button.js"></script>-->
 
-<!-- common app js -->
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/settings.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/app.js"></script>
+<!--&lt;!&ndash; common app js &ndash;&gt;-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/settings.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/js/app.js"></script>-->
 
-<!-- page specific libs -->
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/modal.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-autosize/jquery.autosize.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/select2/select2.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/switchery/dist/switchery.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/moment/min/moment.min.js"></script>
-<!--<script data-gcs-src=""-->
-<!--src="vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>-->
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jasny-bootstrap/js/inputmask.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jasny-bootstrap/js/fileinput.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/holderjs/holder.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/dropzone/dist/min/dropzone.min.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/markdown/lib/markdown.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<!--&lt;!&ndash; page specific libs &ndash;&gt;-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap/js/dist/modal.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-autosize/jquery.autosize.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/select2/select2.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/switchery/dist/switchery.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/moment/min/moment.min.js"></script>-->
+<!--&lt;!&ndash;<script data-gcs-src=""&ndash;&gt;-->
+<!--&lt;!&ndash;src="vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>&ndash;&gt;-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jasny-bootstrap/js/inputmask.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jasny-bootstrap/js/fileinput.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/holderjs/holder.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/dropzone/dist/min/dropzone.min.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/markdown/lib/markdown.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>-->
+<!--<script data-gcs-src="" src="https://storage.googleapis.com/itok-project.appspot.com/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>-->
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/d3/d3.min.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery.sparkline/index.js"></script>
-
-<!-- page specific libs -->
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/core.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/widget.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/mouse.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/draggable.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/fullcalendar/fullcalendar.js"></script>
-<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-<!-- page specific js -->
 
 <!-- page specific js -->
 <div data-layout-fragment="script">
 
+
+
+
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/d3/d3.min.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery.sparkline/index.js"></script>
+
+    <!-- page specific libs -->
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/core.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/widget.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/mouse.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery-ui/ui/draggable.js"></script>
+    <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/fullcalendar/fullcalendar.js"></script>
+    <!--<script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>-->
+
+    <!-- page specific js -->
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
     <script>
         $(function(){
@@ -1893,10 +1889,10 @@
                     tooltipFormat: '{{offset:offset}} ({{percent.1}}%)',
                     tooltipValueLookups: {
                         'offset': {
-                            0: 'รายรับภาคการเกษตร',
-                            1: 'รายรับภาคนอกการเกษตร',
-                            2: 'รายจ่ายภาคการเกษตร',
-                            3: 'รายจ่ายภาคนอกการเกษตร',
+                            0: 'ค่าแรง',
+                            1: 'ค่าวัสดุการเกษตร',
+                            2: 'ค่าอุปกรณ์การเกษตร',
+                            3: 'อื่นๆ'
                         }
                     },
                 });

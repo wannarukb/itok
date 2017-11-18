@@ -112,7 +112,7 @@ class MemberController {
     fun updateMember(@PathVariable id: Long, model: Model): String {
         val findOne = memberServiceImpl.findOne(id)
         model.addAttribute("member", findOne)
-        return "newMember"
+        return "layout-member"
     }
 
     @GetMapping("{id}/newLand")

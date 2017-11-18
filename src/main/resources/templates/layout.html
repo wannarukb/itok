@@ -2,8 +2,14 @@
 <html>
 <head>
     <title>Sing - Form Elements</title>
+
     <link data-gcs-href="" href="css/application.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <link href="/custom.css" rel="stylesheet">
+
+    <link href="/font-style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
 
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
@@ -34,29 +40,32 @@
 <nav id="sidebar" class="sidebar" role="navigation">
     <!-- need this .js class to initiate slimscroll -->
     <div class="js-sidebar-content">
-        <header class="logo hidden-sm-down">
-            <a href="index.html" data-th-text="${@settingServiceImpl.getAppName()}">sing</a>
-        </header>
-        <!-- seems like lots of recent admin template have this feature of user info in the sidebar.
-             looks good, so adding it and enhancing with notifications -->
-        <div class="sidebar-status hidden-md-up">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="thumb-sm avatar pull-xs-right">
-                    <img class="img-circle" data-gcs-src="" src="demo/img/people/a5.jpg" alt="...">
-                </span>
-                <!-- .circle is a pretty cool way to add a bit of beauty to raw data.
-                     should be used with bg-* and text-* classes for colors -->
-                <span class="circle bg-warning fw-bold text-gray-dark">
-                    13
-                </span>
-                &nbsp;
-                Philip <strong>Smith</strong>
-                <b class="caret"></b>
+        <header class="logo hidden-sm-down text-center background-white" style="margin:0px;">
+            <!--data-th-text="${@settingServiceImpl.getAppName()}"-->
+            <a href="index.html" >
+                <img  src="/image/Logo-ITOK.png" width="45px" class=""/>
             </a>
-            <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
+        </header>
+        <!--<div class="sidebar-status hidden-md-up">-->
+            <!--<a href="index.html" >-->
+               <!--ITOK-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--Profile Widget-->
+        <!--================================-->
+        <div id="mainnav-profile " class="mainnav-profile cover-small hidden-sm-down" style=" background: url('/image/bg-image.jpeg');">
+            <div class="profile-wrap text-center">
+                <p class="mnp mnp-name">Administrator</p>
+                <div class="pad-btm text-center padding-vertical--small">
+                    <img class="img-circle img-sm img-border" src="/image/profile.png" alt="Profile Picture" style="width: 45px;">
+                </div>
+                <span class="mnp mnp-desc">aaron.cha@mail.com</span>
+            </div>
         </div>
+        <!--End shortcut buttons-->
         <!-- main notification links are placed inside of .sidebar-nav -->
-        <ul class="sidebar-nav">
+        <ul class="sidebar-nav" style="padding: 0px;">
+
             <li data-th-class="${pageName} == null ? 'active' : ''">
                 <a href="inbox.html" data-th-href="@{/}">
                     <span class="icon">
@@ -283,7 +292,7 @@
     <div class="container-fluid">
         <!-- .navbar-header contains links seen on xs & sm screens -->
         <div class="navbar-header">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" style="margin-left: 0px;">
                 <li class="nav-item">
                     <!-- whether to automatically collapse sidebar on mouseleave. If activated acts more like usual admin templates -->
                     <a class="hidden-md-down nav-link" id="nav-state-toggle" href="#" data-toggle="tooltip"
@@ -2476,12 +2485,14 @@ Enjoy!
 <script data-gcs-src="" src="vendor/jquery/dist/jquery.min.js"></script>
 <script data-gcs-src="" src="vendor/jquery-pjax/jquery.pjax.js"></script>
 <script data-gcs-src="" src="vendor/tether/dist/js/tether.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/util.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/collapse.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/dropdown.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/button.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/tooltip.js"></script>
 <script data-gcs-src="" src="vendor/bootstrap/js/dist/alert.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/tab.js"></script>
 <script data-gcs-src="" src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
 <script data-gcs-src="" src="vendor/widgster/widgster.js"></script>
 <!--<script data-gcs-src="" src="vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>-->
