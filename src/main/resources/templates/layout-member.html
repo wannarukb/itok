@@ -9,7 +9,7 @@
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
     <!--<link data-gcs-href="" href="css/application-ie9-part2.css" rel="stylesheet">-->
-    <![endif]-->
+    <!--<![endif]&ndash;&gt;-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -1216,7 +1216,7 @@
                             <section class="widget widget-custom-padding">
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> เพิ่มที่ดิน</button>
+                                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> เพิ่มแปลงที่ดิน</button>
                                     </div>
                                 </div><br/>
                                 <div class="widget-body">
@@ -1228,14 +1228,14 @@
                                                     <th class="text-center">Action</th>
                                                     <th class="text-center">รูปภาพ</th>
                                                     <th class="text-center">ชื่อแปลงที่ดิน</th>
-                                                    <th class="text-center">ขนาด (ตร.ม.)</th>
+                                                    <th class="text-center">ขนาด (ไร่.วา.ตร.ม.)</th>
                                                     <th class="text-center">จังหวัด</th>
                                                     <th class="text-center">ลุ่มน้ำ</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody data-th-remove="all-but-first">
+                                                <tbody data-th-remove="all-but-first" data-th-each="l : ${member.memberLandsTemp}">
                                                 <tr>
-                                                    <td style="width: 10%;" data-th-each="l : ${member.memberLandsTemp}">
+                                                    <td style="width: 10%;">
                                                         <a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
                                                            class="btn btn-link">View</a>
                                                     </td>

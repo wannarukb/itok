@@ -99,7 +99,7 @@
 .form-control {
     font-size: 13px;
     height: 100%;
-    border-radius: 0;
+    /*border-radius: 0;*/
     box-shadow: none;
     border: 1px solid #e9e9e9;
     transition-duration: .5s;
@@ -161,6 +161,7 @@
 .padding-all-10-5{
     padding: 10px 5px;
 }
+
 .label-image {
      background-color:#8CA93A !important;
     color: #FFF !important;
@@ -519,7 +520,7 @@ fieldset[disabled]
 }
 
 .margin-bottom-none{
-    margin-bottom: 0px;
+    margin-bottom: 0px !important;
 }
 
 .box-icon-widget .progress{
@@ -677,4 +678,91 @@ fieldset[disabled]
     color: #fff;
     background-color: #0275d8 !important;
     border-color: #0275d8 !important;
+}
+
+.login-background {
+    height: 100vh !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+}
+
+.pad-login{
+    padding: 80px 40px 30px !important;
+}
+
+.font-kanit{
+    font-family: 'Kanit', sans-serif !important;
+}
+.text-dark{
+    color: #34495E !important;
+}
+
+.margin-top--big{
+    margin-top: 40px !important;
+}
+
+.text-logo{
+    font-size: 1.5em;
+    font-weight: normal !important;
+    color: #16325C;
+}
+
+.float-right{
+    float:right;
+}
+.float-left{
+    float:left;
+}
+
+.login-page .form-control-feedback{
+    top: 20px;
+}
+
+.login-des-font-small{
+    font-size: 1em;
+}
+
+.font-size-14{
+    font-size: 14px !important;
+}
+
+.pad-top-15 {
+    padding-top: 10px;
+}
+
+/*-------- Button --------*/
+.btn-full-width{
+    width: 100% !important;
+}
+
+.margin-bottom-xs{
+    margin-bottom: 0.5em !important;
+}
+.margin-bottom-s{
+    margin-bottom: 1em !important;
+}
+.color-primary{
+    color: #025aa5 !important;
+}
+
+.btn-default-blue {
+    color: #4372a5 !important;
+    background-color: #f5faff;
+    border: none!important;
+}
+
+.btn-default-blue:hover {
+    color: #4372a5 !important;
+    background-color: rgba(185, 181, 190, 0.62);
+    border: none!important;
+}
+
+.text-desc{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.button-search{
+    margin-top: 23px;
+    padding: 2.5px 12px;
 }
