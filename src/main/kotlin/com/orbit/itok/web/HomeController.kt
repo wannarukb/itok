@@ -8,6 +8,7 @@ import org.springframework.core.io.ResourceLoader
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
@@ -22,6 +23,11 @@ class HomeController : ResourceLoaderAware {
 
     override fun setResourceLoader(p0: ResourceLoader) {
         this.loader = p0
+    }
+
+    @RequestMapping("page/{pageName}")
+    fun pageName(@PathVariable pageName:String): String {
+        return pageName
     }
 
     @RequestMapping
