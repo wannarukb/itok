@@ -32,7 +32,9 @@
                 <h2 class="page-title font-supermarket">แปลงที่ดิน <span class="fw-semi-bold">บ้านดินดี</span></h2>
             </div>
             <div class="col-md-6 text-right">
+
                 <button type="button" class="btn btn-primary"><i class="fa fa-map"></i> แผนที่</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> วาดรูปแปลงที่ดิน</button>
                 <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> แก้ไขข้อมูลที่ดิน</button>
                 <button type="button" class="btn btn-primary"><i class="fa fa-user"></i> ข้อมูลสมาชิก</button>
             </div>
@@ -593,23 +595,61 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-3">
-                                <div class="text-element">
-                                    <span class="element-label">ประเภทข้อมูลที่จัดเก็บ</span>
-                                    <p class="element-value">การจัดการในปัจจุบัน</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="text-element">
-                                    <span class="element-label">ขนาดพื้นที่โคกหนองนา(ไร่.งาน.วา)</span>
-                                    <p class="element-value">2 ไร่ 2 งาน 1 วา</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="text-element">
-                                    <span class="element-label">ขนาดพื้นที่โคกหนองนา(ตร.ม.)</span>
-                                    <p class="element-value">345</p>
-                                </div>
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">วันที่จัดเก็บ</th>
+                                            <th class="text-center">ประเภทข้อมูล</th>
+                                            <th class="text-center">ขนาดพื้นที่โคกหนองนา (ตร.ม.)</th>
+                                            <th class="text-center">จำนวนการปลูกพื้ช</th>
+                                            <th class="text-center">จำนวนสัตว์เลี้ยง</th>
+                                            <th class="text-center">ผู้ตรวจวัด</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">23/10/2560</td>
+                                        <td class="text-center">การออกแบบพื้นที่</td>
+                                        <td class="text-center">120.25</td>
+                                        <td class="text-center">100</td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">พิมลวรรณ ขวัญศรี</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/layout-landManagement} + '\''">
+                                                <i class="icon-fields"></i> ดูข้อมูลการตรวจ
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">23/10/2560</td>
+                                        <td class="text-center">การออกแบบพื้นที่</td>
+                                        <td class="text-center">120.25</td>
+                                        <td class="text-center">100</td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">พิมลวรรณ ขวัญศรี</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/layout-landManagement} + '\''">
+                                                <i class="icon-fields"></i> ดูข้อมูลการตรวจ
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">23/10/2560</td>
+                                        <td class="text-center">การออกแบบพื้นที่</td>
+                                        <td class="text-center">120.25</td>
+                                        <td class="text-center">100</td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-center">พิมลวรรณ ขวัญศรี</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/layout-landManagement} + '\''">
+                                                <i class="icon-fields"></i> ดูข้อมูลการตรวจ
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                </table>
                             </div>
                         </div><br/>
                     </div>
@@ -882,7 +922,7 @@
                                                     class="select2 form-control" id="catagory">
                                                 <option value="value01">สำเนาเอกสารสิทธิ์</option>
                                                 <option value="value02">ภาพถ่ายแปลงที่ดิน</option>
-                                                <option value="value03">ภาพถ่ายทางอากา แปลงที่ดิน</option>
+                                                <option value="value03">ภาพถ่ายทางอากาศแปลงที่ดิน</option>
                                                 <option value="value04">ภาพร่างการออกแบบการจัดการพืนที่</option>
                                                 <option value="value05">ภาพถ่ายการออกแบบการจัดการพืนที่</option>
                                             </select>
@@ -926,6 +966,9 @@
 
                                             </thead>
                                             <tbody>
+                                            <tr>
+
+                                            </tr>
                                             <tr data-th-each="l : ${files}">
                                                 <td data-th-text="${l.fileName}"></td>
                                                 <td data-th-text="${l.readableFileSize()}"></td>

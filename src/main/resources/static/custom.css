@@ -139,11 +139,11 @@
 #farmPanel .panel-group .panel-heading .collapsed, #farmPanel .panel-group .panel-heading .collapsed i {
     opacity: 1;
 }
-#farmPanel .panel-group .panel-heading .icon-farm {
+#farmPanel .panel-group .panel-heading .fa-user {
     color: #37455C !important;
 }
 
-#farmPanel .panel-group .panel-heading .collapsed .icon-farm {
+#farmPanel .panel-group .panel-heading .collapsed .fa-user {
     color: #8CA93A !important;
 }
 
@@ -765,4 +765,45 @@ fieldset[disabled]
 .button-search{
     margin-top: 23px;
     padding: 2.5px 12px;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #2aabd2;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #419641;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #c12e2a;
+}
+
+/* Form */
+.select2-container .select2-choice {
+    height: 3.25rem;
+    line-height: 1.5;
 }

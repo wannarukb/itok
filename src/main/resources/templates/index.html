@@ -8,10 +8,14 @@
 <div data-layout-fragment="main">
     <div class="row" >
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary"><i class="fa fa-user"></i> ข้อมูลสมาชิก</button>
-            <button type="button" class="btn btn-primary"><i class="icon-barn2"></i> ข้อมูลแปลงที่ดิน</button>
-            <button type="button" class="btn btn-primary"><i class="fa fa-address-book"></i> ดูรายการสมาชิก</button>
-            <button type="button" class="btn btn-primary"><i class="icon-fields"></i> ดูรายการแปลงที่ดิน</button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-user"></i> กราฟสรุปข้อมูลสมาชิก</button>
+            <button type="button" class="btn btn-primary"><i class="icon-barn2"></i> กราฟสรุปข้อมูลแปลงที่ดิน</button>
+            <a class="btn btn-primary" data-th-href="@{/member}">
+                <i class="fa fa-address-book"></i> ดูรายการสมาชิก
+            </a>
+            <a class="btn btn-primary" data-th-href="@{/page/layout-landList}">
+                <i class="icon-fields"></i> ดูรายการแปลงที่ดิน
+            </a>
         </div>
     </div>
     <br/>
