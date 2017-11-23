@@ -13,20 +13,9 @@
         <label data-th-for="${name}" class="col-md-4 form-control-label text-md-right"><span data-th-text="${label}">Normal</span>
             &nbsp;<span class="red" data-th-if="${required}">*</span></label>
         <div class="col-md-7">
-            <div class="input-group input-group-transparent">
-                <input class="form-control" type="text"
-                       data-th-required="${required}"
-                       data-th-field="*{__${name}__}"/>
-
-                <span data-th-if="${valid}"
-                      class="input-group-addon"
-                      aria-hidden="true"><i class="glyphicon glyphicon-ok"></i> </span>
-                <th:block data-th-if="${!valid}">
-            <span
-                    class="input-group-addon"
-                    aria-hidden="true"><i class="glyphicon glyphicon-remove "></i> </span>
-                </th:block>
-            </div>
+            <input class="form-control" type="text"
+                   data-th-required="${required}"
+                   data-th-field="*{__${name}__}"/>
             <span data-th-if="${!valid}" class="help-inline" data-th-errors="*{__${name}__}">Error</span>
 
         </div>
