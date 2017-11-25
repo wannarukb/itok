@@ -43,10 +43,9 @@
             </div>
             <div class="col-md-2 " >
                 <p class=" text-right">
-                    <!--data-th-text="#{newMember}"-->
-                    <a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >
-                        <i class="fa fa-plus"></i> สร้างเครือข่ายใหม่
-                    </a>
+                    <!--<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >-->
+                        <!--<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่-->
+                    <!--</a>-->
                 </p>
             </div>
         </div>
@@ -56,9 +55,10 @@
                     <div class="panel panel-default" data-th-each="l : ${list}" data-th-object="${l}">
                         <div class="panel-heading panel-heading-white collapsed">
                             <h5 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" href="#collapseOne"
-                                   data-th-href="'#collapse' + ${lStat.index}">
-                                    <div class="row">
+                                <div class="row">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseOne"
+                                        data-th-href="'#collapse' + ${lStat.index}">
+
                                         <div class="col-sm-1 text-center ">
                                             <i class="fa fa-user"
                                                aria-hidden="true" style="font-size:2.5em;"
@@ -83,22 +83,22 @@
                                                   data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
                                         </div>
                                         <div class="col-sm-2">
-                                            <p data-th-text="*{membershipTemp.type}" class="font-medium"></p>
+                                            <p data-th-text="*{membershipTemp.type}" class="font-medium color-dark"></p>
                                             <!--<p data-th-text="*{membershipTemp.typeOrganization}"-->
                                                <!--class="font-medium"></p>-->
                                         </div>
+                                    </a>
                                         <div class="col-sm-2 text-right">
                                             <button class=" btn btn-primary btn-sm"
                                                     data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
                                                 <i class="fa fa-user" style="color: #FFF !important;"></i> ดูข้อมูลสมาชิก
                                             </button>
                                             <!--<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">-->
-                                                <!--<i class="fa fa-user"></i>-->
-                                                <!--ดูข้อมูลสมาชิก-->
+                                            <!--<i class="fa fa-user"></i>-->
+                                            <!--ดูข้อมูลสมาชิก-->
                                             <!--</a>-->
                                         </div>
-                                    </div>
-                                </a>
+                                </div>
                             </h5>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse" data-th-id="'collapse' + ${lStat.index}">
@@ -106,7 +106,7 @@
                                 <thead>
                                 <tr>
 
-                                    <th class="text-center">รูปภาพ</th>
+                                    <th class="text-center"></th>
                                     <th class="text-center">ชื่อแปลงที่ดิน</th>
                                     <th class="text-center">ชื่อสมาชิก</th>
                                     <th class="text-center">ขนาด (ไร่. วา. ตร.ว.)</th>
@@ -118,7 +118,11 @@
                                 </thead>
                                 <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
                                     <tr>
-                                        <td>  <img src="/image/exampleField.png" width="70"/></td>
+                                        <td>
+                                            <div class="color-dark-blue font-icon-box" >
+                                                <span class="icon-fields"></span>
+                                            </div>
+                                        </td>
                                         <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span></td>
                                         <td><span>สมชาย ใจดี</span></td>
                                         <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
