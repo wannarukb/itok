@@ -16,7 +16,8 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="page-title font-supermarket">
-                    <span data-th-text="#{new}">Form</span> -
+                    <!--data-th-text="#{new}"-->
+                    <span>เพิ่ม</span> -
                     <span class="fw-semi-bold" data-th-text="#{member}">Inputs &amp; Controls</span>
                 </h1>
             </div>
@@ -68,30 +69,21 @@
                                 <li class="active">
                                     <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลส่วนบุคคล</a>
                                 </li>
-                                <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">รายละเอียดการเป็นสมาชิก</a>
+                                <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">ข้อมูลการเป็นสมาชิก</a>
                                 </li>
-                                <li class=""><a data-target="#tab3" data-toggle="tab" aria-expanded="false">ที่ดิน</a></li>
                             </ul>
                         </div>
                         <div id="tabs1c" class="tab-content mb-lg">
                             <div class="tab-pane clearfix active" id="tab1">
                                 <div class="col-lg-12">
                                     <section class="widget widget-custom-padding">
-                                        <!--<header>-->
-                                        <!--<h6 data-th-text="#{personalDetail}">-->
-                                        <!--รายละเอียด-->
-                                        <!--</h6>-->
-                                        <!--<div class="widget-controls">-->
-                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                        <!--</div>-->
-                                        <!--</header>-->
                                         <div class="widget-body">
                                             <div class="form-horizontal" role="form" method="post">
                                                 <fieldset>
-                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
-                                                        <span data-th-text="#{personalDetail}"></span>
+                                                    <legend class="section-title">
+                                                        <!--<strong data-th-text="#{member}">Horizontal</strong>-->
+                                                        <!--<span data-th-text="#{personalDetail}"></span>-->
+                                                        <span>ข้อมูลประวัติ</span>
                                                     </legend><br/>
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -117,7 +109,8 @@
                                                         </div>
                                                     </div>
                                                     <br/>
-                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
+                                                    <legend class="section-title">
+                                                        <!--<strong data-th-text="#{member}">Horizontal</strong>-->
                                                         <span >ข้อมูลการติดต่อ</span>
                                                     </legend>
                                                     <br/>
@@ -133,7 +126,8 @@
                                                         </div>
                                                     </div>
                                                     <br/>
-                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong>
+                                                    <legend class="section-title">
+                                                        <!--<strong data-th-text="#{member}">Horizontal</strong>-->
                                                         <span>ข้อมูลที่อยู่อาศัย</span>
                                                     </legend>
                                                     <br/>
@@ -157,21 +151,13 @@
                             <div class="tab-pane" id="tab2">
                                 <div class="col-lg-12">
                                     <section class="widget widget-custom-padding">
-                                        <!--<header>-->
-                                        <!--<h6 data-th-text="#{memberDetail}">-->
-                                        <!--รายละเอียด-->
-                                        <!--</h6>-->
-                                        <!--<div class="widget-controls">-->
-                                        <!--<a href="#"><i class="glyphicon glyphicon-cog"></i></a>-->
-                                        <!--<a href="#"><i class="fa fa-refresh"></i></a>-->
-                                        <!--<a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>-->
-                                        <!--</div>-->
-                                        <!--</header>-->
                                         <div class="widget-body">
                                             <div class="form-horizontal" role="form" method="post">
                                                 <fieldset>
-                                                    <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
-                                                            data-th-text="#{memberDetail}"></span></legend>
+                                                    <legend class="section-title">
+                                                        <!--<strong data-th-text="#{member}">Horizontal</strong> -->
+                                                        <span data-th-text="#{memberDetail}"></span>
+                                                    </legend>
                                                     <input type="hidden" data-th-field="*{membershipTemp.id}">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -217,47 +203,6 @@
                                                 </fieldset>
 
                                             </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tab3">
-                                <div class="col-lg-12">
-                                    <section class="widget widget-custom-padding">
-                                        <!--<header class="section-title">-->
-                                        <!--<span>ที่ดิน</span>-->
-                                        <!--</header>-->
-                                        <fieldset>
-                                            <legend class="section-title"><strong data-th-text="#{member}">Horizontal</strong> <span
-                                            > ที่ดิน</span></legend>
-                                            <div class="col-md-12 text-right">
-                                                <a href="#" data-th-href="@{/member/{id}/newLand(id=${member.id})}"
-                                                   data-th-if="${member.id} != null"
-                                                   class="btn btn-info"
-                                                   data-th-text="#{newLand}"></a>
-                                            </div>
-                                        </fieldset>
-                                        <br/>
-                                        <div class="widget-body">
-
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th data-th-text="#{name}">Province</th>
-                                                    <th data-th-text="#{size}">Size</th>
-                                                    <th>Action</th>
-                                                </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                <tr data-th-each="l : *{memberLandsTemp}">
-                                                    <td data-th-text="${l.name}">1</td>
-                                                    <td data-th-text="${l.size}">2</td>
-                                                    <td><a href="#" data-th-href="@{/land/{id}(id=${l.id})}"
-                                                           class="btn btn-link">View</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
                                         </div>
                                     </section>
                                 </div>

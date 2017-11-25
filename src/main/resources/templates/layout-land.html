@@ -32,10 +32,14 @@
                 <h2 class="page-title font-supermarket">แปลงที่ดิน <span class="fw-semi-bold">บ้านดินดี</span></h2>
             </div>
             <div class="col-md-6 text-right">
-
-                <button type="button" class="btn btn-primary"><i class="fa fa-map"></i> แผนที่</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> วาดรูปแปลงที่ดิน</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> แก้ไขข้อมูลที่ดิน</button>
+                <a class="btn btn-primary"
+                        data-th-href="@{/}">
+                    <i class="fa fa fa-pie-chart"></i> แดชบอร์ด
+                </a>
+                <button type="button" class="btn btn-primary">
+                    <i class="fa fa-map"></i> แผนที่
+                </button>
+                <!--<button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> แก้ไขข้อมูลที่ดิน</button>-->
                 <button type="button" class="btn btn-primary"><i class="fa fa-user"></i> ข้อมูลสมาชิก</button>
             </div>
         </div>
@@ -149,8 +153,8 @@
                                                     <span class="icon-thermometer"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
-                                                    <h6 class="name">อุณหภูมิ (&deg;C)</h6>
-                                                    <p class="value font-bold text-right font-big">30 </p>
+                                                    <h6 class="name">อุณหภูมิ</h6>
+                                                    <p class="value font-bold text-right"><span class="font-big">30</span> &deg;C</p>
                                                 </div>
                                             </div>
                                             <p>
@@ -170,8 +174,8 @@
                                                     <span class="icon-waterpercent"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
-                                                    <h6 class="name">ความชื้นสัมพันธ์ในอากาศ (%)</h6>
-                                                    <p class="value font-bold text-right font-big">30</p>
+                                                    <h6 class="name">ความชื้นสัมพันธ์ในอากาศ</h6>
+                                                    <p class="value font-bold text-right"><span class="font-big">30</span> %</p>
                                                 </div>
                                             </div>
                                             <p>
@@ -190,8 +194,8 @@
                                                     <span class="icon-soilPH"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
-                                                    <h6 class="name">ค่าความเป็นกรดด่างในดิน (pH)</h6>
-                                                    <p class="value font-bold text-right font-big">7.4</p>
+                                                    <h6 class="name">ค่าความเป็นกรดด่างในดิน</h6>
+                                                    <p class="value font-bold text-right"><span class="font-big">7.4</span> pH</p>
                                                 </div>
                                             </div>
                                             <p>
@@ -210,8 +214,8 @@
                                                     <span class="icon-o2-symbol-in-a-cloud"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
-                                                    <h6 class="name">ปริมาณออกซิเจนในน้ำ (mg/liter)</h6>
-                                                    <p class="value font-bold text-right font-big">7.4</p>
+                                                    <h6 class="name">ปริมาณออกซิเจนในน้ำ</h6>
+                                                    <p class="value font-bold text-right"><span class="font-big">7.9</span> mg/liter</p>
                                                 </div>
                                             </div>
                                             <p>
