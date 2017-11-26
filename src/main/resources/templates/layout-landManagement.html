@@ -44,10 +44,7 @@
                             <a data-target="#tab4" data-toggle="tab" aria-expanded="false">แหล่งที่ตั้งแปลงที่ดิน</a>
                         </li >
                         <li class="">
-                            <a data-target="#tab5" data-toggle="tab" aria-expanded="false">รายการการปลูกพืช/เลี้ยงสัตว์</a>
-                        </li>
-                        <li class="">
-                            <a data-target="#tab6" data-toggle="tab" aria-expanded="false">เดกสารประกอบ</a>
+                            <a data-target="#tab5" data-toggle="tab" aria-expanded="false">เอกสารการออกแบบ</a>
                         </li>
                     </ul>
                 </div>
@@ -794,100 +791,7 @@
                             </section>
                         </div>
                     </div>
-                    <div class="tab-pane" id="tab5">
-                        <section class="widget  widget-custom-padding">
-                            <div class="widget-body">
-                                <div class="form-horizontal" role="form" method="post">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="productCatagory" class="form-control-label">ประเภท
-                                                <span class="red">*</span></label>
-                                            <div>
-                                                <select data-width="auto"
-                                                        data-minimum-results-for-search="10"
-                                                        tabindex="-1"
-                                                        class="select2 form-control" id="productCatagory">
-                                                    <option value="value01">การปลูกพืช</option>
-                                                    <option value="value02">การเลี้ยงสัตว์</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="productName" class="form-control-label ">ชื่อ <span class="red">*</span></label>
-                                            <div id="productName">
-                                                <input class="form-control" type="text"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="Description" class="form-control-label">คำอธิบาย <span class="red">*</span></label>
-                                            <div id="Description">
-                                                <input class="form-control" type="text"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions" style="background: none;">
-                                        <div class="row">
-                                            <div class="col-md-12 text-center">
-                                                <button type="submit" class="btn btn-primary"> <i class="fa fa-check" aria-hidden="true"></i> บันทึก</button>
-                                                <button type="button" class="btn btn-inverse"> <i class="fa fa-times" aria-hidden="true"></i> ยกเลิก</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <fieldset>
-                                        <legend class="section-title"><strong >ข้อมูลการปลูกพืช/สัตว์เลี้ยง</strong> </legend>
-                                    </fieldset>
-                                </div>
-                                <div class="row">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th style="width: 5%"></th>
-                                            <th style="width: 15%">ประเภท</th>
-                                            <th style="width: 30%">ชื่อ</th>
-                                            <th>คำอธิบาย</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="text-center">
-                                                <a class="btn-action" >
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span>การปลูกพืช</span>
-                                            </td>
-                                            <td>
-                                                <span>กะเพรา</span>
-                                            </td>
-                                            <td>
-                                                <span>3 แปลง</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <a class="btn-action" >
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span>การเลี้ยงสัตว์</span>
-                                            </td>
-                                            <td>
-                                                <span>ปลาทับทิม</span>
-                                            </td>
-                                            <td>
-                                                <span>เพาะพันธุ์ 30 ตัว</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="tab-pane background-white" id="tab6">
+                    <div class="tab-pane background-white" id="tab5">
                         <section class="widget widget-custom-margin-bottom">
                             <div class="widget-body">
                                 <div class="row">
@@ -934,29 +838,42 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>Files</th>
-                                                <th>Size</th>
-                                                <th>Action</th>
+                                                <th>File</th>
+                                                <th>วันที่จัดเก็บข้อมูล</th>
+                                                <th>คำอธิบาย</th>
+                                                <th></th>
                                             </tr>
 
                                             </thead>
                                             <tbody>
-                                            <tr>
-
-                                            </tr>
-                                            <tr data-th-each="l : ${files}">
-                                                <td data-th-text="${l.fileName}"></td>
-                                                <td data-th-text="${l.readableFileSize()}"></td>
-                                                <td class="text-center">
-                                                    <a class="btn-action"
-                                                       data-th-href="@{/land/download/{key}(key=${l.key})}">
-                                                        <i class="fa fa-download" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a class="btn-action">
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td style="width: 20%"> <img data-th-src="@{/image/draft1.png}" src="../static/image/draft1.png"
+                                                              class="img-responsive"/></td>
+                                                    <td style="vertical-align: text-top;">23/11/2560</td>
+                                                    <td style="vertical-align: text-top;">ภาพร่างการออกแบบ</td>
+                                                    <td class="text-center" style="vertical-align: text-top;">
+                                                        <a class="btn-action">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn-action">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 20%"> <img data-th-src="@{/image/draft2.png}" src="../static/image/draft2.png"
+                                                                                 class="img-responsive"/></td>
+                                                    <td style="vertical-align: text-top;">23/11/2560</td>
+                                                    <td style="vertical-align: text-top;">ภาพร่างการออกแบบ</td>
+                                                    <td class="text-center" style="vertical-align: text-top;">
+                                                        <a class="btn-action">
+                                                            <i class="fa fa-download" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn-action">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

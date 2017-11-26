@@ -66,8 +66,8 @@
         <!-- main notification links are placed inside of .sidebar-nav -->
         <ul class="sidebar-nav" style="padding: 0px;">
 
-            <li data-th-class="${pageName} == null  ? 'active' : ''">
-                <a href="inbox.html" data-th-href="@{/}">
+            <li data-th-class="(${pageName} == 'layout-dashboard' OR ${pageName} == null OR ${pageName} == 'layout-landList')  ? 'active' : ''">
+                <a href="inbox.html" data-th-href="@{/page/layout-dashboard}">
                     <span class="icon">
                         <i class="fa fa-pie-chart"></i>
                     </span>
