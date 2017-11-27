@@ -40,8 +40,12 @@
             <div class="col-md-1">
                 <button class="btn btn-primary btn-full-width button-search">
                     <i class="fa fa-search"></i> ค้นหา</button>
+
             </div>
             <div class="col-md-2 " >
+                <a class="btn btn-success btn-full-width button-search"  data-th-href="@{/page/newLand}" >
+                    <i class="fa fa-plus"></i> เพิ่มแปลงที่ดินใหม่
+                </a>
             </div>
         </div>
         <div class="row" id="farmPanel">
@@ -73,7 +77,7 @@
                             <td><span>นครราชสีมา</span></td>
                             <td><span>ลุ่มน้ำมูล</span></td>
                             <td>
-                                <a href="#" class="btn btn-danger">
+                                <a data-th-href="@{/page/layout-landManagement}" class="btn btn-danger">
                                     <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                 </a>
                             </td>
@@ -90,7 +94,7 @@
                             <td><span>นครราชสีมา</span></td>
                             <td><span>ลุ่มน้ำมูล</span></td>
                             <td>
-                                <a href="#" class="btn btn-danger">
+                                <a class="btn btn-danger" data-th-href="@{/page/layout-landManagement}">
                                     <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                 </a>
                             </td>
@@ -107,7 +111,7 @@
                             <td><span>นครราชสีมา</span></td>
                             <td><span>ลุ่มน้ำมูล</span></td>
                             <td>
-                                <a href="#" class="btn btn-danger">
+                                <a data-th-href="@{/page/layout-landManagement}" class="btn btn-danger">
                                     <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                 </a>
                             </td>

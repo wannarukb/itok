@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout">
+<head>
+    <title>ITOK-Member List</title>
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+         chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+         https://code.google.com/p/chromium/issues/detail?id=332189
+         */
+    </script>
+</head>
+<body>
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
+        <div class="row">
+            <div class="col-md-12 font-supermarket">
+                <h2>ค้นห้าข้อมูลแปลงที่ดิน</h2>
+            </div>
+        </div>
+        <div class="row margin-bottom-xs">
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">ชื่อแปลงที่ดิน</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">จังหวัด</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">ลุ่มน้ำ</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-full-width button-search">
+                    <i class="fa fa-search"></i> ค้นหา</button>
+            </div>
+            <div class="col-md-2 " >
+            </div>
+        </div>
+        <div class="row" id="farmPanel">
+            <div class="col-md-12">
+                <table class="table table-striped text-center background-white">
+                    <thead>
+                    <tr>
+
+                        <th class="text-center"></th>
+                        <th class="text-center">ชื่อแปลงที่ดิน</th>
+                        <th class="text-center">ชื่อสมาชิก</th>
+                        <th class="text-center">ขนาด (ไร่. วา. ตร.ว.)</th>
+                        <th class="text-center">จังหวัด</th>
+                        <th class="text-center">ลุ่มน้ำ</th>
+                        <th class="text-center"> </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="color-dark-blue font-icon-box" >
+                                <span class="icon-fields"></span>
+                            </div>
+                        </td>
+                        <td><span>บ้านดินดี</span></td>
+                        <td><span>สมชาย ใจดี</span></td>
+                        <td><span>320.3</span></td>
+                        <td><span>นครราชสีมา</span></td>
+                        <td><span>ลุ่มน้ำมูล</span></td>
+                        <td>
+                            <a data-th-href="@{/page/layout-landManagement}" class="btn btn-danger">
+                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="color-dark-blue font-icon-box" >
+                                <span class="icon-fields"></span>
+                            </div>
+                        </td>
+                        <td><span>บ้านดินดี</span></td>
+                        <td><span>สมชาย ใจดี</span></td>
+                        <td><span>320.3</span></td>
+                        <td><span>นครราชสีมา</span></td>
+                        <td><span>ลุ่มน้ำมูล</span></td>
+                        <td>
+                            <a class="btn btn-danger" data-th-href="@{/page/layout-landManagement}">
+                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="color-dark-blue font-icon-box" >
+                                <span class="icon-fields"></span>
+                            </div>
+                        </td>
+                        <td><span>บ้านดินดี</span></td>
+                        <td><span>สมชาย ใจดี</span></td>
+                        <td><span>320.3</span></td>
+                        <td><span>นครราชสีมา</span></td>
+                        <td><span>ลุ่มน้ำมูล</span></td>
+                        <td>
+                            <a data-th-href="@{/page/layout-landManagement}" class="btn btn-danger">
+                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- The Loader. Is shown when pjax happens -->
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+        </div>
+    </main>
+</div>
+
+
+<!-- page specific js -->
+<div data-layout-fragment="script">
+
+</div>
+</body>
+</html>

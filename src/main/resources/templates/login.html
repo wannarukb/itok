@@ -2,12 +2,20 @@
 <html lang="en">
 
 <head>
-    <link data-gcs-href="" href="https://storage.googleapis.com/itok-project.appspot.com/css/application.min.css" rel="stylesheet">
+
+    <link data-gcs-href="" href="css/application.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link href="../static/custom.css" rel="stylesheet">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/custom.css" rel="stylesheet">
+
+    <link href="/font-style.css" rel="stylesheet" />
+
+    <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
+    <!--[if IE 9]>
+    <link data-gcs-href="" href="css/application-ie9-part2.css" rel="stylesheet">
+    <![endif]-->
+
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=thai" rel="stylesheet">
@@ -24,30 +32,33 @@
 <body>
 <div id="container" class="background-white font-kanit text-dark login-page" >
     <div class="row">
-        <div class="col-md-8 login-background hidden-xs"  style="background: url('../static/image/bg-image.jpeg');">
+        <div class="col-md-8 login-background hidden-xs"  style="background: url('/image/bg-image.jpeg');">
             &nbsp;
         </div>
         <div class="col-md-4 col-xs-12 pad-login">
             <div class="row text-center">
-                <img src="../static/image/Logo-ITOK.png" width="150" /><br/><br/>
+                <img src="/image/Logo-ITOK.png" width="150" /><br/><br/>
                 <p class="font-size-14">การจัดเก็บข้อมูลระบบสารสนเทศทางภูมิศาสตร์<br/>เพื่อการวางแผนเชิงลึก</p>
             </div>
 
             <div class="row margin-top--big">
                 <p class="text-logo text-center">ลงชื่อเข้าใช้งานระบบ</p>
-                <form action="Dashboard.html">
+                <form action="">
                     <div class="form-group has-feedback pad-top-15">
                         <input type="text" id="demo-oi-username" class="form-control" placeholder="Username" autofocus>
-                        <i class="fa fa-user icon-lg form-control-feedback"></i>
+                        <i class="fa fa-user form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback pad-top-15">
                         <input type="password" id="demo-oi-password" class="form-control"  placeholder="Password" >
-                        <i class="fa fa fa-lock icon-lg form-control-feedback"></i>
+                        <i class="fa fa-lock  form-control-feedback"></i>
                     </div>
                     <div class="row pad-top-15">
                         <div class="col-sm-5 text-left login-des-font-small">Forgot Password ?</div>
                         <div class="col-sm-7 text-right">
-                            <button class="btn btn-primary" type="submit">ลงชื่อเข้าใช้</button>
+                            <!--<button class="btn btn-primary" type="submit">ลงชื่อเข้าใช้</button>-->
+                            <a class="btn btn-primary"  data-th-onclick="'window.location=\'' + @{/page/layout-dashboard} + '\''">
+                                <i class="fa fa-user"></i> ลงชื่อเข้าใช้
+                            </a>
                         </div>
                     </div>
 
@@ -64,6 +75,54 @@
 <!--===================================================-->
 <!-- END OF CONTAINER -->
 
+<!-- common libraries. required for every page-->
+<script data-gcs-src="" src="vendor/jquery/dist/jquery.min.js"></script>
+<script data-gcs-src="" src="vendor/jquery-pjax/jquery.pjax.js"></script>
+<script data-gcs-src="" src="vendor/tether/dist/js/tether.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/util.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/collapse.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/dropdown.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/button.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/tooltip.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/alert.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/tab.js"></script>
+<script data-gcs-src="" src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script data-gcs-src="" src="vendor/widgster/widgster.js"></script>
+<!--<script data-gcs-src="" src="vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>-->
+<script data-gcs-src="" src="vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
+<script data-gcs-src="" src="js/bootstrap-fix/button.js"></script>
+
+<!-- common app js -->
+<script data-gcs-src="" src="js/settings.js"></script>
+<script data-gcs-src="" src="js/app.js"></script>
+
+<!-- page specific libs -->
+<script data-gcs-src="" src="vendor/bootstrap/js/dist/modal.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script data-gcs-src="" src="vendor/jquery-autosize/jquery.autosize.min.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js"></script>
+<script data-gcs-src="" src="vendor/select2/select2.min.js"></script>
+<script data-gcs-src="" src="vendor/switchery/dist/switchery.min.js"></script>
+<script data-gcs-src="" src="vendor/moment/min/moment.min.js"></script>
+<!--<script data-gcs-src=""-->
+<!--src="vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>-->
+<script data-gcs-src="" src="vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script data-gcs-src="" src="vendor/jasny-bootstrap/js/inputmask.js"></script>
+<script data-gcs-src="" src="vendor/jasny-bootstrap/js/fileinput.js"></script>
+<script data-gcs-src="" src="vendor/holderjs/holder.js"></script>
+<script data-gcs-src="" src="vendor/dropzone/dist/min/dropzone.min.js"></script>
+<script data-gcs-src="" src="vendor/markdown/lib/markdown.js"></script>
+<script data-gcs-src="" src="vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script data-gcs-src="" src="vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+
+
+<!-- page specific js -->
+<div data-layout-fragment="script">
+
+    <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
+</div>
 
 </body>
 </html>
