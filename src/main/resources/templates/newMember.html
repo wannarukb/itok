@@ -93,8 +93,7 @@
                                                             <input data-th-replace="fragments/TextField :: input (#{lastName}, 'lastName', true)"/>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <!--<input data-th-if="*{id} != null"-->
-                                                            <!--data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>-->
+                                                            <!--<input data-th-if="*{id} != null" data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>-->
                                                             <input data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>
                                                             <input data-th-replace="fragments/DateSelect :: dateSelect (#{birthday}, 'birthday', false)"/>
                                                             <input data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>
@@ -169,7 +168,17 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <input data-th-replace="fragments/CheckboxField :: checkbox (#{delegateMember}, 'membershipTemp.villageDelegate', false)"/>
+                                                            <div class ="row form-group">
+                                                                <label class="col-md-4 form-control-label text-md-right"></label>
+                                                                <div class="col-md-7">
+                                                                    <div class="checkbox abc-checkbox abc-checkbox-primary">
+                                                                        <input id="checkbox2" type="checkbox" checked>
+                                                                        <label for="checkbox2">
+                                                                            เป็นตัวแทนสมาชิกประจำหมู่บ้าน
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
@@ -177,11 +186,12 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
                                                             <input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
+                                                            <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+                                                            <input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -189,10 +199,16 @@
                                                             <input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-4 control-label text-md-right">ความเชี่ยวชาญพิเศษ<br/>ด้านเกษตร</label>
+                                                                <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-4 control-label text-md-right">ความสนใจพิเศษ<br/>ด้านเกษตร</label>
+                                                                <input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
