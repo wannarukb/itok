@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout">
+<head>
+    <title>ITOK - Land List</title>
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+         chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+         https://code.google.com/p/chromium/issues/detail?id=332189
+         */
+    </script>
+    <style>
+        #chart_01 g text, #chart_02 g text, #chart_03 g text,
+        #chart_04 g text, #chart_05 g text, #chart_06 g text{
+            font-size: 14px !important;
+            font-weight: bold !important;
+            left: 20px !important;
+        }
+        #chart_01 g g text, #chart_02 g g text, #chart_03 g g text,
+        #chart_04 g g text, #chart_05 g g text, #chart_06 g g text{
+            font-size: 12px !important;
+            font-weight: normal !important;
+        }
+    </style>
+</head>
+<body>
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
+        <div class="row">
+            <div class="col-md-12 font-supermarket">
+                <h2>กราฟสรุปข้อมูลแปลงที่ดิน</h2>
+            </div>
+        </div>
+        <div class="row margin-bottom-s">
+            <div class="col-md-6">
+                <div id="chart_01"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="chart_02"></div>
+            </div>
+        </div>
+        <div class="row margin-bottom-s">
+            <div class="col-md-6">
+                <div id="chart_03" style="width: 100%;"></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<!-- page specific js -->
+<div data-layout-fragment="script">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawColumn01);
+        function drawColumn01() {
+            var data = google.visualization.arrayToDataTable([
+                ['ปี', 'จำนวน', { role: 'style' }, { role: 'annotation' } ],
+                ['2555', 35, '#0598d8', '35' ],
+                ['2556', 65, '#f97263', '65' ],
+                ['2557', 68, '#FFE659', '68' ],
+                ['2558', 78, '#0DDB8F', '78' ],
+                ['2559', 102, '#9C6ADD', '102' ]
+            ]);
+
+            var options = {
+                title: 'จำนวนแปลงที่ดิน ย้อนหลัง 5 ปี',
+                height: 400,
+                colors: ['#0598d8', '#f97263'],
+                legend : {
+                    position: 'center',
+                    maxLines: 3,
+                }
+
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_01'));
+
+            chart.draw(data, options);
+        }
+
+        google.charts.setOnLoadCallback(drawColumn02);
+        function drawColumn02() {
+            var data = google.visualization.arrayToDataTable([
+                ['จังหวัด', 'จำนวน', { role: 'style' }, { role: 'annotation' } ],
+                ['นนทบุรี', 35, '#0598d8', '35' ],
+                ['นครราชสีมา', 65, '#0598d8', '65' ],
+                ['เชียงใหม่', 45, '#0598d8', '45' ],
+                ['นครสวรรค์', 78, '#0598d8', '78' ],
+                ['ลพบุรี', 102, '#0598d8', '102' ]
+            ]);
+
+            var options = {
+                title: 'จำนวนแปลงที่ดินสูงสุด 5 จังหวัดแรก',
+                height: 400,
+                colors: ['#0598d8', '#f97263'],
+                hAxis: {
+                    title: 'จำนวน',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'จังหวัด'
+                }
+
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_02'));
+
+            chart.draw(data, options);
+        }
+
+        google.charts.setOnLoadCallback(drawColumn03);
+        function drawColumn03() {
+            var data = google.visualization.arrayToDataTable([
+                ['ลุ่มน้ำ', 'จำนวน', { role: 'style' }, { role: 'annotation' } ],
+                ['ลุ่มน้ำปิง', 35, '#0598d8', '35' ],
+                ['ลุ่มน้ำวัง', 65, '#0598d8', '65' ],
+                ['ลุ่มน้ำเจ้าพระยา', 45, '#0598d8', '45' ],
+                ['ลุ่มน้ำน่าน', 78, '#0598d8', '78' ],
+                ['ลุ่มน้ำเจ้าพระยา', 102, '#0598d8', '102' ]
+            ]);
+
+            var options = {
+                title: 'จำนวนแปลงที่ดินสูงสุด 5 ลุ่มน้ำแรก',
+                height: 400,
+                colors: ['#0598d8', '#f97263'],
+                hAxis: {
+                    title: 'จำนวน',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'ลุ่มน้ำ'
+                }
+
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_03'));
+
+            chart.draw(data, options);
+        }
+
+
+
+    </script>
+</div>
+</body>
+</html>
