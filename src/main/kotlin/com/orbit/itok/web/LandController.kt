@@ -1,9 +1,11 @@
 package com.orbit.itok.web
 
 import com.google.appengine.api.blobstore.BlobKey
-import com.google.appengine.api.blobstore.BlobstoreService
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory
-import com.orbit.itok.service.*
+import com.orbit.itok.service.MemberLand
+import com.orbit.itok.service.MemberLandService
+import com.orbit.itok.service.MemberService
+import com.orbit.itok.service.SettingServiceImpl
 import com.orbit.itok.util.UploadUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -102,7 +104,7 @@ class LandController {
         if (member != null) {
             model.addAttribute("userId", member.id)
         }
-        model.addAttribute("mapUrl", "http://35.198.237.232/itok_map/addlandplot.php")
+        model.addAttribute("mapUrl", "https://itok.club/itok_map/addlandplot.php")
         if (memberLand != null) {
             model.addAttribute("lat", memberLand.lat ?: 15)
             model.addAttribute("lng", memberLand.lng ?: 100.9925)
