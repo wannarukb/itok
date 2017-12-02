@@ -27,8 +27,14 @@
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
         <div class="row">
-            <div class="col-md-12 font-supermarket">
+            <div class="col-md-6">
                 <h2>กราฟสรุปข้อมูลแปลงที่ดิน</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <a class="btn btn-primary"
+                   data-th-href="@{/page/layout-dashboard}">
+                    <i class="fa fa fa-pie-chart"></i> แดชบอร์ด
+                </a>
             </div>
         </div>
         <div class="row margin-bottom-s">

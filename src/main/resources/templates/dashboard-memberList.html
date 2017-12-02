@@ -44,64 +44,45 @@
             <div class="col-md-2 " >
                 <p class=" text-right">
                     <!--<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >-->
-                        <!--<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่-->
+                    <!--<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่-->
                     <!--</a>-->
                 </p>
             </div>
         </div>
         <div class="row" id="farmPanel">
             <div class="col-md-12">
-                <div class="panel-group mb-lg" id="accordion" data-toggle="collapse" data-th-remove="all-but-first">
-                    <div class="panel panel-default" data-th-each="l : ${list}" data-th-object="${l}">
+                <div class="panel-group mb-lg" id="accordion" data-toggle="collapse" >
+                    <div class="panel panel-default">
                         <div class="panel-heading panel-heading-white collapsed">
                             <h5 class="panel-title">
                                 <div class="row">
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseOne"
-                                        data-th-href="'#collapse' + ${lStat.index}">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseOne">
 
                                         <div class="col-sm-1 text-center ">
                                             <i class="fa fa-user"
-                                               aria-hidden="true" style="font-size:2.5em;"
-                                               data-th-if="${l.image == null}"></i>
-                                            <img data-th-src="${l.image.imageUrl} + '=s50-c'"
-                                                 data-th-if="${l.image} != null"
-                                                 class=" img-circle">
+                                               aria-hidden="true" style="font-size:2.5em;"></i>
                                         </div>
                                         <div class="col-sm-3">
-                                            <p class="color-green"><strong
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p>
-                                            <p class="font-medium color-dark"
-                                               data-th-text="*{nickname}">2 Farms</p>
-                                            <!--<p class="font-xs-small color-grey"-->
-                                               <!--data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>-->
+                                            <p class="color-green"><strong>สมชาย สวัสดี</strong></p>
                                         </div>
                                         <div class="col-sm-4">
-                                            <!--<p data-th-text="*{mobile}" class="font-medium color-dark"></p>-->
-                                            <!--<p data-th-text="*{address}" class="font-medium color-dark"></p>-->
                                             <p class="font-medium color-dark">นนทบุรี</p>
-                                            <span class="font-xs-small color-grey"
-                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
+                                            <span class="font-xs-small color-grey">2 Fields - 0 ไร่ 0 งาน 0 ตารางวา</span>
                                         </div>
                                         <div class="col-sm-2">
-                                            <p data-th-text="*{membershipTemp.type}" class="font-medium color-dark"></p>
-                                            <!--<p data-th-text="*{membershipTemp.typeOrganization}"-->
-                                               <!--class="font-medium"></p>-->
+                                            <p class="font-medium color-dark">บุคคล</p>
                                         </div>
                                     </a>
-                                        <div class="col-sm-2 text-right">
-                                            <button class=" btn btn-primary btn-sm"
-                                                    data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
-                                                <i class="fa fa-user" style="color: #FFF !important;"></i> ดูข้อมูลสมาชิก
-                                            </button>
-                                            <!--<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">-->
-                                            <!--<i class="fa fa-user"></i>-->
-                                            <!--ดูข้อมูลสมาชิก-->
-                                            <!--</a>-->
-                                        </div>
+                                    <div class="col-sm-2 text-right">
+                                        <button class=" btn btn-primary btn-sm"
+                                                data-th-onclick="'window.location=\'' + @{/page/dashboard-member-view} + '\''">
+                                            <i class="fa fa-user" style="color: #FFF !important;"></i> ดูข้อมูลสมาชิก
+                                        </button>
+                                    </div>
                                 </div>
                             </h5>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse" data-th-id="'collapse' + ${lStat.index}">
+                        <div id="collapseOne" class="panel-collapse collapse" >
                             <table class="table table-striped text-center" style="width: 97%;margin: 20px auto;border: 1px solid #ddd;">
                                 <thead>
                                 <tr>
@@ -116,26 +97,43 @@
 
                                 </tr>
                                 </thead>
-                                <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
+                                <tbody>
                                     <tr>
                                         <td>
                                             <div class="color-dark-blue font-icon-box" >
                                                 <span class="icon-fields"></span>
                                             </div>
                                         </td>
-                                        <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span></td>
+                                        <td><span>บ้านดินดี</span></td>
                                         <td><span>สมชาย ใจดี</span></td>
-                                        <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
-                                        <td><strong data-th-text="${k.address.province}">สวนกวาง</strong></td>
+                                        <td><span>320.3</span></td>
+                                        <td><span>นครราชสีมา</span></td>
                                         <td><span>ลุ่มน้ำมูล</span></td>
                                         <td>
-                                            <button class=" btn btn-danger btn-sm"
-                                                    data-th-onclick="'window.location=\'' + @{/page/member-land-view} + '\''">
+                                            <button  class="btn btn-danger"
+                                                data-th-onclick="'window.location=\'' + @{/page/dashboard-landList-view} + '\''">
                                                 <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                             </button>
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td>
+                                            <div class="color-dark-blue font-icon-box" >
+                                                <span class="icon-fields"></span>
+                                            </div>
+                                        </td>
+                                        <td><span>บ้านดินดีแสนสุข</span></td>
+                                        <td><span>สมชาย ใจดี</span></td>
+                                        <td><span>150.3</span></td>
+                                        <td><span>ชัยนาท</span></td>
+                                        <td><span>เจ้าพระยา</span></td>
+                                        <td>
+                                            <button  class="btn btn-danger"
+                                                     data-th-onclick="'window.location=\'' + @{/page/dashboard-landList-view} + '\''">
+                                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                                            </button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -169,9 +167,9 @@
 <!-- page specific js -->
 <div data-layout-fragment="script">
 
-    <script src="/webjars/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+    <!--<script src="https://storage.googleapis.com/itok-project.appspot.com/webjars/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>-->
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
-    <script src="/js/layout-Lek.js"></script>
+    <!--<script src="/js/layout-Lek.js"></script>-->
 </div>
 </body>
 </html>
