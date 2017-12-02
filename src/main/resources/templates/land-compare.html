@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout">
+<head>
+    <title>ITOK-Member List</title>
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+         chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+         https://code.google.com/p/chromium/issues/detail?id=332189
+         */
+    </script>
+</head>
+<body>
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
+        <div class="row">
+            <div class="col-md-6 font-supermarket">
+                <h2>เปรียบเทียบข้อมูลแปลงที่ดิน</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <button type="button" class="btn btn-inverse"
+                        data-th-onclick="'window.location=\'' + @{/page/layout-land} + '\''">
+                    <i class="fa fa-times" aria-hidden="true"></i> กลับ
+                </button>
+            </div>
+        </div>
+        <div class="row margin-bottom-xs">
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">ชื่อแปลงที่ดิน</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">จังหวัด</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <p class="text-desc">ลุ่มน้ำ</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-full-width button-search">
+                    <i class="fa fa-search"></i> ค้นหา</button>
+            </div>
+            <div class="col-md-2 " >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div>
+                    <p class="text-desc">วันที่</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div>
+                    <p class="text-desc">เวลา</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div>
+                    <p class="text-desc">วันที่</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div>
+                    <p class="text-desc">เวลา</p>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 15px auto;">
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-success"
+                        data-th-onclick="'window.location=\'' + @{/page/layout-land} + '\''">
+                    <i class="fa fa-check" aria-hidden="true"></i> เปรียบเทียบแปลงที่ดิน
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <img data-th-src="@{/image/land-01.png}" src="image/land-01.png"
+                         class="img-responsive"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <img data-th-src="@{/image/land-02.png}" src="image/land-02.png"
+                         class="img-responsive"/>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+
+<!-- page specific js -->
+<div data-layout-fragment="script">
+
+</div>
+</body>
+</html>

@@ -95,6 +95,8 @@
             <li data-th-class="(${pageName} == 'land'
               OR ${pageName} == 'layout-landManagement'
               OR ${pageName} == 'layout-land'
+              OR ${pageName} == 'land2'
+              OR ${pageName} == 'land-compare'
               OR ${pageName} == 'newLand') ? 'active' : ''">
                 <a href="inbox.html" data-th-href="@{/page/layout-landList}">
                     <span class="icon">
@@ -104,16 +106,22 @@
                 </a>
             </li>
 
-            <li data-th-class="${pageName} == 'training' ? 'active' : ''">
-                <a href="inbox.html" data-th-href="'#'">
+            <li data-th-class="(${pageName} == 'training'
+              OR ${pageName} == 'layout-trainList'
+              OR ${pageName} == 'layout-train'
+              OR ${pageName} == 'newTrain')? 'active' : ''">
+                <a href="inbox.html" data-th-href="@{/page/layout-trainList}">
                     <span class="icon">
                         <i class="fa fa-book"></i>
                     </span>
                     <span data-th-text="#{training}">Dashboard</span>
                 </a>
             </li>
-            <li data-th-class="${pageName} == 'activity' ? 'active' : ''">
-                <a href="inbox.html" data-th-href="'#'">
+            <li data-th-class="(${pageName} == 'activity'
+              OR ${pageName} == 'layout-activityList'
+              OR ${pageName} == 'layout-activity'
+              OR ${pageName} == 'newActivity')? 'active' : ''">
+                <a href="inbox.html" data-th-href="@{/page/layout-activityList}">
                     <span class="icon">
                         <i class="fa fa-star"></i>
                     </span>
