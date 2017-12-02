@@ -15,8 +15,14 @@
                 </h1>
             </div>
             <div class="col-md-6 text-right">
-                <button type="submit" class="btn btn-primary"> <i class="fa fa-check" aria-hidden="true"></i> บันทึก</button>
-                <button type="button" class="btn btn-inverse"> <i class="fa fa-times" aria-hidden="true"></i> ยกเลิก</button>
+                <button type="button" class="btn btn-primary"
+                        data-th-onclick="'window.location=\'' + @{/page/layout-land} + '\''">
+                    <i class="fa fa-check" aria-hidden="true"></i> บันทึก
+                </button>
+                <button type="button" class="btn btn-inverse"
+                        data-th-onclick="'window.location=\'' + @{/page/layout-landList} + '\''">
+                    <i class="fa fa-times" aria-hidden="true"></i> ยกเลิก
+                </button>
             </div>
         </div>
         <div class="row">

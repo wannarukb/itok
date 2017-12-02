@@ -4,9 +4,9 @@
     <title>Sing - Form Elements</title>
 
     <!--<link data-gcs-href="" href="https://storage.googleapis.com/itok-project.appspot.com/css/application.min.css"-->
-          <!--rel="stylesheet">-->
+    <!--rel="stylesheet">-->
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"-->
-          <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+    <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
 
     <!--<link href="../static/custom.css" rel="stylesheet" data-th-href="@{/custom.css}">-->
@@ -33,15 +33,15 @@
             </div>
             <div class="col-md-6 text-right">
                 <a class="btn btn-primary"
-                        data-th-href="@{/}">
+                   data-th-href="@{/}">
                     <i class="fa fa fa-pie-chart"></i> แดชบอร์ด
                 </a>
                 <a class="btn btn-primary">
                     <i class="fa fa-map"></i> แผนที่
                 </a>
-                <a class="btn btn-primary" data-th-href="@{/page/layout-landManagement}">
-                    <i class="fa fa-pencil"></i> แก้ไขข้อมูลแปลงที่ดิน
-                </a>
+                <!--<a class="btn btn-primary" data-th-href="@{/page/layout-landManagement}">-->
+                    <!--<i class="fa fa-pencil"></i> แก้ไขข้อมูลแปลงที่ดิน-->
+                <!--</a>-->
                 <a  class="btn btn-primary" data-th-href="@{/page/layout-member}">
                     <i class="fa fa-user"></i> ข้อมูลสมาชิก
                 </a>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="text-element">
-                                            <span class="element-label">ขนาดพื้นที่โคกหนองนา (ไร่. งาน. ตร.ว.)</span>
+                                            <span class="element-label">ขนาดพื้นที่โคกหนองนา (ไร่. งาน. ตร.วา.)</span>
                                             <p class="element-value">320.3</p>
                                         </div>
                                     </div>
@@ -606,17 +606,17 @@
                             <div class="col-md-12">
                                 <table class="table table-striped">
                                     <thead>
-                                        <tr>
-                                            <th class="text-center">วันที่จัดการ</th>
-                                            <th class="text-center">ประเภทข้อมูล</th>
-                                            <th class="text-center">ขนาดพื้นที่โคกหนองนา (ไร่. งาน. ตร.ว.)</th>
-                                            <th class="text-center">จำนวนการปลูกพืช</th>
-                                            <th class="text-center">จำนวนสัตว์เลี้ยง</th>
-                                            <th class="text-center">ผู้ตรวจวัด</th>
-                                            <th class="text-center"> </th>
-                                        </tr>
+                                    <tr>
+                                        <th class="text-center">วันที่จัดการ</th>
+                                        <th class="text-center">ประเภทข้อมูล</th>
+                                        <th class="text-center">ขนาดพื้นที่โคกหนองนา (ไร่. งาน. ตร.วา.)</th>
+                                        <th class="text-center">จำนวนการปลูกพืช</th>
+                                        <th class="text-center">จำนวนสัตว์เลี้ยง</th>
+                                        <th class="text-center">ผู้ตรวจวัด</th>
+                                        <th class="text-center"> </th>
+                                    </tr>
                                     </thead>
-                                <tbody>
+                                    <tbody>
                                     <tr>
                                         <td class="text-center">23/10/2560</td>
                                         <td class="text-center">การจัดการพื้นที่</td>
@@ -625,7 +625,7 @@
                                         <td class="text-center">10</td>
                                         <td class="text-center">พิมลวรรณ ขวัญศรี</td>
                                         <td class="text-center">
-                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/layout-landManagement} + '\''">
+                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/member-landManagement} + '\''">
                                                 <i class="icon-fields"></i> ดูข้อมูลการจัดการ
                                             </a>
                                         </td>
@@ -638,12 +638,12 @@
                                         <td class="text-center">10</td>
                                         <td class="text-center">พิมลวรรณ ขวัญศรี</td>
                                         <td class="text-center">
-                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/layout-landManagement} + '\''">
+                                            <a class="btn btn-danger"  data-th-onclick="'window.location=\'' + @{/page/member-landManagement} + '\''">
                                                 <i class="icon-fields"></i> ดูข้อมูลการจัดการ
                                             </a>
                                         </td>
                                     </tr>
-                                </tbody>
+                                    </tbody>
                                 </table>
                             </div>
                         </div><br/>

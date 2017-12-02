@@ -32,10 +32,7 @@
                             <h3 style="margin-bottom: 0px; margin-top: 17px;">นาย สมชาย ใจดี</h3>
                         </div>
                         <div class="col-sm-6 text-right">
-                            <a class="btn btn-primary" data-th-href="@{/member/new}">
-                                <i class="fa fa-pencil"></i> แก้ไขข้อมูลสมาชิก
-                            </a>
-
+                            <!--<button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i> แก้ไขข้อมูลสมาชิก</button>-->
                         </div>
                     </div>
                     <div class="tab-style-custom tab-profile" style="margin-top: 10px;">
@@ -504,11 +501,6 @@
                         </div>
                         <div class="tab-pane background-white" id="tab3">
                             <section class="widget widget-custom-padding">
-                                <div class="row">
-                                    <div class="col-md-12 text-right">
-                                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> เพิ่มแปลงที่ดิน</button>
-                                    </div>
-                                </div><br/>
                                 <div class="widget-body">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -528,24 +520,24 @@
                                                 </thead>
                                                 <!--data-th-remove="all-but-first" data-th-each="l : ${member.memberLandsTemp}"-->
                                                 <tbody >
-                                                    <tr>
-                                                        <td>
-                                                            <div class="color-dark-blue font-icon-box" >
-                                                                <span class="icon-fields"></span>
-                                                            </div>
-                                                        </td>
-                                                        <td><span>บ้านดินดี</span></td>
-                                                        <td><span>สมชาย ใจดี</span></td>
-                                                        <td><span>320.3</span></td>
-                                                        <td><span>นครราชสีมา</span></td>
-                                                        <td><span>ลุ่มน้ำมูล</span></td>
-                                                        <td style="width: 10%;">
-                                                            <a href="#" data-th-href="@{/page/member-land-view}"
-                                                               class="btn btn-danger">
-                                                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="color-dark-blue font-icon-box" >
+                                                            <span class="icon-fields"></span>
+                                                        </div>
+                                                    </td>
+                                                    <td><span>บ้านดินดี</span></td>
+                                                    <td><span>สมชาย ใจดี</span></td>
+                                                    <td><span>320.3</span></td>
+                                                    <td><span>นครราชสีมา</span></td>
+                                                    <td><span>ลุ่มน้ำมูล</span></td>
+                                                    <td style="width: 10%;">
+                                                        <a href="#" data-th-href="@{/page/dashboard-landList-view}"
+                                                           class="btn btn-danger">
+                                                            <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                                                        </a>
+                                                    </td>
+                                                </tr>
 
                                                 </tbody>
                                             </table>
@@ -660,29 +652,29 @@
                                         <div class="widget-body">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">วันที่ทำรายการ</th>
-                                                        <th class="text-center">หมวดรายการ</th>
-                                                        <th class="text-center">กลุ่มรายการ</th>
-                                                        <th class="text-center">จำนวนเงิน</th>
-                                                        <th class="text-center">คำอธิบาย</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">วันที่ทำรายการ</th>
+                                                    <th class="text-center">หมวดรายการ</th>
+                                                    <th class="text-center">กลุ่มรายการ</th>
+                                                    <th class="text-center">จำนวนเงิน</th>
+                                                    <th class="text-center">คำอธิบาย</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">23/10/2560</td>
-                                                        <td class="text-center">รายรับ</td>
-                                                        <td class="text-center">ภาคการเกษตร</td>
-                                                        <td class="text-center">4,000.00</td>
-                                                        <td>ขายผัก</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">23/10/2560</td>
-                                                        <td class="text-center">รายรับ</td>
-                                                        <td class="text-center">ภาคการเกษตร</td>
-                                                        <td class="text-center">4,000.00</td>
-                                                        <td>ขายผัก</td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">23/10/2560</td>
+                                                    <td class="text-center">รายรับ</td>
+                                                    <td class="text-center">ภาคการเกษตร</td>
+                                                    <td class="text-center">4,000.00</td>
+                                                    <td>ขายผัก</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">23/10/2560</td>
+                                                    <td class="text-center">รายรับ</td>
+                                                    <td class="text-center">ภาคการเกษตร</td>
+                                                    <td class="text-center">4,000.00</td>
+                                                    <td>ขายผัก</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -757,24 +749,24 @@
                                             </div>
                                             <table class="table table-striped text-center">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">สูตรฝึกอบรม</th>
-                                                        <th class="text-center">รุ่นที่</th>
-                                                        <th class="text-center">วันที่เริ่ม</th>
-                                                        <th class="text-center">วันที่สิ้นสุด</th>
-                                                        <th class="text-center">สถานที่อบรม</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">สูตรฝึกอบรม</th>
+                                                    <th class="text-center">รุ่นที่</th>
+                                                    <th class="text-center">วันที่เริ่ม</th>
+                                                    <th class="text-center">วันที่สิ้นสุด</th>
+                                                    <th class="text-center">สถานที่อบรม</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
-                                                        </td>
-                                                        <td class="text-center">10</td>
-                                                        <td class="text-center"><span>23/10/2559 08:00</span></td>
-                                                        <td class="text-center"><span>23/10/2559 18:00</span></td>
-                                                        <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
+                                                    </td>
+                                                    <td class="text-center">10</td>
+                                                    <td class="text-center"><span>23/10/2559 08:00</span></td>
+                                                    <td class="text-center"><span>23/10/2559 18:00</span></td>
+                                                    <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -849,24 +841,24 @@
                                             </div>
                                             <table class="table table-striped text-center">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">สูตรฝึกอบรม</th>
-                                                        <th class="text-center">รุ่นที่</th>
-                                                        <th class="text-center">วันที่เริ่ม</th>
-                                                        <th class="text-center">วันที่สิ้นสุด</th>
-                                                        <th class="text-center">สถานที่อบรม</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">สูตรฝึกอบรม</th>
+                                                    <th class="text-center">รุ่นที่</th>
+                                                    <th class="text-center">วันที่เริ่ม</th>
+                                                    <th class="text-center">วันที่สิ้นสุด</th>
+                                                    <th class="text-center">สถานที่อบรม</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
-                                                        </td>
-                                                        <td class="text-center">10</td>
-                                                        <td class="text-center"><span>23/10/2559 08:00</span></td>
-                                                        <td class="text-center"><span>23/10/2559 18:00</span></td>
-                                                        <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
+                                                    </td>
+                                                    <td class="text-center">10</td>
+                                                    <td class="text-center"><span>23/10/2559 08:00</span></td>
+                                                    <td class="text-center"><span>23/10/2559 18:00</span></td>
+                                                    <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -929,26 +921,26 @@
                                     </div>
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center">อุปกรณ์</th>
-                                                <th class="text-center">สถานะ</th>
-                                                <th class="text-center">วันที่ยืมอุปกรณ์</th>
-                                                <th class="text-center">ผู้ยืมและหน่วยงาน</th>
-                                                <th class="text-center">สถานที่ใช้งาน</th>
-                                                <th class="text-center">คำอธิบาย</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center">อุปกรณ์</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">วันที่ยืมอุปกรณ์</th>
+                                            <th class="text-center">ผู้ยืมและหน่วยงาน</th>
+                                            <th class="text-center">สถานที่ใช้งาน</th>
+                                            <th class="text-center">คำอธิบาย</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
                                                 ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
+                                            <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
                                         </tbody>
                                     </table><br/>
                                     <div class="section-title font-bold" >
@@ -956,54 +948,54 @@
                                     </div>
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center">อุปกรณ์</th>
-                                                <th class="text-center">สถานะ</th>
-                                                <th class="text-center">วันที่ยืมอุปกรณ์</th>
-                                                <th class="text-center">วันที่คืนอุปกรณ์</th>
-                                                <th class="text-center">ผู้ยืมและหน่วยงาน</th>
-                                                <th class="text-center">ผู้คืนและหน่วยงาน</th>
-                                                <th class="text-center">สถานที่ใช้งาน</th>
-                                                <th class="text-center">คำอธิบาย</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center">อุปกรณ์</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">วันที่ยืมอุปกรณ์</th>
+                                            <th class="text-center">วันที่คืนอุปกรณ์</th>
+                                            <th class="text-center">ผู้ยืมและหน่วยงาน</th>
+                                            <th class="text-center">ผู้คืนและหน่วยงาน</th>
+                                            <th class="text-center">สถานที่ใช้งาน</th>
+                                            <th class="text-center">คำอธิบาย</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
                                                 ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge">คืน</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">26/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                            <td class="text-center"><span class="badge">คืน</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">26/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
                                                 ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge">คืน</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">26/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                            <td class="text-center"><span class="badge">คืน</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">26/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
                                                 ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">-</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
+                                            <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">-</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1180,7 +1172,7 @@
                             generation: 10
                         },
                         {
-                            
+
                             title: 'AB0000 - อบรมเกษตรทฤษฎีใหม่',
                             start: new Date(y, m-1, 28, 8,30),
                             end: new Date(y, m-1, 30, 16, 0),
@@ -1203,9 +1195,9 @@
                             var eventStartTime = event.start.getHours() + ":" + (event.start.getMinutes() == 0 ? "00" : event.start.getMinutes());
                             var eventEndDate = event.end.getDate() + "/" +(event.end.getMonth()+1) + "/" + event.end.getFullYear();
                             var eventEndTime = event.end.getHours() + ":" + (event.end.getMinutes() == 0 ? "00" : event.end.getMinutes());
-                            var eventPlace =  event.place == undefined ? "-" : event.place; 
-                            var eventGeneration = event.generation == undefined ? "-" : event.generation; 
-                            
+                            var eventPlace =  event.place == undefined ? "-" : event.place;
+                            var eventGeneration = event.generation == undefined ? "-" : event.generation;
+
                             $modal.find(".modal-body #event-name").html(function(){
                                 return event.title;
                             }());
@@ -1233,7 +1225,7 @@
                 var currentDate = $calendar.fullCalendar('getDate');
 
                 $('#calender-current-date').html(
-                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                 );
 
 
@@ -1241,19 +1233,19 @@
                     $calendar.fullCalendar( 'prev' );
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
                 $('#calender-next').click(function(){
                     $calendar.fullCalendar( 'next' );
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
 
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    
+
                     var target = $(e.target).attr("data-target") // activated tab
                     if(target == '#tab5'){
                         $calendar.fullCalendar( 'today' );
@@ -1287,7 +1279,7 @@
                             where: 'กลุ่มพื้นที่ใกล้เคียง'
                         },
                         {
-                            
+
                             title: 'FOR010 - กิจกรรมรักษ์น้ำรักป่า',
                             start: new Date(y, m-1, 28, 8,30),
                             end: new Date(y, m, 1, 16, 0),
@@ -1310,9 +1302,9 @@
                             var eventStartTime = event.start.getHours() + ":" + (event.start.getMinutes() == 0 ? "00" : event.start.getMinutes());
                             var eventEndDate = event.end.getDate() + "/" +(event.end.getMonth()+1) + "/" + event.end.getFullYear();
                             var eventEndTime = event.end.getHours() + ":" + (event.end.getMinutes() == 0 ? "00" : event.end.getMinutes());
-                            var eventPlace =  event.place == undefined ? "-" : event.place; 
-                            var eventWhere = event.where == undefined ? "-" : event.where; 
-                            
+                            var eventPlace =  event.place == undefined ? "-" : event.place;
+                            var eventWhere = event.where == undefined ? "-" : event.where;
+
                             $modal.find(".modal-body #event-name").html(function(){
                                 return event.title;
                             }());
@@ -1340,7 +1332,7 @@
                 var currentDate = $calendar.fullCalendar('getDate');
 
                 $('#calender-activity-current-date').html(
-                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                 );
 
 
@@ -1348,19 +1340,19 @@
                     $calendar.fullCalendar( 'prev' );
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-activity-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
                 $('#calender-activity-next').click(function(){
                     $calendar.fullCalendar( 'next' );
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-activity-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
 
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    
+
                     var target = $(e.target).attr("data-target") // activated tab
                     if(target == '#tab6'){
                         $calendar.fullCalendar( 'today' );
@@ -1369,11 +1361,11 @@
             }
             pageLoadCanlendar();
             pageLoadCanlendarActivity();
-            
+
             SingApp.onPageLoad(pageLoadCanlendar);
             SingApp.onPageLoad(pageLoadCanlendarActivity);
         });
-    
+
     </script>
 </div>
 </body>
