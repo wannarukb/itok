@@ -26,7 +26,7 @@ class HomeController : ResourceLoaderAware {
     }
 
     @RequestMapping("page/{pageName}")
-    fun pageName(@PathVariable pageName:String): String {
+    fun pageName(@PathVariable pageName: String): String {
         return pageName
     }
 
@@ -39,12 +39,15 @@ class HomeController : ResourceLoaderAware {
 
     @RequestMapping("member")
     fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes,
+               @RequestParam(required = false) fromDashboard: Boolean?,
                @RequestParam(required = false) query: String?): String {
         if (page == null) {
             redirectAttributes.addAttribute("page", 1)
             return "redirect:/member"
         }
-        model.addAttribute("pageName", "member")
+        if (fromDashboard != null && !fromDashboard)
+            model.addAttribute("pageName", "member")
+        else model.addAttribute("pageName",null)
         if (query == null) {
             model.addAttribute("list", memberServiceImpl.findAll((page - 1) * PAGE_LIMIT, PAGE_LIMIT))
             model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)

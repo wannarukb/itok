@@ -23,7 +23,7 @@ data class MemberLand(@Id var id: Long? = null, var landOrder: Int? = 0,
                       var name: String? = ""
 ) {
     fun getSize(): String {
-        return "$rai ไร่ $gnan งาน $wah ตารางวา"
+        return "${rai ?: '-'} ไร่ ${gnan ?: '-'} งาน ${wah ?: '-'} ตารางวา"
 
     }
 }
