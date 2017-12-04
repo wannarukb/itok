@@ -44,7 +44,8 @@ class LandController {
         if (memberLand != null) {
             model.addAttribute("files", memberLand.files)
         }
-        return "layout-land"
+//        return "layout-land"
+        return "member-land-view"
     }
 
     @GetMapping("{id}/copyAddress")
