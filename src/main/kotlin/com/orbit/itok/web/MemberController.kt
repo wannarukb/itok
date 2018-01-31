@@ -144,6 +144,16 @@ class MemberController {
         return "redirect:/member"
     }
 
+    //    edit
+    @GetMapping("{id}/edit")
+    fun editMember(@PathVariable id: Long, model: Model): String {
+
+        val findOne = memberServiceImpl.findOne(id)
+        model.addAttribute("member", findOne)
+
+        return "newMember"
+    }
+
     @Autowired lateinit var memberServiceImpl: MemberService
     @Autowired lateinit var settingServiceImpl: SettingServiceImpl
     @Autowired lateinit var uploadUtil: UploadUtil

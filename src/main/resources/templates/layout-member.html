@@ -18,12 +18,12 @@
         <div class="cover" style="background: url('/image/bg-image.jpeg');"></div>
         <div class="cover-footer"></div>
         <div style="margin-top: -140px; padding: 0px 20px 42px;">
-            <div class="row" >
+            <div class="row">
                 <div class="col-md-2">
                     <!--<h2 class="page-title font-supermarket">ข้อมูลสมาชิก <span class="fw-semi-bold">สมชาย ใจดี</span></h2>-->
                     <div class="fileinput-new thumbnail" style="width: 100%; margin-bottom: 10px;">
                         <!--<img data-src="holder.js/100%x100%" alt="..." src="">-->
-                        <img src="/image/profile.png"  />
+                        <img src="/image/profile.png"/>
                     </div>
                 </div>
                 <div class="col-md-10 " style="padding-top: 50px;">
@@ -32,7 +32,7 @@
                             <h3 style="margin-bottom: 0px; margin-top: 17px;">นาย สมชาย ใจดี</h3>
                         </div>
                         <div class="col-sm-6 text-right">
-                            <a class="btn btn-primary" data-th-href="@{/member/new}">
+                            <a class="btn btn-primary" data-th-href="@{/member/{id}/edit(id=${member.id})}">
                                 <i class="fa fa-pencil"></i> แก้ไขข้อมูลสมาชิก
                             </a>
 
@@ -44,14 +44,15 @@
                                 <li class="active">
                                     <a data-target="#tab1" data-toggle="tab" aria-expanded="true">รายงานสรุป</a>
                                 </li>
-                                <li >
+                                <li>
                                     <a data-target="#tab2" data-toggle="tab" aria-expanded="true">ข้อมูลสมาชิก</a>
                                 </li>
                                 <li class="">
                                     <a data-target="#tab3" data-toggle="tab" aria-expanded="false">แปลงที่ดิน</a>
                                 </li>
                                 <li class="">
-                                    <a data-target="#tab4" data-toggle="tab" aria-expanded="false">รายรับ/จ่ายภาคเกษตร</a>
+                                    <a data-target="#tab4" data-toggle="tab"
+                                       aria-expanded="false">รายรับ/จ่ายภาคเกษตร</a>
                                 </li>
                                 <li class="">
                                     <a data-target="#tab5" data-toggle="tab" aria-expanded="false">การฝึกอบรม</a>
@@ -77,7 +78,7 @@
                                         <section class="widget box-icon-widget">
                                             <div class="widget-body">
                                                 <div class="stats-row">
-                                                    <div class="stat-item item-col-icon font-icon-box" >
+                                                    <div class="stat-item item-col-icon font-icon-box">
                                                         <span class="icon-fields"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
@@ -92,7 +93,7 @@
                                         <section class="widget box-icon-widget">
                                             <div class="widget-body">
                                                 <div class="stats-row">
-                                                    <div class="stat-item item-col-icon font-icon-box" >
+                                                    <div class="stat-item item-col-icon font-icon-box">
                                                         <span class="icon-presentation"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
@@ -107,7 +108,7 @@
                                         <section class="widget box-icon-widget">
                                             <div class="widget-body">
                                                 <div class="stats-row">
-                                                    <div class="stat-item item-col-icon font-icon-box" >
+                                                    <div class="stat-item item-col-icon font-icon-box">
                                                         <span class="icon-scarecrow"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
@@ -122,7 +123,7 @@
                                         <section class="widget box-icon-widget">
                                             <div class="widget-body">
                                                 <div class="stats-row">
-                                                    <div class="stat-item item-col-icon font-icon-box color-darkred" >
+                                                    <div class="stat-item item-col-icon font-icon-box color-darkred">
                                                         <span class="icon-shovel"></span>
                                                     </div>
                                                     <div class="stat-item item-col-block">
@@ -145,14 +146,16 @@
                                                     <div class="col-md-12 text-right">
                                                         <p class="font-small">แก้ไขล่าสุด 24/10/2560 14:32</p>
                                                     </div>
-                                                </div><br/>
+                                                </div>
+                                                <br/>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div id="nvd32">
                                                             <svg></svg>
                                                         </div>
                                                     </div>
-                                                </div><br/>
+                                                </div>
+                                                <br/>
                                                 <div class="row">
                                                     <h4><strong>ผลผลิตล่าสุดในปีนี้ของทุกที่ดิน</strong></h4>
                                                     <div class="stats-row">
@@ -168,7 +171,8 @@
                                                             <h6 class="name">ผลผลิตพืชผักต่อปี (ก.ก.)</h6>
                                                             <p class="value">300</p>
                                                         </div>
-                                                    </div><br/>
+                                                    </div>
+                                                    <br/>
                                                     <div class="stats-row">
                                                         <div class="stat-item col-xs-4" style="margin-top: 5px;">
                                                             <h6 class="name">ผลผลิตไม้ผลต่อปี (ก.ก.)</h6>
@@ -179,48 +183,61 @@
                                                             <p class="value">119</p>
                                                         </div>
                                                     </div>
-                                                </div><br/>
+                                                </div>
+                                                <br/>
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <section class="widget" style="background: #f7f7f7; padding: 5px 10px;">
+                                                        <section class="widget"
+                                                                 style="background: #f7f7f7; padding: 5px 10px;">
                                                             <div class="widget-body">
                                                                 <div class="row">
-                                                                    <div class="col-xs-3 item-col-icon font-icon-box" style="font-size: 3.5em; padding: 0px 5px;" >
+                                                                    <div class="col-xs-3 item-col-icon font-icon-box"
+                                                                         style="font-size: 3.5em; padding: 0px 5px;">
                                                                         <span class="fa fa-child"></span>
                                                                     </div>
                                                                     <div class="col-xs-9 item-col-block no-border">
                                                                         <h6 class="name">สมาชิกในครอบครัว</h6>
-                                                                        <p class="value font-bold text-right font-big">7</p>
+                                                                        <p class="value font-bold text-right font-big">
+                                                                            7</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </section>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <section class="widget" style="background: #f7f7f7; padding: 5px 10px;">
+                                                        <section class="widget"
+                                                                 style="background: #f7f7f7; padding: 5px 10px;">
                                                             <div class="widget-body">
                                                                 <div class="row">
-                                                                    <div class="col-xs-3 item-col-icon font-icon-box" style="font-size: 3.5em; padding: 0px;" >
+                                                                    <div class="col-xs-3 item-col-icon font-icon-box"
+                                                                         style="font-size: 3.5em; padding: 0px;">
                                                                         <span class="icon-cereal"></span>
                                                                     </div>
                                                                     <div class="col-xs-9 item-col-block no-border">
                                                                         <h6 class="name">ความต้องการข้าวสาร</h6>
-                                                                        <p class="value text-right"><span class="font-big font-bold "> 100</span> <small>(ก.ก./ปี)</small></p>
+                                                                        <p class="value text-right"><span
+                                                                                class="font-big font-bold "> 100</span>
+                                                                            <small>(ก.ก./ปี)</small>
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </section>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <section class="widget" style="background: #f7f7f7; padding: 5px 10px;">
+                                                        <section class="widget"
+                                                                 style="background: #f7f7f7; padding: 5px 10px;">
                                                             <div class="widget-body">
                                                                 <div class="row">
-                                                                    <div class="col-xs-3 item-col-icon font-icon-box" style="font-size: 3.5em; padding: 0px;" >
+                                                                    <div class="col-xs-3 item-col-icon font-icon-box"
+                                                                         style="font-size: 3.5em; padding: 0px;">
                                                                         <span class="icon-wheat-1"></span>
                                                                     </div>
                                                                     <div class="col-xs-9 item-col-block no-border">
                                                                         <h6 class="name">ความพอเพียงของข้าว</h6>
-                                                                        <p class="value text-right"><span class="font-big font-bold "> พอเพียง</span></p>
+                                                                        <p class="value text-right"><span
+                                                                                class="font-big font-bold "> พอเพียง</span>
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -239,16 +256,22 @@
                                                         <h4>
                                                             <span class="fw-semi-bold">สรุปรายจ่ายภาคเกษตร</span>
                                                         </h4>
-                                                    </header><br/>
+                                                    </header>
+                                                    <br/>
                                                     <div class="widget-body">
-                                                        <div id="sparkline2" class="chart-overflow-bottom mb-0 text-xs-center"></div>
+                                                        <div id="sparkline2"
+                                                             class="chart-overflow-bottom mb-0 text-xs-center"></div>
                                                         <br/><br/>
                                                         <div class="row font-small">
                                                             <div class="col-sm-12">
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FFD566"></i> ค่าแรง</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #FF886A"></i> ค่าวัสดุการเกษตร</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #84DE83"></i> ค่าอุปกรณ์การเกษตร</span><br/>
-                                                                <span><i class="fa fa-circle" aria-hidden="true" style="color: #7AC1FF"></i> อื่นๆ</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true"
+                                                                         style="color: #FFD566"></i> ค่าแรง</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true"
+                                                                         style="color: #FF886A"></i> ค่าวัสดุการเกษตร</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true"
+                                                                         style="color: #84DE83"></i> ค่าอุปกรณ์การเกษตร</span><br/>
+                                                                <span><i class="fa fa-circle" aria-hidden="true"
+                                                                         style="color: #7AC1FF"></i> อื่นๆ</span><br/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -260,30 +283,36 @@
                                             <div class="col-xs-12">
                                                 <section class="widget">
                                                     <header>
-                                                        <h5><span class="label label-danger">New</span> คำแนะนำจากเจ้าหน้าที่</h5>
+                                                        <h5><span class="label label-danger">New</span>
+                                                            คำแนะนำจากเจ้าหน้าที่</h5>
                                                         <div class="widget-controls">
                                                             <a href="#"><i class="fa fa-refresh"></i></a>
-                                                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                                                            <a href="#" data-widgster="close"><i
+                                                                    class="glyphicon glyphicon-remove"></i></a>
                                                         </div>
                                                     </header>
                                                     <div class="widget-body no-padding">
                                                         <div class="list-group list-group-lg">
                                                             <a class="list-group-item" href="#">
                                                                 <h5 class="no-margin">Jamey Brownlow</h5>
-                                                                <p class="help-block text-ellipsis no-margin">Good news coming tonight. Seems they agreed to proceed</p>
+                                                                <p class="help-block text-ellipsis no-margin">Good news
+                                                                    coming tonight. Seems they agreed to proceed</p>
                                                             </a>
                                                             <a class="list-group-item" href="#">
                                                                 <h5 class="no-margin">Jamey Brownlow</h5>
-                                                                <p class="help-block text-ellipsis no-margin">Good news coming tonight. Seems they agreed to proceed</p>
+                                                                <p class="help-block text-ellipsis no-margin">Good news
+                                                                    coming tonight. Seems they agreed to proceed</p>
                                                             </a>
                                                             <a class="list-group-item" href="#">
                                                                 <h5 class="no-margin">Jamey Brownlow</h5>
-                                                                <p class="help-block text-ellipsis no-margin">Good news coming tonight. Seems they agreed to proceed</p>
+                                                                <p class="help-block text-ellipsis no-margin">Good news
+                                                                    coming tonight. Seems they agreed to proceed</p>
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <footer class="bg-body-light">
-                                                        <input type="search" class="form-control input-sm" placeholder="Search">
+                                                        <input type="search" class="form-control input-sm"
+                                                               placeholder="Search">
                                                     </footer>
                                                 </section>
                                             </div>
@@ -303,7 +332,7 @@
                                                 </div>
                                             </div>
                                             <div class="section-title font-bold no-margin margin-bottom-20">
-                                                <span >ข้อมูลส่วนบุคคล</span>
+                                                <span>ข้อมูลส่วนบุคคล</span>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-3">
@@ -331,7 +360,8 @@
                                                     </div>
                                                 </div>
 
-                                            </div><br/>
+                                            </div>
+                                            <br/>
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="text-element">
@@ -351,9 +381,10 @@
                                                         <p class="element-value">ปริญญาเอก</p>
                                                     </div>
                                                 </div>
-                                            </div><br/>
-                                            <div class="section-title font-bold no-margin margin-bottom-20" >
-                                                <span >ข้อมูลการเป็นสมาชิก</span>
+                                            </div>
+                                            <br/>
+                                            <div class="section-title font-bold no-margin margin-bottom-20">
+                                                <span>ข้อมูลการเป็นสมาชิก</span>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -374,7 +405,8 @@
                                                         <p class="element-value">ชุมชน</p>
                                                     </div>
                                                 </div>
-                                            </div><br/>
+                                            </div>
+                                            <br/>
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="text-element">
@@ -394,7 +426,8 @@
                                                         <p class="element-value">วิศวกร</p>
                                                     </div>
                                                 </div>
-                                            </div><br/>
+                                            </div>
+                                            <br/>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="text-element">
@@ -408,7 +441,8 @@
                                                         <p class="element-value">กลุ่มเกษตรกรบ้านน้ำมูล</p>
                                                     </div>
                                                 </div>
-                                            </div><br/>
+                                            </div>
+                                            <br/>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="text-element">
@@ -423,7 +457,8 @@
                                                     </div>
                                                 </div>
 
-                                            </div><br/>
+                                            </div>
+                                            <br/>
                                         </div>
                                     </section>
                                 </div>
@@ -443,7 +478,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                    <span class="font-icon-box"><i class="fa fa-mobile " aria-hidden="true"></i></span>
+                                                    <span class="font-icon-box"><i class="fa fa-mobile "
+                                                                                   aria-hidden="true"></i></span>
                                                 </div>
                                                 <div class="col-sm-10">
                                                     <div class="text-element">
@@ -454,7 +490,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                    <span class="font-icon-box font-size-big"><i class="fa fa-envelope " aria-hidden="true"></i></span>
+                                                    <span class="font-icon-box font-size-big"><i class="fa fa-envelope "
+                                                                                                 aria-hidden="true"></i></span>
                                                 </div>
                                                 <div class="col-sm-10">
                                                     <div class="text-element">
@@ -465,7 +502,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                    <span class="font-icon-box font-size-big"><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
+                                                    <span class="font-icon-box font-size-big"><i
+                                                            class="fa fa-facebook-square" aria-hidden="true"></i></span>
                                                 </div>
 
                                                 <div class="col-sm-10">
@@ -488,12 +526,14 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                    <span class="font-icon-box font-size-big"><i class="fa fa-home " aria-hidden="true"></i></span>
+                                                    <span class="font-icon-box font-size-big"><i class="fa fa-home "
+                                                                                                 aria-hidden="true"></i></span>
                                                 </div>
                                                 <div class="col-sm-10">
                                                     <div class="text-element">
                                                         <span class="element-label">ที่อยู่</span>
-                                                        <p class="element-value">102 หมู่ 1 ต.หนองสาหร่าย อ.ปากช่อง จ.นครราชสีมา 30130</p>
+                                                        <p class="element-value">102 หมู่ 1 ต.หนองสาหร่าย อ.ปากช่อง
+                                                            จ.นครราชสีมา 30130</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -506,9 +546,12 @@
                             <section class="widget widget-custom-padding">
                                 <div class="row">
                                     <div class="col-md-12 text-right">
-                                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> เพิ่มแปลงที่ดิน</button>
+                                        <button type="button" class="btn btn-success"><i class="fa fa-plus"></i>
+                                            เพิ่มแปลงที่ดิน
+                                        </button>
                                     </div>
-                                </div><br/>
+                                </div>
+                                <br/>
                                 <div class="widget-body">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -522,30 +565,30 @@
                                                     <th class="text-center">ขนาด (ไร่. งาน. ตร.วา.)</th>
                                                     <th class="text-center">จังหวัด</th>
                                                     <th class="text-center">ลุ่มน้ำ</th>
-                                                    <th class="text-center"> </th>
+                                                    <th class="text-center"></th>
 
                                                 </tr>
                                                 </thead>
                                                 <!--data-th-remove="all-but-first" data-th-each="l : ${member.memberLandsTemp}"-->
-                                                <tbody >
-                                                    <tr>
-                                                        <td>
-                                                            <div class="color-dark-blue font-icon-box" >
-                                                                <span class="icon-fields"></span>
-                                                            </div>
-                                                        </td>
-                                                        <td><span>บ้านดินดี</span></td>
-                                                        <td><span>สมชาย ใจดี</span></td>
-                                                        <td><span>320.3</span></td>
-                                                        <td><span>นครราชสีมา</span></td>
-                                                        <td><span>ลุ่มน้ำมูล</span></td>
-                                                        <td style="width: 10%;">
-                                                            <a href="#" data-th-href="@{/page/member-land-view}"
-                                                               class="btn btn-danger">
-                                                                <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="color-dark-blue font-icon-box">
+                                                            <span class="icon-fields"></span>
+                                                        </div>
+                                                    </td>
+                                                    <td><span>บ้านดินดี</span></td>
+                                                    <td><span>สมชาย ใจดี</span></td>
+                                                    <td><span>320.3</span></td>
+                                                    <td><span>นครราชสีมา</span></td>
+                                                    <td><span>ลุ่มน้ำมูล</span></td>
+                                                    <td style="width: 10%;">
+                                                        <a href="#" data-th-href="@{/page/member-land-view}"
+                                                           class="btn btn-danger">
+                                                            <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
+                                                        </a>
+                                                    </td>
+                                                </tr>
 
                                                 </tbody>
                                             </table>
@@ -562,7 +605,7 @@
                                             <div class="form-group">
                                                 <label for="datetimepicker1">วันที่ทำรายการ</label>
                                                 <div id="datetimepicker1" class="input-group">
-                                                    <input id="datepicker2i" type="text" class="form-control" />
+                                                    <input id="datepicker2i" type="text" class="form-control"/>
                                                     <span class="input-group-addon">
                                             <span class="fa fa-calendar"></span>
                                         </span>
@@ -600,8 +643,12 @@
                                             <div class="form-actions" style="background: none;">
                                                 <div class="row">
                                                     <div class="col-md-12 text-center">
-                                                        <button type="submit" class="btn btn-primary"> <i class="fa fa-check" aria-hidden="true"></i> บันทึก</button>
-                                                        <button type="button" class="btn btn-inverse"> <i class="fa fa-times" aria-hidden="true"></i> ล้าง</button>
+                                                        <button type="submit" class="btn btn-primary"><i
+                                                                class="fa fa-check" aria-hidden="true"></i> บันทึก
+                                                        </button>
+                                                        <button type="button" class="btn btn-inverse"><i
+                                                                class="fa fa-times" aria-hidden="true"></i> ล้าง
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -614,7 +661,7 @@
                                             <section class="widget box-icon-widget">
                                                 <div class="widget-body">
                                                     <div class="stats-row">
-                                                        <div class="stat-item item-col-icon font-icon-box" >
+                                                        <div class="stat-item item-col-icon font-icon-box">
                                                             <span class="icon-payment-method"></span>
                                                         </div>
                                                         <div class="stat-item item-col-block">
@@ -629,7 +676,7 @@
                                             <section class="widget box-icon-widget">
                                                 <div class="widget-body">
                                                     <div class="stats-row">
-                                                        <div class="stat-item item-col-icon font-icon-box" >
+                                                        <div class="stat-item item-col-icon font-icon-box">
                                                             <span class="icon-money"></span>
                                                         </div>
                                                         <div class="stat-item item-col-block">
@@ -644,7 +691,7 @@
                                             <section class="widget box-icon-widget">
                                                 <div class="widget-body">
                                                     <div class="stats-row">
-                                                        <div class="stat-item item-col-icon font-icon-box" >
+                                                        <div class="stat-item item-col-icon font-icon-box">
                                                             <span class="icon-piggy-bank"></span>
                                                         </div>
                                                         <div class="stat-item item-col-block">
@@ -660,29 +707,29 @@
                                         <div class="widget-body">
                                             <table class="table table-striped">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">วันที่ทำรายการ</th>
-                                                        <th class="text-center">หมวดรายการ</th>
-                                                        <th class="text-center">กลุ่มรายการ</th>
-                                                        <th class="text-center">จำนวนเงิน</th>
-                                                        <th class="text-center">คำอธิบาย</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">วันที่ทำรายการ</th>
+                                                    <th class="text-center">หมวดรายการ</th>
+                                                    <th class="text-center">กลุ่มรายการ</th>
+                                                    <th class="text-center">จำนวนเงิน</th>
+                                                    <th class="text-center">คำอธิบาย</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">23/10/2560</td>
-                                                        <td class="text-center">รายรับ</td>
-                                                        <td class="text-center">ภาคการเกษตร</td>
-                                                        <td class="text-center">4,000.00</td>
-                                                        <td>ขายผัก</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">23/10/2560</td>
-                                                        <td class="text-center">รายรับ</td>
-                                                        <td class="text-center">ภาคการเกษตร</td>
-                                                        <td class="text-center">4,000.00</td>
-                                                        <td>ขายผัก</td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">23/10/2560</td>
+                                                    <td class="text-center">รายรับ</td>
+                                                    <td class="text-center">ภาคการเกษตร</td>
+                                                    <td class="text-center">4,000.00</td>
+                                                    <td>ขายผัก</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">23/10/2560</td>
+                                                    <td class="text-center">รายรับ</td>
+                                                    <td class="text-center">ภาคการเกษตร</td>
+                                                    <td class="text-center">4,000.00</td>
+                                                    <td>ขายผัก</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -702,8 +749,10 @@
                                                 <div class="col-sm-6 text-right">
                                                     <div class="calendar-controls">
                                                         <div class="btn-group">
-                                                            <button class="btn btn-default" id="calender-prev"><i class="fa fa-angle-left"></i></button>
-                                                            <button class="btn btn-default" id="calender-next"><i class="fa fa-angle-right"></i></button>
+                                                            <button class="btn btn-default" id="calender-prev"><i
+                                                                    class="fa fa-angle-left"></i></button>
+                                                            <button class="btn btn-default" id="calender-next"><i
+                                                                    class="fa fa-angle-right"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -713,34 +762,43 @@
                                         <div class="col-md-3 col-lg-4">
                                             <div class="row">
                                                 <div class="col-md-12 text-right">
-                                                    <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> เพิ่มการฝึกอบรม</button>
+                                                    <button type="button" class="btn btn-info"><i
+                                                            class="fa fa-plus"></i> เพิ่มการฝึกอบรม
+                                                    </button>
                                                 </div>
-                                            </div><br/>
-                                            <div class="section-title font-bold no-margin" >
-                                                <span >ข้อมูลการอบรม</span>
+                                            </div>
+                                            <br/>
+                                            <div class="section-title font-bold no-margin">
+                                                <span>ข้อมูลการอบรม</span>
                                             </div>
                                             <div class="calendar-external-events no-margin" id='external-events'>
-                                                <div id="preValue" class="text-center" style="padding: 100px 20px; color: #D8DDE6; ">
-                                                    <i class="icon-presentation" aria-hidden="true" style="font-size: 6em;"></i>
+                                                <div id="preValue" class="text-center"
+                                                     style="padding: 100px 20px; color: #D8DDE6; ">
+                                                    <i class="icon-presentation" aria-hidden="true"
+                                                       style="font-size: 6em;"></i>
                                                     <h5>กรุณาเลือกการอบรม</h5>
                                                 </div>
                                                 <div id="myModal" style="display: none;">
                                                     <div class="modal-body">
                                                         <div class="text-element">
                                                             <p id="event-name" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">วันที่เริ่ม</span>
                                                             <p id="event-start" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">วันที่สิ้นสุด</span>
                                                             <p id="event-end" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">รุ่นที่</span>
                                                             <p id="event-generation" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">สถานที่</span>
                                                             <p id="event-place" class="element-value">value</p>
@@ -749,32 +807,34 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><br/>
+                                    </div>
+                                    <br/>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="section-title font-bold" >
-                                                <span >ประวัติการอบรม</span>
+                                            <div class="section-title font-bold">
+                                                <span>ประวัติการอบรม</span>
                                             </div>
                                             <table class="table table-striped text-center">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">สูตรฝึกอบรม</th>
-                                                        <th class="text-center">รุ่นที่</th>
-                                                        <th class="text-center">วันที่เริ่ม</th>
-                                                        <th class="text-center">วันที่สิ้นสุด</th>
-                                                        <th class="text-center">สถานที่อบรม</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">สูตรฝึกอบรม</th>
+                                                    <th class="text-center">รุ่นที่</th>
+                                                    <th class="text-center">วันที่เริ่ม</th>
+                                                    <th class="text-center">วันที่สิ้นสุด</th>
+                                                    <th class="text-center">สถานที่อบรม</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
-                                                        </td>
-                                                        <td class="text-center">10</td>
-                                                        <td class="text-center"><span>23/10/2559 08:00</span></td>
-                                                        <td class="text-center"><span>23/10/2559 18:00</span></td>
-                                                        <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
+                                                    </td>
+                                                    <td class="text-center">10</td>
+                                                    <td class="text-center"><span>23/10/2559 08:00</span></td>
+                                                    <td class="text-center"><span>23/10/2559 18:00</span></td>
+                                                    <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span>
+                                                    </td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -789,13 +849,16 @@
                                         <div class="col-md-9 col-lg-8" style="padding: 10px 20px 10px 10px;">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <h3 class="page-title" id="calender-activity-current-date">Calendar</h3>
+                                                    <h3 class="page-title" id="calender-activity-current-date">
+                                                        Calendar</h3>
                                                 </div>
                                                 <div class="col-sm-6 text-right">
                                                     <div class="calendar-controls">
                                                         <div class="btn-group">
-                                                            <button class="btn btn-default" id="calender-activity-prev"><i class="fa fa-angle-left"></i></button>
-                                                            <button class="btn btn-default" id="calender-activity-next"><i class="fa fa-angle-right"></i></button>
+                                                            <button class="btn btn-default" id="calender-activity-prev">
+                                                                <i class="fa fa-angle-left"></i></button>
+                                                            <button class="btn btn-default" id="calender-activity-next">
+                                                                <i class="fa fa-angle-right"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -805,34 +868,43 @@
                                         <div class="col-md-3 col-lg-4">
                                             <div class="row">
                                                 <div class="col-md-12 text-right">
-                                                    <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> เพิ่มกิจกรรม</button>
+                                                    <button type="button" class="btn btn-info"><i
+                                                            class="fa fa-plus"></i> เพิ่มกิจกรรม
+                                                    </button>
                                                 </div>
-                                            </div><br/>
-                                            <div class="section-title font-bold no-margin" >
-                                                <span >ข้อมูลกิจกรรม</span>
+                                            </div>
+                                            <br/>
+                                            <div class="section-title font-bold no-margin">
+                                                <span>ข้อมูลกิจกรรม</span>
                                             </div>
                                             <div class="calendar-external-events no-margin" id='external-events'>
-                                                <div id="preValue-activity" class="text-center" style="padding: 100px 20px; color: #D8DDE6; ">
-                                                    <i class="fa fa-trophy" aria-hidden="true" style="font-size: 6em;"></i>
+                                                <div id="preValue-activity" class="text-center"
+                                                     style="padding: 100px 20px; color: #D8DDE6; ">
+                                                    <i class="fa fa-trophy" aria-hidden="true"
+                                                       style="font-size: 6em;"></i>
                                                     <h5>กรุณาเลือกกิจกรรม</h5>
                                                 </div>
                                                 <div id="myModal-activity" style="display: none;">
                                                     <div class="modal-body">
                                                         <div class="text-element">
                                                             <p id="event-name" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">วันที่เริ่ม</span>
                                                             <p id="event-start" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">วันที่สิ้นสุด</span>
                                                             <p id="event-end" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">พื้นที่ทำกิจกรรม</span>
                                                             <p id="event-where" class="element-value">value</p>
-                                                        </div><br/>
+                                                        </div>
+                                                        <br/>
                                                         <div class="text-element">
                                                             <span class="element-label">สถานที่</span>
                                                             <p id="event-place" class="element-value">value</p>
@@ -841,32 +913,34 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><br/>
+                                    </div>
+                                    <br/>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="section-title font-bold" >
-                                                <span >ประวัติการอบรม</span>
+                                            <div class="section-title font-bold">
+                                                <span>ประวัติการอบรม</span>
                                             </div>
                                             <table class="table table-striped text-center">
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">สูตรฝึกอบรม</th>
-                                                        <th class="text-center">รุ่นที่</th>
-                                                        <th class="text-center">วันที่เริ่ม</th>
-                                                        <th class="text-center">วันที่สิ้นสุด</th>
-                                                        <th class="text-center">สถานที่อบรม</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">สูตรฝึกอบรม</th>
+                                                    <th class="text-center">รุ่นที่</th>
+                                                    <th class="text-center">วันที่เริ่ม</th>
+                                                    <th class="text-center">วันที่สิ้นสุด</th>
+                                                    <th class="text-center">สถานที่อบรม</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center">
-                                                            <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
-                                                        </td>
-                                                        <td class="text-center">10</td>
-                                                        <td class="text-center"><span>23/10/2559 08:00</span></td>
-                                                        <td class="text-center"><span>23/10/2559 18:00</span></td>
-                                                        <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span></td>
-                                                    </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-link">AB101-เกษตรทฤษฎีใหม่</a>
+                                                    </td>
+                                                    <td class="text-center">10</td>
+                                                    <td class="text-center"><span>23/10/2559 08:00</span></td>
+                                                    <td class="text-center"><span>23/10/2559 18:00</span></td>
+                                                    <td class="text-center"><span>ศูนย์ประชุมแห่งชาติสิริกิติ์</span>
+                                                    </td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -880,7 +954,7 @@
                                     <section class="widget box-icon-widget">
                                         <div class="widget-body">
                                             <div class="stats-row">
-                                                <div class="stat-item item-col-icon font-icon-box" >
+                                                <div class="stat-item item-col-icon font-icon-box">
                                                     <span class="icon-payment-method"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
@@ -895,7 +969,7 @@
                                     <section class="widget box-icon-widget">
                                         <div class="widget-body">
                                             <div class="stats-row">
-                                                <div class="stat-item item-col-icon font-icon-box" >
+                                                <div class="stat-item item-col-icon font-icon-box">
                                                     <span class="icon-money"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
@@ -910,7 +984,7 @@
                                     <section class="widget box-icon-widget">
                                         <div class="widget-body">
                                             <div class="stats-row">
-                                                <div class="stat-item item-col-icon font-icon-box" >
+                                                <div class="stat-item item-col-icon font-icon-box">
                                                     <span class="icon-piggy-bank"></span>
                                                 </div>
                                                 <div class="stat-item item-col-block">
@@ -924,86 +998,91 @@
                             </div>
                             <section class="widget">
                                 <div class="widget-body">
-                                    <div class="section-title font-bold" >
-                                        <span >อุปกรณ์ที่อยู่ในระหว่างการยืม</span>
+                                    <div class="section-title font-bold">
+                                        <span>อุปกรณ์ที่อยู่ในระหว่างการยืม</span>
                                     </div>
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center">อุปกรณ์</th>
-                                                <th class="text-center">สถานะ</th>
-                                                <th class="text-center">วันที่ยืมอุปกรณ์</th>
-                                                <th class="text-center">ผู้ยืมและหน่วยงาน</th>
-                                                <th class="text-center">สถานที่ใช้งาน</th>
-                                                <th class="text-center">คำอธิบาย</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center">อุปกรณ์</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">วันที่ยืมอุปกรณ์</th>
+                                            <th class="text-center">ผู้ยืมและหน่วยงาน</th>
+                                            <th class="text-center">สถานที่ใช้งาน</th>
+                                            <th class="text-center">คำอธิบาย</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
-                                                ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
+                                                ยี่ห้อ : YAMAHA
+                                            </td>
+                                            <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
                                         </tbody>
-                                    </table><br/>
-                                    <div class="section-title font-bold" >
-                                        <span >ประวัติการยืมอุปกรณ์ทั้งหมด</span>
+                                    </table>
+                                    <br/>
+                                    <div class="section-title font-bold">
+                                        <span>ประวัติการยืมอุปกรณ์ทั้งหมด</span>
                                     </div>
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>
-                                                <th class="text-center">อุปกรณ์</th>
-                                                <th class="text-center">สถานะ</th>
-                                                <th class="text-center">วันที่ยืมอุปกรณ์</th>
-                                                <th class="text-center">วันที่คืนอุปกรณ์</th>
-                                                <th class="text-center">ผู้ยืมและหน่วยงาน</th>
-                                                <th class="text-center">ผู้คืนและหน่วยงาน</th>
-                                                <th class="text-center">สถานที่ใช้งาน</th>
-                                                <th class="text-center">คำอธิบาย</th>
-                                            </tr>
+                                        <tr>
+                                            <th class="text-center">อุปกรณ์</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">วันที่ยืมอุปกรณ์</th>
+                                            <th class="text-center">วันที่คืนอุปกรณ์</th>
+                                            <th class="text-center">ผู้ยืมและหน่วยงาน</th>
+                                            <th class="text-center">ผู้คืนและหน่วยงาน</th>
+                                            <th class="text-center">สถานที่ใช้งาน</th>
+                                            <th class="text-center">คำอธิบาย</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
-                                                ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge">คืน</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">26/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                                ยี่ห้อ : YAMAHA
+                                            </td>
+                                            <td class="text-center"><span class="badge">คืน</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">26/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
-                                                ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge">คืน</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">26/10/2560</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>A0001 - อุปกรณ์ A</strong><br/>
+                                                ยี่ห้อ : YAMAHA
+                                            </td>
+                                            <td class="text-center"><span class="badge">คืน</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">26/10/2560</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>A0001 - อุปกรณ์ A</strong><br/>
                                                 รุ่น : A01<br/>
-                                                ยี่ห้อ : YAMAHA</td>
-                                                <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
-                                                <td class="text-center">23/10/2560</td>
-                                                <td class="text-center">-</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
-                                                <td class="text-center">ไร่บ้านดินดี</td>
-                                                <td>-</td>
-                                            </tr>
+                                                ยี่ห้อ : YAMAHA
+                                            </td>
+                                            <td class="text-center"><span class="badge badge-danger">ยืม</span></td>
+                                            <td class="text-center">23/10/2560</td>
+                                            <td class="text-center">-</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">นายสวัสดี - สหกรณ์การเกษตรบ้านน้ำมูล</td>
+                                            <td class="text-center">ไร่บ้านดินดี</td>
+                                            <td>-</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1023,8 +1102,6 @@
 <div data-layout-fragment="script">
 
 
-
-
     <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/d3/d3.min.js"></script>
     <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/nvd3/build/nv.d3.min.js"></script>
     <script src="https://storage.googleapis.com/itok-project.appspot.com/vendor/jquery.sparkline/index.js"></script>
@@ -1040,10 +1117,11 @@
     <!-- page specific js -->
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
     <script>
-        $(function(){
+        $(function () {
             /* Inspired by Lee Byron's test data generator. */
             function _stream_layers(n, m, o) {
                 if (arguments.length < 3) o = 0;
+
                 function bump(a) {
                     var x = 1 / (.1 + Math.random()),
                         y = 2 * Math.random() - .5,
@@ -1053,11 +1131,12 @@
                         a[i] += x * Math.exp(-w * w);
                     }
                 }
-                return d3.range(n).map(function() {
+
+                return d3.range(n).map(function () {
                     var a = [], i;
                     for (i = 0; i < m; i++) a[i] = o + o * Math.random();
                     for (i = 0; i < 5; i++) bump(a);
-                    return a.map(function(d, i) {
+                    return a.map(function (d, i) {
                         return {x: i, y: Math.max(0, d)};
                     });
                 });
@@ -1071,10 +1150,10 @@
                     daysAgoDate = now - daysAgo,
                     pointsCount = pointsCount || 45, //less for better performance
                     daysPerPoint = daysAgoCount / pointsCount;
-                return _stream_layers(stream_names.length, pointsCount, .1).map(function(data, i) {
+                return _stream_layers(stream_names.length, pointsCount, .1).map(function (data, i) {
                     return {
                         key: stream_names[i],
-                        values: data.map(function(d,j){
+                        values: data.map(function (d, j) {
                             return {
                                 x: daysAgoDate + d.x * day * daysPerPoint,
                                 y: Math.floor(d.y * 100) //just a coefficient,
@@ -1084,16 +1163,18 @@
                 });
             }
 
-            function initNvd32(){
+            function initNvd32() {
 
-                nv.addGraph(function() {
+                nv.addGraph(function () {
                     var chart = nv.models.multiBarChart()
                         .margin({left: 28, bottom: 30, right: 0})
                         .color(['#1589ee', '#ddd']);
 
                     chart.xAxis
                         .showMaxMin(false)
-                        .tickFormat(function(d) { return d3.time.format('%b %d')(new Date(d)) });
+                        .tickFormat(function (d) {
+                            return d3.time.format('%b %d')(new Date(d))
+                        });
 
                     chart.yAxis
                         .showMaxMin(false)
@@ -1101,7 +1182,7 @@
 
                     d3.select('#nvd32 svg')
                         .style('height', '300px')
-                        .datum(testData(['2559', '2560'], 10).map(function(el, i){
+                        .datum(testData(['2559', '2560'], 10).map(function (el, i) {
                             el.area = true;
                             return el;
                         }))
@@ -1116,7 +1197,7 @@
                 });
             }
 
-            function initSparkline2(){
+            function initSparkline2() {
                 var values = [4000, 2000, 1000, 3000];
 
                 // Draw a sparkline for the #sparkline element
@@ -1138,22 +1219,23 @@
                 });
             }
 
-            function pageLoad(){
+            function pageLoad() {
                 $('.widget').widgster();
-                $('.sparkline').each(function(){
+                $('.sparkline').each(function () {
                     $(this).sparkline('html', $(this).data());
                 });
 
                 initNvd32();
                 initSparkline2();
             }
+
             pageLoad();
             SingApp.onPageLoad(pageLoad);
         });
 
 
-        $(function(){
-            function pageLoadCanlendar(){
+        $(function () {
+            function pageLoadCanlendar() {
                 var date = new Date();
                 var d = date.getDate();
                 var m = date.getMonth();
@@ -1168,11 +1250,11 @@
                     selectable: true,
                     selectHelper: true,
                     editable: false,
-                    droppable:false,
+                    droppable: false,
                     events: [
                         {
                             title: 'AB0001 - อบรมเกษตรทฤษฎีใหม่',
-                            start: new Date(y, m, 1, 8,30),
+                            start: new Date(y, m, 1, 8, 30),
                             end: new Date(y, m, 1, 16, 0),
                             backgroundColor: '#79A5F0',
                             textColor: '#fff',
@@ -1180,49 +1262,49 @@
                             generation: 10
                         },
                         {
-                            
+
                             title: 'AB0000 - อบรมเกษตรทฤษฎีใหม่',
-                            start: new Date(y, m-1, 28, 8,30),
-                            end: new Date(y, m-1, 30, 16, 0),
+                            start: new Date(y, m - 1, 28, 8, 30),
+                            end: new Date(y, m - 1, 30, 16, 0),
                             backgroundColor: 'grey',
                             textColor: '#fff',
                             place: 'ศูนย์ประชุมแห่งชาติสิริกิติ์',
                             generation: 10
                         }
                     ],
-                    eventClick: function(event) {
+                    eventClick: function (event) {
                         // opens events in a popup window
-                        if (event.url){
+                        if (event.url) {
                             window.open(event.url, 'gcalevent', 'width=700,height=600');
                             return false
                         } else {
                             $('#preValue').hide();
                             var $modal = $("#myModal");
                             $modal.show();
-                            var eventStartDate = event.start.getDate() + "/" + (event.start.getMonth()+1)+ "/" + event.start.getFullYear();
+                            var eventStartDate = event.start.getDate() + "/" + (event.start.getMonth() + 1) + "/" + event.start.getFullYear();
                             var eventStartTime = event.start.getHours() + ":" + (event.start.getMinutes() == 0 ? "00" : event.start.getMinutes());
-                            var eventEndDate = event.end.getDate() + "/" +(event.end.getMonth()+1) + "/" + event.end.getFullYear();
+                            var eventEndDate = event.end.getDate() + "/" + (event.end.getMonth() + 1) + "/" + event.end.getFullYear();
                             var eventEndTime = event.end.getHours() + ":" + (event.end.getMinutes() == 0 ? "00" : event.end.getMinutes());
-                            var eventPlace =  event.place == undefined ? "-" : event.place; 
-                            var eventGeneration = event.generation == undefined ? "-" : event.generation; 
-                            
-                            $modal.find(".modal-body #event-name").html(function(){
+                            var eventPlace = event.place == undefined ? "-" : event.place;
+                            var eventGeneration = event.generation == undefined ? "-" : event.generation;
+
+                            $modal.find(".modal-body #event-name").html(function () {
                                 return event.title;
                             }());
 
-                            $modal.find(".modal-body #event-start").html(function(){
+                            $modal.find(".modal-body #event-start").html(function () {
                                 return eventStartDate + ', ' + eventStartTime;
                             }());
 
-                            $modal.find(".modal-body #event-end").html(function(){
+                            $modal.find(".modal-body #event-end").html(function () {
                                 return eventEndDate + ', ' + eventEndTime;
                             }());
 
-                            $modal.find(".modal-body #event-place").html(function(){
+                            $modal.find(".modal-body #event-place").html(function () {
                                 return eventPlace;
                             }());
 
-                            $modal.find(".modal-body #event-generation").html(function(){
+                            $modal.find(".modal-body #event-generation").html(function () {
                                 return eventGeneration;
                             }());
                         }
@@ -1233,34 +1315,35 @@
                 var currentDate = $calendar.fullCalendar('getDate');
 
                 $('#calender-current-date').html(
-                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                 );
 
 
-                $('#calender-prev').click(function(){
-                    $calendar.fullCalendar( 'prev' );
+                $('#calender-prev').click(function () {
+                    $calendar.fullCalendar('prev');
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
-                $('#calender-next').click(function(){
-                    $calendar.fullCalendar( 'next' );
+                $('#calender-next').click(function () {
+                    $calendar.fullCalendar('next');
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
 
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    
+
                     var target = $(e.target).attr("data-target") // activated tab
-                    if(target == '#tab5'){
-                        $calendar.fullCalendar( 'today' );
+                    if (target == '#tab5') {
+                        $calendar.fullCalendar('today');
                     }
                 });
             }
-            function pageLoadCanlendarActivity(){
+
+            function pageLoadCanlendarActivity() {
                 var date = new Date();
                 var d = date.getDate();
                 var m = date.getMonth();
@@ -1275,11 +1358,11 @@
                     selectable: true,
                     selectHelper: true,
                     editable: false,
-                    droppable:false,
+                    droppable: false,
                     events: [
                         {
                             title: 'AB0001 - ตามรอยพ่อหลวง',
-                            start: new Date(y, m, 5, 8,30),
+                            start: new Date(y, m, 5, 8, 30),
                             end: new Date(y, m, 5, 16, 0),
                             backgroundColor: '#79A5F0',
                             textColor: '#fff',
@@ -1287,9 +1370,9 @@
                             where: 'กลุ่มพื้นที่ใกล้เคียง'
                         },
                         {
-                            
+
                             title: 'FOR010 - กิจกรรมรักษ์น้ำรักป่า',
-                            start: new Date(y, m-1, 28, 8,30),
+                            start: new Date(y, m - 1, 28, 8, 30),
                             end: new Date(y, m, 1, 16, 0),
                             backgroundColor: 'grey',
                             textColor: '#fff',
@@ -1297,39 +1380,39 @@
                             where: 'กลุ่มนอกพื้นที่'
                         }
                     ],
-                    eventClick: function(event) {
+                    eventClick: function (event) {
                         // opens events in a popup window
-                        if (event.url){
+                        if (event.url) {
                             window.open(event.url, 'gcalevent', 'width=700,height=600');
                             return false
                         } else {
                             $('#preValue-activity').hide();
                             var $modal = $("#myModal-activity");
                             $modal.show();
-                            var eventStartDate = event.start.getDate() + "/" + (event.start.getMonth()+1)+ "/" + event.start.getFullYear();
+                            var eventStartDate = event.start.getDate() + "/" + (event.start.getMonth() + 1) + "/" + event.start.getFullYear();
                             var eventStartTime = event.start.getHours() + ":" + (event.start.getMinutes() == 0 ? "00" : event.start.getMinutes());
-                            var eventEndDate = event.end.getDate() + "/" +(event.end.getMonth()+1) + "/" + event.end.getFullYear();
+                            var eventEndDate = event.end.getDate() + "/" + (event.end.getMonth() + 1) + "/" + event.end.getFullYear();
                             var eventEndTime = event.end.getHours() + ":" + (event.end.getMinutes() == 0 ? "00" : event.end.getMinutes());
-                            var eventPlace =  event.place == undefined ? "-" : event.place; 
-                            var eventWhere = event.where == undefined ? "-" : event.where; 
-                            
-                            $modal.find(".modal-body #event-name").html(function(){
+                            var eventPlace = event.place == undefined ? "-" : event.place;
+                            var eventWhere = event.where == undefined ? "-" : event.where;
+
+                            $modal.find(".modal-body #event-name").html(function () {
                                 return event.title;
                             }());
 
-                            $modal.find(".modal-body #event-start").html(function(){
+                            $modal.find(".modal-body #event-start").html(function () {
                                 return eventStartDate + ', ' + eventStartTime;
                             }());
 
-                            $modal.find(".modal-body #event-end").html(function(){
+                            $modal.find(".modal-body #event-end").html(function () {
                                 return eventEndDate + ', ' + eventEndTime;
                             }());
 
-                            $modal.find(".modal-body #event-place").html(function(){
+                            $modal.find(".modal-body #event-place").html(function () {
                                 return eventPlace;
                             }());
 
-                            $modal.find(".modal-body #event-where").html(function(){
+                            $modal.find(".modal-body #event-where").html(function () {
                                 return eventWhere;
                             }());
                         }
@@ -1340,40 +1423,41 @@
                 var currentDate = $calendar.fullCalendar('getDate');
 
                 $('#calender-activity-current-date').html(
-                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                    $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                 );
 
 
-                $('#calender-activity-prev').click(function(){
-                    $calendar.fullCalendar( 'prev' );
+                $('#calender-activity-prev').click(function () {
+                    $calendar.fullCalendar('prev');
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-activity-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
-                $('#calender-activity-next').click(function(){
-                    $calendar.fullCalendar( 'next' );
+                $('#calender-activity-next').click(function () {
+                    $calendar.fullCalendar('next');
                     currentDate = $calendar.fullCalendar('getDate');
                     $('#calender-activity-current-date').html(
-                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy") 
+                        $.fullCalendar.formatDate(currentDate, "MMMM yyyy")
                     );
                 });
 
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    
+
                     var target = $(e.target).attr("data-target") // activated tab
-                    if(target == '#tab6'){
-                        $calendar.fullCalendar( 'today' );
+                    if (target == '#tab6') {
+                        $calendar.fullCalendar('today');
                     }
                 });
             }
+
             pageLoadCanlendar();
             pageLoadCanlendarActivity();
-            
+
             SingApp.onPageLoad(pageLoadCanlendar);
             SingApp.onPageLoad(pageLoadCanlendarActivity);
         });
-    
+
     </script>
 </div>
 </body>
