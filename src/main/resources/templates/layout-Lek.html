@@ -14,14 +14,8 @@
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
     <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
         <div class="row">
-            <div class="col-md-6 font-supermarket">
+            <div class="col-md-12 font-supermarket">
                 <h2>ค้นหาข้อมูลสมาชิก</h2>
-            </div>
-            <div class="col-md-6 text-right" data-th-if="${showDashboard} == true">
-                <a class="btn btn-primary"
-                   data-th-href="@{/}">
-                    <i class="fa fa fa-pie-chart"></i> แดชบอร์ด
-                </a>
             </div>
         </div>
         <div class="row margin-bottom-xs">
@@ -104,6 +98,7 @@
                                         <!--<i class="fa fa-user"></i>-->
                                         <!--ดูข้อมูลสมาชิก-->
                                         <!--</a>-->
+                                        <!--</a>-->
                                     </div>
                                 </div>
                             </h5>
@@ -132,13 +127,13 @@
                                         </div>
                                     </td>
                                     <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span></td>
-                                    <td><span>สมชาย ใจดี</span></td>
+                                    <td><span data-th-text="*{firstName} + ' ' + *{lastName}">สมชาย ใจดี</span></td>
                                     <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
                                     <td><strong data-th-text="${k.address.province}">สวนกวาง</strong></td>
                                     <td><span>ลุ่มน้ำมูล</span></td>
                                     <td>
                                         <button class=" btn btn-danger btn-sm"
-                                                data-th-onclick="'window.location=\'' + @{/page/member-land-view} + '\''">
+                                                data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
                                             <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                         </button>
                                     </td>
