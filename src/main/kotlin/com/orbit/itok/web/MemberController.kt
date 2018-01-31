@@ -141,7 +141,7 @@ class MemberController {
         if (findOne != null) {
             memberServiceImpl.update(id, member.copy(memberLands = findOne.memberLands, membership = findOne.membership))
         }
-        return "redirect:/member"
+        return "redirect:/member/$id"
     }
 
     //    edit
