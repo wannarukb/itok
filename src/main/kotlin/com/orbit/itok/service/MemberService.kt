@@ -61,7 +61,11 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore
                   var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
-)
+){
+    fun getDisplayName(): String {
+        return "$title$firstName $lastName"
+    }
+}
 //เลขที่
 //หมู่ที่
 //ชื่อหมู่บ้าน/อาคาร/ชุมชน

@@ -14,7 +14,7 @@
 
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
-    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 0px !important;">
+    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 0px !important;" data-th-object="${member}">
         <div class="cover" style="background: url('/image/bg-image.jpeg');"></div>
         <div class="cover-footer"></div>
         <div style="margin-top: -140px; padding: 0px 20px 42px;">
@@ -23,13 +23,14 @@
                     <!--<h2 class="page-title font-supermarket">ข้อมูลสมาชิก <span class="fw-semi-bold">สมชาย ใจดี</span></h2>-->
                     <div class="fileinput-new thumbnail" style="width: 100%; margin-bottom: 10px;">
                         <!--<img data-src="holder.js/100%x100%" alt="..." src="">-->
-                        <img src="/image/profile.png"/>
+                        <img src="/image/profile.png"  data-th-if="*{image} == null"/>
+                        <img src="/image/profile.png"  data-th-if="*{image} != null" data-th-src="*{image.imageUrl} + '=s400-c'"/>
                     </div>
                 </div>
                 <div class="col-md-10 " style="padding-top: 50px;">
                     <div class="row ">
                         <div class="col-sm-6 text-left color-white">
-                            <h3 style="margin-bottom: 0px; margin-top: 17px;">นาย สมชาย ใจดี</h3>
+                            <h3 style="margin-bottom: 0px; margin-top: 17px;" data-th-text="*{displayName}">นาย สมชาย ใจดี</h3>
                         </div>
                         <div class="col-sm-6 text-right">
                             <a class="btn btn-primary" data-th-href="@{/member/{id}/edit(id=${member.id})}">
