@@ -2,13 +2,12 @@ package com.orbit.itok.service
 
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
+
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
-import com.googlecode.objectify.annotation.Entity
-import com.googlecode.objectify.annotation.Id
-import com.googlecode.objectify.annotation.Ignore
-import com.googlecode.objectify.annotation.Load
+import com.googlecode.objectify.annotation.*
+import com.googlecode.objectify.annotation.Index
 import org.springframework.boot.CommandLineRunner
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
@@ -57,11 +56,16 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var address: Address = Address(),
                   var date: Date = Date(),
                   @Load var membership: Ref<Membership>? = null,
-                  @com.googlecode.objectify.annotation.Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+                  // activites
+                  @Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+                  @Index var courses: MutableList<Ref<Course>> = mutableListOf(),
+                  @Index var activities: MutableList<Ref<Activity>> = mutableListOf(),
+                  @Index var equipments: MutableList<Ref<Equipment>> = mutableListOf(),
+                  // end activities
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore
                   var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
-){
+) {
     fun getDisplayName(): String {
         return "$title$firstName $lastName"
     }
@@ -204,7 +208,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
         return member.id
     }
 
-    lateinit var index: Index
+    lateinit var index: com.google.appengine.api.search.Index
 
     override fun run(vararg p0: String?) {
         register(Member::class.java)
