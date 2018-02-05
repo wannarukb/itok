@@ -30,7 +30,7 @@ limitations under the License.
 
     <properties>
         <java.version>1.6</java.version>
-        <kotlin.version>1.1.51</kotlin.version>
+        <kotlin.version>1.2.20</kotlin.version>
     </properties>
 
     <dependencies>
@@ -39,11 +39,6 @@ limitations under the License.
             <groupId>org.webjars.bower</groupId>
             <artifactId>twbs-pagination</artifactId>
             <version>1.4.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-legacy</artifactId>
-            <version>1.1.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -124,7 +119,7 @@ limitations under the License.
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jre7</artifactId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
@@ -210,6 +205,41 @@ limitations under the License.
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.2</version>
+                <configuration>
+                    <installDirectory>target</installDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v4.4.5</nodeVersion>
+                            <npmVersion>3.9.2</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>webpack build</id>
+                        <goals>
+                            <goal>webpack</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
