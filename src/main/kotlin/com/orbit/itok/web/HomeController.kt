@@ -59,7 +59,7 @@ class HomeController : ResourceLoaderAware {
             model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
         }
         model.addAttribute("page", page)
-        return "layout-Lek"
+        return "react-skeleton/member"
     }
 
     @RequestMapping("clearDB")
