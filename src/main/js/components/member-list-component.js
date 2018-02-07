@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const NewComponent = () =>
     (
-        <div>
+        <div style={{padding: "20px 20px 42px ;"}}>
             <div className="row">
                 <div className="col-md-12 font-supermarket">
                     <h2>ค้นหาข้อมูลสมาชิก</h2>
@@ -50,7 +50,7 @@ const NewComponent = () =>
                                 <h5 className="panel-title">
                                     <div className="row">
                                         <div className="collapsed" data-toggle="collapse" href="#collapseOne"
-                                           data-th-href="'#collapse' + ${lStat.index}">
+                                             data-th-href="'#collapse' + ${lStat.index}">
                                             <div className="col-sm-1 text-center ">
                                                 <i className="fa fa-user" aria-hidden="true"
                                                    style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>
