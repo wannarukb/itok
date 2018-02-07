@@ -1,7 +1,9 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types'
+import {connect} from "react-redux";
 
-const NewComponent = () =>
+const NewComponent = ({list}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
@@ -45,94 +47,108 @@ const NewComponent = () =>
                 <div className="col-md-12">
                     <div className="panel-group mb-lg" id="accordion" data-toggle="collapse"
                          data-th-remove="all-but-first">
-                        <div className="panel panel-default" data-th-each="l : ${list}" data-th-object="${l}">
-                            <div className="panel-heading panel-heading-white collapsed">
-                                <h5 className="panel-title">
-                                    <div className="row">
-                                        <div className="collapsed" data-toggle="collapse" href="#collapseOne"
-                                             data-th-href="'#collapse' + ${lStat.index}">
-                                            <div className="col-sm-1 text-center ">
-                                                <i className="fa fa-user" aria-hidden="true"
-                                                   style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>
-                                                <img data-th-src="${l.image.imageUrl} + '=s50-c'"
-                                                     data-th-if="${l.image} != null" className=" img-circle"/>
+                        {
+                            list.map((it, index) =>
+                                <div className="panel panel-default" key={it.id}>
+                                    <div className="panel-heading panel-heading-white collapsed">
+                                        <h5 className="panel-title">
+                                            <div className="row">
+                                                <a className="collapsed" data-toggle="collapse"
+                                                   href={'#collapse' + index}
+                                                   data-th-href="'#collapse' + ${lStat.index}">
+                                                    <div className="col-sm-1 text-center ">
+                                                        {/*<i className="fa fa-user" aria-hidden="true"*/}
+                                                        {/*style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>*/}
+                                                        <img src={'/image/default-farmer.jpg'}
+                                                             className={'img-responsive center-block'}
+                                                             style={{width: 50}}/>
+                                                        <img data-th-src="${l.image.imageUrl} + '=s50-c'"
+                                                             data-th-if="${l.image} != null" className=" img-circle"/>
+                                                    </div>
+                                                    <div className="col-sm-3">
+                                                        <Link to={'/member/view'} className="color-green"><strong
+                                                            data-th-text="*{firstName} + ' ' + *{lastName}">{it.firstName} {it.lastName}</strong></Link>
+                                                        <p className="font-medium color-dark"
+                                                           data-th-text="*{nickname}">2
+                                                            Farms</p>
+                                                        {/*<p class="font-xs-small color-grey"*/}
+                                                        {/*data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>*/}
+                                                    </div>
+                                                    <div className="col-sm-4">
+                                                        {/*<p data-th-text="*{mobile}" class="font-medium color-dark"></p>*/}
+                                                        {/*<p data-th-text="*{address}" class="font-medium color-dark"></p>*/}
+                                                        <p className="font-medium color-dark">นนทบุรี</p>
+                                                        <span className="font-xs-small color-grey"
+                                                              data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
+                                                    </div>
+                                                    <div className="col-sm-2">
+                                                        <p data-th-text="*{membershipTemp.type}"
+                                                           className="font-medium color-dark"/>
+                                                        {/*<p data-th-text="*{membershipTemp.typeOrganization}"*/}
+                                                        {/*class="font-medium"></p>*/}
+                                                    </div>
+                                                </a>
+                                                <div className="col-sm-2 text-right">
+                                                    <button className=" btn btn-primary btn-sm"
+                                                            data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
+                                                        <i className="fa fa-user"
+                                                           style={{color: '#FFF !important'}}/> ดูข้อมูลสมาชิก
+                                                    </button>
+                                                    {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
+                                                    {/*<i class="fa fa-user"></i>*/}
+                                                    {/*ดูข้อมูลสมาชิก*/}
+                                                    {/*</a>*/}
+                                                    {/*</a>*/}
+                                                </div>
                                             </div>
-                                            <div className="col-sm-3">
-                                                <Link to={'/member/view'} className="color-green"><strong
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></Link>
-                                                <p className="font-medium color-dark" data-th-text="*{nickname}">2
-                                                    Farms</p>
-                                                {/*<p class="font-xs-small color-grey"*/}
-                                                {/*data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>*/}
-                                            </div>
-                                            <div className="col-sm-4">
-                                                {/*<p data-th-text="*{mobile}" class="font-medium color-dark"></p>*/}
-                                                {/*<p data-th-text="*{address}" class="font-medium color-dark"></p>*/}
-                                                <p className="font-medium color-dark">นนทบุรี</p>
-                                                <span className="font-xs-small color-grey"
-                                                      data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
-                                            </div>
-                                            <div className="col-sm-2">
-                                                <p data-th-text="*{membershipTemp.type}"
-                                                   className="font-medium color-dark"/>
-                                                {/*<p data-th-text="*{membershipTemp.typeOrganization}"*/}
-                                                {/*class="font-medium"></p>*/}
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2 text-right">
-                                            <button className=" btn btn-primary btn-sm"
-                                                    data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
-                                                <i className="fa fa-user"
-                                                   style={{color: '#FFF !important'}}/> ดูข้อมูลสมาชิก
-                                            </button>
-                                            {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
-                                            {/*<i class="fa fa-user"></i>*/}
-                                            {/*ดูข้อมูลสมาชิก*/}
-                                            {/*</a>*/}
-                                            {/*</a>*/}
-                                        </div>
+                                        </h5>
                                     </div>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" className="panel-collapse collapse"
-                                 data-th-id="'collapse' + ${lStat.index}">
-                                <table className="table table-striped text-center"
-                                       style={{width: '97%', margin: '20px auto', border: '1px solid #ddd'}}>
-                                    <thead>
-                                    <tr>
-                                        <th className="text-center"/>
-                                        <th className="text-center">ชื่อแปลงที่ดิน</th>
-                                        <th className="text-center">ชื่อสมาชิก</th>
-                                        <th className="text-center">ขนาด (ไร่. วา. ตร.วา.)</th>
-                                        <th className="text-center">จังหวัด</th>
-                                        <th className="text-center">ลุ่มน้ำ</th>
-                                        <th className="text-center"/>
-                                    </tr>
-                                    </thead>
-                                    <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
-                                    <tr>
-                                        <td>
-                                            <div className="color-dark-blue font-icon-box">
-                                                <span className="icon-fields"/>
-                                            </div>
-                                        </td>
-                                        <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span></td>
-                                        <td><span data-th-text="*{firstName} + ' ' + *{lastName}">สมชาย ใจดี</span>
-                                        </td>
-                                        <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
-                                        <td><strong data-th-text="${k.address.province}">สวนกวาง</strong></td>
-                                        <td><span>ลุ่มน้ำมูล</span></td>
-                                        <td>
-                                            <button className=" btn btn-danger btn-sm"
-                                                    data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
-                                                <i className="icon-barn2"/> ดูข้อมูลแปลงที่ดิน
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                    <div id={'collapse' + index} className="panel-collapse collapse"
+                                         data-th-id="'collapse' + ${lStat.index}">
+                                        <table className="table table-striped text-center"
+                                               style={{width: '97%', margin: '20px auto', border: '1px solid #ddd'}}>
+                                            <thead>
+                                            <tr>
+                                                <th className="text-center"/>
+                                                <th className="text-center">ชื่อแปลงที่ดิน</th>
+                                                <th className="text-center">ชื่อสมาชิก</th>
+                                                <th className="text-center">ขนาด (ไร่. วา. ตร.วา.)</th>
+                                                <th className="text-center">จังหวัด</th>
+                                                <th className="text-center">ลุ่มน้ำ</th>
+                                                <th className="text-center"/>
+                                            </tr>
+                                            </thead>
+                                            <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
+                                            <tr>
+                                                <td>
+                                                    {/*<div className="color-dark-blue font-icon-box">*/}
+                                                    {/*<span className="icon-fields"/>*/}
+                                                    {/*</div>*/}
+                                                    <img className={'img-responsive center-block'}
+                                                         src={'/image/default-farm.jpg'} style={{width: 50}}/>
+
+                                                </td>
+                                                <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span>
+                                                </td>
+                                                <td><span
+                                                    data-th-text="*{firstName} + ' ' + *{lastName}">สมชาย ใจดี</span>
+                                                </td>
+                                                <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
+                                                <td><strong data-th-text="${k.address.province}">สวนกวาง</strong></td>
+                                                <td><span>ลุ่มน้ำมูล</span></td>
+                                                <td>
+                                                    <button className=" btn btn-danger btn-sm"
+                                                            data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
+                                                        <i className="icon-barn2"/> ดูข้อมูลแปลงที่ดิน
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
+
                     </div>
                 </div>
             </div>
@@ -156,5 +172,18 @@ const NewComponent = () =>
                 <i className="fa fa-circle-o-notch fa-spin-fast"/>
             </div>
         </div>
-    )
-export default NewComponent
+    );
+
+NewComponent.PropTypes = {
+    list: PropTypes.array.isRequired,
+};
+
+function mapStateToProp(state) {
+    return {list: state.member.members}
+}
+
+function mapDispatchToProp(dispatch) {
+    return {}
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(NewComponent)
