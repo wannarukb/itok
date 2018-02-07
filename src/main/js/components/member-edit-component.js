@@ -3,7 +3,6 @@ import React from 'react'
 const NewComponent = () =>
 
     (
-
         <form method="post" data-th-object="${member}" encType="multipart/form-data" id="theform" className={'content'}>
             <div className="row">
                 <div className="col-md-6">
@@ -253,4 +252,18 @@ const NewComponent = () =>
             </div>
         </form>
     );
-export default NewComponent
+
+
+function mapStateToProp(state) {
+    return {
+
+    }
+}
+
+function mapDispatchToProp(dispatch) {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProp,mapDispatchToProp)(NewComponent)

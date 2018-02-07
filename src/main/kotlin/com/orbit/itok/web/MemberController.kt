@@ -1,6 +1,7 @@
 package com.orbit.itok.web
 
 
+import com.fasterxml.jackson.annotation.JsonView
 import com.orbit.itok.service.*
 import com.orbit.itok.util.UploadUtil
 import org.joda.time.DateTime
@@ -30,6 +31,18 @@ class MemberController {
     @ModelAttribute("memberTypes")
     fun memberTypes(): List<SelectField> {
         return settingServiceImpl.memberTypes.map { SelectField(it, it) }
+    }
+
+    @RequestMapping("json")
+    @JsonView(View.Member::class)
+    @ResponseBody
+    fun member(@RequestParam(required = false) page: Int?): MutableList<Member> {
+        var page2 = 0
+        val limit = 20
+        if (page == null) {
+            page2 = 0
+        }
+        return memberServiceImpl.findAll(page2 * limit, limit)
     }
 
     @ModelAttribute("jobTypes")

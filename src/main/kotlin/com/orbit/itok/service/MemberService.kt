@@ -2,13 +2,17 @@ package com.orbit.itok.service
 
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
+import com.googlecode.objectify.ObjectifyService
 
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
 import com.googlecode.objectify.annotation.*
 import com.googlecode.objectify.annotation.Index
+import com.orbit.itok.web.View
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
+import org.springframework.core.env.Environment
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
 import java.util.*
@@ -18,17 +22,17 @@ import java.util.*
  */
 
 @Entity
-data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = null,
+data class Member(@JsonView(View.Member::class) @Id var id: Long? = null,
         // รหัสสมาชิก
-                  @JsonView(DataTablesOutput.View::class) var memberId: String = "",
+                  @JsonView(View.Member::class) var memberId: String = "",
         //ภาพถ่ายสมาชิกเครือข่าย
                   var image: UploadedImage? = null,
         //คานาหน้าชื่อ
                   var title: String = "",
         // ชื่อ *
-                  @JsonView(DataTablesOutput.View::class) var firstName: String = "",
+                  @JsonView(View.Member::class) var firstName: String = "",
         // นามสกุล *
-                  @JsonView(DataTablesOutput.View::class) var lastName: String = "",
+                  @JsonView(View.Member::class) var lastName: String = "",
         // ชื่อเล่น
                   var nickname: String? = "",
         // วัน เดือน ปีเกิด
@@ -56,12 +60,12 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
                   var address: Address = Address(),
                   var date: Date = Date(),
                   @Load var membership: Ref<Membership>? = null,
-                  // activites
+        // activites
                   @Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
                   @Index var courses: MutableList<Ref<Course>> = mutableListOf(),
                   @Index var activities: MutableList<Ref<Activity>> = mutableListOf(),
                   @Index var equipments: MutableList<Ref<Equipment>> = mutableListOf(),
-                  // end activities
+        // end activities
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore
                   var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
@@ -213,6 +217,20 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun run(vararg p0: String?) {
         register(Member::class.java)
         this.index = SearchServiceFactory.getSearchService().getIndex(IndexSpec.newBuilder().setName("member"))
+        if (environment.activeProfiles.first() == "development") {
+            val closable = ObjectifyService.begin()
+            register(Membership::class.java)
+
+            if (count() < 10L) {
+                for (i in 1..40)
+                    createMember(Member(firstName = "first$i", lastName = "last$i"))
+
+            }
+            closable.close()
+
+        }
     }
+
+    @Autowired lateinit var environment: Environment
 
 }
