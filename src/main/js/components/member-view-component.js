@@ -2,7 +2,7 @@ import React from 'react'
 
 var NewComponent = ({}) =>
     (
-        <div>
+        <div style={{padding: "0px !important"}}>
             <div className="cover" style={{background: 'url("/image/bg-image.jpeg")'}}/>
             <div className="cover-footer"/>
             <div style={{marginTop: '-140px', padding: '0px 20px 42px'}}>
@@ -12,8 +12,7 @@ var NewComponent = ({}) =>
                         <div className="fileinput-new thumbnail" style={{width: '100%', marginBottom: 10}}>
                             {/*<img data-src="holder.js/100%x100%" alt="..." src="">*/}
                             <img src="/image/profile.png" data-th-if="*{image} == null"/>
-                            <img src="/image/profile.png" data-th-if="*{image} != null"
-                                 data-th-src="*{image.imageUrl} + '=s400-c'"/>
+
                         </div>
                     </div>
                     <div className="col-md-10 " style={{paddingTop: 50}}>

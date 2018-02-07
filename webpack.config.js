@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 var node_dir = __dirname + '/node_modules';
 
@@ -6,7 +7,11 @@ module.exports = {
     entry: './src/main/js/app.js',
     devtool: 'sourcemaps',
     cache: true,
-    debug: true,
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            debug: true
+        })
+    ],
     resolve: {
         alias: {
             'stompjs': node_dir + '/stompjs/lib/stomp.js'
@@ -24,7 +29,7 @@ module.exports = {
                 loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react','stage-2']
                 }
             }
 

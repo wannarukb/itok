@@ -38,28 +38,28 @@ class HomeController : ResourceLoaderAware {
 
     private val PAGE_LIMIT: Int = 10
 
-    @RequestMapping("member")
+    @RequestMapping("member", "member/view")
     fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes,
                @RequestParam(required = false) fromDashboard: Boolean?,
                @RequestParam(required = false) query: String?): String {
-        if (page == null) {
+//        if (page == null) {
 //            redirectAttributes.addAttribute("page", 1)
-            return "redirect:/member?page=1"
-        }
-        if (fromDashboard == null) {
-            model.addAttribute("showDashboard", false)
-            model.addAttribute("pageName", "member")
-        } else {
-            model.addAttribute("showDashboard", true)
-        }
-        if (query == null) {
-            model.addAttribute("list", memberServiceImpl.findAll((page - 1) * PAGE_LIMIT, PAGE_LIMIT))
-            model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
-        } else {
-            model.addAttribute("list", memberServiceImpl.search(query, (page - 1) * PAGE_LIMIT, PAGE_LIMIT))
-            model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
-        }
-        model.addAttribute("page", page)
+//            return "redirect:/member?page=1"
+//        }
+//        if (fromDashboard == null) {
+//            model.addAttribute("showDashboard", false)
+//            model.addAttribute("pageName", "member")
+//        } else {
+//            model.addAttribute("showDashboard", true)
+//        }
+//        if (query == null) {
+//            model.addAttribute("list", memberServiceImpl.findAll((page - 1) * PAGE_LIMIT, PAGE_LIMIT))
+//            model.addAttribute("totalPages", memberServiceImpl.count() / PAGE_LIMIT + 1)
+//        } else {
+//            model.addAttribute("list", memberServiceImpl.search(query, (page - 1) * PAGE_LIMIT, PAGE_LIMIT))
+//            model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
+//        }
+//        model.addAttribute("page", page)
         model.addAttribute("development", environment.activeProfiles.first() == "development")
 
         return "react-skeleton/member"

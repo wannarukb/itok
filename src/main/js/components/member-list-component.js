@@ -1,7 +1,7 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
-var NewComponent = () =>
-
+const NewComponent = () =>
     (
         <div>
             <div className="row">
@@ -49,7 +49,7 @@ var NewComponent = () =>
                             <div className="panel-heading panel-heading-white collapsed">
                                 <h5 className="panel-title">
                                     <div className="row">
-                                        <a className="collapsed" data-toggle="collapse" href="#collapseOne"
+                                        <div className="collapsed" data-toggle="collapse" href="#collapseOne"
                                            data-th-href="'#collapse' + ${lStat.index}">
                                             <div className="col-sm-1 text-center ">
                                                 <i className="fa fa-user" aria-hidden="true"
@@ -58,8 +58,8 @@ var NewComponent = () =>
                                                      data-th-if="${l.image} != null" className=" img-circle"/>
                                             </div>
                                             <div className="col-sm-3">
-                                                <p className="color-green"><strong
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p>
+                                                <Link to={'/member/view'} className="color-green"><strong
+                                                    data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></Link>
                                                 <p className="font-medium color-dark" data-th-text="*{nickname}">2
                                                     Farms</p>
                                                 {/*<p class="font-xs-small color-grey"*/}
@@ -78,7 +78,7 @@ var NewComponent = () =>
                                                 {/*<p data-th-text="*{membershipTemp.typeOrganization}"*/}
                                                 {/*class="font-medium"></p>*/}
                                             </div>
-                                        </a>
+                                        </div>
                                         <div className="col-sm-2 text-right">
                                             <button className=" btn btn-primary btn-sm"
                                                     data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">

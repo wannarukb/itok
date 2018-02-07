@@ -110,8 +110,8 @@ class MemberController {
 
     @GetMapping("{id}")
     fun updateMember(@PathVariable id: Long, model: Model): String {
-        val findOne = memberServiceImpl.findOne(id)
-        model.addAttribute("member", findOne)
+//        val findOne = memberServiceImpl.findOne(id)
+//        model.addAttribute("member", findOne)
         return "layout-member"
     }
 
