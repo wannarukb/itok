@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom'
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import member from './duck/member'
-import Hello from './components/hello'
+import MemberListComponent from './components/member-list-component'
 
 // let store =createStore(member)
 
 
 ReactDOM.render(
-    <Hello/>,
+    <MemberListComponent/>,
     document.getElementById('memberApp')
 )
