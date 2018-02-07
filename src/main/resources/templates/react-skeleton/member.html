@@ -7,7 +7,9 @@
 <body>
 <div data-layout-fragment="main">
     <div id="memberApp"></div>
-    <script type="text/javascript" src="/built/bundle.js"></script>
+
+    <script data-th-if="${development}" type="text/javascript" src="localhost:3000/bundle.js"></script>
+    <script data-th-if="!${development}" type="text/javascript" src="/built/bundle.js"></script>
 
 </div>
 </body>

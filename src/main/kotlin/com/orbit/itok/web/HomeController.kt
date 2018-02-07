@@ -4,6 +4,7 @@ import com.orbit.itok.service.ImportServiceImpl
 import com.orbit.itok.service.MemberServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ResourceLoaderAware
+import org.springframework.core.env.Environment
 import org.springframework.core.io.ResourceLoader
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Controller
@@ -59,6 +60,8 @@ class HomeController : ResourceLoaderAware {
             model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
         }
         model.addAttribute("page", page)
+        model.addAttribute("development", environment.activeProfiles.first() == "development")
+
         return "react-skeleton/member"
     }
 
@@ -79,4 +82,5 @@ class HomeController : ResourceLoaderAware {
 
     @Autowired lateinit var memberServiceImpl: MemberServiceImpl
     @Autowired lateinit var importServiceImpl: ImportServiceImpl
+    @Autowired lateinit var environment: Environment
 }
