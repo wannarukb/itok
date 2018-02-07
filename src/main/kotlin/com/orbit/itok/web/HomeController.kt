@@ -60,7 +60,9 @@ class HomeController : ResourceLoaderAware {
 //            model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
 //        }
 //        model.addAttribute("page", page)
-        model.addAttribute("development", environment.activeProfiles.first() == "development")
+        if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.first() == "development") {
+            model.addAttribute("development", true)
+        } else model.addAttribute("development", false)
 
         return "react-skeleton/member"
     }

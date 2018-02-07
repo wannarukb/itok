@@ -217,7 +217,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun run(vararg p0: String?) {
         register(Member::class.java)
         this.index = SearchServiceFactory.getSearchService().getIndex(IndexSpec.newBuilder().setName("member"))
-        if (environment.activeProfiles.first() == "development") {
+        if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.first() == "development") {
             val closable = ObjectifyService.begin()
             register(Membership::class.java)
 
