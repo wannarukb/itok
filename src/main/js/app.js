@@ -7,6 +7,7 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import member from './duck/member'
 import MemberListComponent from './components/member-list-component'
 import MemberViewComponent from './components/member-view-component'
+import MemberEditComponent from './components/member-edit-component'
 import {Route,} from 'react-router-dom'
 import {ConnectedRouter, routerMiddleware, routerReducer} from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
@@ -28,7 +29,8 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div><Route exact path="/member" component={MemberListComponent}/>
-                <Route exact path="/member/view" component={MemberViewComponent}/></div>
+                <Route exact path="/member/view" component={MemberViewComponent}/>
+                <Route exact path="/member/edit" component={MemberEditComponent}/></div>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('memberApp')

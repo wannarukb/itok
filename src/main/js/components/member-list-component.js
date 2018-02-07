@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const NewComponent = () =>
     (
-        <div style={{padding: "20px 20px 42px ;"}}>
+        <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
                 <div className="col-md-12 font-supermarket">
                     <h2>ค้นหาข้อมูลสมาชิก</h2>
