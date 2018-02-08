@@ -23,5 +23,17 @@ export const fetchMember = () => {
 };
 
 export const searchMember = (query) => {
-    return dispatch => axios.post('/member/search', {query: query}).then(data => data.json(), error => console.log('error search')).then(data => dispatch(fetchComplete(data)))
+
+
+    return dispatch => {
+
+        if (query.trim().length === 0){
+            dispatch(fetchMember());
+        }
+        else {
+            let data2 = new FormData();
+            data2.append('query','query');
+             axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
+        }
+    }
 };

@@ -45,6 +45,18 @@ class MemberController {
         return memberServiceImpl.findAll(page2 * limit, limit)
     }
 
+    @RequestMapping("search")
+    @JsonView(View.Member::class)
+    @ResponseBody
+    fun member(@RequestParam(required = false) page: Int?, @RequestParam query: String): MutableList<Member> {
+        var page2 = 0
+        val limit = 20
+        if (page == null) {
+            page2 = 0
+        }
+        return memberServiceImpl.search(query, page2 * limit, limit)
+    }
+
     @ModelAttribute("jobTypes")
     fun jobTypes(): List<SelectField> {
         return settingServiceImpl.jobTypes.map { SelectField(it, it) }

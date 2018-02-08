@@ -182,8 +182,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
 
     private fun getDocument(member: Member): Document {
         return Document.newBuilder().setId(member.id.toString())
-                .addField(Field.newBuilder().setName("firstName").setText(member.firstName))
-                .addField(Field.newBuilder().setName("lastName").setText(member.lastName))
+                .addField(Field.newBuilder().setName("name").setText(member.firstName + " " + member.lastName))
+                .addField(Field.newBuilder().setName("province").setText(member.addressString))
                 .addField(Field.newBuilder().setName("email").setText(member.email))
                 .addField(Field.newBuilder().setName("tel").setText(member.mobile))
                 .addField(Field.newBuilder().setName("memberId").setText(member.memberId)).build()
