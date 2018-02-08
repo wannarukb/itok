@@ -34,9 +34,13 @@ const NewComponent = ({list}) =>
                     <button className="btn btn-primary btn-full-width button-search">
                         <i className="fa fa-search"/> ค้นหา
                     </button>
+
                 </div>
                 <div className="col-md-2 ">
                     <p className=" text-right">
+                        <button className="btn btn-success btn-full-width button-search">
+                            <i className="fa fa-plus"/> เพิ่มสมาชิกใหม่
+                        </button>
                         {/*<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >*/}
                         {/*<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่*/}
                         {/*</a>*/}
