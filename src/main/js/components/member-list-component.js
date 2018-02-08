@@ -59,9 +59,8 @@ const NewComponent = ({list}) =>
                                                     <div className="col-sm-1 text-center ">
                                                         {/*<i className="fa fa-user" aria-hidden="true"*/}
                                                         {/*style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>*/}
-                                                        <img src={'/image/default-farmer.jpg'}
-                                                             className={'img-responsive center-block'}
-                                                             style={{width: 50}}/>
+                                                        <span className={'icon-farmer'}
+                                                              style={{fontSize: '4em', color: '#779543'}}/>
                                                         <img data-th-src="${l.image.imageUrl} + '=s50-c'"
                                                              data-th-if="${l.image} != null" className=" img-circle"/>
                                                     </div>
@@ -92,8 +91,8 @@ const NewComponent = ({list}) =>
                                                 <div className="col-sm-2 text-right">
                                                     <button className=" btn btn-primary btn-sm"
                                                             data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
-                                                        <i className="fa fa-user"
-                                                           style={{color: '#FFF !important'}}/> ดูข้อมูลสมาชิก
+                                                        <i className="icon-farmer"
+                                                           style={{fontSize:'1em',color: '#FFF !important'}}/> ดูข้อมูลสมาชิก
                                                     </button>
                                                     {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
                                                     {/*<i class="fa fa-user"></i>*/}
@@ -122,11 +121,9 @@ const NewComponent = ({list}) =>
                                             <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
                                             <tr>
                                                 <td>
-                                                    {/*<div className="color-dark-blue font-icon-box">*/}
-                                                    {/*<span className="icon-fields"/>*/}
-                                                    {/*</div>*/}
-                                                    <img className={'img-responsive center-block'}
-                                                         src={'/image/default-farm.jpg'} style={{width: 50}}/>
+                                                    <div className="color-dark-blue font-icon-box">
+                                                        <span className="icon-farm"/>
+                                                    </div>
 
                                                 </td>
                                                 <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span>

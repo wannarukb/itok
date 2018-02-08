@@ -32,9 +32,11 @@ store.dispatch(fetchMember());
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div><Route exact path="/member" component={MemberListComponent}/>
+            <div>
+                <Route exact path="/member" component={MemberListComponent}/>
                 <Route exact path="/member/view/:id" component={MemberViewComponent}/>
-                <Route exact path="/member/edit/:id" component={MemberEditComponent}/></div>
+                <Route exact path="/member/edit/:id" component={MemberEditComponent}/>
+            </div>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('memberApp')
