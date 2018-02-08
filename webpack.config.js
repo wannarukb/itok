@@ -6,7 +6,7 @@ var node_dir = __dirname + '/node_modules';
 module.exports = {
     entry: './src/main/js/app.js',
     devtool: 'sourcemaps',
-    cache: true,
+    cache: false,
     plugins: [
         new webpack.LoaderOptionsPlugin({
             debug: true

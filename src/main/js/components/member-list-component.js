@@ -2,8 +2,18 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types'
 import {connect} from "react-redux";
+import {searchMember} from "../duck/member";
+import {Field, reduxForm} from "redux-form";
 
-const NewComponent = ({list}) =>
+const TextField = ({input, description}) =>
+    (
+        <div>
+            <p className="text-desc">{description}</p>
+            <input type="text" className="form-control" {...input}/>
+        </div>
+    );
+
+const NewComponent = ({list, search, handleSubmit}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
@@ -12,40 +22,36 @@ const NewComponent = ({list}) =>
                 </div>
             </div>
             <div className="row margin-bottom-xs">
-                <div className="col-md-3">
-                    <div>
-                        <p className="text-desc">ชื่อสมาชิก</p>
-                        <input type="text" className="form-control"/>
+                <form action={'#'} onSubmit={handleSubmit}>
+                    <div className="col-md-3">
+                        <Field name={'nameSearch'} component={TextField} description={'ชื่อสมาชิก'}/>
                     </div>
-                </div>
-                <div className="col-md-3">
-                    <div>
-                        <p className="text-desc">เบอร์โทรศัพท์</p>
-                        <input type="text" className="form-control"/>
-                    </div>
-                </div>
-                <div className="col-md-3">
-                    <div>
-                        <p className="text-desc">จังหวัด</p>
-                        <input type="text" className="form-control"/>
-                    </div>
-                </div>
-                <div className="col-md-1">
-                    <button className="btn btn-primary btn-full-width button-search">
-                        <i className="fa fa-search"/> ค้นหา
-                    </button>
+                    <div className="col-md-3">
 
-                </div>
-                <div className="col-md-2 ">
-                    <p className=" text-right">
-                        <button className="btn btn-success btn-full-width button-search">
-                            <i className="fa fa-plus"/> เพิ่มสมาชิกใหม่
+                        <Field name={'telSearch'} component={TextField} description={'เบอร์โทรศัพท์'}/>
+
+                    </div>
+                    <div className="col-md-3">
+
+                        <Field name={'provinceSearch'} component={TextField} description={'จังหวัด'}/>
+
+                    </div>
+                    <div className="col-md-1">
+                        <button className="btn btn-primary btn-full-width button-search" type={'submit'}>
+                            <i className="fa fa-search"/> ค้นหา
                         </button>
-                        {/*<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >*/}
-                        {/*<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่*/}
-                        {/*</a>*/}
-                    </p>
-                </div>
+                    </div>
+                    <div className="col-md-2 ">
+                        <p className=" text-right">
+                            <button className="btn btn-success btn-full-width button-search">
+                                <i className="fa fa-plus"/> เพิ่มสมาชิกใหม่
+                            </button>
+                            {/*<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >*/}
+                            {/*<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่*/}
+                            {/*</a>*/}
+                        </p>
+                    </div>
+                </form>
             </div>
             <div className="row" id="farmPanel">
                 <div className="col-md-12">
@@ -96,7 +102,10 @@ const NewComponent = ({list}) =>
                                                     <button className=" btn btn-primary btn-sm"
                                                             data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
                                                         <i className="icon-farmer"
-                                                           style={{fontSize:'1em',color: '#FFF !important'}}/> ดูข้อมูลสมาชิก
+                                                           style={{
+                                                               fontSize: '1em',
+                                                               color: '#FFF !important'
+                                                           }}/> ดูข้อมูลสมาชิก
                                                     </button>
                                                     {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
                                                     {/*<i class="fa fa-user"></i>*/}
@@ -181,11 +190,22 @@ NewComponent.PropTypes = {
 };
 
 function mapStateToProp(state) {
-    return {list: state.member.members}
+    return {
+        list: state.member.members
+    }
 }
 
 function mapDispatchToProp(dispatch) {
-    return {}
+    return {search: () => dispatch(searchMember())}
 }
 
-export default connect(mapStateToProp, mapDispatchToProp)(NewComponent)
+export default reduxForm({
+    form: 'searchMember',
+    onSubmit: (value, dispatch) => {
+        let query = '';
+        if (value.nameSearch && value.nameSearch.length !== 0) query += 'name="' + value.nameSearch + '" ';
+        if (value.telSearch && value.telSearch.length !== 0) query += 'tel="' + value.telSearch + '" ';
+        if (value.provinceSearch && value.provinceSearch.length !== 0) query += 'province="' + value.provinceSearch + '" ';
+        dispatch(searchMember(query))
+    }
+})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))

@@ -12,6 +12,7 @@ import {Route,} from 'react-router-dom'
 import {ConnectedRouter, routerMiddleware, routerReducer} from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk' // no changes here 😀
+import {reducer as formReducer} from 'redux-form'
 
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -22,9 +23,9 @@ const middleware = routerMiddleware(history);
 
 
 let store = createStore(combineReducers({
-        member, routing: routerReducer
+        member, routing: routerReducer, form: formReducer
     }
-), applyMiddleware(middleware,thunk));
+), applyMiddleware(middleware, thunk));
 
 store.dispatch(fetchMember());
 
