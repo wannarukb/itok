@@ -2,8 +2,9 @@ import React from 'react'
 import {Link} from "react-router-dom";
 
 
-var NewComponent = ({}) =>
-    (
+var NewComponent = ({match}) => {
+    const id = match.params.id
+    return (
         <div style={{padding: "0px !important"}}>
             <div className="cover" style={{background: 'url("/image/bg-image.jpeg")'}}/>
             <div className="cover-footer"/>
@@ -24,7 +25,8 @@ var NewComponent = ({}) =>
                                     ใจดี</h3>
                             </div>
                             <div className="col-sm-6 text-right">
-                                <Link to={'/member/edit'} className="btn btn-primary" data-th-href="@{/member/{id}/edit(id=${member.id})}">
+                                <Link to={'/member/edit/' + id} className="btn btn-primary"
+                                      data-th-href="@{/member/{id}/edit(id=${member.id})}">
                                     <i className="fa fa-pencil"/> แก้ไขข้อมูลสมาชิก
                                 </Link>
                             </div>
@@ -1162,6 +1164,7 @@ var NewComponent = ({}) =>
             </div>
         </div>
     );
+};
 
 
 export default NewComponent

@@ -38,7 +38,7 @@ class HomeController : ResourceLoaderAware {
 
     private val PAGE_LIMIT: Int = 10
 
-    @RequestMapping("member", "member/view", "member/edit")
+    @RequestMapping("member", "member/view/{id}", "member/edit/{id}")
     fun member(model: Model, @RequestParam(required = false) page: Int?, redirectAttributes: RedirectAttributes,
                @RequestParam(required = false) fromDashboard: Boolean?,
                @RequestParam(required = false) query: String?): String {

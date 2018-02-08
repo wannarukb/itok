@@ -66,7 +66,8 @@ const NewComponent = ({list}) =>
                                                              data-th-if="${l.image} != null" className=" img-circle"/>
                                                     </div>
                                                     <div className="col-sm-3">
-                                                        <Link to={'/member/view'} className="color-green"><strong
+                                                        <Link to={'/member/view/' + it.id}
+                                                              className="color-green"><strong
                                                             data-th-text="*{firstName} + ' ' + *{lastName}">{it.firstName} {it.lastName}</strong></Link>
                                                         <p className="font-medium color-dark"
                                                            data-th-text="*{nickname}">2
