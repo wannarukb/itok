@@ -5,6 +5,7 @@ import SelectField from './select-field'
 import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
+import CheckboxField from "./checkbox-field";
 
 const NewComponent = ({handleSubmit}) =>
 
@@ -201,17 +202,25 @@ const NewComponent = ({handleSubmit}) =>
                                                     <fieldset>
                                                         <legend className="section-title">
                                                             {/*<strong data-th-text="#{member}">Horizontal</strong> */}
-                                                            <span data-th-text="#{memberDetail}"/>
+                                                            <span data-th-text="#{memberDetail}">
+                                                                รายละเอียดการเป็นสมาชิก
+                                                            </span>
                                                         </legend>
                                                         <input type="hidden" data-th-field="*{membershipTemp.id}"/>
                                                         <div className="row">
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>
+                                                                <Field component={TextField}
+                                                                       description={'หมายเลขสมาชิก'}
+                                                                       name={'membershipTemp.membershipId'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>
+                                                                <Field component={SelectField}
+                                                                       description={'ปีที่เข้าร่วม'}
+                                                                       name={'membershipTemp.yearJoin'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>*/}
                                                             </div>
                                                         </div>
                                                         <div className="row">
@@ -220,58 +229,74 @@ const NewComponent = ({handleSubmit}) =>
                                                                     <label
                                                                         className="col-md-4 form-control-label text-md-right"/>
                                                                     <div className="col-md-7">
-                                                                        <div
-                                                                            className="checkbox abc-checkbox abc-checkbox-primary">
-                                                                            <input id="checkbox2" type="checkbox"
-                                                                                   defaultChecked/>
-                                                                            <label htmlFor="checkbox2">
-                                                                                เป็นตัวแทนสมาชิกประจำหมู่บ้าน
-                                                                            </label>
-                                                                        </div>
+                                                                        <Field component={CheckboxField}
+                                                                               name={'membershipTemp.isThing'}/>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>
+                                                                <Field component={SelectField}
+                                                                       description={'รูปแบบเครือข่าย'}
+                                                                       name={'membershipTemp.type'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>*/}
                                                             </div>
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>
+                                                                <Field component={SelectField} description={'อาชีพหลัก'}
+                                                                       name={'membershipTemp.mainJob'}/>
+                                                                <Field component={SelectField}
+                                                                       description={'อาชีพเสริม'}
+                                                                       name={'membershipTemp.secondJob'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>*/}
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>
+                                                                <Field component={SelectField} description={'อาชีพเดิม'}
+                                                                       name={'membershipTemp.previousJob'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>*/}
                                                             </div>
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>
+                                                                <Field component={SelectField}
+                                                                       description={'ความเป็นสมาชิกภาพองค์กรหรือสมาคม'}
+                                                                       name={'membershipTemp.typeOrganization'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <div className="form-group row">
-                                                                    <label
-                                                                        className="col-md-4 control-label text-md-right">ความเชี่ยวชาญพิเศษ<br/>ด้านเกษตร</label>
-                                                                    <input
-                                                                        data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>
-                                                                </div>
+                                                                <Field component={SelectField}
+                                                                       description={'ความเชี่ยวชาญพิเศษด้านการเกษตร'}
+                                                                       name={'membershipTemp.agricultureSpecialty'}/>
+                                                                {/*<div className="form-group row">*/}
+                                                                {/*<label*/}
+                                                                {/*className="col-md-4 control-label text-md-right">ความเชี่ยวชาญพิเศษ<br/>ด้านเกษตร</label>*/}
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>*/}
+                                                                {/*</div>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <div className="form-group row">
-                                                                    <label
-                                                                        className="col-md-4 control-label text-md-right">ความสนใจพิเศษ<br/>ด้านเกษตร</label>
-                                                                    <input
-                                                                        data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>
-                                                                </div>
+                                                                {/*<div className="form-group row">*/}
+                                                                <Field component={SelectField}
+                                                                       description={'ความสนใจพิเศษด้านเกษตร'}
+                                                                       name={'membershipTemp.agricultureInterest'}/>
+                                                                {/*<label*/}
+                                                                {/*className="col-md-4 control-label text-md-right">ความสนใจพิเศษ<br/>ด้านเกษตร</label>*/}
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>*/}
+                                                                {/*</div>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <input
-                                                                    data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>
+                                                                <Field component={TextField}
+                                                                       name={'membershipTemp.associate'}
+                                                                       description={'ชื่อสกุลของเครือข่ายที่ทำงานร่วมกัน'}/>
+                                                                {/*<input*/}
+                                                                {/*data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>*/}
                                                             </div>
                                                         </div>
                                                     </fieldset>
