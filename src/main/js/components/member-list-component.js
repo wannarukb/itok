@@ -13,6 +13,8 @@ const TextField = ({input, description}) =>
         </div>
     );
 
+
+
 const NewComponent = ({list, search, handleSubmit}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
@@ -142,13 +144,16 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                         </div>
 
                                                     </td>
-                                                    <td><span><strong data-th-text="${k.name}">{it2.name}</strong></span>
+                                                    <td><span><strong
+                                                        data-th-text="${k.name}">{it2.name}</strong></span>
                                                     </td>
                                                     <td><span
                                                         data-th-text="*{firstName} + ' ' + *{lastName}">{it2.ownerName}</span>
                                                     </td>
                                                     <td><span data-th-text="${k.getSize()}">{it2.areaText}</span></td>
-                                                    <td><strong data-th-text="${k.address.province}">{it2.province}</strong></td>
+                                                    <td><strong
+                                                        data-th-text="${k.address.province}">{it2.province}</strong>
+                                                    </td>
                                                     <td><span>{it2.basin}</span></td>
                                                     <td>
                                                         <button className=" btn btn-danger btn-sm"
