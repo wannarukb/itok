@@ -147,8 +147,8 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                         data-th-text="*{firstName} + ' ' + *{lastName}">{it2.ownerName}</span>
                                                     </td>
                                                     <td><span data-th-text="${k.getSize()}">{it2.areaText}</span></td>
-                                                    <td><strong data-th-text="${k.address.province}">{it.province}</strong></td>
-                                                    <td><span>{it.basin}</span></td>
+                                                    <td><strong data-th-text="${k.address.province}">{it2.province}</strong></td>
+                                                    <td><span>{it2.basin}</span></td>
                                                     <td>
                                                         <button className=" btn btn-danger btn-sm"
                                                                 data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
