@@ -200,7 +200,10 @@ const NewComponent = ({handleSubmit}) =>
                                             <div className="widget-body">
                                                 <div className="form-horizontal" role="form">
                                                     <fieldset>
-                                                        <legend className="section-title">
+                                                        <legend className="section-title"
+
+
+                                                        >
                                                             {/*<strong data-th-text="#{member}">Horizontal</strong> */}
                                                             <span data-th-text="#{memberDetail}">
                                                                 รายละเอียดการเป็นสมาชิก
