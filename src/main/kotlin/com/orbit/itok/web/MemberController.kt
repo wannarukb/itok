@@ -8,6 +8,7 @@ import org.joda.time.DateTime
 import org.joda.time.DateTimeFieldType
 import org.joda.time.chrono.BuddhistChronology
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.core.env.Environment
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
@@ -33,7 +34,7 @@ class MemberController {
         return settingServiceImpl.memberTypes.map { SelectField(it, it) }
     }
 
-    data class MemberList(var id: Long, var name: String, var address: String, var fieldCcount: Int, var totalArea: Float,
+    data class MemberList(var id: Long, var name: String, var address: String, var fieldCount: Int, var totalArea: Float,
                           var memberListArea: MutableList<MemberListArea>)
 
     data class MemberListArea(var id: Long, var name: String, var ownerName: String, var areaText: String, var province: String, var basin: String)
@@ -49,7 +50,7 @@ class MemberController {
         return memberServiceImpl.findAll(page2 * limit, limit).map {
             var totalArea = 0f
 
-            val lands = it.memberLands.map { it.get() }.map {
+            var lands = it.memberLands.map { it.get() }.map {
                 totalArea += it.rai ?: 0f
                 MemberListArea(
                         id = it.id ?: 0L,
@@ -60,8 +61,12 @@ class MemberController {
                 )
             }
             val ownerName = "${it.firstName} ${it.lastName}"
+            if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.contains("development")) if (lands.isEmpty()){
+                lands = listOf(MemberListArea(id = 1L,ownerName = ownerName,name = "Placeholder name",areaText = "area Text placeholder",
+                        basin = "basin placeholder",province = "province placehodler"))
+            }
             lands.forEach { it.ownerName = ownerName }
-            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCcount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
+            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
         }
     }
 
@@ -203,6 +208,7 @@ class MemberController {
     @Autowired lateinit var settingServiceImpl: SettingServiceImpl
     @Autowired lateinit var uploadUtil: UploadUtil
     @Autowired lateinit var memberLandServiceImpl: MemberLandService
+    @Autowired lateinit var environment: Environment
 }
 
 data class SelectField(var id: String = "", var name: String = "")

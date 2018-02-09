@@ -77,9 +77,9 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                     <div className="col-sm-3">
                                                         <Link to={'/member/view/' + it.id}
                                                               className="color-green"><strong
-                                                            data-th-text="*{firstName} + ' ' + *{lastName}">{it.firstName} {it.lastName}</strong></Link>
+                                                            data-th-text="*{firstName} + ' ' + *{lastName}">{it.name}</strong></Link>
                                                         <p className="font-medium color-dark"
-                                                           data-th-text="*{nickname}">2
+                                                           data-th-text="*{nickname}">{it.totalField}
                                                             Farms</p>
                                                         {/*<p class="font-xs-small color-grey"*/}
                                                         {/*data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>*/}
@@ -87,9 +87,10 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                     <div className="col-sm-4">
                                                         {/*<p data-th-text="*{mobile}" class="font-medium color-dark"></p>*/}
                                                         {/*<p data-th-text="*{address}" class="font-medium color-dark"></p>*/}
-                                                        <p className="font-medium color-dark">นนทบุรี</p>
+                                                        <p className="font-medium color-dark">{it.province}</p>
                                                         <span className="font-xs-small color-grey"
-                                                              data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
+                                                              data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">
+                                                            {it.totalField} ไร่ เนื้อที่รวม {it.totalArea} ไร่</span>
                                                     </div>
                                                     <div className="col-sm-2">
                                                         <p data-th-text="*{membershipTemp.type}"
@@ -132,28 +133,30 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                             </tr>
                                             </thead>
                                             <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
-                                            <tr>
-                                                <td>
-                                                    <div className="color-dark-blue font-icon-box">
-                                                        <span className="icon-farm"/>
-                                                    </div>
 
-                                                </td>
-                                                <td><span><strong data-th-text="${k.name}">เขาสวนกวาง</strong></span>
-                                                </td>
-                                                <td><span
-                                                    data-th-text="*{firstName} + ' ' + *{lastName}">สมชาย ใจดี</span>
-                                                </td>
-                                                <td><span data-th-text="${k.getSize()}">21.8 ac - Potato</span></td>
-                                                <td><strong data-th-text="${k.address.province}">สวนกวาง</strong></td>
-                                                <td><span>ลุ่มน้ำมูล</span></td>
-                                                <td>
-                                                    <button className=" btn btn-danger btn-sm"
-                                                            data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
-                                                        <i className="icon-barn2"/> ดูข้อมูลแปลงที่ดิน
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            {it.memberListArea.map((it2, index2) => <tr>
+                                                    <td>
+                                                        <div className="color-dark-blue font-icon-box">
+                                                            <span className="icon-farm"/>
+                                                        </div>
+
+                                                    </td>
+                                                    <td><span><strong data-th-text="${k.name}">{it2.name}</strong></span>
+                                                    </td>
+                                                    <td><span
+                                                        data-th-text="*{firstName} + ' ' + *{lastName}">{it2.ownerName}</span>
+                                                    </td>
+                                                    <td><span data-th-text="${k.getSize()}">{it2.areaText}</span></td>
+                                                    <td><strong data-th-text="${k.address.province}">{it.province}</strong></td>
+                                                    <td><span>{it.basin}</span></td>
+                                                    <td>
+                                                        <button className=" btn btn-danger btn-sm"
+                                                                data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">
+                                                            <i className="icon-barn2"/> ดูข้อมูลแปลงที่ดิน
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )}
                                             </tbody>
                                         </table>
                                     </div>
