@@ -69,7 +69,7 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                     <div className="col-sm-1 text-center ">
                                                         {/*<i className="fa fa-user" aria-hidden="true"*/}
                                                         {/*style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>*/}
-                                                        <span className={'icon-farmer'}
+                                                        <span className={'icon-farmer-farmer'}
                                                               style={{fontSize: '4em', color: '#779543'}}/>
                                                         <img data-th-src="${l.image.imageUrl} + '=s50-c'"
                                                              data-th-if="${l.image} != null" className=" img-circle"/>
@@ -102,7 +102,7 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                 <div className="col-sm-2 text-right">
                                                     <button className=" btn btn-primary btn-sm"
                                                             data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
-                                                        <i className="icon-farmer"
+                                                        <i className="icon-farmer-farmer"
                                                            style={{
                                                                fontSize: '1em',
                                                                color: '#FFF !important'
@@ -134,10 +134,11 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                             </thead>
                                             <tbody data-th-remove="all-but-first" data-th-each="k : *{memberLandsTemp}">
 
-                                            {it.memberListArea.map((it2, index2) => <tr>
+                                            {it.memberListArea.map((it2, index2) =>
+                                                <tr key={index2}>
                                                     <td>
                                                         <div className="color-dark-blue font-icon-box">
-                                                            <span className="icon-farm"/>
+                                                            <span className="icon-farmer-farm"/>
                                                         </div>
 
                                                     </td>
