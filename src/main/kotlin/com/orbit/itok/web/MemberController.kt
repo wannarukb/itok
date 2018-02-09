@@ -33,16 +33,36 @@ class MemberController {
         return settingServiceImpl.memberTypes.map { SelectField(it, it) }
     }
 
+    data class MemberList(var id: Long, var name: String, var address: String, var fieldCcount: Int, var totalArea: Float,
+                          var memberListArea: MutableList<MemberListArea>)
+
+    data class MemberListArea(var id: Long, var name: String, var ownerName: String, var areaText: String, var province: String, var basin: String)
+
     @RequestMapping("json")
-    @JsonView(View.Member::class)
     @ResponseBody
-    fun member(@RequestParam(required = false) page: Int?): MutableList<Member> {
+    fun member(@RequestParam(required = false) page: Int?): List<MemberList> {
         var page2 = 0
         val limit = 20
         if (page == null) {
             page2 = 0
         }
-        return memberServiceImpl.findAll(page2 * limit, limit)
+        return memberServiceImpl.findAll(page2 * limit, limit).map {
+            var totalArea = 0f
+
+            val lands = it.memberLands.map { it.get() }.map {
+                totalArea += it.rai ?: 0f
+                MemberListArea(
+                        id = it.id ?: 0L,
+                        name = it.name ?: "-",
+                        province = it.address.province ?: "-",
+                        areaText = "${it.rai ?: '-'} ไร่ ${it.gnan ?: '-'} งาน ${it.wah ?: '-'} ตร.วา.",
+                        basin = it.basin ?: "-", ownerName = ""
+                )
+            }
+            val ownerName = "${it.firstName} ${it.lastName}"
+            lands.forEach { it.ownerName = ownerName }
+            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCcount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
+        }
     }
 
     @RequestMapping("search")

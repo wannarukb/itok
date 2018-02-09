@@ -32,7 +32,7 @@ export const searchMember = (query) => {
         }
         else {
             let data2 = new FormData();
-            data2.append('query','query');
+            data2.append('query',query);
              axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
         }
     }
