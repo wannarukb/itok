@@ -7,7 +7,8 @@ import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
 
-const NewComponent = ({handleSubmit,titles}) =>
+const NewComponent = ({handleSubmit, titles, status, maritalStatus, educationDegrees,yearJoin,specialties,
+                      memberTypes,organizationTypes,jobTypes,}) =>
 
     (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
@@ -33,7 +34,7 @@ const NewComponent = ({handleSubmit,titles}) =>
                 <div className="col-md-3">
                     <section className="widget">
                         <div className="widget-body clearfix">
-                            <span className>รหัสสมาชิก</span><br/>
+                            <span className>หมายเลขสมาชิก</span><br/>
                             <span className="widget-label">X00000001</span>
                         </div>
                     </section>
@@ -102,7 +103,8 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                                 {/*<input data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>*/}
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>*/}
-                                                                <Field component={SelectField} name={'title'} itemList={titles}
+                                                                <Field component={SelectField} name={'title'}
+                                                                       itemList={titles}
                                                                        description={'คำนำหน้าชื่อ'}/>
                                                                 <Field component={TextField} name={'firstName'}
                                                                        description={'ชื่อ'}/>
@@ -116,6 +118,7 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                             <div className="col-sm-6">
                                                                 {/*<input data-th-if="*{id} != null" data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>*/}
                                                                 <Field component={SelectField} name={'status'}
+                                                                       itemList={status}
                                                                        description={'สถานะการเป็นสมาชิก'}/>
                                                                 <Field component={DateField} name={'birthday'}
                                                                        description={'วันเกิด'}/>
@@ -135,10 +138,12 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{maritalStatus}, 'maritalStatus', ${maritalStatus}, false)"/>*/}
                                                                 <Field component={SelectField}
                                                                        description={'สถานภาพการสมรส'}
+                                                                       itemList={maritalStatus}
                                                                        name={'maritalStatus'}/>
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField} name={'educationDegrees'}
+                                                                       itemList={educationDegrees}
                                                                        description={'ระดับการศึกษา'}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{educationDegrees}, 'educationDegree', ${educationDegrees}, false)"/>*/}
@@ -221,7 +226,8 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField}
                                                                        description={'ปีที่เข้าร่วม'}
-                                                                       name={'membershipTemp.yearJoin'}/>
+                                                                       name={'membershipTemp.yearJoin'}
+                                                                       itemList={yearJoin}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>*/}
                                                             </div>
@@ -240,7 +246,8 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField}
                                                                        description={'รูปแบบเครือข่าย'}
-                                                                       name={'membershipTemp.type'}/>
+                                                                       name={'membershipTemp.type'}
+                                                                       itemList={memberTypes}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>*/}
                                                             </div>
@@ -248,10 +255,12 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                         <div className="row">
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField} description={'อาชีพหลัก'}
-                                                                       name={'membershipTemp.mainJob'}/>
+                                                                       name={'membershipTemp.mainJob'}
+                                                                       itemList={jobTypes}/>
                                                                 <Field component={SelectField}
                                                                        description={'อาชีพเสริม'}
-                                                                       name={'membershipTemp.secondJob'}/>
+                                                                       name={'membershipTemp.secondJob'}
+                                                                       itemList={jobTypes}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>*/}
                                                                 {/*<input*/}
@@ -259,7 +268,8 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField} description={'อาชีพเดิม'}
-                                                                       name={'membershipTemp.previousJob'}/>
+                                                                       name={'membershipTemp.previousJob'}
+                                                                       itemList={jobTypes}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>*/}
                                                             </div>
@@ -268,14 +278,16 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField}
                                                                        description={'ความเป็นสมาชิกภาพองค์กรหรือสมาคม'}
-                                                                       name={'membershipTemp.typeOrganization'}/>
+                                                                       name={'membershipTemp.typeOrganization'}
+                                                                       itemList={organizationTypes}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>*/}
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 <Field component={SelectField}
                                                                        description={'ความเชี่ยวชาญพิเศษด้านการเกษตร'}
-                                                                       name={'membershipTemp.agricultureSpecialty'}/>
+                                                                       name={'membershipTemp.agricultureSpecialty'}
+                                                                       itemList={specialties}/>
                                                                 {/*<div className="form-group row">*/}
                                                                 {/*<label*/}
                                                                 {/*className="col-md-4 control-label text-md-right">ความเชี่ยวชาญพิเศษ<br/>ด้านเกษตร</label>*/}
@@ -287,7 +299,9 @@ const NewComponent = ({handleSubmit,titles}) =>
                                                                 {/*<div className="form-group row">*/}
                                                                 <Field component={SelectField}
                                                                        description={'ความสนใจพิเศษด้านเกษตร'}
-                                                                       name={'membershipTemp.agricultureInterest'}/>
+                                                                       name={'membershipTemp.agricultureInterest'}
+                                                                       itemList={specialties}
+                                                                />
                                                                 {/*<label*/}
                                                                 {/*className="col-md-4 control-label text-md-right">ความสนใจพิเศษ<br/>ด้านเกษตร</label>*/}
                                                                 {/*<input*/}
@@ -315,14 +329,30 @@ const NewComponent = ({handleSubmit,titles}) =>
             </div>
         </form>
     );
-
+// data class MetaData(
+//     val titles: List<SelectField>,
+//     val status: List<SelectField>,
+//     val jobTypes: List<SelectField>,
+//     val organizationTypes: List<SelectField>,
+//     val maritalStatus: List<SelectField>,
+//     val educationDegrees: List<SelectField>,
+//     val specialties: List<SelectField>,
+//     val yearJoin: List<SelectField>,
+//     val memberTypes: List<SelectField>
+// )
 
 function mapStateToProp(state) {
-    return {titles : state.member.titles}
+    return {
+        titles: state.member.titles, status: state.member.status, maritalStatus: state.member.maritalStatus,
+        educationDegrees: state.member.educationDegrees,yearJoin : state.member.yearJoin, jobTypes:state.member.jobTypes,
+        organizationTypes:state.member.organizationTypes, specialties:state.member.specialties,memberTypes:state.member.memberTypes,
+        initialValues:state.member.currentMember
+
+    }
 }
 
 function mapDispatchToProp(dispatch) {
     return {}
 }
 
-export default reduxForm({form: 'member-edit-form'})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))
+export default reduxForm({form: 'member-edit-form',enableReinitialize:true})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))

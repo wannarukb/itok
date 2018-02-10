@@ -21,10 +21,10 @@ class MemberController {
     @ModelAttribute("pageName")
     fun pageName(): String = "member"
 
-    @ModelAttribute("memberTypes")
-    fun memberTypes(): List<SelectField> {
-        return settingServiceImpl.memberTypes.map { SelectField(it, it) }
-    }
+//    @ModelAttribute("memberTypes")
+//    fun memberTypes(): List<SelectField> {
+//        return settingServiceImpl.memberTypes.map { SelectField(it, it) }
+//    }
 
     data class MemberList(var id: Long, var name: String, var address: String, var fieldCount: Int, var totalArea: Float,
                           var memberListArea: MutableList<MemberListArea>)
@@ -83,7 +83,8 @@ class MemberController {
             val maritalStatus: List<SelectField>,
             val educationDegrees: List<SelectField>,
             val specialties: List<SelectField>,
-            val yearJoin: List<SelectField>
+            val yearJoin: List<SelectField>,
+            val memberTypes: List<SelectField>
     )
 
     @RequestMapping("metaData")
@@ -103,7 +104,8 @@ class MemberController {
                 maritalStatus = listOf("โสด", "หย่า", "สมรส", "หม้าย").map { SelectField(it, it) },
                 educationDegrees = settingServiceImpl.educationDegrees.map { SelectField(it, it) },
                 specialties = settingServiceImpl.specialties.map { SelectField(it, it) },
-                yearJoin = toList
+                yearJoin = toList,
+                memberTypes=settingServiceImpl.memberTypes.map { SelectField(it, it) }
         )
     }
 //

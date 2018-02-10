@@ -506,7 +506,7 @@ var NewComponent = ({match}) => {
                                                     </div>
                                                     <div className="col-sm-10">
                                                         <div className="text-element">
-                                                            <span className="element-label">รหัสสมาชิก</span>
+                                                            <span className="element-label">หมายเลขสมาชิก</span>
                                                             <p className="element-value">X0001</p>
                                                         </div>
                                                     </div>

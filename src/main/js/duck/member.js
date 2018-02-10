@@ -16,7 +16,7 @@ const reducer = handleActions({
     [fetchMetaDataComplete] (state,action){
         return {...state, ...action.payload}
     }
-}, {members: [], titles: []});
+}, {members: [], currentMember:{}});
 
 
 export default reducer
