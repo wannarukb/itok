@@ -117,6 +117,12 @@ class MemberController {
             memberServiceImpl.update(id, member)
         else memberServiceImpl.createMember(member)
     }
+
+    @RequestMapping("{id}")
+    @ResponseBody
+    fun fetchMember(@PathVariable id:Long): Member? {
+        return memberServiceImpl.findOne(id)
+    }
 //
 //    @ModelAttribute("jobTypes")
 //    fun jobTypes(): List<SelectField> {

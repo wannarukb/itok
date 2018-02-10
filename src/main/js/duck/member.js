@@ -6,10 +6,12 @@ import axios from 'axios'
 import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 
-const {fetchComplete, fetchMetaDataComplete,updateSuccess} = createActions({
+const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess} = createActions({
     FETCH_COMPLETE: data => data,
     FETCH_META_DATA_COMPLETE: data => data,
-    UPDATE_SUCCESS:data=>data
+    UPDATE_SUCCESS: data => data,
+    FETCH_MEMBER_SUCCESS: data => data,
+
 });
 
 const reducer = handleActions({
@@ -19,9 +21,12 @@ const reducer = handleActions({
     [fetchMetaDataComplete](state, action) {
         return {...state, ...action.payload}
     },
-    [updateSuccess](state,action){
-        swal('บันทึกข้อมูลเรียบร้อย')
+    [updateSuccess](state, action) {
+        swal('บันทึกข้อมูลเรียบร้อย');
         return {...state}
+    },
+    [fetchMemberSuccess](state, action) {
+        return {...state, currentMember: action.payload}
     }
 }, {members: [], currentMember: {}});
 
@@ -46,6 +51,7 @@ export const searchMember = (query) => {
         else {
             let data2 = new FormData();
             data2.append('query', query);
+
             axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
         }
     }
@@ -54,5 +60,13 @@ export const searchMember = (query) => {
 export const saveOrUpdate = (data) => {
     return dispatch => {
         axios.post('/member/update', data).then(data => dispatch(updateSuccess()), error => console.error(error))
+    }
+}
+
+export const selectMember = (id, loading) => {
+    return dispatch => {
+
+            axios.get('/member/' + id).then(data => dispatch(fetchMemberSuccess(data)), error => console.error(error))
+
     }
 }

@@ -176,6 +176,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
         val now = ofy().load().type(Member::class.java).id(id).now()
         now.membershipTemp = now.membership?.get()
         now.memberLandsTemp = now.memberLands.map { it.get() }.toMutableList()
+        now.membership = null
+        now.memberLandsTemp = mutableListOf()
         return now
     }
 

@@ -6,14 +6,14 @@ import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
-import {saveOrUpdate} from "../duck/member";
+import {saveOrUpdate, selectMember} from "../duck/member";
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes,
-                      }) =>
-
-    (
+                          memberTypes, organizationTypes, jobTypes, id, selectMember, member
+                      }) => {
+    fetchData(id, member,selectMember)
+    return (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
             <div className="row">
                 <div className="col-md-6">
@@ -332,20 +332,14 @@ const NewComponent = ({
             </div>
         </form>
     );
-// data class MetaData(
-//     val titles: List<SelectField>,
-//     val status: List<SelectField>,
-//     val jobTypes: List<SelectField>,
-//     val organizationTypes: List<SelectField>,
-//     val maritalStatus: List<SelectField>,
-//     val educationDegrees: List<SelectField>,
-//     val specialties: List<SelectField>,
-//     val yearJoin: List<SelectField>,
-//     val memberTypes: List<SelectField>
-// )
+};
 
-function mapStateToProp(state) {
+NewComponent
+
+function mapStateToProp(state, ownProps) {
     return {
+        id: ownProps.match.params.id,
+        member: state.member.currentMember,
         titles: state.member.titles,
         status: state.member.status,
         maritalStatus: state.member.maritalStatus,
@@ -356,12 +350,14 @@ function mapStateToProp(state) {
         specialties: state.member.specialties,
         memberTypes: state.member.memberTypes,
         initialValues: state.member.currentMember
-
     }
 }
 
+
 function mapDispatchToProp(dispatch) {
-    return {}
+    return {
+        selectMember: (id) => dispatch(selectMember(id))
+    }
 }
 
 export default reduxForm({
