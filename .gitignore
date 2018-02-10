@@ -19,3 +19,7 @@ temp-testng-customsuite.xml
 test-output
 .externalToolBuilders
 *~
+node_modules/
+npm-debug.log
+yarn.lock
+
