@@ -1,6 +1,14 @@
 import React from 'react'
-const SelectField=({input, description}) => {
 
+const SelectField = ({input, description, itemList}) => {
+    let list = null;
+    if (itemList) {
+        list = itemList.map((it, index) => {
+            return <option value={it.id} key={index}>
+                {it.name}
+            </option>
+        })
+    }
     return (
 
         <div className="form-group row">
@@ -12,10 +20,8 @@ const SelectField=({input, description}) => {
                         data-th-placeholder="#{choose} + ' - ' + ${label}" data-width="auto"
                         data-minimum-results-for-search={10} tabIndex={-1} data-th-name="${name}"
                         className="select2 form-control" id="default-select">
-                    <option value="Magellanic" data-th-each="l : ${list}" data-th-text="${l.name}"
-                            data-th-value="${l.id}" data-th-selected="${l.name} == *{__${name}__}">
-                        Large Magellanic Cloud
-                    </option>
+                    {list}
+
                 </select>
             </div>
         </div>

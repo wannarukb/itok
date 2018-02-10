@@ -7,7 +7,7 @@ import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
 
-const NewComponent = ({handleSubmit}) =>
+const NewComponent = ({handleSubmit,titles}) =>
 
     (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
@@ -102,7 +102,7 @@ const NewComponent = ({handleSubmit}) =>
                                                                 {/*<input data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>*/}
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{title}, 'title', ${titles}, false)"/>*/}
-                                                                <Field component={SelectField} name={'title'}
+                                                                <Field component={SelectField} name={'title'} itemList={titles}
                                                                        description={'คำนำหน้าชื่อ'}/>
                                                                 <Field component={TextField} name={'firstName'}
                                                                        description={'ชื่อ'}/>
@@ -318,7 +318,7 @@ const NewComponent = ({handleSubmit}) =>
 
 
 function mapStateToProp(state) {
-    return {}
+    return {titles : state.member.titles}
 }
 
 function mapDispatchToProp(dispatch) {

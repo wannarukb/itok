@@ -16,7 +16,7 @@ const reducer = handleActions({
     [fetchMetaDataComplete] (state,action){
         return {...state, ...action.payload}
     }
-}, {members: []});
+}, {members: [], titles: []});
 
 
 export default reducer
@@ -27,7 +27,7 @@ export const fetchMember = () => {
 };
 export const fetchMetaData =()=>{
     return (dispatch) =>
-        fetch('/member/metaData').then(data => data.json(), error => console.log('error fetching meta data')).then(data => dispatch(fetchComplete(data)))
+        fetch('/member/metaData').then(data => data.json(), error => console.log('error fetching meta data')).then(data => dispatch(fetchMetaDataComplete(data)))
 };
 
 export const searchMember = (query) => {
