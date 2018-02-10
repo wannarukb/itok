@@ -13,6 +13,7 @@ import {ConnectedRouter, routerMiddleware, routerReducer} from 'react-router-red
 import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk' // no changes here 😀
 import {reducer as formReducer} from 'redux-form'
+import ReduxSweetAlert, {reducer as swalReducer} from 'react-redux-sweetalert';
 
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -23,7 +24,7 @@ const middleware = routerMiddleware(history);
 
 
 let store = createStore(combineReducers({
-        member, routing: routerReducer, form: formReducer
+        member, routing: routerReducer, form: formReducer, sweetalert: swalReducer
     }
 ), applyMiddleware(middleware, thunk));
 
@@ -33,8 +34,11 @@ store.dispatch(fetchMetaData());
 
 ReactDOM.render(
     <Provider store={store}>
+
         <ConnectedRouter history={history}>
             <div>
+                <ReduxSweetAlert/>
+
                 <Route exact path="/member" component={MemberListComponent}/>
                 <Route exact path="/member/view/:id" component={MemberViewComponent}/>
                 <Route exact path="/member/edit/:id" component={MemberEditComponent}/>

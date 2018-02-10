@@ -2,6 +2,8 @@ package com.orbit.itok.service
 
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions
 import com.googlecode.objectify.ObjectifyService
 
 import com.googlecode.objectify.ObjectifyService.ofy
@@ -58,7 +60,7 @@ data class Member(@JsonView(View.Member::class) @Id var id: Long? = null,
         //                  สถานะการเป็นสมาชิก
                   var status: String = "",
                   var address: Address = Address(),
-                  var date: Date = Date(),
+                  @Index var date: Date = Date(),
                   @Load var membership: Ref<Membership>? = null,
         // activites
                   @Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
@@ -105,10 +107,19 @@ interface MemberService {
     fun clear()
     fun import(list: MutableList<Member>)
     fun findByLandId(id: Long): Member?
+    fun updateAll(page: Int)
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun updateAll(page: Int) {
+        val list = ofy().load().type(Member::class.java).limit(50).offset(page * 50).list()
+        if (list.isNotEmpty()){
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page+1).toString()))
+            ofy().save().entities(list)
+        }
+    }
+
     override fun findByLandId(id: Long): Member? {
         return ofy().load().type(Member::class.java).filter("memberLands", MemberLand(id)).first().now()
     }
@@ -195,7 +206,10 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun findAll(start: Int?, length: Int?): MutableList<Member> {
-        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
+        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).order("-date").list()
+        if (list.isEmpty()){
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember"))
+        }
         list.forEach {
             it.membershipTemp = it.membership?.get()
             it.memberLandsTemp = it.memberLands.map { it.get() }.toMutableList()

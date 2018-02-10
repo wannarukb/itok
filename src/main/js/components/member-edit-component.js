@@ -6,9 +6,12 @@ import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
+import {saveOrUpdate} from "../duck/member";
 
-const NewComponent = ({handleSubmit, titles, status, maritalStatus, educationDegrees,yearJoin,specialties,
-                      memberTypes,organizationTypes,jobTypes,}) =>
+const NewComponent = ({
+                          handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
+                          memberTypes, organizationTypes, jobTypes,
+                      }) =>
 
     (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
@@ -343,10 +346,16 @@ const NewComponent = ({handleSubmit, titles, status, maritalStatus, educationDeg
 
 function mapStateToProp(state) {
     return {
-        titles: state.member.titles, status: state.member.status, maritalStatus: state.member.maritalStatus,
-        educationDegrees: state.member.educationDegrees,yearJoin : state.member.yearJoin, jobTypes:state.member.jobTypes,
-        organizationTypes:state.member.organizationTypes, specialties:state.member.specialties,memberTypes:state.member.memberTypes,
-        initialValues:state.member.currentMember
+        titles: state.member.titles,
+        status: state.member.status,
+        maritalStatus: state.member.maritalStatus,
+        educationDegrees: state.member.educationDegrees,
+        yearJoin: state.member.yearJoin,
+        jobTypes: state.member.jobTypes,
+        organizationTypes: state.member.organizationTypes,
+        specialties: state.member.specialties,
+        memberTypes: state.member.memberTypes,
+        initialValues: state.member.currentMember
 
     }
 }
@@ -355,4 +364,10 @@ function mapDispatchToProp(dispatch) {
     return {}
 }
 
-export default reduxForm({form: 'member-edit-form',enableReinitialize:true})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))
+export default reduxForm({
+    form: 'member-edit-form',
+    enableReinitialize: true,
+    onSubmit: (value, dispatch) => {
+        dispatch(saveOrUpdate(value))
+    }
+})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))

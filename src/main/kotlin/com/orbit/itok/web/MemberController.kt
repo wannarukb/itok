@@ -105,8 +105,17 @@ class MemberController {
                 educationDegrees = settingServiceImpl.educationDegrees.map { SelectField(it, it) },
                 specialties = settingServiceImpl.specialties.map { SelectField(it, it) },
                 yearJoin = toList,
-                memberTypes=settingServiceImpl.memberTypes.map { SelectField(it, it) }
+                memberTypes = settingServiceImpl.memberTypes.map { SelectField(it, it) }
         )
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    fun update(@RequestBody member: Member) {
+        val id = member.id
+        if (id != null)
+            memberServiceImpl.update(id, member)
+        else memberServiceImpl.createMember(member)
     }
 //
 //    @ModelAttribute("jobTypes")
@@ -231,11 +240,16 @@ class MemberController {
 //        return "newMember"
 //    }
 
-    @Autowired lateinit var memberServiceImpl: MemberService
-    @Autowired lateinit var settingServiceImpl: SettingServiceImpl
-    @Autowired lateinit var uploadUtil: UploadUtil
-    @Autowired lateinit var memberLandServiceImpl: MemberLandService
-    @Autowired lateinit var environment: Environment
+    @Autowired
+    lateinit var memberServiceImpl: MemberService
+    @Autowired
+    lateinit var settingServiceImpl: SettingServiceImpl
+    @Autowired
+    lateinit var uploadUtil: UploadUtil
+    @Autowired
+    lateinit var memberLandServiceImpl: MemberLandService
+    @Autowired
+    lateinit var environment: Environment
 }
 
 data class SelectField(var id: String = "", var name: String = "")

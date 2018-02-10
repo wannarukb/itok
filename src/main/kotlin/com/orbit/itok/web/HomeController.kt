@@ -1,5 +1,7 @@
 package com.orbit.itok.web
 
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions
 import com.orbit.itok.service.ImportServiceImpl
 import com.orbit.itok.service.MemberServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,6 +14,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 /**
@@ -80,6 +83,18 @@ class HomeController : ResourceLoaderAware {
         memberServiceImpl.import(list)
 
         return "redirect:/"
+    }
+
+    @RequestMapping("/_ah/updateMember")
+    @ResponseBody
+    fun updateMember(@RequestParam(required=false) page:Int?): String {
+        if (page == null){
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", "0"))
+        }
+        else {
+            memberServiceImpl.updateAll(page)
+        }
+        return "success"
     }
 
     @Autowired lateinit var memberServiceImpl: MemberServiceImpl
