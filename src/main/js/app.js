@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from "react-redux";
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import member, {fetchMember} from './duck/member'
+import member, {fetchMember, fetchMetaData} from './duck/member'
 import MemberListComponent from './components/member-list-component'
 import MemberViewComponent from './components/member-view-component'
 import MemberEditComponent from './components/member-edit-component'
@@ -28,6 +28,7 @@ let store = createStore(combineReducers({
 ), applyMiddleware(middleware, thunk));
 
 store.dispatch(fetchMember());
+store.dispatch(fetchMetaData());
 
 
 ReactDOM.render(
@@ -37,6 +38,7 @@ ReactDOM.render(
                 <Route exact path="/member" component={MemberListComponent}/>
                 <Route exact path="/member/view/:id" component={MemberViewComponent}/>
                 <Route exact path="/member/edit/:id" component={MemberEditComponent}/>
+                <Route exact path="/member/new" component={MemberEditComponent}/>
             </div>
         </ConnectedRouter>
     </Provider>,

@@ -14,7 +14,6 @@ const TextField = ({input, description}) =>
     );
 
 
-
 const NewComponent = ({list, search, handleSubmit}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
@@ -45,9 +44,9 @@ const NewComponent = ({list, search, handleSubmit}) =>
                     </div>
                     <div className="col-md-2 ">
                         <p className=" text-right">
-                            <button className="btn btn-success btn-full-width button-search">
+                            <Link to={'/member/new'} className="btn btn-success btn-full-width button-search">
                                 <i className="fa fa-plus"/> เพิ่มสมาชิกใหม่
-                            </button>
+                            </Link>
                             {/*<a data-th-href="@{/member/new}" class="btn btn-success btn-full-width button-search" >*/}
                             {/*<i class="fa fa-plus"></i> สร้างเครือข่ายใหม่*/}
                             {/*</a>*/}
