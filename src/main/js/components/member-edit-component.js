@@ -369,6 +369,10 @@ function fetchThings(props) {
         // setTimeout(resolve, 10000);
         if (props.id) {
             props.selectMember(props.id)
+            setTimeout(function(){
+                $('.datepicker').datepicker({language:'th-th',format:'dd/mm/yyyy'})
+            },3000);
+
         }
         resolve()
 

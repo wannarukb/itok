@@ -65,7 +65,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                     <div className="panel-heading panel-heading-white collapsed">
                                         <h5 className="panel-title">
                                             <div className="row">
-                                                <a className="collapsed" data-toggle="collapse"
+                                                <div className="collapsed" data-toggle="collapse"
                                                    href={'#collapse' + index}
                                                    data-th-href="'#collapse' + ${lStat.index}">
                                                     <div className="col-sm-1 text-center ">
@@ -100,7 +100,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                         {/*<p data-th-text="*{membershipTemp.typeOrganization}"*/}
                                                         {/*class="font-medium"></p>*/}
                                                     </div>
-                                                </a>
+                                                </div>
                                                 <div className="col-sm-2 text-right">
                                                     <Link to={'/member/view/' + it.id}
                                                           className=" btn btn-primary btn-sm"
