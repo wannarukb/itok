@@ -9,12 +9,15 @@ import moment from 'moment'
 
 const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess, isSearching, searchQuery, pageCount} = createActions({
     FETCH_COMPLETE: data => {
-        data.birthday = moment(data.birthday).format('DD/MM/') + (moment(data.birthday).format('YYYY') + 543);
         return data;
     },
     FETCH_META_DATA_COMPLETE: data => data,
     UPDATE_SUCCESS: data => data,
-    FETCH_MEMBER_SUCCESS: data => data,
+    FETCH_MEMBER_SUCCESS: data => {
+        let s = moment(data.birthday).format('DD/MM/YYYY');
+        data.birthday = s ;
+        return data;
+    },
     IS_SEARCHING: data => data,
     SEARCH_QUERY: data => data,
     PAGE_COUNT: data => parseInt(data)
@@ -81,11 +84,10 @@ export const searchMember = (query) => {
 
 export const saveOrUpdate = (data) => {
     return dispatch => {
+        let data2 = {...data}
 
-        const split = data.birthday.split('/');
-        const year = parseInt(split[2]) - 543;
-        data.birthday = new Date(year, parseInt(split[1]), parseInt(split[0]));
-        axios.post('/member/update', data).then(data => dispatch(updateSuccess()), error => console.error(error))
+        data2.birthday = moment(data2.birthday,'DD/MM/yyyy');
+        axios.post('/member/update', data2).then(data => dispatch(updateSuccess()), error => console.error(error))
     }
 };
 

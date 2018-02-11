@@ -10,6 +10,7 @@ import {saveOrUpdate, selectMember} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
 
+
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
                           memberTypes, organizationTypes, jobTypes, imageUrl
@@ -369,9 +370,9 @@ function fetchThings(props) {
         // setTimeout(resolve, 10000);
         if (props.id) {
             props.selectMember(props.id);
-            setTimeout(function () {
-                $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
-            }, 3000);
+            // setTimeout(function () {
+            // $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
+            // }, 3000);
 
         }
         resolve()

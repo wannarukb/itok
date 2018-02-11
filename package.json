@@ -26,6 +26,7 @@
     "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^15.3.2",
+    "react-datetime": "cmmadnat/react-datetime",
     "react-dom": "^15.3.2",
     "react-paginate": "^5.0.0",
     "react-redux": "^5.0.6",

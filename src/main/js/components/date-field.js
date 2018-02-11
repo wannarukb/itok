@@ -1,4 +1,5 @@
 import React from 'react'
+import DateTime from 'react-datetime'
 
 const DateField = ({input, description, required}) => {
     let requiredStar = null;
@@ -10,7 +11,8 @@ const DateField = ({input, description, required}) => {
                 data-th-text="${label}">{description}</span>&nbsp;
                 {requiredStar}</label>
             <div className="col-md-7">
-                <input  type="text" className="form-control datepicker" {...input}/>
+                {/*<input  type="text" className="form-control datepicker" {...input}/>*/}
+                <DateTime {...input} dateFormat={'DD/MM/YYYY'} timeFormat={false} />
             </div>
         </div>
     );
