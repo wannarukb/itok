@@ -101,14 +101,14 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                     </div>
                                                 </a>
                                                 <div className="col-sm-2 text-right">
-                                                    <button className=" btn btn-primary btn-sm"
+                                                    <Link to={'/member/view/'+it.id} className=" btn btn-primary btn-sm"
                                                             data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
                                                         <i className="icon-farmer-farmer"
                                                            style={{
                                                                fontSize: '1em',
                                                                color: '#FFF !important'
                                                            }}/> ดูข้อมูลสมาชิก
-                                                    </button>
+                                                    </Link>
                                                     {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
                                                     {/*<i class="fa fa-user"></i>*/}
                                                     {/*ดูข้อมูลสมาชิก*/}

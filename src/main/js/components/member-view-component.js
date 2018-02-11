@@ -6,7 +6,7 @@ var NewComponent = ({match}) => {
     const id = match.params.id
     return (
         <div style={{padding: "0px !important"}}>
-            <div className="cover" style={{background: 'url("/image/bg-image.jpeg")'}}/>
+            <div className="cover" style={{background: 'url("https://storage.googleapis.com/itok-project.appspot.com/image/bg-image.jpeg")'}}/>
             <div className="cover-footer"/>
             <div style={{marginTop: '-140px', padding: '0px 20px 42px'}}>
                 <div className="row">

@@ -8,6 +8,7 @@ import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
 import {saveOrUpdate, selectMember} from "../duck/member";
 import onEnter from 'react-router-enter'
+import {Link} from "react-router-dom";
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
@@ -27,10 +28,10 @@ const NewComponent = ({
                     <button type="submit" className="btn btn-primary">
                         <i className="fa fa-check" aria-hidden="true"/> บันทึก
                     </button>
-                    <button type="button" className="btn btn-inverse"
+                    <Link to={'/member'} type="button" className="btn btn-inverse"
                             data-th-onclick="'window.location=\'' + @{/member} + '\''">
                         <i className="fa fa-times" aria-hidden="true"/> ยกเลิก
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="row">
