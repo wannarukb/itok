@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types'
 import {connect} from "react-redux";
-import {searchMember} from "../duck/member";
+import {searchMember, changePage} from "../duck/member";
 import {Field, reduxForm} from "redux-form";
 import ReactPaginate from 'react-paginate';
 
@@ -15,7 +15,7 @@ const TextField = ({input, description}) =>
     );
 
 
-const NewComponent = ({list, search, handleSubmit}) =>
+const NewComponent = ({list, search, handleSubmit, changePage, isSearching, query}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
@@ -176,7 +176,9 @@ const NewComponent = ({list, search, handleSubmit}) =>
             <div className="row text-center">
                 <div className="col-sm-12 text-center" id={'react-paginate'}>
                     <ReactPaginate containerClassName={'pagination'} activeClassName={'active'} pageRangeDisplayed={5}
-                                   pageCount={10} marginPagesDisplayed={2} previousLabel={'ย้อนกลับ'} nextLabel={'ถัดไป'}/>
+                                   pageCount={10} marginPagesDisplayed={2} previousLabel={'ย้อนกลับ'}
+                                   nextLabel={'ถัดไป'}
+                                   onPageChange={(page) => changePage(page, isSearching, query)}/>
                 </div>
             </div>
             {/* The Loader. Is shown when pjax happens */}
@@ -192,12 +194,20 @@ NewComponent.PropTypes = {
 
 function mapStateToProp(state) {
     return {
-        list: state.member.members
+        list: state.member.members,
+        isSearching: state.member.isSearching,
+        query: state.member.query
     }
 }
 
 function mapDispatchToProp(dispatch) {
-    return {search: () => dispatch(searchMember())}
+    return {
+        changePage: (page, isSearching, query) => {
+            if (!isSearching)
+                dispatch(changePage(page))
+            else dispatch(changePageSearch(query, page))
+        }
+    }
 }
 
 export default reduxForm({

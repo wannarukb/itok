@@ -38,7 +38,7 @@ class MemberController {
         val limit = 20
         if (page == null) {
             page2 = 0
-        }
+        } else page2 = page
         return memberServiceImpl.findAll(page2 * limit, limit).map {
             var totalArea = 0f
 
@@ -64,15 +64,35 @@ class MemberController {
 
 
     @RequestMapping("search")
-    @JsonView(View.Member::class)
+
     @ResponseBody
-    fun member(@RequestParam(required = false) page: Int?, @RequestParam query: String): MutableList<Member> {
+    fun member(@RequestParam(required = false) page: Int?, @RequestParam query: String): List<MemberList> {
         var page2 = 0
         val limit = 20
         if (page == null) {
             page2 = 0
         }
-        return memberServiceImpl.search(query, page2 * limit, limit)
+        return memberServiceImpl.search(query, page2 * limit, limit).map {
+            var totalArea = 0f
+
+            var lands = it.memberLands.map { it.get() }.map {
+                totalArea += it.rai ?: 0f
+                MemberListArea(
+                        id = it.id ?: 0L,
+                        name = it.name ?: "-",
+                        province = it.address.province ?: "-",
+                        areaText = "${it.rai ?: '-'} ไร่ ${it.gnan ?: '-'} งาน ${it.wah ?: '-'} ตร.วา.",
+                        basin = it.basin ?: "-", ownerName = ""
+                )
+            }
+            val ownerName = "${it.firstName} ${it.lastName}"
+            if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.contains("development")) if (lands.isEmpty()) {
+                lands = listOf(MemberListArea(id = 1L, ownerName = ownerName, name = "Placeholder name", areaText = "area Text placeholder",
+                        basin = "basin placeholder", province = "province placehodler"))
+            }
+            lands.forEach { it.ownerName = ownerName }
+            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
+        }
     }
 
     data class MetaData(
@@ -120,7 +140,7 @@ class MemberController {
 
     @RequestMapping("{id}")
     @ResponseBody
-    fun fetchMember(@PathVariable id:Long): Member? {
+    fun fetchMember(@PathVariable id: Long): Member? {
         return memberServiceImpl.findOne(id)
     }
 //

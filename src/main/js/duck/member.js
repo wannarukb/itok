@@ -6,11 +6,13 @@ import axios from 'axios'
 import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 
-const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess} = createActions({
+const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess, isSearching, searchQuery} = createActions({
     FETCH_COMPLETE: data => data,
     FETCH_META_DATA_COMPLETE: data => data,
     UPDATE_SUCCESS: data => data,
     FETCH_MEMBER_SUCCESS: data => data,
+    IS_SEARCHING: data => data,
+    SEARCH_QUERY:data=>data
 
 });
 
@@ -27,8 +29,15 @@ const reducer = handleActions({
     },
     [fetchMemberSuccess](state, action) {
         return {...state, currentMember: action.payload}
+    },
+
+    [isSearching](state, action) {
+        return {...state, isSearching: action.payload}
+    },
+    [searchQuery](state,action){
+        return{...state, query:action.payload}
     }
-}, {members: [], currentMember: {}});
+}, {members: [], currentMember: {}, isSearching: false, query:''});
 
 
 export default reducer
@@ -47,11 +56,13 @@ export const searchMember = (query) => {
 
         if (query.trim().length === 0) {
             dispatch(fetchMember());
+            dispatch(isSearching(false));
         }
         else {
             let data2 = new FormData();
             data2.append('query', query);
-
+            dispatch(isSearching(true));
+            dispatch(searchQuery(query));
             axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
         }
     }
@@ -63,7 +74,7 @@ export const saveOrUpdate = (data) => {
     }
 }
 
-export const selectMember = (id,) => {
+export const selectMember = (id) => {
     return dispatch => {
 
         axios.get('/member/' + id).then(data => {
@@ -71,5 +82,27 @@ export const selectMember = (id,) => {
 
         }, error => console.error(error))
 
+    }
+}
+
+export const changePage = (page) => {
+    return (dispatch) =>
+        fetch('/member/json?page=' + page.selected).then(data => data.json(), error => console.log('error fetching member')).then(data => dispatch(fetchComplete(data)))
+}
+
+export const changePageSearch = (query,page) => {
+    return (dispatch) =>
+    {
+        if (query.trim().length === 0) {
+            dispatch(fetchMember());
+            dispatch(isSearching(false));
+        }
+        else {
+            let data2 = new FormData();
+            data2.append('query', query);
+            data2.append('page',page);
+            dispatch(isSearching(true));
+            axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
+        }
     }
 }
