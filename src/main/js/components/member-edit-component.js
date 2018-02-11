@@ -362,7 +362,7 @@ function mapDispatchToProp(dispatch) {
 
 
 function fetchThings(props) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         //enter App 10s later
         // setTimeout(resolve, 10000);
         if (props.id) {

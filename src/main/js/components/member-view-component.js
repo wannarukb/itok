@@ -1,12 +1,16 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import enterRoute from 'react-router-enter'
+import {connect} from "react-redux";
+import {selectMember} from "../duck/member";
 
 
-var NewComponent = ({match}) => {
-    const id = match.params.id
+var NewComponent = ({id,member}) => {
+
     return (
         <div style={{padding: "0px !important"}}>
-            <div className="cover" style={{background: 'url("https://storage.googleapis.com/itok-project.appspot.com/image/bg-image.jpeg")'}}/>
+            <div className="cover"
+                 style={{background: 'url("https://storage.googleapis.com/itok-project.appspot.com/image/bg-image.jpeg")'}}/>
             <div className="cover-footer"/>
             <div style={{marginTop: '-140px', padding: '0px 20px 42px'}}>
                 <div className="row">
@@ -21,8 +25,8 @@ var NewComponent = ({match}) => {
                     <div className="col-md-10 " style={{paddingTop: 50}}>
                         <div className="row ">
                             <div className="col-sm-6 text-left color-white">
-                                <h3 style={{marginBottom: 0, marginTop: 17}} data-th-text="*{displayName}">นาย สมชาย
-                                    ใจดี</h3>
+                                <h3 style={{marginBottom: 0, marginTop: 17}}
+                                    data-th-text="*{displayName}">{member.title + member.firstName + ' ' + member.lastName}</h3>
                             </div>
                             <div className="col-sm-6 text-right">
                                 <Link to={'/member/edit/' + id} className="btn btn-primary"
@@ -1166,5 +1170,25 @@ var NewComponent = ({match}) => {
     );
 };
 
+function getMember(props) {
+    return new Promise((resolve) => {
+        resolve();
+        if (props.id) props.selectMember(props.id);
+    });
+}
 
-export default NewComponent
+
+function mapStateToProp(state, ownProps) {
+    return {
+        id: ownProps.match.params.id,
+        member: state.member.currentMember
+    }
+}
+
+function mapDispatchToProp(dispatch) {
+    return {
+        selectMember: (id) => dispatch(selectMember(id))
+    }
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(enterRoute(getMember)(NewComponent))
