@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {selectMember} from "../duck/member";
 
 
-var NewComponent = ({id,member}) => {
+var NewComponent = ({id, member}) => {
 
     return (
         <div style={{padding: "0px !important"}}>
@@ -373,19 +373,19 @@ var NewComponent = ({id,member}) => {
                                                     <div className="col-sm-3">
                                                         <div className="text-element">
                                                             <span className="element-label">ชื่อ-นามสกุล</span>
-                                                            <p className="element-value">นาย สมชาย ใจดี</p>
+                                                            <p className="element-value">{member.title + member.firstName + ' ' + member.lastName}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-sm-3">
                                                         <div className="text-element">
                                                             <span className="element-label">ชื่อเล่น</span>
-                                                            <p className="element-value">ชาย</p>
+                                                            <p className="element-value">{member.nickname}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-sm-3">
                                                         <div className="text-element">
                                                             <span className="element-label">เลขบัตรประชาชน</span>
-                                                            <p className="element-value">1100322031234</p>
+                                                            <p className="element-value">{member.citizenId}</p>
                                                         </div>
                                                     </div>
                                                     <div className="col-sm-3">

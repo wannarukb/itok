@@ -115,6 +115,8 @@ const NewComponent = ({
                                                                        description={'ชื่อ'}/>
                                                                 <Field component={TextField} name={'lastName'}
                                                                        description={'นามสกุล'}/>
+                                                                <Field component={TextField} name={'nickname'}
+                                                                       description={'ชื่อเล่น'}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>*/}
                                                                 {/*<input*/}
