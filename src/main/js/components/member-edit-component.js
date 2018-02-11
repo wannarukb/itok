@@ -6,15 +6,16 @@ import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
-import {saveOrUpdate, selectMember} from "../duck/member";
+import {saveOrUpdate, selectMember, selectFile} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
 import {swal} from "react-redux-sweetalert";
+import FileField from "./file-field";
 
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes, imageUrl
+                          memberTypes, organizationTypes, jobTypes, imageUrl, setFile
                       }) => {
     return (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
@@ -65,7 +66,10 @@ const NewComponent = ({
                         <i className="fa fa-image" aria-hidden="true"/>
                         <span className="fileinput-new"> เลือกรูปภาพ</span>
                         <span className="fileinput-exists"> เปลี่ยนรูปภาพ</span>
-                        <input type="file" name="file[]"/>
+                                      <input type={'file'} name={'file'} onChange={(e, f) => setFile(e)}/>
+
+
+
                       </span>
                                         <a href="#" className="btn btn-danger fileinput-exists"
                                            data-dismiss="fileinput">
@@ -360,7 +364,8 @@ function mapStateToProp(state, ownProps) {
 
 function mapDispatchToProp(dispatch) {
     return {
-        selectMember: (id) => dispatch(selectMember(id))
+        selectMember: (id) => dispatch(selectMember(id)),
+        setFile: (file) => dispatch(selectFile(file))
     }
 }
 

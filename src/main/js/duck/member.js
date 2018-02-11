@@ -7,7 +7,8 @@ import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 import moment from 'moment'
 
-const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess, isSearching, searchQuery, pageCount} = createActions({
+const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
+    isSearching, searchQuery, pageCount} = createActions({
     FETCH_COMPLETE: data => {
         return data;
     },
@@ -134,3 +135,8 @@ export const getPageCount = (query) => {
         else fetch('/member/pageCount').then(data => data.text(), error => console.log('error count', error)).then(data => dispatch(pageCount(data)))
     }
 };
+export const selectFile=(file)=>{
+    return dispatch=>{
+        console.log(file)
+    }
+}
