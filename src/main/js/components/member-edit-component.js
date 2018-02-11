@@ -9,6 +9,7 @@ import CheckboxField from "./checkbox-field";
 import {saveOrUpdate, selectMember} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
+import {swal} from "react-redux-sweetalert";
 
 
 const NewComponent = ({
@@ -384,6 +385,7 @@ export default connect(mapStateToProp, mapDispatchToProp)(reduxForm({
     form: 'member-edit-form',
     enableReinitialize: true,
     onSubmit: (value, dispatch) => {
+
         dispatch(saveOrUpdate(value))
     }
 })(onEnter(fetchThings)(NewComponent)))

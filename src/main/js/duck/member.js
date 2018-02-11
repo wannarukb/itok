@@ -31,7 +31,6 @@ const reducer = handleActions({
         return {...state, ...action.payload}
     },
     [updateSuccess](state, action) {
-        swal('บันทึกข้อมูลเรียบร้อย');
         return {...state}
     },
     [fetchMemberSuccess](state, action) {
@@ -87,7 +86,10 @@ export const saveOrUpdate = (data) => {
         let data2 = {...data}
 
         data2.birthday = moment(data2.birthday,'DD/MM/yyyy');
-        axios.post('/member/update', data2).then(data => dispatch(updateSuccess()), error => console.error(error))
+        axios.post('/member/update', data2).then(data => {
+            dispatch(swal('บันทึกข้อมูลเรียบร้อย'));
+            return dispatch(updateSuccess());
+        }, error => console.error(error))
     }
 };
 
