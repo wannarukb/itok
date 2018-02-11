@@ -7,12 +7,12 @@ import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
 import {saveOrUpdate, selectMember} from "../duck/member";
+import onEnter from 'react-router-enter'
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes, id, selectMember, member
+                          memberTypes, organizationTypes, jobTypes
                       }) => {
-    fetchData(id, member,selectMember)
     return (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
             <div className="row">
@@ -109,6 +109,7 @@ const NewComponent = ({
                                                                 <Field component={SelectField} name={'title'}
                                                                        itemList={titles}
                                                                        description={'คำนำหน้าชื่อ'}/>
+
                                                                 <Field component={TextField} name={'firstName'}
                                                                        description={'ชื่อ'}/>
                                                                 <Field component={TextField} name={'lastName'}
@@ -334,12 +335,10 @@ const NewComponent = ({
     );
 };
 
-NewComponent
 
 function mapStateToProp(state, ownProps) {
     return {
         id: ownProps.match.params.id,
-        member: state.member.currentMember,
         titles: state.member.titles,
         status: state.member.status,
         maritalStatus: state.member.maritalStatus,
@@ -360,10 +359,24 @@ function mapDispatchToProp(dispatch) {
     }
 }
 
-export default reduxForm({
+
+function fetchThings(props) {
+    return new Promise((resolve, reject) => {
+        //enter App 10s later
+        // setTimeout(resolve, 10000);
+        if (props.id) {
+            props.selectMember(props.id)
+            resolve()
+        }
+
+
+    });
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(reduxForm({
     form: 'member-edit-form',
     enableReinitialize: true,
     onSubmit: (value, dispatch) => {
         dispatch(saveOrUpdate(value))
     }
-})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))
+})(onEnter(fetchThings)(NewComponent)))

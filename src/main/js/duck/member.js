@@ -28,7 +28,7 @@ const reducer = handleActions({
     [fetchMemberSuccess](state, action) {
         return {...state, currentMember: action.payload}
     }
-}, {members: [], currentMember: {}});
+}, {members: [], currentMember: {firstName:'init'}});
 
 
 export default reducer
@@ -63,10 +63,13 @@ export const saveOrUpdate = (data) => {
     }
 }
 
-export const selectMember = (id, loading) => {
+export const selectMember = (id,) => {
     return dispatch => {
 
-            axios.get('/member/' + id).then(data => dispatch(fetchMemberSuccess(data)), error => console.error(error))
+        axios.get('/member/' + id).then(data => {
+            dispatch(fetchMemberSuccess(data.data));
+
+        }, error => console.error(error))
 
     }
 }
