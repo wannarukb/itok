@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {connect} from "react-redux";
 import {searchMember} from "../duck/member";
 import {Field, reduxForm} from "redux-form";
+import ReactPaginate from 'react-paginate';
 
 const TextField = ({input, description}) =>
     (
@@ -101,8 +102,9 @@ const NewComponent = ({list, search, handleSubmit}) =>
                                                     </div>
                                                 </a>
                                                 <div className="col-sm-2 text-right">
-                                                    <Link to={'/member/view/'+it.id} className=" btn btn-primary btn-sm"
-                                                            data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
+                                                    <Link to={'/member/view/' + it.id}
+                                                          className=" btn btn-primary btn-sm"
+                                                          data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
                                                         <i className="icon-farmer-farmer"
                                                            style={{
                                                                fontSize: '1em',
@@ -172,18 +174,9 @@ const NewComponent = ({list, search, handleSubmit}) =>
                 </div>
             </div>
             <div className="row text-center">
-                <div className="col-sm-12 text-center"
-                     data-th-replace="fragments/Paging :: paging(${page}, ${totalPages})">
-                    <ul className="pagination">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">12</a></li>
-                        <li><a href="#">ต่อไป &gt;</a></li>
-                    </ul>
+                <div className="col-sm-12 text-center" id={'react-paginate'}>
+                    <ReactPaginate containerClassName={'pagination'} activeClassName={'active'} pageRangeDisplayed={5}
+                                   pageCount={10} marginPagesDisplayed={2} previousLabel={'ย้อนกลับ'} nextLabel={'ถัดไป'}/>
                 </div>
             </div>
             {/* The Loader. Is shown when pjax happens */}
