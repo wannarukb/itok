@@ -174,10 +174,15 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
 
     override fun findOne(id: Long): Member? {
         val now = ofy().load().type(Member::class.java).id(id).now()
+
         now.membershipTemp = now.membership?.get()
         now.memberLandsTemp = now.memberLands.map { it.get() }.toMutableList()
         now.membership = null
-        now.memberLandsTemp = mutableListOf()
+        now.memberLands= mutableListOf()
+        now.courses= mutableListOf()
+        now.equipments= mutableListOf()
+        now.activities= mutableListOf()
+
         return now
     }
 

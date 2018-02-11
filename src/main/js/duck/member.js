@@ -28,7 +28,7 @@ const reducer = handleActions({
     [fetchMemberSuccess](state, action) {
         return {...state, currentMember: action.payload}
     }
-}, {members: [], currentMember: {firstName:'init'}});
+}, {members: [], currentMember: {}});
 
 
 export default reducer

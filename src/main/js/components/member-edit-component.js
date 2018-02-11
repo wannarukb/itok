@@ -366,9 +366,8 @@ function fetchThings(props) {
         // setTimeout(resolve, 10000);
         if (props.id) {
             props.selectMember(props.id)
-            resolve()
         }
-
+        resolve()
 
     });
 }
