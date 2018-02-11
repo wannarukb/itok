@@ -17,8 +17,18 @@ const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
                           memberTypes, organizationTypes, jobTypes, imageUrl, setFile
                       }) => {
+    let file = null
+
+    function upload() {
+        setFile(file)
+    }
+
     return (
-        <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
+        <form method="post" action={'#'} onSubmit={(e) => {
+            e.preventDefault()
+            upload()
+            handleSubmit()
+        }} className={'content'}>
             <div className="row">
                 <div className="col-md-6">
                     <h1 className="page-title font-supermarket">
@@ -50,7 +60,10 @@ const NewComponent = ({
                             <div className="form-group">
                   <span>
                     รูปประจำตัว
-                  </span><br/>
+                  </span>
+
+
+                                <br/>
                                 <div className="fileinput fileinput-new" data-provides="fileinput"
                                      style={{width: '100%', marginBottom: 0}}>
                                     <div className="fileinput-new thumbnail" style={{width: '100%', height: 150}}>
@@ -62,20 +75,25 @@ const NewComponent = ({
                                          style={{maxWidth: '100%', maxHeight: 150}}/>
                                     <br/>
                                     <div>
-                      <span className="btn btn-default btn-file">
-                        <i className="fa fa-image" aria-hidden="true"/>
-                        <span className="fileinput-new"> เลือกรูปภาพ</span>
-                        <span className="fileinput-exists"> เปลี่ยนรูปภาพ</span>
-                                      <input type={'file'} name={'file'} onChange={(e, f) => setFile(e)}/>
+                                <span className="btn btn-default btn-file">
+                                <i className="fa fa-image" aria-hidden="true"/>
+                                <span className="fileinput-new"> เลือกรูปภาพ</span>
+                                <span className="fileinput-exists"> เปลี่ยนรูปภาพ</span>
+                                <input
+                                    type="file"
+                                    ref={input => {
+                                        file = input;
+                                    }}
+                                />
 
 
-
-                      </span>
+                                </span>
                                         <a href="#" className="btn btn-danger fileinput-exists"
                                            data-dismiss="fileinput">
                                             <i className="fa fa-trash" aria-hidden="true"/> ลบรูปภาพ</a>
                                     </div>
                                 </div>
+                                <br/>
                             </div>
                         </div>
                     </section>
