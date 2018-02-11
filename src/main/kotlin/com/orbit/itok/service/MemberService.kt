@@ -69,8 +69,7 @@ data class Member(@JsonView(View.Member::class) @Id var id: Long? = null,
                   @Index var equipments: MutableList<Ref<Equipment>> = mutableListOf(),
         // end activities
                   @Ignore var membershipTemp: Membership? = null,
-                  @Ignore
-                  var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
+                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
 ) {
     fun getDisplayName(): String {
         return "$title$firstName $lastName"

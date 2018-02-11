@@ -5,9 +5,13 @@ import axios from 'axios'
 
 import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
+import moment from 'moment'
 
 const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess, isSearching, searchQuery, pageCount} = createActions({
-    FETCH_COMPLETE: data => data,
+    FETCH_COMPLETE: data => {
+        data.birthday = moment(data.birthday).format('DD/MM/') + (moment(data.birthday).format('YYYY') + 543);
+        return data;
+    },
     FETCH_META_DATA_COMPLETE: data => data,
     UPDATE_SUCCESS: data => data,
     FETCH_MEMBER_SUCCESS: data => data,
@@ -47,7 +51,7 @@ export default reducer
 
 export const fetchMember = () => {
     return (dispatch) => {
-        dispatch(getPageCount(null))
+        dispatch(getPageCount(null));
         fetch('/member/json').then(data => data.json(), error => console.log('error fetching member')).then(data => dispatch(fetchComplete(data)))
     }
 };
@@ -77,9 +81,13 @@ export const searchMember = (query) => {
 
 export const saveOrUpdate = (data) => {
     return dispatch => {
+
+        const split = data.birthday.split('/');
+        const year = parseInt(split[2]) - 543;
+        data.birthday = new Date(year, parseInt(split[1]), parseInt(split[0]));
         axios.post('/member/update', data).then(data => dispatch(updateSuccess()), error => console.error(error))
     }
-}
+};
 
 export const selectMember = (id) => {
     return dispatch => {
@@ -90,12 +98,12 @@ export const selectMember = (id) => {
         }, error => console.error(error))
 
     }
-}
+};
 
 export const changePage = (page) => {
     return (dispatch) =>
         fetch('/member/json?page=' + page.selected).then(data => data.json(), error => console.log('error fetching member')).then(data => dispatch(fetchComplete(data)))
-}
+};
 
 export const changePageSearch = (query, page) => {
     return (dispatch) => {
@@ -111,7 +119,7 @@ export const changePageSearch = (query, page) => {
             axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
         }
     }
-}
+};
 
 export const getPageCount = (query) => {
     return dispatch => {
@@ -121,4 +129,4 @@ export const getPageCount = (query) => {
             );
         else fetch('/member/pageCount').then(data => data.text(), error => console.log('error count', error)).then(data => dispatch(pageCount(data)))
     }
-}
+};

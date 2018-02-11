@@ -12,7 +12,7 @@ import {Link} from "react-router-dom";
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes
+                          memberTypes, organizationTypes, jobTypes, imageUrl
                       }) => {
     return (
         <form method="post" action={'#'} onSubmit={handleSubmit} className={'content'}>
@@ -29,7 +29,7 @@ const NewComponent = ({
                         <i className="fa fa-check" aria-hidden="true"/> บันทึก
                     </button>
                     <Link to={'/member'} type="button" className="btn btn-inverse"
-                            data-th-onclick="'window.location=\'' + @{/member} + '\''">
+                          data-th-onclick="'window.location=\'' + @{/member} + '\''">
                         <i className="fa fa-times" aria-hidden="true"/> ยกเลิก
                     </Link>
                 </div>
@@ -51,9 +51,8 @@ const NewComponent = ({
                                 <div className="fileinput fileinput-new" data-provides="fileinput"
                                      style={{width: '100%', marginBottom: 0}}>
                                     <div className="fileinput-new thumbnail" style={{width: '100%', height: 150}}>
-                                        <img data-th-if="*{image} == null" data-src="holder.js/100%x100%" alt="..."
-                                             src/>
-                                        <img data-th-if="*{image} != null" data-th-src="*{image.imageUrl}"
+
+                                        <img src={imageUrl}
                                              className="img-responsive"/>
                                     </div>
                                     <div className="fileinput-preview fileinput-exists thumbnail"
@@ -351,7 +350,8 @@ function mapStateToProp(state, ownProps) {
         organizationTypes: state.member.organizationTypes,
         specialties: state.member.specialties,
         memberTypes: state.member.memberTypes,
-        initialValues: state.member.currentMember
+        initialValues: state.member.currentMember,
+        imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/profile.png'
     }
 }
 
@@ -368,10 +368,10 @@ function fetchThings(props) {
         //enter App 10s later
         // setTimeout(resolve, 10000);
         if (props.id) {
-            props.selectMember(props.id)
-            setTimeout(function(){
-                $('.datepicker').datepicker({language:'th-th',format:'dd/mm/yyyy'})
-            },3000);
+            props.selectMember(props.id);
+            setTimeout(function () {
+                $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
+            }, 3000);
 
         }
         resolve()

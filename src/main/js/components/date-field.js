@@ -10,7 +10,7 @@ const DateField = ({input, description, required}) => {
                 data-th-text="${label}">{description}</span>&nbsp;
                 {requiredStar}</label>
             <div className="col-md-7">
-                <input data-th-field="*{__${name}__}" type="text" className="form-control datepicker"/>
+                <input  type="text" className="form-control datepicker" {...input}/>
             </div>
         </div>
     );
