@@ -15,7 +15,7 @@ const TextField = ({input, description}) =>
     );
 
 
-const NewComponent = ({list, search, handleSubmit, changePage, isSearching, query}) =>
+const NewComponent = ({list, search, handleSubmit, changePage, isSearching, query,pageCount}) =>
     (
         <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
@@ -176,7 +176,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
             <div className="row text-center">
                 <div className="col-sm-12 text-center" id={'react-paginate'}>
                     <ReactPaginate containerClassName={'pagination'} activeClassName={'active'} pageRangeDisplayed={5}
-                                   pageCount={10} marginPagesDisplayed={2} previousLabel={'ย้อนกลับ'}
+                                   pageCount={pageCount} marginPagesDisplayed={2} previousLabel={'ย้อนกลับ'}
                                    nextLabel={'ถัดไป'}
                                    onPageChange={(page) => changePage(page, isSearching, query)}/>
                 </div>
@@ -196,7 +196,8 @@ function mapStateToProp(state) {
     return {
         list: state.member.members,
         isSearching: state.member.isSearching,
-        query: state.member.query
+        query: state.member.query,
+        pageCount: state.member.pageCount
     }
 }
 

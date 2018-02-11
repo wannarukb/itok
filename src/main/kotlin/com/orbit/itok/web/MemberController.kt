@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.RestController
 
 /**
  * Created For RIDMIS Web service
  */
-@Controller
+@RestController
 @RequestMapping("member")
 class MemberController {
     @ModelAttribute("pageName")
@@ -31,8 +32,14 @@ class MemberController {
 
     data class MemberListArea(var id: Long, var name: String, var ownerName: String, var areaText: String, var province: String, var basin: String)
 
+    @RequestMapping("pageCount")
+    fun pageCount(@RequestParam(required = false) query: String?): Int {
+        return if (query == null) (memberServiceImpl.count() / 20 + 1).toInt()
+        else (memberServiceImpl.countSearch(query) / 20 + 1).toInt()
+    }
+
+
     @RequestMapping("json")
-    @ResponseBody
     fun member(@RequestParam(required = false) page: Int?): List<MemberList> {
         var page2 = 0
         val limit = 20
@@ -64,8 +71,6 @@ class MemberController {
 
 
     @RequestMapping("search")
-
-    @ResponseBody
     fun member(@RequestParam(required = false) page: Int?, @RequestParam query: String): List<MemberList> {
         var page2 = 0
         val limit = 20
@@ -108,7 +113,6 @@ class MemberController {
     )
 
     @RequestMapping("metaData")
-    @ResponseBody
     fun metaData(): MetaData {
         val get = DateTime.now().withChronology(BuddhistChronology.getInstance()).get(DateTimeFieldType.year())
         val toList = (get downTo 2500).toList().map { SelectField(it.toString(), it.toString()) }
@@ -130,7 +134,6 @@ class MemberController {
     }
 
     @RequestMapping("update")
-    @ResponseBody
     fun update(@RequestBody member: Member) {
         val id = member.id
         if (id != null)
@@ -139,7 +142,6 @@ class MemberController {
     }
 
     @RequestMapping("{id}")
-    @ResponseBody
     fun fetchMember(@PathVariable id: Long): Member? {
         return memberServiceImpl.findOne(id)
     }

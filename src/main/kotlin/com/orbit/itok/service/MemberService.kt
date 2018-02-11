@@ -117,6 +117,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
         if (list.isNotEmpty()){
             QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page+1).toString()))
             ofy().save().entities(list)
+            index.put(list.map { getDocument(it) })
         }
     }
 
