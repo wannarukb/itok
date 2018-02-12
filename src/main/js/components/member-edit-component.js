@@ -6,7 +6,7 @@ import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
-import {saveOrUpdate, selectMember, selectFile} from "../duck/member";
+import {saveOrUpdate, selectMember, setFile} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
 import {swal} from "react-redux-sweetalert";
@@ -17,10 +17,10 @@ const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
                           memberTypes, organizationTypes, jobTypes, imageUrl, setFile
                       }) => {
-    let file = null
+    let file = null;
 
     function upload() {
-        setFile(file)
+        setFile(file.files)
     }
 
     return (
@@ -82,7 +82,8 @@ const NewComponent = ({
                                 <input
                                     type="file"
                                     ref={input => {
-                                        file = input.value;
+                                        if (input)
+                                            file = input;
                                     }}
                                 />
 
@@ -383,7 +384,7 @@ function mapStateToProp(state, ownProps) {
 function mapDispatchToProp(dispatch) {
     return {
         selectMember: (id) => dispatch(selectMember(id)),
-        setFile: (file) => dispatch(selectFile(file))
+        setFile: (file) => dispatch(setFile(file))
     }
 }
 

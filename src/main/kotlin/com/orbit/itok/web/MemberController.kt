@@ -1,7 +1,6 @@
 package com.orbit.itok.web
 
 
-import com.fasterxml.jackson.annotation.JsonView
 import com.orbit.itok.service.*
 import com.orbit.itok.util.UploadUtil
 import org.joda.time.DateTime
@@ -9,9 +8,9 @@ import org.joda.time.DateTimeFieldType
 import org.joda.time.chrono.BuddhistChronology
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.HttpServletRequest
 
 /**
  * Created For RIDMIS Web service
@@ -139,13 +138,32 @@ class MemberController {
         if (id != null) {
             memberServiceImpl.update(id, member)
             return id
-        }
-        else return memberServiceImpl.createMember(member)
+        } else return memberServiceImpl.createMember(member)
     }
 
     @RequestMapping("{id}")
     fun fetchMember(@PathVariable id: Long): Member? {
         return memberServiceImpl.findOne(id)
+    }
+
+    @RequestMapping("uploadUrl/{id}")
+    fun uploadUrl(@PathVariable id: Long): String {
+        return uploadUtil.getUrl("/member/upload/$id", "memberFiles")
+    }
+
+    @RequestMapping("upload/{id}")
+    fun upload(@PathVariable id: Long, request: HttpServletRequest):String{
+        val processImageFile = uploadUtil.processImageFile(request)
+        if (processImageFile.isNotEmpty()){
+            val findOne = memberServiceImpl.findOne(id)
+            if (findOne != null) {
+                if (findOne.image!=null) uploadUtil.deleteImage(findOne.image)
+                uploadUtil.fillImageUrl(processImageFile.first())
+                findOne.image = processImageFile.first()
+                memberServiceImpl.update(id, findOne)
+            }
+        }
+        return "success"
     }
 //
 //    @ModelAttribute("jobTypes")

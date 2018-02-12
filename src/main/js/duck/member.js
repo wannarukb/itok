@@ -7,7 +7,7 @@ import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 import moment from 'moment'
 
-const {
+export const {
     fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
     isSearching, searchQuery, pageCount, setFile
 } = createActions({
@@ -97,8 +97,8 @@ export const saveOrUpdate = (data, file) => {
         axios.post('/member/update', data2).then(data => {
             dispatch(swal('บันทึกข้อมูลเรียบร้อย'));
             dispatch(updateSuccess());
-            return data.text()
-        }, error => console.error(error)).then(id => dispatch(uploadImage(id, file)))
+            dispatch(uploadImage(data.data))
+        }, error => console.error(error))
     }
 };
 
@@ -143,8 +143,14 @@ export const getPageCount = (query) => {
         else fetch('/member/pageCount').then(data => data.text(), error => console.log('error count', error)).then(data => dispatch(pageCount(data)))
     }
 };
-export const uploadImage = (id, file) => {
-    return dispatch => {
-        axios.get('/member/uploadUrl/' + id).then(data => data.text(), error => console.error(error)).then(url => )
+export const uploadImage = (id) => {
+    return (dispatch, getState) => {
+        const file = getState().member.file;
+        axios.get('/member/uploadUrl/' + id).then(data => data.data, error => console.error(error)).then(url => {
+                const formData = new FormData();
+                formData.append("file[]", file[0])
+                axios.post(url, formData).then(data => console.log('upload image success'), error => console.error(error))
+            }
+        )
     }
 }
