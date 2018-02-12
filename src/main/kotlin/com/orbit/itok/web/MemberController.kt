@@ -134,11 +134,13 @@ class MemberController {
     }
 
     @RequestMapping("update")
-    fun update(@RequestBody member: Member) {
+    fun update(@RequestBody member: Member): Long? {
         val id = member.id
-        if (id != null)
+        if (id != null) {
             memberServiceImpl.update(id, member)
-        else memberServiceImpl.createMember(member)
+            return id
+        }
+        else return memberServiceImpl.createMember(member)
     }
 
     @RequestMapping("{id}")

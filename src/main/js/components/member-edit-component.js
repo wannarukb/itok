@@ -82,7 +82,7 @@ const NewComponent = ({
                                 <input
                                     type="file"
                                     ref={input => {
-                                        file = input;
+                                        file = input.value;
                                     }}
                                 />
 
@@ -408,7 +408,6 @@ export default connect(mapStateToProp, mapDispatchToProp)(reduxForm({
     form: 'member-edit-form',
     enableReinitialize: true,
     onSubmit: (value, dispatch) => {
-
         dispatch(saveOrUpdate(value))
     }
 })(onEnter(fetchThings)(NewComponent)))

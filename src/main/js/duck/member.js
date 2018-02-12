@@ -7,8 +7,10 @@ import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 import moment from 'moment'
 
-const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
-    isSearching, searchQuery, pageCount} = createActions({
+const {
+    fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
+    isSearching, searchQuery, pageCount, setFile
+} = createActions({
     FETCH_COMPLETE: data => {
         return data;
     },
@@ -16,12 +18,13 @@ const {fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
     UPDATE_SUCCESS: data => data,
     FETCH_MEMBER_SUCCESS: data => {
         let s = moment(data.birthday).format('DD/MM/YYYY');
-        data.birthday = s ;
+        data.birthday = s;
         return data;
     },
     IS_SEARCHING: data => data,
     SEARCH_QUERY: data => data,
-    PAGE_COUNT: data => parseInt(data)
+    PAGE_COUNT: data => parseInt(data),
+    SET_FILE: data => data
 });
 
 const reducer = handleActions({
@@ -46,8 +49,11 @@ const reducer = handleActions({
     },
     [pageCount](state, action) {
         return {...state, pageCount: action.payload}
+    },
+    [setFile](state, action) {
+        return {...state, file: action.payload}
     }
-}, {members: [], currentMember: {}, isSearching: false, query: '', pageCount: 1});
+}, {members: [], currentMember: {}, isSearching: false, query: '', pageCount: 1, file: null});
 
 
 export default reducer
@@ -82,15 +88,17 @@ export const searchMember = (query) => {
     }
 };
 
-export const saveOrUpdate = (data) => {
-    return dispatch => {
-        let data2 = {...data}
+export const saveOrUpdate = (data, file) => {
+    return (dispatch, getState) => {
+        const {file} = getState();
+        let data2 = {...data};
 
-        data2.birthday = moment(data2.birthday,'DD/MM/yyyy');
+        data2.birthday = moment(data2.birthday, 'DD/MM/yyyy');
         axios.post('/member/update', data2).then(data => {
             dispatch(swal('บันทึกข้อมูลเรียบร้อย'));
-            return dispatch(updateSuccess());
-        }, error => console.error(error))
+            dispatch(updateSuccess());
+            return data.text()
+        }, error => console.error(error)).then(id => dispatch(uploadImage(id, file)))
     }
 };
 
@@ -135,8 +143,8 @@ export const getPageCount = (query) => {
         else fetch('/member/pageCount').then(data => data.text(), error => console.log('error count', error)).then(data => dispatch(pageCount(data)))
     }
 };
-export const selectFile=(file)=>{
-    return dispatch=>{
-        console.log(file)
+export const uploadImage = (id, file) => {
+    return dispatch => {
+        axios.get('/member/uploadUrl/' + id).then(data => data.text(), error => console.error(error)).then(url => )
     }
 }
