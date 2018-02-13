@@ -60,7 +60,7 @@ const NewComponent = ({
                         <div className="widget-body clearfix">
                             <div className="form-group">
                   <span>
-                    รูปประจำตัว
+                    รูปถ่ายสมาชิก
                   </span>
 
 
@@ -82,6 +82,7 @@ const NewComponent = ({
                                 <span className="fileinput-exists"> เปลี่ยนรูปภาพ</span>
                                 <input
                                     type="file"
+                                    accept="image/*"
                                     ref={input => {
                                         if (input)
                                             file = input;
