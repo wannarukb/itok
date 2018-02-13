@@ -107,11 +107,21 @@ interface MemberService {
     fun import(list: MutableList<Member>)
     fun findByLandId(id: Long): Member?
     fun updateAll(page: Int)
+    fun clearIndex()
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun clearIndex() {
+        var result :List<Document>
+        do{
+            result = index.getRange(GetRequest.newBuilder().setLimit(1000).setReturningIdsOnly(true)).results
+            index.delete(result.map { it.id })
+        }while(result.isNotEmpty())
+    }
+
     override fun updateAll(page: Int) {
+        if (page == 0) clearIndex()
         val list = ofy().load().type(Member::class.java).limit(50).offset(page * 50).list()
         if (list.isNotEmpty()){
             QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page+1).toString()))
@@ -214,7 +224,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     private fun getDocument(member: Member): Document {
         return Document.newBuilder().setId(member.id.toString())
                 .addField(Field.newBuilder().setName("name").setText(member.firstName + " " + member.lastName))
-                .addField(Field.newBuilder().setName("province").setText(member.addressString))
+                .addField(Field.newBuilder().setName("province").setText(member.address.toString()))
                 .addField(Field.newBuilder().setName("email").setText(member.email))
                 .addField(Field.newBuilder().setName("tel").setText(member.mobile))
                 .addField(Field.newBuilder().setName("memberId").setText(member.memberId)).build()
