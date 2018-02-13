@@ -6,6 +6,7 @@ import org.joda.time.chrono.BuddhistChronology
 import org.joda.time.format.DateTimeFormat
 import org.springframework.stereotype.Service
 import org.supercsv.cellprocessor.CellProcessorAdaptor
+import org.supercsv.cellprocessor.ConvertNullTo
 import org.supercsv.cellprocessor.Optional
 import org.supercsv.cellprocessor.ParseDate
 import org.supercsv.cellprocessor.ift.CellProcessor
@@ -40,7 +41,7 @@ class ImportServiceImpl : ImportService {
             "membershipTemp.agricultureInterest[2]", "membershipTemp.agricultureInterest[3]", "membershipTemp.agricultureInterest[4]",
             "membershipTemp.agricultureInterest[5]", "membershipTemp.agricultureInterest[6]",
             "membershipTemp.associate",
-            "memberLandsTemp[0].basin", "memberLandsTemp[0].address.moo", "memberLandsTemp[0].address.village", "memberLandsTemp[0].address.subdistrict",
+            "memberLandsTemp[0].basin","memberLandsTemp[0].name", "memberLandsTemp[0].address.moo", "memberLandsTemp[0].address.village", "memberLandsTemp[0].address.subdistrict",
             "memberLandsTemp[0].address.district", "memberLandsTemp[0].address.province", "memberLandsTemp[0].lat", "memberLandsTemp[0].lng",
             "memberLandsTemp[0].rai", "memberLandsTemp[0].gnan", "memberLandsTemp[0].wah")
 
@@ -50,7 +51,7 @@ class ImportServiceImpl : ImportService {
             Optional(GenderProcessor()), // first line
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), // end address alley
             Optional(), Optional(), Optional(), Optional(), Optional(), // end postal code
-            Optional(), Optional(), Optional(), Optional(), //end line
+            ConvertNullTo("-"), Optional(), Optional(), Optional(), //end line
             Optional(), Optional(VillageDelegateProcessor()), Optional(), Optional(), // end previous job
             Optional(), Optional(), Optional(), Optional(), // type orgationzation 1
             Optional(), Optional(), Optional(), // type orgationzation 4
@@ -62,7 +63,7 @@ class ImportServiceImpl : ImportService {
             Optional(), Optional(), // agricultureInterest 6
             Optional(), // associate
             Optional(),
-            Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
+            Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(), Optional(),
             Optional(), Optional(), Optional(), Optional(), Optional()
@@ -71,7 +72,7 @@ class ImportServiceImpl : ImportService {
 
     override fun import(file: File): MutableList<Member> {
         val output = mutableListOf<Member>()
-        val csvDozerBeanReader = CsvDozerBeanReader(file.reader(), CsvPreference.STANDARD_PREFERENCE)
+        val csvDozerBeanReader = CsvDozerBeanReader(file.reader(), CsvPreference.EXCEL_PREFERENCE)
         csvDozerBeanReader.getHeader(true)
         csvDozerBeanReader.configureBeanMapping(Member::class.java, FIELD_MAPPING)
 //        val member = Member()
