@@ -71,6 +71,11 @@ data class Member(@JsonView(View.Member::class) @Id var id: Long? = null,
                   @Ignore var membershipTemp: Membership? = null,
                   @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
 ) {
+    fun fixMobile(@AlsoLoad("mobile") m: String) {
+        if (m != "-" && !m.startsWith("0")) this.mobile = "0$m"
+        if (m.isEmpty()) this.mobile = "-"
+    }
+
     fun getDisplayName(): String {
         return "$title$firstName $lastName"
     }
@@ -89,7 +94,7 @@ data class Address(var number: String? = "", var moo: String? = "", var village:
                    var road: String? = "", var subdistrict: String? = "", var district: String? = "",
                    var province: String? = "", var postalCode: String? = "") {
     override fun toString(): String {
-        return "$number $moo $village $alley $road $subdistrict $district $province $postalCode"
+        return "$number $moo $village $alley $road $subdistrict $district $province $postalCode".replace(" null", "")
     }
 }
 
@@ -113,18 +118,18 @@ interface MemberService {
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun clearIndex() {
-        var result :List<Document>
-        do{
+        var result: List<Document>
+        do {
             result = index.getRange(GetRequest.newBuilder().setLimit(1000).setReturningIdsOnly(true)).results
             index.delete(result.map { it.id })
-        }while(result.isNotEmpty())
+        } while (result.isNotEmpty())
     }
 
     override fun updateAll(page: Int) {
         if (page == 0) clearIndex()
         val list = ofy().load().type(Member::class.java).limit(50).offset(page * 50).list()
-        if (list.isNotEmpty()){
-            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page+1).toString()))
+        if (list.isNotEmpty()) {
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page + 1).toString()))
             ofy().save().entities(list)
             index.put(list.map { getDocument(it) })
         }
@@ -188,10 +193,10 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
         now.membershipTemp = now.membership?.get()
         now.memberLandsTemp = now.memberLands.map { it.get() }.toMutableList()
         now.membership = null
-        now.memberLands= mutableListOf()
-        now.courses= mutableListOf()
-        now.equipments= mutableListOf()
-        now.activities= mutableListOf()
+        now.memberLands = mutableListOf()
+        now.courses = mutableListOf()
+        now.equipments = mutableListOf()
+        now.activities = mutableListOf()
 
         return now
     }
@@ -204,10 +209,10 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
             val findOne = findOne(id)
             if (findOne != null) {
                 val get = findOne.membership?.get()
-                if (get!=null){
-                    val copy = membershipTemp.copy(id=get.id)
+                if (get != null) {
+                    val copy = membershipTemp.copy(id = get.id)
                     ofy().save().entity(copy)
-                }else{
+                } else {
                     val entity = ofy().save().entity(membershipTemp).now()
                     member.membership = Ref.create(entity)
                 }
@@ -237,7 +242,7 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
 
     override fun findAll(start: Int?, length: Int?): MutableList<Member> {
         val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).order("-date").list()
-        if (list.isEmpty()){
+        if (list.isEmpty()) {
             QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember"))
         }
         list.forEach {
