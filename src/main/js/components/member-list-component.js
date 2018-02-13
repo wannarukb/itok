@@ -15,8 +15,9 @@ const TextField = ({input, description}) =>
     );
 
 
-const NewComponent = ({list, search, handleSubmit, changePage, isSearching, query,pageCount}) =>
-    (
+const NewComponent = ({list, search, handleSubmit, changePage, isSearching, query, pageCount}) => {
+
+    return (
         <div style={{padding: "20px 20px 42px"}}>
             <div className="row">
                 <div className="col-md-12 font-supermarket">
@@ -60,21 +61,24 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                     <div className="panel-group mb-lg" id="accordion" data-toggle="collapse"
                          data-th-remove="all-but-first">
                         {
-                            list.map((it, index) =>
-                                <div className="panel panel-default" key={it.id}>
+                            list.map((it, index) => {
+                                let image = null
+                                if (it.image == null)
+                                    image = <span className={'farmer-farmer'}
+                                                  style={{fontSize: '2.5em', color: '#779543'}}/>
+                                else image = <img src={it.image.imageUrl + '=s50-c'}
+                                                  className=" img-circle"/>
+                                return (<div className="panel panel-default" key={it.id}>
                                     <div className="panel-heading panel-heading-white collapsed">
                                         <h5 className="panel-title">
                                             <div className="row">
                                                 <div className="collapsed" data-toggle="collapse"
-                                                   href={'#collapse' + index}
-                                                   data-th-href="'#collapse' + ${lStat.index}">
+                                                     href={'#collapse' + index}
+                                                     data-th-href="'#collapse' + ${lStat.index}">
                                                     <div className="col-sm-1 text-center ">
                                                         {/*<i className="fa fa-user" aria-hidden="true"*/}
                                                         {/*style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>*/}
-                                                        <span className={'icon-farmer-farmer'}
-                                                              style={{fontSize: '4em', color: '#779543'}}/>
-                                                        <img data-th-src="${l.image.imageUrl} + '=s50-c'"
-                                                             data-th-if="${l.image} != null" className=" img-circle"/>
+                                                        {image}
                                                     </div>
                                                     <div className="col-sm-3">
                                                         <Link to={'/member/edit/' + it.id}
@@ -104,12 +108,13 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                 <div className="col-sm-2 text-right">
                                                     <Link to={'/member/edit/' + it.id}
                                                           className=" btn btn-primary btn-sm"
-                                                          >
-                                                        <i className="icon-farmer-farmer"
-                                                           style={{
-                                                               fontSize: '1em',
-                                                               color: '#FFF !important'
-                                                           }}/> ดูข้อมูลสมาชิก
+                                                    >
+                                                        <span>
+                                                            <i className="farmer-farmer"
+                                                               style={{
+                                                                   color: '#FFF !important'
+                                                               }}/></span>&nbsp;
+                                                        ดูข้อมูลสมาชิก
                                                     </Link>
                                                     {/*<a class="btn btn-primary btn-full-width"  data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">*/}
                                                     {/*<i class="fa fa-user"></i>*/}
@@ -141,7 +146,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                 <tr key={index2}>
                                                     <td>
                                                         <div className="color-dark-blue font-icon-box">
-                                                            <span className="icon-farmer-farm"/>
+                                                            <span className="farmer-farm" style={{fontSize: '1.5em'}}/>
                                                         </div>
 
                                                     </td>
@@ -167,9 +172,9 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
-
+                                </div>)
+                            })
+                        }
                     </div>
                 </div>
             </div>
@@ -187,6 +192,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
             </div>
         </div>
     );
+};
 
 NewComponent.PropTypes = {
     list: PropTypes.array.isRequired,

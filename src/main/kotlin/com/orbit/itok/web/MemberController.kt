@@ -31,17 +31,20 @@ class MemberController {
 
     data class MemberListArea(var id: Long, var name: String, var ownerName: String, var areaText: String, var province: String, var basin: String)
 
+    val LIMIT = 10
+
+
     @RequestMapping("pageCount")
     fun pageCount(@RequestParam(required = false) query: String?): Int {
-        return if (query == null) (memberServiceImpl.count() / 20 + 1).toInt()
-        else (memberServiceImpl.countSearch(query) / 20 + 1).toInt()
+        return if (query == null) (memberServiceImpl.count() / LIMIT + 1).toInt()
+        else (memberServiceImpl.countSearch(query) / LIMIT + 1).toInt()
     }
 
 
     @RequestMapping("json")
     fun member(@RequestParam(required = false) page: Int?): List<MemberList> {
         var page2 = 0
-        val limit = 20
+        val limit = LIMIT
         if (page == null) {
             page2 = 0
         } else page2 = page
@@ -72,7 +75,7 @@ class MemberController {
     @RequestMapping("search")
     fun member(@RequestParam(required = false) page: Int?, @RequestParam query: String): List<MemberList> {
         var page2 = 0
-        val limit = 20
+        val limit = LIMIT
         if (page == null) {
             page2 = 0
         }
@@ -152,12 +155,12 @@ class MemberController {
     }
 
     @RequestMapping("upload/{id}")
-    fun upload(@PathVariable id: Long, request: HttpServletRequest):String{
+    fun upload(@PathVariable id: Long, request: HttpServletRequest): String {
         val processImageFile = uploadUtil.processImageFile(request)
-        if (processImageFile.isNotEmpty()){
+        if (processImageFile.isNotEmpty()) {
             val findOne = memberServiceImpl.findOne(id)
             if (findOne != null) {
-                if (findOne.image!=null) uploadUtil.deleteImage(findOne.image)
+                if (findOne.image != null) uploadUtil.deleteImage(findOne.image)
                 uploadUtil.fillImageUrl(processImageFile.first())
                 findOne.image = processImageFile.first()
                 memberServiceImpl.update(id, findOne)
