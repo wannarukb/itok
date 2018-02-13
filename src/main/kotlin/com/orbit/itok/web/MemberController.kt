@@ -27,7 +27,7 @@ class MemberController {
 //    }
 
     data class MemberList(var id: Long, var name: String, var address: String, var fieldCount: Int, var totalArea: Float,
-                          var memberListArea: MutableList<MemberListArea>)
+                          var memberListArea: MutableList<MemberListArea>, var mobile: String, var type: String)
 
     data class MemberListArea(var id: Long, var name: String, var ownerName: String, var areaText: String, var province: String, var basin: String)
 
@@ -67,7 +67,17 @@ class MemberController {
                         basin = "basin placeholder", province = "province placehodler"))
             }
             lands.forEach { it.ownerName = ownerName }
-            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
+            if (it.membershipTemp == null) it.membershipTemp = it.membership?.get()
+            MemberList(
+                    id = it.id!!,
+                    name = ownerName,
+                    address = it.address.toString(),
+                    fieldCount = lands.size,
+                    memberListArea = lands.toMutableList(),
+                    totalArea = totalArea,
+                    type = it.membershipTemp?.type ?: "",
+                    mobile = it.mobile
+            )
         }
     }
 
@@ -98,7 +108,16 @@ class MemberController {
                         basin = "basin placeholder", province = "province placehodler"))
             }
             lands.forEach { it.ownerName = ownerName }
-            MemberList(id = it.id!!, name = ownerName, address = it.address.toString(), fieldCount = lands.size, memberListArea = lands.toMutableList(), totalArea = totalArea)
+            if (it.membershipTemp == null) it.membershipTemp = it.membership?.get()
+            MemberList(
+                    id = it.id!!,
+                    name = ownerName,
+                    address = it.address.toString(),
+                    fieldCount = lands.size,
+                    totalArea = totalArea,
+                    memberListArea = lands.toMutableList(), type = it.membershipTemp?.type ?: "", mobile = it.mobile
+
+            )
         }
     }
 

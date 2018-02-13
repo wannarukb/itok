@@ -204,7 +204,7 @@ const NewComponent = ({
                                                         <div className="row">
                                                             <div className="col-sm-6">
                                                                 <Field component={TextField} name={'mobile'}
-                                                                       description={'เบอร์โทรศัพท์มือถือ'}
+                                                                       description={'โทรศัพท์มือถือ'}
                                                                        required={true}/>
                                                                 <Field
                                                                     component={TextField} name={'email'}

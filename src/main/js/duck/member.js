@@ -86,12 +86,12 @@ export const searchMember = (query) => {
             dispatch(getPageCount(null))
         }
         else {
-            let data2 = new FormData();
-            data2.append('query', query);
+            // let data2 = new FormData();
+            // data2.append('query', query);
             dispatch(isSearching(true));
             dispatch(searchQuery(query));
             dispatch(getPageCount(query));
-            axios.post('/member/search', data2).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
+            axios.get('/member/search?query=' + encodeURIComponent(query)).then(data => dispatch(fetchComplete(data.data)), error => console.log('error search'));
         }
     }
 };
