@@ -43,7 +43,7 @@
 
             <div class="row margin-top--big">
                 <p class="text-logo text-center">ลงชื่อเข้าใช้งานระบบ</p>
-                <form action="">
+                <form action="/home">
                     <div class="form-group has-feedback pad-top-15">
                         <input type="text" id="demo-oi-username" class="form-control" placeholder="Username" autofocus>
                         <i class="fa fa-user form-control-feedback"></i>
@@ -56,9 +56,9 @@
                         <div class="col-sm-5 text-left login-des-font-small">Forgot Password ?</div>
                         <div class="col-sm-7 text-right">
                             <!--<button class="btn btn-primary" type="submit">ลงชื่อเข้าใช้</button>-->
-                            <a class="btn btn-primary"  data-th-onclick="'window.location=\'' + @{/page/layout-dashboard} + '\''">
+                            <button type="submit" class="btn btn-primary"  data-th-onclick="'window.location=\'' + @{/page/layout-dashboard} + '\''">
                                 <i class="fa fa-user"></i> ลงชื่อเข้าใช้
-                            </a>
+                            </button>
                         </div>
                     </div>
 

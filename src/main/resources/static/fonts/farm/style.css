@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'farm';
+  src:  url('fonts/farm.eot?7m864c');
+  src:  url('fonts/farm.eot?7m864c#iefix') format('embedded-opentype'),
+    url('fonts/farm.ttf?7m864c') format('truetype'),
+    url('fonts/farm.woff?7m864c') format('woff'),
+    url('fonts/farm.svg?7m864c#farm') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="farmer-"], [class*=" farmer-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'farm' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.farmer-farm:before {
+  content: "\e900";
+}
+.farmer-farmer:before {
+  content: "\e901";
+}

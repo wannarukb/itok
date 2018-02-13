@@ -35,7 +35,12 @@ class HomeController : ResourceLoaderAware {
     }
 
     @RequestMapping
-    fun index(): String {
+    fun login(): String {
+        return "login"
+    }
+
+    @RequestMapping("home")
+    fun home():String{
         return "index"
     }
 
@@ -63,6 +68,7 @@ class HomeController : ResourceLoaderAware {
 //            model.addAttribute("totalPages", memberServiceImpl.countSearch(query) / PAGE_LIMIT + 1)
 //        }
 //        model.addAttribute("page", page)
+        model.addAttribute("pageName","member")
         if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.first() == "development") {
             model.addAttribute("development", true)
         } else model.addAttribute("development", false)
