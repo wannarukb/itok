@@ -82,7 +82,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                         {/*style={{fontSize: '2.5em'}} data-th-if="${l.image == null}"/>*/}
                                                         {image}
                                                     </div>
-                                                    <div className="col-sm-3">
+                                                    <div className="col-sm-2">
                                                         <Link to={'/member/edit/' + it.id}
                                                               className="color-green"><strong
                                                             data-th-text="*{firstName} + ' ' + *{lastName}">{it.name}</strong></Link>
@@ -92,17 +92,19 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                         {/*<p class="font-xs-small color-grey"*/}
                                                         {/*data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>*/}
                                                     </div>
-                                                    <div className="col-sm-4">
+                                                    <div className="col-sm-1">
                                                         {/*<p data-th-text="*{mobile}" class="font-medium color-dark"></p>*/}
                                                         {/*<p data-th-text="*{address}" class="font-medium color-dark"></p>*/}
-                                                        <p className="font-medium color-dark">{it.province}</p>
-                                                        <span className="font-xs-small color-grey"
-                                                              data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">
-                                                            {it.totalField} ไร่ เนื้อที่รวม {it.totalArea} ไร่</span>
+                                                        <div style={{backgroundColor: '#FFC428', width: '100%', height: 10, margin: 10}}/>
+                                                        <p className="font-medium color-dark text-center">{it.type}</p>
+                                                        {/*<span className="font-xs-small color-grey"*/}
+                                                              {/*data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">*/}
+                                                            {/*{it.totalField} ไร่ เนื้อที่รวม {it.totalArea} ไร่</span>*/}
                                                     </div>
-                                                    <div className="col-sm-2">
-                                                        <p data-th-text="*{membershipTemp.type}"
-                                                           className="font-medium color-dark"/>
+                                                    <div className="col-sm-2 col-sm-offset-1">
+                                                        <div className={'text-center'} style={{marginBottom:10}}>{it.mobile}</div>
+                                                        <p
+                                                           className="font-medium color-dark">{it.address}</p>
                                                         {/*<p data-th-text="*{membershipTemp.typeOrganization}"*/}
                                                         {/*class="font-medium"></p>*/}
                                                     </div>
