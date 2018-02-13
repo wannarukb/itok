@@ -20,8 +20,9 @@ const SelectFieldMultiple = ({input, description, itemList, multiple}) => {
         console.log('multiple true')
     }
     const valueChange = (it) => {
-
-        input.onChange(it.map(k => k.value));
+        if (it != null)
+            input.onChange(it.map(k => k.value));
+        else input.onChange([]);
 
     };
 

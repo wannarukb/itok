@@ -102,9 +102,9 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                     </div>
                                                 </div>
                                                 <div className="col-sm-2 text-right">
-                                                    <Link to={'/member/view/' + it.id}
+                                                    <Link to={'/member/edit/' + it.id}
                                                           className=" btn btn-primary btn-sm"
-                                                          data-th-onclick="'window.location=\'' + @{/member/{id}(id=${l.id})} + '\''">
+                                                          >
                                                         <i className="icon-farmer-farmer"
                                                            style={{
                                                                fontSize: '1em',

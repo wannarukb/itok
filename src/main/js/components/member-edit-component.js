@@ -16,7 +16,7 @@ import SelectFieldMultiple from "./select-field-multiple";
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes, imageUrl, setFile, memberId
+                          memberTypes, organizationTypes, jobTypes, imageUrl, setFile, memberId, editOrAdd
                       }) => {
     let file = null;
 
@@ -34,12 +34,12 @@ const NewComponent = ({
                 <div className="col-md-6">
                     <h1 className="page-title font-supermarket">
                         {/*data-th-text="#{new}"*/}
-                        <span>เพิ่ม / แก้ไข</span> -
+                        <span>{editOrAdd}</span> -
                         <span className="fw-semi-bold" data-th-text="#{member}">สมาชิกเครือข่าย</span>
                     </h1>
                 </div>
                 <div className="col-md-6 text-right">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary" style={{marginRight: 5}}>
                         <i className="fa fa-check" aria-hidden="true"/> บันทึก
                     </button>
                     <Link to={'/member'} type="button" className="btn btn-inverse"
@@ -378,7 +378,8 @@ function mapStateToProp(state, ownProps) {
         memberTypes: state.member.memberTypes,
         initialValues: state.member.currentMember,
         imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/profile.png',
-        memberId: (state.member.currentMember.membershipTemp) ? state.member.currentMember.membershipTemp.membershipId : ''
+        memberId: (state.member.currentMember.membershipTemp) ? state.member.currentMember.membershipTemp.membershipId : '',
+        editOrAdd: (state.member.currentMember.id) ? 'แก้ไข' : 'เพิ่ม'
     }
 }
 

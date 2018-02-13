@@ -16,8 +16,9 @@ const SelectField = ({input, description, itemList}) => {
         list2 = itemList.map(it => ({'value': it.id, 'label': it.name}));
 
     const valueChange = (it) => {
-
-        input.onChange(it.value);
+        if (it != null)
+            input.onChange(it.value);
+        else input.onChange('');
 
     };
 
@@ -28,7 +29,7 @@ const SelectField = ({input, description, itemList}) => {
                 {description}</label>
             <div className="col-md-7">
                 <Select
-placeholder={'เลือก...'}
+                    placeholder={'เลือก...'}
                     name={input.name}
                     onChange={valueChange}
                     value={input.value}
