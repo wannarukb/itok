@@ -34,7 +34,7 @@ const NewComponent = ({
                 <div className="col-md-6">
                     <h1 className="page-title font-supermarket">
                         {/*data-th-text="#{new}"*/}
-                        <span>{editOrAdd}</span> -
+                        <span>{editOrAdd}</span> -&nbsp;
                         <span className="fw-semi-bold" data-th-text="#{member}">สมาชิกเครือข่าย</span>
                     </h1>
                 </div>
@@ -307,7 +307,7 @@ const NewComponent = ({
                                                             </div>
                                                         </div>
                                                         <div className="row">
-                                                            <div className="col-sm-6">
+                                                            <div className="col-sm-12">
                                                                 <Field component={SelectFieldMultiple}
                                                                        description={'ความเป็นสมาชิกภาพองค์กรหรือสมาคม'}
                                                                        name={'membershipTemp.typeOrganization'}
@@ -315,7 +315,7 @@ const NewComponent = ({
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>*/}
                                                             </div>
-                                                            <div className="col-sm-6">
+                                                            <div className="col-sm-12">
                                                                 <Field component={SelectFieldMultiple}
                                                                        description={'ความเชี่ยวชาญพิเศษด้านการเกษตร'}
                                                                        name={'membershipTemp.agricultureSpecialty'}
@@ -327,7 +327,7 @@ const NewComponent = ({
                                                                 {/*data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>*/}
                                                                 {/*</div>*/}
                                                             </div>
-                                                            <div className="col-sm-6">
+                                                            <div className="col-sm-12">
                                                                 {/*<div className="form-group row">*/}
                                                                 <Field component={SelectFieldMultiple}
                                                                        description={'ความสนใจพิเศษด้านเกษตร'}
@@ -340,7 +340,7 @@ const NewComponent = ({
                                                                 {/*data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>*/}
                                                                 {/*</div>*/}
                                                             </div>
-                                                            <div className="col-sm-6">
+                                                            <div className="col-sm-12">
                                                                 <Field component={TextField}
                                                                        name={'membershipTemp.associate'}
                                                                        description={'ชื่อสกุลของเครือข่ายที่ทำงานร่วมกัน'}/>

@@ -57,8 +57,8 @@ const reducer = handleActions({
     [setFile](state, action) {
         return {...state, file: action.payload}
     },
-    [clearCurrentMember](state){
-        return {...state, currentMember:{}}
+    [clearCurrentMember](state) {
+        return {...state, currentMember: {}}
     }
 }, {members: [], currentMember: {}, isSearching: false, query: '', pageCount: 1, file: null});
 
@@ -100,11 +100,22 @@ export const saveOrUpdate = (data, file) => {
         const {file} = getState();
         let data2 = {...data};
 
+        let after = null;
+
+        if (data2.id == null) {
+            after = () => {
+                dispatch(clearCurrentMember())
+                dispatch(push('/member/new'))
+            }
+        } else after = () => {
+            dispatch(push('/member'))
+        };
+
         data2.birthday = moment(data2.birthday, 'DD/MM/yyyy');
         axios.post('/member/update', data2).then(data => {
             dispatch(swal('บันทึกข้อมูลเรียบร้อย'));
             dispatch(updateSuccess());
-            dispatch(uploadImage(data.data))
+            dispatch(uploadImage(data.data, after))
         }, error => console.error(error))
     }
 };
@@ -150,16 +161,15 @@ export const getPageCount = (query) => {
         else fetch('/member/pageCount').then(data => data.text(), error => console.log('error count', error)).then(data => dispatch(pageCount(data)))
     }
 };
-export const uploadImage = (id) => {
+export const uploadImage = (id,after) => {
     return (dispatch, getState) => {
         const file = getState().member.file;
         axios.get('/member/uploadUrl/' + id).then(data => data.data, error => console.error(error)).then(url => {
                 const formData = new FormData();
                 formData.append("file[]", file[0])
                 axios.post(url, formData).then(data => {
-                    console.log('upload image success');
-                    dispatch(clearCurrentMember());
-                    dispatch(push('/member/new'))
+                    // console.log('upload image success');
+                    after()
                 }, error => console.error(error))
             }
         )

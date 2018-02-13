@@ -77,7 +77,7 @@ const NewComponent = ({list, search, handleSubmit, changePage, isSearching, quer
                                                              data-th-if="${l.image} != null" className=" img-circle"/>
                                                     </div>
                                                     <div className="col-sm-3">
-                                                        <Link to={'/member/view/' + it.id}
+                                                        <Link to={'/member/edit/' + it.id}
                                                               className="color-green"><strong
                                                             data-th-text="*{firstName} + ' ' + *{lastName}">{it.name}</strong></Link>
                                                         <p className="font-medium color-dark"
