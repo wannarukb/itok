@@ -9,8 +9,6 @@ import CheckboxField from "./checkbox-field";
 import {clearCurrentMember, saveOrUpdate, selectMember, setFile} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
-import {swal} from "react-redux-sweetalert";
-import FileField from "./file-field";
 import SelectFieldMultiple from "./select-field-multiple";
 
 

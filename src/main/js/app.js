@@ -14,7 +14,7 @@ import createHistory from 'history/createBrowserHistory'
 import thunk from 'redux-thunk' // no changes here 😀
 import {reducer as formReducer} from 'redux-form'
 import ReduxSweetAlert, {reducer as swalReducer} from 'react-redux-sweetalert';
-
+import ScrollToTop from './scroll-to-top'
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -36,14 +36,16 @@ ReactDOM.render(
     <Provider store={store}>
 
         <ConnectedRouter history={history}>
-            <div>
-                <ReduxSweetAlert/>
+            <ScrollToTop>
+                <div>
+                    <ReduxSweetAlert/>
 
-                <Route exact path="/member" component={MemberListComponent}/>
-                <Route exact path="/member/view/:id" component={MemberViewComponent}/>
-                <Route exact path="/member/edit/:id" component={MemberEditComponent}/>
-                <Route exact path="/member/new" component={MemberEditComponent}/>
-            </div>
+                    <Route exact path="/member" component={MemberListComponent}/>
+                    <Route exact path="/member/view/:id" component={MemberViewComponent}/>
+                    <Route exact path="/member/edit/:id" component={MemberEditComponent}/>
+                    <Route exact path="/member/new" component={MemberEditComponent}/>
+                </div>
+            </ScrollToTop>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('memberApp')
