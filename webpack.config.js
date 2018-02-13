@@ -22,14 +22,20 @@ module.exports = {
         filename: './src/main/resources/static/built/bundle.js'
     },
     module: {
-        loaders: [
+        loaders: [{
+            test: /\.css$/,
+            use: [
+                'style-loader',
+                'css-loader'
+            ]
+        },
             {
                 test: path.join(__dirname, '.'),
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
                     cacheDirectory: true,
-                    presets: ['env', 'react','stage-2']
+                    presets: ['env', 'react', 'stage-2']
 
                 }
             }

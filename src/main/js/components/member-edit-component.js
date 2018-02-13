@@ -11,11 +11,12 @@ import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
 import {swal} from "react-redux-sweetalert";
 import FileField from "./file-field";
+import SelectFieldMultiple from "./select-field-multiple";
 
 
 const NewComponent = ({
                           handleSubmit, titles, status, maritalStatus, educationDegrees, yearJoin, specialties,
-                          memberTypes, organizationTypes, jobTypes, imageUrl, setFile
+                          memberTypes, organizationTypes, jobTypes, imageUrl, setFile, memberId
                       }) => {
     let file = null;
 
@@ -52,7 +53,7 @@ const NewComponent = ({
                     <section className="widget">
                         <div className="widget-body clearfix">
                             <span className>หมายเลขสมาชิก</span><br/>
-                            <span className="widget-label">X00000001</span>
+                            <span className="widget-label">{memberId}</span>
                         </div>
                     </section>
                     <section className="widget">
@@ -173,7 +174,7 @@ const NewComponent = ({
                                                                        name={'maritalStatus'}/>
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <Field component={SelectField} name={'educationDegrees'}
+                                                                <Field component={SelectField} name={'educationDegree'}
                                                                        itemList={educationDegrees}
                                                                        description={'ระดับการศึกษา'}/>
                                                                 {/*<input*/}
@@ -232,7 +233,7 @@ const NewComponent = ({
                                 </div>
                                 <div className="tab-pane" id="tab2">
                                     <div className="col-lg-12">
-                                        <section className="widget widget-custom-padding">
+                                        <section className="widget widget-custom-padding" style={{paddingBottom: 250}}>
                                             <div className="widget-body">
                                                 <div className="form-horizontal" role="form">
                                                     <fieldset>
@@ -270,7 +271,7 @@ const NewComponent = ({
                                                                         className="col-md-4 form-control-label text-md-right"/>
                                                                     <div className="col-md-7">
                                                                         <Field component={CheckboxField}
-                                                                               name={'membershipTemp.isThing'}/>
+                                                                               name={'membershipTemp.villageDelegate'}/>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -307,7 +308,7 @@ const NewComponent = ({
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-sm-6">
-                                                                <Field component={SelectField}
+                                                                <Field component={SelectFieldMultiple}
                                                                        description={'ความเป็นสมาชิกภาพองค์กรหรือสมาคม'}
                                                                        name={'membershipTemp.typeOrganization'}
                                                                        itemList={organizationTypes}/>
@@ -315,7 +316,7 @@ const NewComponent = ({
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>*/}
                                                             </div>
                                                             <div className="col-sm-6">
-                                                                <Field component={SelectField}
+                                                                <Field component={SelectFieldMultiple}
                                                                        description={'ความเชี่ยวชาญพิเศษด้านการเกษตร'}
                                                                        name={'membershipTemp.agricultureSpecialty'}
                                                                        itemList={specialties}/>
@@ -328,7 +329,7 @@ const NewComponent = ({
                                                             </div>
                                                             <div className="col-sm-6">
                                                                 {/*<div className="form-group row">*/}
-                                                                <Field component={SelectField}
+                                                                <Field component={SelectFieldMultiple}
                                                                        description={'ความสนใจพิเศษด้านเกษตร'}
                                                                        name={'membershipTemp.agricultureInterest'}
                                                                        itemList={specialties}
@@ -376,7 +377,8 @@ function mapStateToProp(state, ownProps) {
         specialties: state.member.specialties,
         memberTypes: state.member.memberTypes,
         initialValues: state.member.currentMember,
-        imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/profile.png'
+        imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/profile.png',
+        memberId: (state.member.currentMember.membershipTemp) ? state.member.currentMember.membershipTemp.membershipId : ''
     }
 }
 

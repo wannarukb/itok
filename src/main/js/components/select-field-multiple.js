@@ -2,7 +2,7 @@ import React from 'react'
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-const SelectField = ({input, description, itemList}) => {
+const SelectFieldMultiple = ({input, description, itemList, multiple}) => {
     // let list = null;
     // if (itemList) {
     //     list = itemList.map((it, index) => {
@@ -14,10 +14,14 @@ const SelectField = ({input, description, itemList}) => {
     let list2 = [];
     if (itemList)
         list2 = itemList.map(it => ({'value': it.id, 'label': it.name}));
-
+    if (!multiple) {
+        multiple = false;
+    } else {
+        console.log('multiple true')
+    }
     const valueChange = (it) => {
 
-        input.onChange(it.value);
+        input.onChange(it.map(k => k.value));
 
     };
 
@@ -28,7 +32,8 @@ const SelectField = ({input, description, itemList}) => {
                 {description}</label>
             <div className="col-md-7">
                 <Select
-placeholder={'เลือก...'}
+                    placeholder={'เลือก...'}
+                    multi={true}
                     name={input.name}
                     onChange={valueChange}
                     value={input.value}
@@ -44,4 +49,4 @@ placeholder={'เลือก...'}
         </div>
     );
 };
-export default SelectField
+export default SelectFieldMultiple

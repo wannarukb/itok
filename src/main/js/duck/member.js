@@ -1,6 +1,7 @@
 "use strict";
 import fetch from 'cross-fetch'
 import axios from 'axios'
+import {push} from 'react-router-redux'
 
 
 import {createActions, handleActions} from "redux-actions";
@@ -9,7 +10,7 @@ import moment from 'moment'
 
 export const {
     fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
-    isSearching, searchQuery, pageCount, setFile
+    isSearching, searchQuery, pageCount, setFile, clearCurrentMember
 } = createActions({
     FETCH_COMPLETE: data => {
         return data;
@@ -24,8 +25,11 @@ export const {
     IS_SEARCHING: data => data,
     SEARCH_QUERY: data => data,
     PAGE_COUNT: data => parseInt(data),
-    SET_FILE: data => data
+    SET_FILE: data => data,
+    CLEAR_CURRENT_MEMBER: () => {
+    }
 });
+
 
 const reducer = handleActions({
     [fetchComplete](state, action) {
@@ -52,6 +56,9 @@ const reducer = handleActions({
     },
     [setFile](state, action) {
         return {...state, file: action.payload}
+    },
+    [clearCurrentMember](state){
+        return {...state, currentMember:{}}
     }
 }, {members: [], currentMember: {}, isSearching: false, query: '', pageCount: 1, file: null});
 
@@ -149,7 +156,11 @@ export const uploadImage = (id) => {
         axios.get('/member/uploadUrl/' + id).then(data => data.data, error => console.error(error)).then(url => {
                 const formData = new FormData();
                 formData.append("file[]", file[0])
-                axios.post(url, formData).then(data => console.log('upload image success'), error => console.error(error))
+                axios.post(url, formData).then(data => {
+                    console.log('upload image success');
+                    dispatch(clearCurrentMember());
+                    dispatch(push('/member/new'))
+                }, error => console.error(error))
             }
         )
     }
