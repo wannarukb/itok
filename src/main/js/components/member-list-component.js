@@ -2,9 +2,11 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types'
 import {connect} from "react-redux";
-import {searchMember, changePage} from "../duck/member";
+import {searchMember, changePage, fetchMember, fetchMetaData} from "../duck/member";
 import {Field, reduxForm} from "redux-form";
 import ReactPaginate from 'react-paginate';
+import onEnter from 'react-router-enter'
+
 
 const TextField = ({input, description}) =>
     (
@@ -213,8 +215,18 @@ function mapDispatchToProp(dispatch) {
             if (!isSearching)
                 dispatch(changePage(page))
             else dispatch(changePageSearch(query, page))
-        }
+        },
+        fetchMember: () => dispatch(fetchMember()),
+        fetchMetaData: () => dispatch(fetchMetaData())
     }
+}
+
+function fetchThing(prop) {
+    return new Promise((resolve, reject) => {
+        prop.fetchMember();
+        prop.fetchMetaData();
+        resolve()
+    });
 }
 
 export default reduxForm({
@@ -226,4 +238,4 @@ export default reduxForm({
         if (value.provinceSearch && value.provinceSearch.length !== 0) query += 'province="' + value.provinceSearch + '" ';
         dispatch(searchMember(query))
     }
-})(connect(mapStateToProp, mapDispatchToProp)(NewComponent))
+})(connect(mapStateToProp, mapDispatchToProp)(onEnter(fetchThing)(NewComponent)))

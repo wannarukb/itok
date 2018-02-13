@@ -106,6 +106,8 @@ export const saveOrUpdate = (data, file) => {
         if (data2.id == null) {
             after = () => {
                 dispatch(reset('member-edit-form'))
+                $(".fileinput").fileinput("clear");
+
                 dispatch(clearCurrentMember())
                 dispatch(push('/member/new'))
             }

@@ -28,8 +28,7 @@ let store = createStore(combineReducers({
     }
 ), applyMiddleware(middleware, thunk));
 
-store.dispatch(fetchMember());
-store.dispatch(fetchMetaData());
+
 
 
 ReactDOM.render(
