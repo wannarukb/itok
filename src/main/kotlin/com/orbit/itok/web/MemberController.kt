@@ -126,7 +126,7 @@ class MemberController {
                 SelectField("สมาชิกเครือข่าย", "สมาชิกเครือข่าย"),
                 SelectField("ยังไม่เป็นสมาชิกเครือข่าย", "ยังไม่เป็นสมาชิกเครือข่าย")
         ), jobTypes = settingServiceImpl.jobTypes.map { SelectField(it, it) },
-                organizationTypes = settingServiceImpl.jobTypes.map { SelectField(it, it) },
+                organizationTypes = settingServiceImpl.organizationTypes.map { SelectField(it, it) },
                 maritalStatus = listOf("โสด", "หย่า", "สมรส", "หม้าย").map { SelectField(it, it) },
                 educationDegrees = settingServiceImpl.educationDegrees.map { SelectField(it, it) },
                 specialties = settingServiceImpl.specialties.map { SelectField(it, it) },
