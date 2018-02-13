@@ -4,8 +4,8 @@ import DateTime from 'react-datetime'
 const DateField = ({input, description, required}) => {
     let requiredStar = null;
     if (required) requiredStar = <span data-th-if="${required}" style={{color: 'red'}}>*</span>;
+    if (input.value === 'Invalid date') input.value = ''
     return (
-
         <div className="form-group row">
             <label className="col-md-4 control-label text-md-right" data-th-for="${name}"><span
                 data-th-text="${label}">{description}</span>&nbsp;

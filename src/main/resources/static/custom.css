@@ -817,7 +817,7 @@ fieldset[disabled]
 }
 
 .control-label, .form-control-label{
-    font-size: 0.85em;
+    font-size: 12.8px;
     font-weight: normal;
 }
 #react-paginate ul {

@@ -343,7 +343,7 @@ const NewComponent = ({
                                                             <div className="col-sm-12">
                                                                 <Field component={TextField}
                                                                        name={'membershipTemp.associate'}
-                                                                       description={'ชื่อสกุลของเครือข่ายที่ทำงานร่วมกัน'}/>
+                                                                       description={'ชื่อสกุลของเครือข่ายที่ทำงานร่วมกัน'} full={true}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>*/}
                                                             </div>

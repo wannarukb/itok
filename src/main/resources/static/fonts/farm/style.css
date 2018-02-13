@@ -30,3 +30,15 @@
 .farmer-farmer:before {
   content: "\e901";
 }
+.panel-title{
+  font-size: 15px;
+}
+
+.form-control{
+  font-size: 12.6px;
+}
+
+.Select-control{
+  font-size:12.6px;
+  font-weight: 400;
+}

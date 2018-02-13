@@ -27,7 +27,7 @@ const SelectField = ({input, description, itemList}) => {
         <div className="form-group row">
             <label className="col-md-4 control-label text-md-right" htmlFor="default-select" data-th-text="${label}">
                 {description}</label>
-            <div className="col-md-7">
+            <div className="col-md-8">
                 <Select
                     placeholder={'เลือก...'}
                     name={input.name}
