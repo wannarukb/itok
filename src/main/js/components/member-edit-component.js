@@ -77,9 +77,9 @@ const NewComponent = ({
                                     <br/>
                                     <div>
                                 <span className="btn btn-default btn-file">
-                                <i className="fa fa-image" aria-hidden="true"/>
-                                <span className="fileinput-new"> เลือกรูปภาพ</span>
-                                <span className="fileinput-exists"> เปลี่ยนรูปภาพ</span>
+                                {/*<i className="fa fa-image" aria-hidden="true"/>*/}
+                                <span className="fileinput-new"> เปลี่ยนรูป</span>
+                                <span className="fileinput-exists"> เปลี่ยนรูป</span>
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -92,8 +92,9 @@ const NewComponent = ({
 
                                 </span>
                                         <a href="#" className="btn btn-danger fileinput-exists"
-                                           data-dismiss="fileinput">
-                                            <i className="fa fa-trash" aria-hidden="true"/> ลบรูปภาพ</a>
+                                           data-dismiss="fileinput" style={{marginLeft:5}}>
+                                            {/*<i className="fa fa-trash" aria-hidden="true"/> */}
+                                            ไม่เปลี่ยนรูป</a>
                                     </div>
                                 </div>
                                 <br/>
