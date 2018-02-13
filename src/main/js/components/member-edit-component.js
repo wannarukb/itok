@@ -6,7 +6,7 @@ import DateField from './date-field'
 import Address from './address'
 import {Field, reduxForm} from "redux-form";
 import CheckboxField from "./checkbox-field";
-import {saveOrUpdate, selectMember, setFile} from "../duck/member";
+import {clearCurrentMember, saveOrUpdate, selectMember, setFile} from "../duck/member";
 import onEnter from 'react-router-enter'
 import {Link} from "react-router-dom";
 import {swal} from "react-redux-sweetalert";
@@ -387,6 +387,7 @@ function mapStateToProp(state, ownProps) {
 function mapDispatchToProp(dispatch) {
     return {
         selectMember: (id) => dispatch(selectMember(id)),
+        clearMember:()=> dispatch(clearCurrentMember()),
         setFile: (file) => dispatch(setFile(file))
     }
 }
@@ -402,6 +403,8 @@ function fetchThings(props) {
             // $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
             // }, 3000);
 
+        }else{
+            props.clearMember();
         }
         resolve()
 
