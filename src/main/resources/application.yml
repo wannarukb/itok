@@ -1,3 +1,4 @@
+
 gcs_url: https://storage.googleapis.com/itok-project.appspot.com/
 spring:
   thymeleaf:
@@ -5,3 +6,6 @@ spring:
     cache: false
   jmx:
     enabled: false
+  http:
+    multipart:
+      enabled: false

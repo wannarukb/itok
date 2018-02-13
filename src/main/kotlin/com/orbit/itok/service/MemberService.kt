@@ -189,9 +189,22 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     override fun update(id: Long, member: Member) {
         member.id = id
         val membershipTemp = member.membershipTemp
+
         if (membershipTemp != null) {
-            val now = ofy().save().entity(membershipTemp).now()
-            member.membership = Ref.create(now)
+            val findOne = findOne(id)
+            if (findOne != null) {
+                val get = findOne.membership?.get()
+                if (get!=null){
+                    val copy = membershipTemp.copy(id=get.id)
+                    ofy().save().entity(copy)
+                }else{
+                    val entity = ofy().save().entity(membershipTemp).now()
+                    member.membership = Ref.create(entity)
+                }
+            }
+
+//            val now = ofy().save().entity(membershipTemp).now()
+//            member.membership = Ref.create(now)
         }
         ofy().save().entity(member)
         index.delete(id.toString())
