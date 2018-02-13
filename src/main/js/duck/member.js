@@ -7,6 +7,7 @@ import {push} from 'react-router-redux'
 import {createActions, handleActions} from "redux-actions";
 import {swal} from "react-redux-sweetalert";
 import moment from 'moment'
+import {reset} from "redux-form";
 
 export const {
     fetchComplete, fetchMetaDataComplete, updateSuccess, fetchMemberSuccess,
@@ -58,9 +59,9 @@ const reducer = handleActions({
         return {...state, file: action.payload}
     },
     [clearCurrentMember](state) {
-        return {...state, currentMember: {}}
+        return {...state, currentMember: {status: 'สมาชิกเครือข่าย'}}
     }
-}, {members: [], currentMember: {}, isSearching: false, query: '', pageCount: 1, file: null});
+}, {members: [], currentMember: {status: 'สมาชิกเครือข่าย'}, isSearching: false, query: '', pageCount: 1, file: null});
 
 
 export default reducer
@@ -104,6 +105,7 @@ export const saveOrUpdate = (data, file) => {
 
         if (data2.id == null) {
             after = () => {
+                dispatch(reset('member-edit-form'))
                 dispatch(clearCurrentMember())
                 dispatch(push('/member/new'))
             }

@@ -19,9 +19,12 @@ const NewComponent = ({
                           memberTypes, organizationTypes, jobTypes, imageUrl, setFile, memberId, editOrAdd
                       }) => {
     let file = null;
+    const gender = [{id: 'true', name: 'ชาย'}, {id: 'false', name: 'หญิง'}];
 
     function upload() {
         setFile(file.files)
+
+
     }
 
     return (
@@ -78,7 +81,7 @@ const NewComponent = ({
                                     <div>
                                 <span className="btn btn-default btn-file">
                                 {/*<i className="fa fa-image" aria-hidden="true"/>*/}
-                                <span className="fileinput-new"> เปลี่ยนรูป</span>
+                                    <span className="fileinput-new"> เปลี่ยนรูป</span>
                                 <span className="fileinput-exists"> เปลี่ยนรูป</span>
                                 <input
                                     type="file"
@@ -92,7 +95,7 @@ const NewComponent = ({
 
                                 </span>
                                         <a href="#" className="btn btn-danger fileinput-exists"
-                                           data-dismiss="fileinput" style={{marginLeft:5}}>
+                                           data-dismiss="fileinput" style={{marginLeft: 5}}>
                                             {/*<i className="fa fa-trash" aria-hidden="true"/> */}
                                             ไม่เปลี่ยนรูป</a>
                                     </div>
@@ -139,11 +142,10 @@ const NewComponent = ({
                                                                        description={'คำนำหน้าชื่อ'}/>
 
                                                                 <Field component={TextField} name={'firstName'}
-                                                                       description={'ชื่อ'}/>
+                                                                       description={'ชื่อ'} required={true}/>
                                                                 <Field component={TextField} name={'lastName'}
-                                                                       description={'นามสกุล'}/>
-                                                                <Field component={TextField} name={'nickname'}
-                                                                       description={'ชื่อเล่น'}/>
+                                                                       description={'นามสกุล'} required={true}/>
+
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/TextField :: input (#{firstName}, 'firstName', true)"/>*/}
                                                                 {/*<input*/}
@@ -153,11 +155,12 @@ const NewComponent = ({
                                                                 {/*<input data-th-if="*{id} != null" data-th-replace="fragments/FileField :: file (#{image}, 'file[]', false)"/>*/}
                                                                 <Field component={SelectField} name={'status'}
                                                                        itemList={status}
-                                                                       description={'สถานะการเป็นสมาชิก'}/>
+                                                                       description={'สถานะสมาชิก'}/>
                                                                 <Field component={DateField} name={'birthday'}
                                                                        description={'วันเกิด'}/>
                                                                 <Field component={TextField} name={'citizenId'}
-                                                                       description={'หมายเลขบัตรประชาชน'}/>
+                                                                       description={'เลขบัตรประชาชน'}/>
+
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/SelectField :: select (#{status}, 'status', ${status}, false)"/>*/}
                                                                 {/*<input*/}
@@ -165,6 +168,17 @@ const NewComponent = ({
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/TextField :: input (#{citizenId}, 'citizenId', false)"/>*/}
                                                             </div>
+                                                        </div>
+                                                        <div className={'row'}>
+                                                            <div className="col-sm-6"><Field component={TextField}
+                                                                                             name={'nickname'}
+                                                                                             description={'ชื่อเล่น'}/>
+                                                            </div>
+                                                            <div className="col-sm-6"><Field component={SelectField}
+                                                                                             name={'isMale'}
+                                                                                             itemList={gender}
+                                                                                             description={'เพศ'}/></div>
+
                                                         </div>
                                                         <div className="row">
                                                             <div className="col-sm-6">
@@ -192,7 +206,8 @@ const NewComponent = ({
                                                         <div className="row">
                                                             <div className="col-sm-6">
                                                                 <Field component={TextField} name={'mobile'}
-                                                                       description={'เบอร์โทรศัพท์มือถือ'}/>
+                                                                       description={'เบอร์โทรศัพท์มือถือ'}
+                                                                       required={true}/>
                                                                 <Field
                                                                     component={TextField} name={'email'}
                                                                     description={'อีเมลล์'}/>
@@ -311,7 +326,7 @@ const NewComponent = ({
                                                         <div className="row">
                                                             <div className="col-sm-12">
                                                                 <Field component={SelectFieldMultiple}
-                                                                       description={'ความเป็นสมาชิกภาพองค์กรหรือสมาคม'}
+                                                                       description={'สมาชิกภาพองค์กรหรือสมาคม'}
                                                                        name={'membershipTemp.typeOrganization'}
                                                                        itemList={organizationTypes}/>
                                                                 {/*<input*/}
@@ -319,7 +334,7 @@ const NewComponent = ({
                                                             </div>
                                                             <div className="col-sm-12">
                                                                 <Field component={SelectFieldMultiple}
-                                                                       description={'ความเชี่ยวชาญพิเศษด้านการเกษตร'}
+                                                                       description={'ความเชี่ยวชาญพิเศษด้านเกษตร'}
                                                                        name={'membershipTemp.agricultureSpecialty'}
                                                                        itemList={specialties}/>
                                                                 {/*<div className="form-group row">*/}
@@ -345,7 +360,8 @@ const NewComponent = ({
                                                             <div className="col-sm-12">
                                                                 <Field component={TextField}
                                                                        name={'membershipTemp.associate'}
-                                                                       description={'ชื่อสกุลเครือข่ายที่ทำงานร่วมกัน'} full={true}/>
+                                                                       description={'ชื่อสกุลเครือข่ายที่ทำงานร่วมกัน'}
+                                                                       full={true}/>
                                                                 {/*<input*/}
                                                                 {/*data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>*/}
                                                             </div>
@@ -363,6 +379,7 @@ const NewComponent = ({
             </div>
         </form>
     );
+
 };
 
 
@@ -379,7 +396,7 @@ function mapStateToProp(state, ownProps) {
         specialties: state.member.specialties,
         memberTypes: state.member.memberTypes,
         initialValues: state.member.currentMember,
-        imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/profile.png',
+        imageUrl: (state.member.currentMember.image) ? state.member.currentMember.image.imageUrl : '/image/default-profile.jpg',
         memberId: (state.member.currentMember.membershipTemp) ? state.member.currentMember.membershipTemp.membershipId : '',
         editOrAdd: (state.member.currentMember.id) ? 'แก้ไข' : 'เพิ่ม'
     }
@@ -389,7 +406,7 @@ function mapStateToProp(state, ownProps) {
 function mapDispatchToProp(dispatch) {
     return {
         selectMember: (id) => dispatch(selectMember(id)),
-        clearMember:()=> dispatch(clearCurrentMember()),
+        clearMember: () => dispatch(clearCurrentMember()),
         setFile: (file) => dispatch(setFile(file))
     }
 }
@@ -405,7 +422,7 @@ function fetchThings(props) {
             // $('.datepicker').datepicker({language: 'th-th', format: 'dd/mm/yyyy'})
             // }, 3000);
 
-        }else{
+        } else {
             props.clearMember();
         }
         resolve()

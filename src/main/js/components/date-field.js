@@ -10,7 +10,7 @@ const DateField = ({input, description, required}) => {
             <label className="col-md-4 control-label text-md-right" data-th-for="${name}"><span
                 data-th-text="${label}">{description}</span>&nbsp;
                 {requiredStar}</label>
-            <div className="col-md-7">
+            <div className="col-md-8">
                 {/*<input  type="text" className="form-control datepicker" {...input}/>*/}
                 <DateTime {...input} dateFormat={'DD/MM/YYYY'} timeFormat={false} />
             </div>
