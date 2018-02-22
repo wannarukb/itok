@@ -550,6 +550,7 @@
 
                                     </fieldset>
                                 </div>
+
                                 <div class="row">
                                     <table class="table table-striped">
                                         <thead>
@@ -904,26 +905,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="datetimepicker1">วันที่จัดเก็บข้อมูล</label>
-                                            <div id="datetimepicker1" class="input-group">
-                                                <input id="datepicker2i" type="text" class="form-control"/>
+                                            <label for="datetimepicker01">วันที่จัดเก็บข้อมูล</label>
+                                            <div id="datetimepicker01" class="input-group">
+                                                <input id="datepicke01i" type="text" class="form-control"/>
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="catagory">ประเภทข้อมูลที่จัดเก็บ</label>
-                                            <select data-width="auto"
-                                                    data-minimum-results-for-search="10"
-                                                    tabindex="-1"
-                                                    class="select2 form-control" id="catagory">
-                                                <option value="value01">สำเนาเอกสารสิทธิ์</option>
-                                                <option value="value02">ภาพถ่ายแปลงที่ดิน</option>
-                                                <option value="value03">ภาพถ่ายทางอากาศแปลงที่ดิน</option>
-                                                <option value="value04">ภาพร่างการออกแบบการจัดการพืนที่</option>
-                                                <option value="value05">ภาพถ่ายการออกแบบการจัดการพืนที่</option>
-                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="camera">จุดที่ตั้งกล้อง</label>
@@ -953,35 +941,65 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9">
+                                        <div class="row" id="comparePanel" style="display: none;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="compareBox"></div>
+                                                    <br/>
+                                                    <p><b>ข้อมูลภาพถ่าย</b> : fileName</p>
+                                                    <p><b>วันที่</b> : 20/02/2018</p>
+                                                    <p><b>จุดที่ตั้งกล้อง</b> : 1</p>
+                                                    <p><b>คำอธิบาย</b> : test</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="compareBox"></div>
+                                                    <br/>
+                                                    <p><b>ข้อมูลภาพถ่าย</b> : fileName</p>
+                                                    <p><b>วันที่</b> : 20/02/2018</p>
+                                                    <p><b>จุดที่ตั้งกล้อง</b> : 1</p>
+                                                    <p><b>คำอธิบาย</b> : test</p>
+                                                </div>
+                                            </div>
+                                            <div class="row pad-top-15" id="compareButtonCancel">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-inverse" onclick="cancelCompare()">ยกเลิก</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="compareButton">
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" class="btn btn-primary" onclick="opencompare()">เปรียบเทียบภาพถ่าย</button>
+                                            </div>
+                                        </div>
+                                        <div class="row pad-top-15 ">
+                                            <div class="col-md-2" style="padding-left: 7.5px !important;">
+                                                <a data-toggle="modal" data-target="#examplePicture">
+                                                    <img data-th-src="@{/image/profile.png}"  src="../static/image/profile.png" class="img-responsive"/>
+                                                    <p class="text-uploader">fileName</p>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <img data-th-src="@{/image/profile.png}" src="../static/image/profile.png" class="img-responsive "/>
+                                                <p class="text-uploader">fileName</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <img data-th-src="@{/image/profile.png}" src="../static/image/profile.png" class="img-responsive "/>
+                                                <p class="text-uploader">fileName</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <img data-th-src="@{/image/profile.png}" src="../static/image/profile.png" class="img-responsive "/>
+                                                <p class="text-uploader">fileName</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <img data-th-src="@{/image/profile.png}" src="../static/image/profile.png" class="img-responsive"/>
+                                                <p class="text-uploader">fileName</p>
+                                            </div>
+                                            <div class="col-md-2"  style="padding-left: 7.5px !important;">
+                                                <img data-th-src="@{/image/profile.png}" src="../static/image/profile.png" class="img-responsive "/>
+                                                <p class="text-uploader">fileName</p>
+                                            </div>
+                                        </div>
 
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Files</th>
-                                                <th>Size</th>
-                                                <th>Action</th>
-                                            </tr>
-
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-
-                                            </tr>
-                                            <tr data-th-each="l : ${files}">
-                                                <td data-th-text="${l.fileName}"></td>
-                                                <td data-th-text="${l.readableFileSize()}"></td>
-                                                <td class="text-center">
-                                                    <a class="btn-action"
-                                                       data-th-href="@{/land/download/{key}(key=${l.key})}">
-                                                        <i class="fa fa-download" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a class="btn-action">
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -1004,6 +1022,16 @@
 
     <!--<script data-gcs-src="" src="js/form-elements.js"></script>-->
     <script>
+
+        function opencompare(){
+            $('#comparePanel').show();
+            $('#compareButton').hide();
+        }
+
+        function cancelCompare(){
+            $('#comparePanel').hide();
+            $('#compareButton').show();
+        }
         $(function () {
             /* Inspired by Lee Byron's test data generator. */
             function _stream_layers(n, m, o) {

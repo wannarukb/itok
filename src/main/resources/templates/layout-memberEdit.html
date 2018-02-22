@@ -1,10 +1,625 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-layout-decorator="layout">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>ITOK - Member List</title>
+    <link rel="stylesheet" href="/js/bootstrap-datepicker-thai-thai/css/datepicker.css"/>
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+         chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+         https://code.google.com/p/chromium/issues/detail?id=332189
+         */
+    </script>
+    <style>
+
+
+    </style>
 </head>
 <body>
-$END$
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+    <main id="content" class="content" role="main" data-layout-fragment="main" style="padding: 10px;">
+        <form method="post" data-th-object="${member}" enctype="multipart/form-data" id="theform">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="page-title font-supermarket">
+                        <!--data-th-text="#{new}"-->
+                        <span>เพิ่ม</span> -
+                        <span class="fw-semi-bold" data-th-text="#{member}">Inputs &amp; Controls</span>
+                    </h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-check" aria-hidden="true"></i> บันทึก
+                    </button>
+                    <button type="button" class="btn btn-inverse"
+                            data-th-onclick="'window.location=\'' + @{/member} + '\''">
+                        <i class="fa fa-times" aria-hidden="true"></i> ยกเลิก
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <section class="widget">
+                        <div class="widget-body clearfix">
+                            <span class="">รหัสสมาชิก</span><br/>
+                            <span class="widget-label">X00000001</span>
+                        </div>
+                    </section>
+                    <section class="widget">
+                        <div class="widget-body clearfix">
+                            <div class="form-group">
+                            <span>
+                                รูปประจำตัว
+                            </span><br/>
+                                <div class="fileinput fileinput-new" data-provides="fileinput"
+                                     style="width: 100%; margin-bottom: 0px;">
+                                    <div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
+                                        <!--<img data-th-if="*{image} == null" data-src="holder.js/100%x100%" alt="..." src="">-->
+                                        <!--<img data-th-if="*{image} != null" data-th-src="*{image.imageUrl}"-->
+                                             <!--class="img-responsive">-->
+                                    </div>
+
+                                    <div class="fileinput-preview fileinput-exists thumbnail"
+                                         style="max-width: 100%; max-height: 150px;"></div>
+                                    <br/>
+                                    <div>
+                                    <span class="btn btn-default btn-file">
+                                        <i class="fa fa-image" aria-hidden="true"></i>
+                                        <span class="fileinput-new"> เลือกรูปภาพ</span>
+                                        <span class="fileinput-exists"> เปลี่ยนรูปภาพ</span>
+                                        <input type="file" name="file[]">
+                                    </span>
+                                        <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> ลบรูปภาพ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="clearfix">
+                                <ul id="tabs1" class="nav nav-tabs pull-left">
+                                    <li class="active">
+                                        <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลส่วนบุคคล</a>
+                                    </li>
+                                    <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">ข้อมูลการเป็นสมาชิก</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tabs1c" class="tab-content mb-lg">
+                                <div class="tab-pane clearfix active" id="tab1">
+                                    <div class="col-lg-12">
+                                        <section class="widget widget-custom-padding">
+                                            <div class="widget-body">
+                                                <div class="form-horizontal" role="form" method="post">
+                                                    <div class="section">
+                                                        <div class="section-title" data-toggle="collapse" data-target="#section1">
+                                                            <a>
+                                                                <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> ข้อมูลประวัติ
+                                                            </a>
+                                                        </div>
+                                                        <div id="section1" class="collapse in">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="#{title}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="default-select">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label  class="col-md-4 form-control-label text-md-right"><span data-th-text="#{firstName}">Normal</span>
+                                                                            &nbsp;<span class="red">*</span></label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label  class="col-md-4 form-control-label text-md-right"><span data-th-text="#{lastName}">Normal</span>
+                                                                            &nbsp;<span class="red">*</span></label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="#{status}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="status">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+
+                                                                        <label class="col-md-4 control-label text-md-right" >
+                                                                            <span data-th-text="#{birthday}">In place</span></label>
+                                                                        <div class="col-md-7">
+
+                                                                            <input type="text" class="form-control datepicker"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label  class="col-md-4 form-control-label text-md-right">
+                                                                            <span data-th-text="#{citizenId}">Normal</span>
+                                                                        </label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="#{maritalStatus}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="maritalStatus">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="default-select" data-th-text="#{educationDegrees}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="educationDegrees">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section">
+                                                        <div class="section-title" data-toggle="collapse" data-target="#section2">
+                                                            <a>
+                                                                <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> ข้อมูลการติดต่อ
+                                                            </a>
+                                                        </div>
+                                                        <div id="section2" class="collapse in">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label  class="col-md-4 form-control-label text-md-right">
+                                                                            <span data-th-text="#{mobile}">Normal</span>
+                                                                        </label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label  class="col-md-4 form-control-label text-md-right">
+                                                                            <span data-th-text="#{email}">Normal</span>
+                                                                        </label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label  class="col-md-4 form-control-label text-md-right">
+                                                                            <span data-th-text="#{facebook}">Normal</span>
+                                                                        </label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label  class="col-md-4 form-control-label text-md-right">
+                                                                            <span data-th-text="#{line}">Normal</span>
+                                                                        </label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section">
+                                                        <div class="section-title" data-toggle="collapse" data-target="#section3">
+                                                            <a>
+                                                                <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> ข้อมูลที่อยู่อาศัย
+                                                            </a>
+                                                        </div>
+                                                        <div id="section3" class="collapse in">
+                                                            <div class="form-group row">
+                                                                <!--<label class="col-md-2 control-label text-md-right" for="default-select" data-th-text="${label}">Default-->
+                                                                <!--select</label>-->
+                                                                <div class="col-md-12" style="padding: 0px 25px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4" style="padding-right: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{number}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{number}, 'address.number', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{moo}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{moo}, 'address.moo', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4" style="padding-left: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{village}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{village}, 'address.village', false)">-->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-4"  style="padding-right: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{alley}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{alley}, 'address.alley', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{road}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{road}, 'address.road', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4"  style="padding-left: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{province}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{province}, 'address.province', true)">-->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-4"  style="padding-right: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{district}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{district}, 'address.district', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{subdistrict}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{subdistrict}, 'address.subdistrict', false)">-->
+                                                                        </div>
+                                                                        <div class="col-md-4"  style="padding-left: 30px;">
+                                                                            <div class="form-group">
+                                                                                <label  class="form-control-label text-md-right"><span data-th-text="#{postalCode}">Normal</span></label>
+                                                                                <div class="address-group">
+                                                                                    <input class="form-control" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<input data-th-replace="fragments/TextField2 :: input (#{postalCode}, 'address.postalCode', false)">-->
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                    <div class="col-lg-12">
+                                        <section class="widget widget-custom-padding">
+                                            <div class="widget-body">
+                                                <div class="form-horizontal" role="form" method="post">
+                                                    <div class="section">
+                                                        <div class="section-title" data-toggle="collapse" data-target="#section4">
+                                                            <a>
+                                                                <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i>
+                                                                <span data-th-text="#{memberDetail}"></span>
+                                                            </a>
+                                                        </div>
+                                                        <div id="section4" class="collapse in padding-around--x">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label  class="col-md-4 form-control-label text-md-right"><span data-th-text="#{membershipId}">Normal</span></label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/TextField :: input (#{membershipId}, 'membershipTemp.membershipId', false)"/>-->
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="yearJoin" data-th-text="#{yearJoin}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="yearJoin">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{yearJoin}, 'membershipTemp.yearJoin', ${yearJoin}, false)"/>-->
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="row form-group">
+                                                                        <label class="col-md-4 form-control-label text-md-right"></label>
+                                                                        <div class="col-md-7">
+                                                                            <div class="checkbox abc-checkbox abc-checkbox-primary">
+                                                                                <input id="checkbox2" type="checkbox" checked>
+                                                                                <label for="checkbox2">
+                                                                                    เป็นตัวแทนสมาชิกประจำหมู่บ้าน
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="yearJoin" data-th-text="#{membershipType}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="membershipType">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{membershipType}, 'membershipTemp.type', ${memberTypes}, false)"/>-->
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="mainJob" data-th-text="#{mainJob}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="mainJob">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="secondJob" data-th-text="#{secondJob}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${title}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="secondJob">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{mainJob}, 'membershipTemp.mainJob', ${jobTypes}, false)"/>-->
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{secondJob}, 'membershipTemp.secondJob', ${jobTypes}, false)"/>-->
+
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="previousJob" data-th-text="#{previousJob}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${previousJob}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="previousJob">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{previousJob}, 'membershipTemp.previousJob', ${jobTypes}, false)"/>-->
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right" for="typeOrganization" data-th-text="#{typeOrganization}">Default
+                                                                            select</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="title"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${typeOrganization}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1"
+                                                                                    class="select2 form-control" id="typeOrganization">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" >
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/SelectField :: select (#{typeOrganization}, 'membershipTemp.typeOrganization', ${organizationTypes}, false)"/>-->
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right">ความเชี่ยวชาญพิเศษ<br/>ด้านเกษตร</label>
+                                                                        <div class="col-md-7">
+                                                                            <!--<span data-th-text="*{__${name}__}"></span>-->
+                                                                            <select data-placeholder="Which galaxy is closest to Milky Way?"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${agricultureSpecialty}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1" multiple
+                                                                                    class="select2 form-control" id="agricultureSpecialty">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" data-th-value="${l.id}"
+                                                                                        data-th-selected="${l.name} == *{__${name}__}">
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <!--<input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureSpecialty}, 'membershipTemp.agricultureSpecialty', ${specialties}, false)"/>-->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-4 control-label text-md-right">ความสนใจพิเศษ<br/>ด้านเกษตร</label>
+                                                                        <div class="col-md-7">
+                                                                            <select data-placeholder="Which galaxy is closest to Milky Way?"
+                                                                                    data-th-placeholder="#{choose} + ' - ' + ${agricultureInterest}"
+                                                                                    data-width="auto"
+                                                                                    data-minimum-results-for-search="10"
+                                                                                    tabindex="-1" multiple
+                                                                                    class="select2 form-control" id="agricultureInterest">
+                                                                                <option value="Magellanic" data-th-each="l : ${list}"
+                                                                                        data-th-text="${l.name}" data-th-value="${l.id}"
+                                                                                        data-th-selected="${l.name} == *{__${name}__}">
+                                                                                    Large Magellanic Cloud
+                                                                                </option>
+                                                                            </select>
+                                                                            <!--<input data-th-replace="fragments/SelectFieldMultiple :: selectMultiple(#{agricultureInterest}, 'membershipTemp.agricultureInterest', ${specialties}, false)"/>-->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label  class="col-md-4 form-control-label text-md-right"><span data-th-text="#{associate}">Normal</span></label>
+                                                                        <div class="col-md-7">
+                                                                            <input class="form-control" type="text" data-th-required="true"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<input data-th-replace="fragments/TextField :: input (#{associate}, 'membershipTemp.associate', false)"/>-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+
+
+<!-- page specific js -->
+<div data-layout-fragment="script">
+
+    <script type="text/javascript">
+        $(function() {
+
+            function toggleChevron(e) {
+                $(e.target)
+                    .prev('.section-title')
+                    .find(".section-icon")
+                    .toggleClass('rotate-icon');
+            }
+
+            $('.section').on('hide.bs.collapse', toggleChevron);
+            $('.section').on('show.bs.collapse', toggleChevron);
+        })
+    </script>
+</div>
 </body>
 </html>

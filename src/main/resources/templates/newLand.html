@@ -29,8 +29,48 @@
             <div class="col-md-3">
                 <section class="widget">
                     <div class="widget-body clearfix">
-                        <span class="">รหัสสมาชิก</span><br/>
-                        <span class="widget-label">X00000001</span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="">หมายเลขสมาชิก</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="widget-label">X00000001</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <span class="">ชื่อ</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="widget-label">สมชาย</span>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="">นามสกุล</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="widget-label">ใจดี</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="widget">
+                    <div class="widget-body clearfix">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>ขนาดพื้นที่รวม</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <b>XXX</b> ไร่
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <b>XXX</b> งาน
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <b>XXX</b> ตร.ว.
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section class="widget">
@@ -53,18 +93,29 @@
                 </section>
             </div>
             <div class="col-md-9">
-                <div class="tab-pane">
-                    <div class="tab-content mb-lg" style="overflow: hidden;">
-                        <div class="col-lg-12">
-                            <section class="widget  widget-custom-padding">
-                                <div class="widget-body">
-                                    <div class="form-horizontal" role="form" method="post">
-                                        <fieldset>
-                                            <legend class="section-title"><strong >ข้อมูลเอกสารสิทธิ์ที่ดิน</strong> </legend>
-                                        </fieldset>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="clearfix">
+                            <ul id="tabs1" class="nav nav-tabs pull-left">
+                                <li class="active">
+                                    <a data-target="#tab1" data-toggle="tab" aria-expanded="true">ข้อมูลแปลงที่ดิน</a>
+                                </li>
+                                <li class=""><a data-target="#tab2" data-toggle="tab" aria-expanded="false">ข้อมูลเอกสารสิทธิ์ที่ดิน</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="tabs1c" class="tab-content mb-lg">
+                            <div class="tab-pane clearfix active" id="tab1">
+                                <div class="section">
+                                    <div class="section-title" data-toggle="collapse" data-target="#section1">
+                                        <a>
+                                            <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> รายละเอียดแปลงที่ดิน
+                                        </a>
+                                    </div>
+                                    <div id="section1" class="collapse in">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="form-group">
+                                                <div class="form-group row">
                                                     <label class="col-md-4 form-control-label text-md-right">
                                                         <span>ชื่อแปลงที่ดิน</span>
                                                         &nbsp;<span class="red" >*</span>
@@ -74,249 +125,35 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>การถือครองที่ดิน</span>
+                                                <div class="form-group row">
+                                                    <label class="col-xs-3 form-control-label text-md-right">
+                                                        <span>ขนาดพื้นที่รวม</span>
                                                     </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
+                                                    <div class="col-xs-2">
+                                                        <input type="number" class="form-control"/>
                                                     </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{posessionType}, 'posessionType', false)"/>-->
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>เอกสารสิทธิ์</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control">
-                                                            <option>โฉนด (น.ส.4 / น.ส.4ก /  น.ส.4ข /  น.ส.4ค /  น.ส.4ง /  น.ส.4จ)</option>
-                                                            <option>น.ส.3 / น.ส.3ก / น.ส.3ข</option>
-                                                            <option>น.ส.2 / น.ส.5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/SelectField :: select (#{posessionDocument}, 'posessionDocument', ${posessionDocument}, false)"/>-->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                    <label class="col-xs-1 form-control-label text-md-left">
                                                         <span>ไร่</span>
                                                     </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
+                                                    <div class="col-xs-2">
+                                                        <input type="number" class="form-control"/>
                                                     </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{rai}, 'rai', false)"/>-->
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                    <label class="col-xs-1 form-control-label text-md-left">
                                                         <span>งาน</span>
                                                     </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
+                                                    <div class="col-xs-2">
+                                                        <input type="number" class="form-control"/>
                                                     </div>
+                                                    <label class="col-xs-1 form-control-label text-md-left">
+                                                        <span>ตร.ว.</span>
+                                                    </label>
                                                 </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{gnan}, 'gnan', false)"/>-->
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>วา</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
-                                                    </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{wah}, 'wah', false)"/>-->
-                                            </div>
-                                        </div>
-                                        <fieldset>
-                                            <legend class="section-title"><strong >ที่ตั้งแปลงที่ดิน</strong> </legend>
-                                        </fieldset>
-                                        <div class="row">
-                                            <div class="col-sm-12 text-center">
-                                                <p>
-                                                    <a href="#"  data-th-text="#{copyAddress}" class="btn btn-success"></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12">
                                                 <div class="form-group row">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>เลขที่</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{number}, 'address.number', false)">-->
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>หมู่ที่</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{moo}, 'address.moo', false)">-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>ชื่อหมู่บ้าน/อาคาร/ชุมชน</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{village}, 'address.village', false)">-->
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>ตรอก/ซอย</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{alley}, 'address.alley', false)">-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>ถนน</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{road}, 'address.road', false)">-->
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>จังหวัด</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{province}, 'address.province', true)">-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>เขต/อำเภอ</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{district}, 'address.district', false)">-->
-                                                            </div>
-                                                            <div class="col-md-6 ">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>แขวง/ตำบล</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{subdistrict}, 'address.subdistrict', false)">-->
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                                        <span>รหัสไปรษณีย์</span>
-                                                                    </label>
-                                                                    <div class="col-md-7">
-                                                                        <input class="form-control" type="text" />
-                                                                    </div>
-                                                                </div>
-                                                                <!--<input data-th-replace="fragments/TextField :: input (#{postalCode}, 'address.postalCode', false)">-->
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>ลุ่มน้ำ</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <select class="form-control">
-                                                            <option>ลุ่มน้ำปิง</option>
-                                                            <option>ลุ่มน้ำวัง</option>
-                                                            <option>ลุ่มน้ำยม</option>
-                                                            <option>ลุ่มน้ำน่าน</option>
-                                                            <option>ลุ่มน้ำเจ้าพระยา</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>-->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>ละติจูด</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
-                                                    </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>-->
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
-                                                        <span>ลองจิจูด</span>
-                                                    </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
-                                                    </div>
-                                                </div>
-                                                <!--<input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>-->
-                                            </div>
-                                        </div>
-                                        <fieldset>
-                                            <legend class="section-title"><strong >การใช้ประโยชน์จากที่ดิน</strong> </legend>
-                                        </fieldset>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
                                                     <label class="col-md-4 form-control-label text-md-right">
                                                         <span>ประเภทดิน</span>
                                                     </label>
@@ -333,11 +170,11 @@
                                                 <!--<input data-th-replace="fragments/SelectField :: select (#{soilType}, 'soilType', ${soilTypes}, false)"/>-->
                                             </div>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label text-md-right">
                                                         <span>ลักษณะที่ดิน</span>
                                                     </label>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-8">
                                                         <select class="form-control">
                                                             <option>ที่ราบลุ่ม</option>
                                                             <option>ที่ราบลุ่มน้ำท่วมขัง</option>
@@ -358,7 +195,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="form-group">
+                                                <div class="form-group row">
                                                     <label class="col-md-4 form-control-label text-md-right">
                                                         <span>ปัญหาในพื้นที่</span>
                                                     </label>
@@ -375,26 +212,26 @@
                                                 </div>
                                                 <!--<input data-th-replace="fragments/SelectField :: select (#{problem}, 'problem', ${problems}, false)"/>-->
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 form-control-label text-md-right">
                                                         <span>ต้องการให้พื้นที่เป็น</span>
                                                     </label>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-8">
                                                         <input class="form-control" type="text" />
                                                     </div>
                                                 </div>
                                                 <!--<input data-th-replace="fragments/TextField :: input (#{intendedPurpose}, 'intendedPurpose', false)"/>-->
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 form-control-label text-md-right">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group row">
+                                                    <label class="col-md-2 form-control-label text-md-right">
                                                         <span>แนวทางการใช้ประโยชน์ของที่ดิน</span>
                                                     </label>
-                                                    <div class="col-md-7">
-                                                        <input class="form-control" type="text" />
+                                                    <div class="col-md-10">
+                                                        <textarea class="form-control" rows="3" style="width: 95%;"></textarea>
                                                     </div>
                                                 </div>
                                                 <!--<input data-th-replace="fragments/TextField :: input (#{usage}, 'usage', false)"/>-->
@@ -402,7 +239,385 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                                <div class="section">
+                                    <div class="section-title" data-toggle="collapse" data-target="#section2">
+                                        <a>
+                                            <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> ที่ตั้งแปลงที่ดิน
+                                        </a>
+                                    </div>
+                                    <div id="section2" class="collapse in">
+                                        <div class="row">
+                                            <div class="col-sm-12 text-center">
+                                                <p>
+                                                    <a href="#"  data-th-text="#{copyAddress}" class="btn btn-success"></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>เลขที่</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{number}, 'address.number', false)">-->
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>หมู่ที่</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{moo}, 'address.moo', false)">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>ชื่อหมู่บ้าน/อาคาร/ชุมชน</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{village}, 'address.village', false)">-->
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>ตรอก/ซอย</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{alley}, 'address.alley', false)">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>ถนน</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{road}, 'address.road', false)">-->
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>จังหวัด</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{province}, 'address.province', true)">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>เขต/อำเภอ</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{district}, 'address.district', false)">-->
+                                                            </div>
+                                                            <div class="col-md-6 ">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>แขวง/ตำบล</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{subdistrict}, 'address.subdistrict', false)">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                                        <span>รหัสไปรษณีย์</span>
+                                                                    </label>
+                                                                    <div class="col-md-7">
+                                                                        <input class="form-control" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <!--<input data-th-replace="fragments/TextField :: input (#{postalCode}, 'address.postalCode', false)">-->
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                        <span>ลุ่มน้ำ</span>
+                                                    </label>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control">
+                                                            <option>ลุ่มน้ำปิง</option>
+                                                            <option>ลุ่มน้ำวัง</option>
+                                                            <option>ลุ่มน้ำยม</option>
+                                                            <option>ลุ่มน้ำน่าน</option>
+                                                            <option>ลุ่มน้ำเจ้าพระยา</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--<input data-th-replace="fragments/SelectField :: select (#{basin}, 'basin', ${basins}, false)"/>-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                        <span>ละติจูด</span>
+                                                    </label>
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                                <!--<input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>-->
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                        <span>ลองจิจูด</span>
+                                                    </label>
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                                <!--<input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section">
+                                    <div class="section-title" data-toggle="collapse" data-target="#section3">
+                                        <a>
+                                            <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> พิกัดกลางแปลงที่ดินบนแผนที่ และ วาดเส้นขอบเขตแปลงที่ดิน
+                                        </a>
+                                    </div>
+                                    <div id="section3" class="collapse in">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                        <span>ค่าพิกัดที่ตั้งละติจูด</span>
+                                                    </label>
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                                <!--<input data-th-replace="fragments/TextField :: input (#{lat}, 'lat', false)"/>-->
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 form-control-label text-md-right">
+                                                        <span>ค่าพิกัดที่ตั้งลองจิจูด</span>
+                                                    </label>
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                                <!--<input data-th-replace="fragments/TextField :: input (#{lng}, 'lng', false)"/>-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="map-draw text-center" style="width: 100%">
+                                                    Place Map Here
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab2">
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-12 text-right">
+                                        <button id="buttonAddDocument" type="button" class="btn btn-success" style="padding: 2px 12px;">
+                                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มเอกสารสิทธิ์
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="document01">
+                                    <div class="section" >
+                                        <div class="section-title" data-toggle="collapse" data-target="#section4">
+                                            <a>
+                                                <i class="section-icon glyphicon glyphicon-chevron-down" aria-hidden="true"></i> รายละเอียดเอกสารสิทธิ์ - 1
+                                            </a>
+                                        </div>
+                                        <div id="section4" class="collapse in">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>ชื่อเจ้าของกรรมสิทธิ์</span>
+                                                        </label>
+                                                        <div class="col-md-7">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>ประเภทการถือครอง</span>
+                                                        </label>
+                                                        <div class="col-md-7">
+                                                            <select class="form-control">
+                                                                <option>เจ้าของที่ดิน</option>
+                                                                <option>ครัวเรือน</option>
+                                                                <option>เช่า</option>
+                                                                <option>อื่นๆ</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>ประเภทเอกสารสิทธิ์</span>
+                                                        </label>
+                                                        <div class="col-md-7">
+                                                            <select class="form-control">
+                                                                <option>โฉนดที่ดิน</option>
+                                                                <option>นส. 3ก</option>
+                                                                <option>สปก. 4-01</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>เลขที่เอกสารสิทธิ์</span>
+                                                        </label>
+                                                        <div class="col-md-7">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>ระวาง</span>
+                                                        </label>
+                                                        <div class="col-md-7">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>เลขที่ดิน</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                        <label class="col-md-3 form-control-label text-md-right">
+                                                            <span>หน้าสำรวจ</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>เล่ม</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                        <label class="col-md-3 form-control-label text-md-right">
+                                                            <span>หน้า</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-md-right">
+                                                            <span>จำนวนเนื้อที่</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                        <label class="col-md-1 form-control-label text-left">
+                                                            <span>ไร่</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                        <label class="col-md-1 form-control-label text-left">
+                                                            <span>งาน</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-4 form-control-label text-left">
+                                                            <span>&nbsp;</span>
+                                                        </label>
+                                                        <div class="col-md-2">
+                                                            <input class="form-control" type="text" />
+                                                        </div>
+                                                        <label class="col-md-1 form-control-label text-left">
+                                                            <span>ตร.ว.</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <div class="form-group">
+                                                        <span>
+                                                            รูปเอกสารสิทธิ์ประกอบ
+                                                        </span><br/><br/>
+                                                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                                                             style="width: 100%; margin-bottom: 0px;">
+                                                            <div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
+                                                                <!--<img data-th-if="*{image} == null" data-src="holder.js/100%x100%" alt="..." src="">-->
+                                                                <!--<img data-th-if="*{image} != null" data-th-src="*{image.imageUrl}"-->
+                                                                <!--class="img-responsive">-->
+                                                            </div>
+
+                                                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                                                 style="max-width: 100%; max-height: 150px;"></div>
+                                                            <br/>
+                                                            <div>
+                                                                <span class="btn btn-default btn-file">
+                                                                    <i class="fa fa-image" aria-hidden="true"></i>
+                                                                    <span class="fileinput-new"> เลือกรูปภาพ</span>
+                                                                    <span class="fileinput-exists"> เปลี่ยนรูปภาพ</span>
+                                                                    <input type="file" name="file[]">
+                                                                </span>
+                                                                <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i> ลบรูปภาพ</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="placeNew">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -418,7 +633,15 @@
     <script type="text/javascript" src="/js/bootstrap-datepicker-thai-thai/js/bootstrap-datepicker-thai.js"></script>
     <script type="text/javascript"
             src="/js/bootstrap-datepicker-thai-thai/js/locales/bootstrap-datepicker.th.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
 
+            $("#buttonAddDocument").click(function(){
+                $("#document01").clone().appendTo("#placeNew");
+            });
+
+        });
+    </script>
 </div>
 </body>
 </html>

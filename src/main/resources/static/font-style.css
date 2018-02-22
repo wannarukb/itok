@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?xs2pdp');
-  src:  url('fonts/icomoon.eot?xs2pdp#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?xs2pdp') format('truetype'),
-    url('fonts/icomoon.woff?xs2pdp') format('woff'),
-    url('fonts/icomoon.svg?xs2pdp#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?kdg80q');
+  src:  url('fonts/icomoon.eot?kdg80q#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?kdg80q') format('truetype'),
+    url('fonts/icomoon.woff?kdg80q') format('woff'),
+    url('fonts/icomoon.svg?kdg80q#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,152 +24,155 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-line-logo:before {
-  content: "\e930";
-}
-.icon-presentation:before {
-  content: "\e924";
-}
-.icon-map:before {
-  content: "\e925";
-}
-.icon-wallet:before {
-  content: "\e926";
-}
-.icon-atm:before {
-  content: "\e927";
-}
-.icon-clipboard:before {
-  content: "\e92c";
-}
-.icon-payment-method:before {
-  content: "\e92d";
-}
-.icon-money:before {
-  content: "\e92e";
-}
-.icon-piggy-bank:before {
-  content: "\e92f";
-}
-.icon-soilPH:before {
-  content: "\e91b";
-}
-.icon-waterpercent:before {
-  content: "\e91c";
-}
-.icon-cereal:before {
-  content: "\e91d";
-}
-.icon-percentage:before {
-  content: "\e91e";
-}
-.icon-leaves-2:before {
-  content: "\e91f";
-}
-.icon-tree-silhouette:before {
-  content: "\e920";
-}
-.icon-o2-symbol-in-a-cloud:before {
-  content: "\e921";
-}
-.icon-humidity:before {
-  content: "\e922";
-}
-.icon-thermometer:before {
-  content: "\e923";
-}
-.icon-sprout:before {
-  content: "\e91a";
-}
-.icon-waterdrop:before {
-  content: "\e928";
-}
-.icon-pig:before {
-  content: "\e929";
-}
-.icon-grass:before {
-  content: "\e92a";
-}
-.icon-shovel-tool:before {
-  content: "\e92b";
-}
-.icon-corn-1:before {
-  content: "\e90d";
-}
-.icon-tomato:before {
-  content: "\e90e";
-}
-.icon-tree:before {
-  content: "\e90f";
-}
-.icon-ecology:before {
-  content: "\e910";
-}
-.icon-leaf-2:before {
-  content: "\e911";
-}
-.icon-plug-1:before {
-  content: "\e912";
-}
-.icon-recycle:before {
-  content: "\e913";
-}
-.icon-water:before {
-  content: "\e914";
-}
-.icon-cloud-and-rain:before {
-  content: "\e915";
-}
-.icon-rain:before {
-  content: "\e916";
-}
-.icon-shovel:before {
-  content: "\e917";
-}
-.icon-scarecrow:before {
-  content: "\e918";
-}
-.icon-sunflower:before {
-  content: "\e919";
-}
-.icon-fields:before {
+.icon-farmer:before {
   content: "\e900";
 }
-.icon-watering-can:before {
+.icon-fields:before {
   content: "\e901";
 }
-.icon-tractor:before {
+.icon-watering-can:before {
   content: "\e902";
 }
-.icon-barn2:before {
+.icon-tractor:before {
   content: "\e903";
 }
-.icon-rake:before {
+.icon-barn2:before {
   content: "\e904";
 }
-.icon-apples:before {
+.icon-rake:before {
   content: "\e905";
 }
-.icon-wheat-1:before {
-  content: "\e906";
-}
-.icon-corn3:before {
+.icon-apples:before {
   content: "\e907";
 }
-.icon-chicken:before {
+.icon-wheat-1:before {
   content: "\e908";
 }
-.icon-germination:before {
+.icon-corn3:before {
   content: "\e909";
 }
-.icon-carrot2:before {
+.icon-chicken:before {
   content: "\e90a";
 }
-.icon-windmill:before {
+.icon-germination:before {
   content: "\e90b";
 }
-.icon-wheat:before {
+.icon-carrot2:before {
   content: "\e90c";
+}
+.icon-windmill:before {
+  content: "\e90d";
+}
+.icon-wheat:before {
+  content: "\e90e";
+}
+.icon-corn-1:before {
+  content: "\e90f";
+}
+.icon-tomato:before {
+  content: "\e910";
+}
+.icon-tree:before {
+  content: "\e911";
+}
+.icon-ecology:before {
+  content: "\e912";
+}
+.icon-leaf-2:before {
+  content: "\e913";
+}
+.icon-plug-1:before {
+  content: "\e914";
+}
+.icon-recycle:before {
+  content: "\e915";
+}
+.icon-water:before {
+  content: "\e916";
+}
+.icon-cloud-and-rain:before {
+  content: "\e917";
+}
+.icon-rain:before {
+  content: "\e918";
+}
+.icon-shovel:before {
+  content: "\e919";
+}
+.icon-scarecrow:before {
+  content: "\e91a";
+}
+.icon-sunflower:before {
+  content: "\e91b";
+}
+.icon-sprout:before {
+  content: "\e91c";
+}
+.icon-soilPH:before {
+  content: "\e91d";
+}
+.icon-waterpercent:before {
+  content: "\e91e";
+}
+.icon-cereal:before {
+  content: "\e91f";
+}
+.icon-percentage:before {
+  content: "\e920";
+}
+.icon-leaves-2:before {
+  content: "\e921";
+}
+.icon-tree-silhouette:before {
+  content: "\e922";
+}
+.icon-o2-symbol-in-a-cloud:before {
+  content: "\e923";
+}
+.icon-humidity:before {
+  content: "\e924";
+}
+.icon-thermometer:before {
+  content: "\e925";
+}
+.icon-presentation:before {
+  content: "\e926";
+}
+.icon-map:before {
+  content: "\e927";
+}
+.icon-wallet:before {
+  content: "\e928";
+}
+.icon-atm:before {
+  content: "\e929";
+}
+.icon-waterdrop:before {
+  content: "\e92a";
+}
+.icon-pig:before {
+  content: "\e92b";
+}
+.icon-grass:before {
+  content: "\e92c";
+}
+.icon-shovel-tool:before {
+  content: "\e92d";
+}
+.icon-clipboard:before {
+  content: "\e92e";
+}
+.icon-payment-method:before {
+  content: "\e92f";
+}
+.icon-money:before {
+  content: "\e930";
+}
+.icon-piggy-bank:before {
+  content: "\e931";
+}
+.icon-line-logo:before {
+  content: "\e932";
 }
 .icon-drop-silhouette:before {
   content: "\e9ee";
@@ -206,4 +209,7 @@
 }
 .icon-windmill3:before {
   content: "\e9f9";
+}
+.icon-home:before {
+  content: "\e906";
 }
