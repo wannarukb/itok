@@ -13,7 +13,7 @@ class ImportServiceImplTest {
     val importServiceImpl = ImportServiceImpl()
     @Before
     fun init() {
-        importServiceImpl.file = File(javaClass.classLoader.getResource("data2.csv").file)
+        importServiceImpl.file = File(javaClass.classLoader.getResource("data3.csv").file)
     }
 
     @Test

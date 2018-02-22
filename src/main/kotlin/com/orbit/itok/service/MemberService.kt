@@ -2,14 +2,19 @@ package com.orbit.itok.service
 
 import com.fasterxml.jackson.annotation.JsonView
 import com.google.appengine.api.search.*
+import com.google.appengine.api.taskqueue.QueueFactory
+import com.google.appengine.api.taskqueue.TaskOptions
+import com.googlecode.objectify.ObjectifyService
+
 import com.googlecode.objectify.ObjectifyService.ofy
 import com.googlecode.objectify.ObjectifyService.register
 import com.googlecode.objectify.Ref
-import com.googlecode.objectify.annotation.Entity
-import com.googlecode.objectify.annotation.Id
-import com.googlecode.objectify.annotation.Ignore
-import com.googlecode.objectify.annotation.Load
+import com.googlecode.objectify.annotation.*
+import com.googlecode.objectify.annotation.Index
+import com.orbit.itok.web.View
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
+import org.springframework.core.env.Environment
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput
 import org.springframework.stereotype.Service
 import java.util.*
@@ -19,17 +24,17 @@ import java.util.*
  */
 
 @Entity
-data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = null,
+data class Member(@JsonView(View.Member::class) @Id var id: Long? = null,
         // รหัสสมาชิก
-                  @JsonView(DataTablesOutput.View::class) var memberId: String = "",
+                  @JsonView(View.Member::class) var memberId: String = "",
         //ภาพถ่ายสมาชิกเครือข่าย
                   var image: UploadedImage? = null,
         //คานาหน้าชื่อ
                   var title: String = "",
         // ชื่อ *
-                  @JsonView(DataTablesOutput.View::class) var firstName: String = "",
+                  @JsonView(View.Member::class) var firstName: String = "",
         // นามสกุล *
-                  @JsonView(DataTablesOutput.View::class) var lastName: String = "",
+                  @JsonView(View.Member::class) var lastName: String = "",
         // ชื่อเล่น
                   var nickname: String? = "",
         // วัน เดือน ปีเกิด
@@ -55,13 +60,26 @@ data class Member(@JsonView(DataTablesOutput.View::class) @Id var id: Long? = nu
         //                  สถานะการเป็นสมาชิก
                   var status: String = "",
                   var address: Address = Address(),
-                  var date: Date = Date(),
+                  @Index var date: Date = Date(),
                   @Load var membership: Ref<Membership>? = null,
-                  @com.googlecode.objectify.annotation.Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+        // activites
+                  @Index var memberLands: MutableList<Ref<MemberLand>> = mutableListOf(),
+                  @Index var courses: MutableList<Ref<Course>> = mutableListOf(),
+                  @Index var activities: MutableList<Ref<Activity>> = mutableListOf(),
+                  @Index var equipments: MutableList<Ref<Equipment>> = mutableListOf(),
+        // end activities
                   @Ignore var membershipTemp: Membership? = null,
-                  @Ignore
-                  var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
-)
+                  @Ignore var memberLandsTemp: MutableList<MemberLand> = mutableListOf()
+) {
+    fun fixMobile(@AlsoLoad("mobile") m: String) {
+        if (m != "-" && !m.startsWith("0")) this.mobile = "0$m"
+        if (m.isEmpty()) this.mobile = "-"
+    }
+
+    fun getDisplayName(): String {
+        return "$title$firstName $lastName"
+    }
+}
 //เลขที่
 //หมู่ที่
 //ชื่อหมู่บ้าน/อาคาร/ชุมชน
@@ -76,7 +94,7 @@ data class Address(var number: String? = "", var moo: String? = "", var village:
                    var road: String? = "", var subdistrict: String? = "", var district: String? = "",
                    var province: String? = "", var postalCode: String? = "") {
     override fun toString(): String {
-        return "$number $moo $village $alley $road $subdistrict $district $province $postalCode"
+        return "$number $moo $village $alley $road $subdistrict $district $province $postalCode".replace(" null", "")
     }
 }
 
@@ -93,10 +111,30 @@ interface MemberService {
     fun clear()
     fun import(list: MutableList<Member>)
     fun findByLandId(id: Long): Member?
+    fun updateAll(page: Int)
+    fun clearIndex()
 }
 
 @Service
 class MemberServiceImpl : MemberService, CommandLineRunner {
+    override fun clearIndex() {
+        var result: List<Document>
+        do {
+            result = index.getRange(GetRequest.newBuilder().setLimit(1000).setReturningIdsOnly(true)).results
+            index.delete(result.map { it.id })
+        } while (result.isNotEmpty())
+    }
+
+    override fun updateAll(page: Int) {
+        if (page == 0) clearIndex()
+        val list = ofy().load().type(Member::class.java).limit(50).offset(page * 50).list()
+        if (list.isNotEmpty()) {
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember").param("page", (page + 1).toString()))
+            ofy().save().entities(list)
+            index.put(list.map { getDocument(it) })
+        }
+    }
+
     override fun findByLandId(id: Long): Member? {
         return ofy().load().type(Member::class.java).filter("memberLands", MemberLand(id)).first().now()
     }
@@ -151,17 +189,37 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
 
     override fun findOne(id: Long): Member? {
         val now = ofy().load().type(Member::class.java).id(id).now()
+
         now.membershipTemp = now.membership?.get()
         now.memberLandsTemp = now.memberLands.map { it.get() }.toMutableList()
+        now.membership = null
+        now.memberLands = mutableListOf()
+        now.courses = mutableListOf()
+        now.equipments = mutableListOf()
+        now.activities = mutableListOf()
+
         return now
     }
 
     override fun update(id: Long, member: Member) {
         member.id = id
         val membershipTemp = member.membershipTemp
+
         if (membershipTemp != null) {
-            val now = ofy().save().entity(membershipTemp).now()
-            member.membership = Ref.create(now)
+            val findOne = findOne(id)
+            if (findOne != null) {
+                val get = findOne.membership?.get()
+                if (get != null) {
+                    val copy = membershipTemp.copy(id = get.id)
+                    ofy().save().entity(copy)
+                } else {
+                    val entity = ofy().save().entity(membershipTemp).now()
+                    member.membership = Ref.create(entity)
+                }
+            }
+
+//            val now = ofy().save().entity(membershipTemp).now()
+//            member.membership = Ref.create(now)
         }
         ofy().save().entity(member)
         index.delete(id.toString())
@@ -170,8 +228,8 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
 
     private fun getDocument(member: Member): Document {
         return Document.newBuilder().setId(member.id.toString())
-                .addField(Field.newBuilder().setName("firstName").setText(member.firstName))
-                .addField(Field.newBuilder().setName("lastName").setText(member.lastName))
+                .addField(Field.newBuilder().setName("name").setText(member.firstName + " " + member.lastName))
+                .addField(Field.newBuilder().setName("province").setText(member.address.toString()))
                 .addField(Field.newBuilder().setName("email").setText(member.email))
                 .addField(Field.newBuilder().setName("tel").setText(member.mobile))
                 .addField(Field.newBuilder().setName("memberId").setText(member.memberId)).build()
@@ -183,7 +241,10 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
     }
 
     override fun findAll(start: Int?, length: Int?): MutableList<Member> {
-        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).list()
+        val list = ofy().load().type(Member::class.java).limit(length ?: 50).offset(start ?: 0).order("-date").list()
+        if (list.isEmpty()) {
+            QueueFactory.getDefaultQueue().add(TaskOptions.Builder.withUrl("/_ah/updateMember"))
+        }
         list.forEach {
             it.membershipTemp = it.membership?.get()
             it.memberLandsTemp = it.memberLands.map { it.get() }.toMutableList()
@@ -200,11 +261,25 @@ class MemberServiceImpl : MemberService, CommandLineRunner {
         return member.id
     }
 
-    lateinit var index: Index
+    lateinit var index: com.google.appengine.api.search.Index
 
     override fun run(vararg p0: String?) {
         register(Member::class.java)
         this.index = SearchServiceFactory.getSearchService().getIndex(IndexSpec.newBuilder().setName("member"))
+        if (environment.activeProfiles.isNotEmpty() && environment.activeProfiles.first() == "development") {
+            val closable = ObjectifyService.begin()
+            register(Membership::class.java)
+
+            if (count() < 10L) {
+                for (i in 1..40)
+                    createMember(Member(firstName = "first$i", lastName = "last$i"))
+
+            }
+            closable.close()
+
+        }
     }
+
+    @Autowired lateinit var environment: Environment
 
 }

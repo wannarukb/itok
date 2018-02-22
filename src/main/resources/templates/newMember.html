@@ -45,18 +45,23 @@
                             <span>
                                 รูปประจำตัว
                             </span><br/>
-                            <div class="fileinput fileinput-new" data-provides="fileinput" style="width: 100%; margin-bottom: 0px;">
+                            <div class="fileinput fileinput-new" data-provides="fileinput"
+                                 style="width: 100%; margin-bottom: 0px;">
                                 <div class="fileinput-new thumbnail" style="width: 100%; height: 150px;">
-                                    <img data-src="holder.js/100%x100%" alt="..." src="">
+                                    <img data-th-if="*{image} == null" data-src="holder.js/100%x100%" alt="..." src="">
+                                    <img data-th-if="*{image} != null" data-th-src="*{image.imageUrl}"
+                                         class="img-responsive">
                                 </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 100%; max-height: 150px;"></div>
+
+                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                     style="max-width: 100%; max-height: 150px;"></div>
                                 <br/>
                                 <div>
                                     <span class="btn btn-default btn-file">
                                         <i class="fa fa-image" aria-hidden="true"></i>
                                         <span class="fileinput-new"> เลือกรูปภาพ</span>
                                         <span class="fileinput-exists"> เปลี่ยนรูปภาพ</span>
-                                        <input type="file" name="...">
+                                        <input type="file" name="file[]">
                                     </span>
                                     <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">
                                         <i class="fa fa-trash" aria-hidden="true"></i> ลบรูปภาพ</a>
@@ -89,7 +94,8 @@
                                                         <!--<strong data-th-text="#{member}">Horizontal</strong>-->
                                                         <!--<span data-th-text="#{personalDetail}"></span>-->
                                                         <span>ข้อมูลประวัติ</span>
-                                                    </legend><br/>
+                                                    </legend>
+                                                    <br/>
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <!--<input data-th-replace="fragments/TextField :: input (#{memberId}, 'memberId', false)"/>-->
@@ -115,7 +121,7 @@
                                                     <br/>
                                                     <legend class="section-title">
                                                         <!--<strong data-th-text="#{member}">Horizontal</strong>-->
-                                                        <span >ข้อมูลการติดต่อ</span>
+                                                        <span>ข้อมูลการติดต่อ</span>
                                                     </legend>
                                                     <br/>
                                                     <div class="row">
@@ -141,10 +147,6 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <div data-th-if="*{image} != null">
-                                                        <img data-th-src="*{image.imageUrl}" class="img-responsive">
-                                                    </div>
 
                                                 </fieldset>
                                             </div>
@@ -173,7 +175,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <div class ="row form-group">
+                                                            <div class="row form-group">
                                                                 <label class="col-md-4 form-control-label text-md-right"></label>
                                                                 <div class="col-md-7">
                                                                     <div class="checkbox abc-checkbox abc-checkbox-primary">

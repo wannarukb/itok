@@ -39,12 +39,15 @@ class LandController {
 
     @GetMapping("{id}")
     fun fieldSetup(model: Model, @PathVariable id: Long): String {
-        val memberLand = memberLandServiceImpl.findOne(id)
-        model.addAttribute("memberLand", memberLand)
-        if (memberLand != null) {
-            model.addAttribute("files", memberLand.files)
-        }
-        return "layout-land"
+
+//        val memberLand = memberLandServiceImpl.findOne(id)
+//        model.addAttribute("memberLand", memberLand)
+//        if (memberLand != null) {
+//            model.addAttribute("files", memberLand.files)
+//        }
+
+//        return "member-land-view"
+        return "redirect:/home"
     }
 
     @GetMapping("{id}/copyAddress")
@@ -112,8 +115,12 @@ class LandController {
         return "land2"
     }
 
-    @Autowired lateinit var memberLandServiceImpl: MemberLandService
-    @Autowired lateinit var memberServiceImpl: MemberService
-    @Autowired lateinit var uploadUtil: UploadUtil
-    @Autowired lateinit var settingServiceImpl: SettingServiceImpl
+    @Autowired
+    lateinit var memberLandServiceImpl: MemberLandService
+    @Autowired
+    lateinit var memberServiceImpl: MemberService
+    @Autowired
+    lateinit var uploadUtil: UploadUtil
+    @Autowired
+    lateinit var settingServiceImpl: SettingServiceImpl
 }

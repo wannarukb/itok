@@ -61,32 +61,57 @@
                                        data-th-href="'#collapse' + ${lStat.index}">
 
                                         <div class="col-sm-1 text-center ">
-                                            <i class="fa fa-user"
-                                               aria-hidden="true" style="font-size:2.5em;"
-                                               data-th-if="${l.image == null}"></i>
-                                            <img data-th-src="${l.image.imageUrl} + '=s50-c'"
-                                                 data-th-if="${l.image} != null"
-                                                 class=" img-circle">
+                                            <!--<i class="fa fa-user"-->
+                                               <!--aria-hidden="true" style="font-size:2.5em;"-->
+                                               <!--data-th-if="${l.image == null}"></i>-->
+                                            <!--<img data-th-src="${l.image.imageUrl} + '=s50-c'"-->
+                                                 <!--data-th-if="${l.image} != null"-->
+                                                 <!--class=" img-circle">-->
+                                            <span class="icon-farmer"  style="font-size:2.5em; color: #63a93f;"></span>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <p class="color-green"><strong
                                                     data-th-text="*{firstName} + ' ' + *{lastName}">กนก</strong></p>
-                                            <p class="font-medium color-dark"
-                                               data-th-text="*{nickname}">2 Farms</p>
+                                            <p class="font-medium color-dark">ชื่อเล่น</p>
                                             <!--<p class="font-xs-small color-grey"-->
                                             <!--data-th-text="${#lists.size(#object.memberLands)} + ' Farms'">2 Farms</p>-->
                                         </div>
-                                        <div class="col-sm-4">
-                                            <!--<p data-th-text="*{mobile}" class="font-medium color-dark"></p>-->
-                                            <!--<p data-th-text="*{address}" class="font-medium color-dark"></p>-->
-                                            <p class="font-medium color-dark">นนทบุรี</p>
-                                            <span class="font-xs-small color-grey"
-                                                  data-th-text="${#lists.size(#object.memberLands)} + ' Fields - ' + ${@memberLandServiceImpl.getTotalSize(#object.memberLandsTemp)}">2 Fields - 39.2 ac</span>
+                                        <div class="col-sm-2 text-center">
+                                             <span class="badge badge-green" style="width: 100px !important; color: #FFF !important;">สมาชิก</span>
+                                             <!--<span class="badge badge-warning" style="width: 100px !important; color: #FFF !important;">ยังไม่เป็นสมาชิก</span>-->
+                                             <p class="font-medium color-dark ">บุคคล</p>
                                         </div>
                                         <div class="col-sm-2">
-                                            <p data-th-text="*{membershipTemp.type}" class="font-medium color-dark"></p>
-                                            <!--<p data-th-text="*{membershipTemp.typeOrganization}"-->
-                                            <!--class="font-medium"></p>-->
+                                            <div class="row">
+                                                <div class="col-sm-2 text-center">
+                                                    <span class="font-icon-box">
+                                                        <i class="fa fa-mobile " aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="text-element">
+                                                        <span class="element-label font-small">เบอร์โทรศัพท์</span>
+                                                        <p class="element-value font-medium">08754323421</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="row">
+                                                <div class="col-sm-2 text-center">
+                                                    <span class="font-icon-box font-size-big">
+                                                        <i class="fa fa-home " aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="text-element">
+                                                        <span class="element-label font-small">ที่อยู่</span>
+                                                        <p class="element-value font-medium">102 หมู่ 1 ต.หนองสาหร่าย อ.ปากช่อง
+                                                            จ.นครราชสีมา 30130</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<p  class="font-medium color-dark line-height-small">672 หมู่ 11 บ้านดอนชัย ตำบลคลองน้ำไหล อำเภอคลองสาย จังหวัดกำแพงเพชร 62000</p>-->
                                         </div>
                                     </a>
                                     <div class="col-sm-2 text-right">
@@ -134,6 +159,8 @@
                                     <td>
                                         <button class=" btn btn-danger btn-sm"
                                                 data-th-onclick="'window.location=\'' + @{/page/member-land-view} + '\''">
+
+                                                <!--data-th-onclick="'window.location=\'' + @{/land/{id}(id=${k.id})} + '\''">-->
                                             <i class="icon-barn2"></i> ดูข้อมูลแปลงที่ดิน
                                         </button>
                                     </td>

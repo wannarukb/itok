@@ -6,7 +6,7 @@
 </head>
 <body>
 <div data-layout-fragment="main">
-    <div class="row" >
+    <div class="row">
         <div class="col-md-12 text-right">
             <a data-th-href="@{/page/dashboard-member}" class="btn btn-primary">
                 <i class="fa fa-user"></i> สรุปข้อมูลสมาชิก
@@ -14,7 +14,7 @@
             <a data-th-href="@{/page/dashboard-land}" class="btn btn-primary">
                 <i class="icon-barn2"></i> สรุปข้อมูลแปลงที่ดิน
             </a>
-            <a class="btn btn-primary" data-th-href="@{/page/dashboard-memberList}">
+            <a class="btn btn-primary" data-th-href="@{/member(fromDashboard=true,page=1)}">
                 <i class="fa fa-address-book"></i> ดูรายการสมาชิก
             </a>
             <a class="btn btn-primary" data-th-href="@{/page/dashboard-landList}">

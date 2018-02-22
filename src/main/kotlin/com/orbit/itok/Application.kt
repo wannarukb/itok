@@ -2,6 +2,7 @@
 package com.orbit.itok
 
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.google.appengine.api.utils.SystemProperty
 import com.googlecode.objectify.ObjectifyFilter
 import com.orbit.itok.util.dialect.GcsHrefProcessor
 import com.orbit.itok.util.dialect.GcsResourceDialect
@@ -60,6 +61,14 @@ open class WebConfig : WebMvcConfigurerAdapter() {
         return lci
     }
 
+    @Bean open fun versionUtil(): VersionUtil = VersionUtil()
+
+}
+
+class VersionUtil {
+    fun getVersion(): String? {
+        return "version: " + SystemProperty.applicationVersion.get()
+    }
 }
 
 @SpringBootApplication(exclude = arrayOf(HibernateJpaAutoConfiguration::class))

@@ -32,7 +32,7 @@
 }
 .content {
     min-height: 100%;
-    padding: 20px 20px 42px !important;
+
     /*background-color: #eee;*/
     background: #ebecef;
 }
@@ -79,7 +79,7 @@
 }
 .widget-label{
     display: inherit;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
 }
 .red{
@@ -817,6 +817,26 @@ fieldset[disabled]
 }
 
 .control-label, .form-control-label{
-    font-size: 0.85em;
+    font-size: 12.8px;
     font-weight: normal;
+    padding-top: 6px;
+}
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#react-paginate li {
+    display: inline-block;
+}
+
+#react-paginate .break a {
+    cursor: default;
+}
+.version{
+    position: fixed;
+    right:0px;
+    bottom: 0px;
+    font-size: 12px;
 }

@@ -32,18 +32,18 @@
 <body>
 <div id="container" class="background-white font-kanit text-dark login-page" >
     <div class="row">
-        <div class="col-md-8 login-background hidden-xs"  style="background: url('/image/bg-image.jpeg');">
+        <div class="col-md-8 login-background hidden-xs"  style="background: url('https://storage.googleapis.com/itok-project.appspot.com/image/bg-image.jpeg');">
             &nbsp;
         </div>
         <div class="col-md-4 col-xs-12 pad-login">
             <div class="row text-center">
-                <img src="/image/Logo-ITOK.png" width="150" /><br/><br/>
+                <img src="image/Logo-ITOK.png" width="150" data-gcs-src="" /><br/><br/>
                 <p class="font-size-14">การจัดเก็บข้อมูลระบบสารสนเทศทางภูมิศาสตร์<br/>เพื่อการวางแผนเชิงลึก</p>
             </div>
 
             <div class="row margin-top--big">
                 <p class="text-logo text-center">ลงชื่อเข้าใช้งานระบบ</p>
-                <form action="">
+                <form action="/home">
                     <div class="form-group has-feedback pad-top-15">
                         <input type="text" id="demo-oi-username" class="form-control" placeholder="Username" autofocus>
                         <i class="fa fa-user form-control-feedback"></i>
@@ -56,9 +56,9 @@
                         <div class="col-sm-5 text-left login-des-font-small">Forgot Password ?</div>
                         <div class="col-sm-7 text-right">
                             <!--<button class="btn btn-primary" type="submit">ลงชื่อเข้าใช้</button>-->
-                            <a class="btn btn-primary"  data-th-onclick="'window.location=\'' + @{/page/layout-dashboard} + '\''">
+                            <button type="submit" class="btn btn-primary"  data-th-onclick="'window.location=\'' + @{/page/layout-dashboard} + '\''">
                                 <i class="fa fa-user"></i> ลงชื่อเข้าใช้
-                            </a>
+                            </button>
                         </div>
                     </div>
 
