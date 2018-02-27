@@ -912,3 +912,11 @@ fieldset[disabled]
     border: 1px solid #dddddd;
     height : 400px;
 }
+
+.modal-backdrop{
+    display: none;
+}
+
+.btn-small{
+    padding: 0px 3px !important;
+}
